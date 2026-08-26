@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "21st": {
+      "command": "npx",
+      "args": ["@21st-dev/mcp-server"],
+      "env": {
+        "21ST_API_KEY": "21st_sk_e4fd2d4b0fd0342fd66f55cfb9d483728d6d34a4036d16b485505dd326939bfe"
+      }
+    }
+  }
+}
