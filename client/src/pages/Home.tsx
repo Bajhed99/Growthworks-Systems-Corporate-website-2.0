@@ -44,9 +44,9 @@ const fitSignals = [
 ];
 
 const industryCards = [
-  { label: "Home Services", image: "/manus-storage/gws-home-services_c087c1b6.webp", alt: "Home service professional working outside a residence" },
-  { label: "Financial Advisors", image: "/manus-storage/gws-financial-advisors_49f31a4b.jpg", alt: "Financial advisor in a client meeting" },
-  { label: "Insurance Agencies", image: "/manus-storage/gws-insurance-agencies_52c9e522.jpg", alt: "Insurance professionals consulting with a client" },
+  { label: "Home Services", image: "/assets/images/industries/home-services.webp", alt: "Home service professional working outside a residence" },
+  { label: "Financial Advisors", image: "/assets/images/industries/financial-advisors.jpg", alt: "Financial advisor in a client meeting" },
+  { label: "Insurance Agencies", image: "/assets/images/industries/insurance-agencies.jpg", alt: "Insurance professionals consulting with a client" },
 ];
 
 const footerGroups = [
@@ -56,8 +56,9 @@ const footerGroups = [
   { title: "Company", links: ["About GWS", "Resources", "Contact", "Book Discovery Call"] },
 ] as const;
 
-const OFFICIAL_LOGO = "/manus-storage/growthworks-official-logo_12b7910b.png";
-const CLAYTON_PORTRAIT = "/manus-storage/clayton-tidwell_c59c50e5.webp";
+const OFFICIAL_LOGO = "/assets/images/branding/growthworks-official-logo.png";
+const OFFICIAL_LOGO_WHITE = "/assets/images/branding/growthworks-official-logo-white.png";
+const CLAYTON_PORTRAIT = "/assets/images/branding/clayton-tidwell.jpg";
 
 function AnchorLink({ href, children, className, onClick, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
   return <a className={className} href={href} onClick={onClick} {...props}>{children}</a>;
@@ -228,7 +229,7 @@ export default function Home() {
       <footer className="site-footer">
         <div className="site-shell footer-main">
           <div className="footer-brand-column">
-            <img className="footer-logo" src={OFFICIAL_LOGO} alt="GrowthWorks Systems" />
+            <img className="footer-logo" src={OFFICIAL_LOGO_WHITE} alt="GrowthWorks Systems" />
             <p className="footer-tagline">Build. Automate. Grow.</p>
             <p className="footer-description">Revenue Infrastructure for founder-led service businesses.</p>
             <address className="footer-contact-list">
