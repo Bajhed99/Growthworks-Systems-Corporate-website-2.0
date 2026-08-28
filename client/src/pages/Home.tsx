@@ -44,9 +44,9 @@ const fitSignals = [
 ];
 
 const industryCards = [
-  { label: "Home Services", image: "/assets/images/industries/home-services.webp", alt: "Home service professional working outside a residence" },
-  { label: "Financial Advisors", image: "/assets/images/industries/financial-advisors.jpg", alt: "Financial advisor in a client meeting" },
-  { label: "Insurance Agencies", image: "/assets/images/industries/insurance-agencies.jpg", alt: "Insurance professionals consulting with a client" },
+  { label: "Home Services", image: "/assets/images/industries/Home Services.jpg", alt: "Home service professional working outside a residence" },
+  { label: "Financial Advisors", image: "/assets/images/industries/Financial Advisors.jpeg", alt: "Financial advisor in a client meeting" },
+  { label: "Insurance Agencies", image: "/assets/images/industries/Insurance Agencies.jpeg", alt: "Insurance professionals consulting with a client" },
 ];
 
 const footerGroups = [
