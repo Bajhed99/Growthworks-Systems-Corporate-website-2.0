@@ -1,0 +1,9 @@
+# Browser Verification Notes
+
+- The Who GWS Serves section displays three horizontally arranged labeled image cards directly below the approved paragraph at desktop width. The Home Services card showed the requested image-scale, Growth Crimson border, and crimson dropdown-shadow feedback on hover.
+- The Credibility Bridge anchor resolves to its section and the section’s computed background is black. Its full card-state inspection remains queued for the next browser pass.
+- The Credibility Bridge now visibly separates the kicker from the cards, uses deeper charcoal inactive surfaces, renders heavier card titles, and displays the requested white card with Growth Crimson drop shadow on hover.
+- The How GWS Works desktop view again has a subtle line connecting the four numbered markers. Hovering the Diagnose card shows paired Growth Crimson borders and the requested crimson drop shadow without displacing the other steps.
+- A browser inspection was initiated for the isolated AI Visibility Shadow DOM host. The anchor cannot target the internal section directly from the document, so the next verification pass will inspect the host after programmatic positioning rather than infer its visual state from the unresolved fragment anchor.
+- The positioned AI Visibility section displays a black background with subtle letter particles and Crimson interaction lines behind the Buyer Journey content. The particle canvas does not cover or block the section’s visual content or controls.
+- Desktop review confirms the hero keeps the requested CTA-to-flow separation and vertically stacked Explore label and chevron. The Credibility Bridge has no cards or icons: its three large Growth Crimson result headings are displayed as stacked pairs on the black field, with readable centered supporting copy.
