@@ -11,6 +11,7 @@ import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPla
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
 import { GlowyWavesHero } from "@/components/ui/glowy-waves-hero-shadcnui";
+import MobileSectionJump from "@/components/MobileSectionJump";
 import { getPageParallaxTravel, PAGE_PARALLAX_SCROLL_TRIGGER, PAGE_TEXT_REVEAL_TRIGGER } from "@/lib/pageParallax";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
 import { shouldCompactStickyHeader } from "@/lib/stickyHeader";
@@ -242,6 +243,7 @@ export default function Home() {
         </div>
         <div className="footer-bottom"><div className="site-shell"><small>© 2026 GrowthWorks Systems LLC. All rights reserved.</small><em>One System. Every Touchpoint. Predictable Revenue.</em></div></div>
       </footer>
+      <MobileSectionJump />
     </div>
   );
 }

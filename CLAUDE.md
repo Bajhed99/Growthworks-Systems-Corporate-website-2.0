@@ -128,7 +128,7 @@ Based on the architecture documentation, the homepage includes:
 
 ### 21st.dev MCP Server
 - Enhanced UI/UX intelligence
-- API Key: `21st_sk_e4fd2d4b0fd0342fd66f55cfb9d483728d6d34a4036d16b485505dd326939bfe`
+- API Key: Set via `VITE_21ST_API_KEY` environment variable (see `.env.example`)
 - Use for design decisions and component recommendations
 
 ## Next Steps
@@ -155,3 +155,13 @@ All reference materials are organized in the `/docs` folder:
 
 **Last Updated**: 2026-08-26
 **Status**: Project Setup Complete - Ready for Development
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
