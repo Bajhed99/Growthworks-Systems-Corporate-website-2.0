@@ -13,34 +13,34 @@ export type NavigationGroup = {
 export const GWS_NAV_GROUPS: readonly NavigationGroup[] = [
   {
     label: "Revenue Infrastructure",
-    href: "#revenue-infrastructure",
+    href: "/framework",
     items: [
-      { label: "The Framework", description: "Nine domains. One operating system.", href: "#revenue-infrastructure" },
-      { label: "Diagnostic Platform", description: "Methodology, scorecard, and roadmap.", href: "#revenue-diagnostic" },
+      { label: "The Framework", description: "Nine domains. One operating system.", href: "/framework" },
+      { label: "Diagnostic Platform", description: "Methodology, scorecard, and roadmap.", href: "/diagnostic-platform" },
     ],
   },
   {
     label: "Solutions",
-    href: "#solutions",
+    href: "/solutions",
     items: [
-      { label: "AI Visibility", description: "Be found by AI-powered search", href: "#ai-visibility" },
-      { label: "AI-Ready Website", description: "Convert attention into trust", href: "#solutions" },
-      { label: "CRM & Automation", description: "Eliminate revenue leakage", href: "#solutions" },
-      { label: "Conversion Systems", description: "Turn interest into pipeline", href: "#solutions" },
+      { label: "AI Visibility", description: "Be found by AI-powered search", href: "/ai-visibility" },
+      { label: "AI-Ready Website", description: "Convert attention into trust", href: "/ai-ready-website" },
+      { label: "CRM & Automation", description: "Eliminate revenue leakage", href: "/crm-automation" },
+      { label: "Conversion Systems", description: "Turn interest into pipeline", href: "/conversion-systems" },
     ],
   },
   {
     label: "Industries",
-    href: "#fit",
+    href: "/industries",
     items: [
-      { label: "Home Services", description: "Built for home service businesses", href: "#fit" },
-      { label: "Financial Advisors & RIAs", description: "Retirement planners & wealth advisors", href: "#fit" },
-      { label: "Insurance Agencies", description: "Independent agencies & brokerages", href: "#fit" },
+      { label: "Home Services", description: "Built for home service businesses", href: "/home-services" },
+      { label: "Financial Advisors & RIAs", description: "Retirement planners & wealth advisors", href: "/financial-advisors" },
+      { label: "Insurance Agencies", description: "Independent agencies & brokerages", href: "/insurance-agencies" },
     ],
   },
 ] as const;
 
 export const GWS_NAV_LINKS = [
-  { label: "Resources", href: "#ai-visibility" },
-  { label: "About", href: "#founder" },
+  { label: "Resources", href: "/resources" },
+  { label: "About", href: "/about" },
 ] as const;

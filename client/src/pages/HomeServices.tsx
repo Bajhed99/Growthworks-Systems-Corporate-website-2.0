@@ -1,0 +1,13 @@
+import { Home } from "lucide-react";
+import { useLocation } from "wouter";
+
+export default function HomeServices() {
+  const [, setLocation] = useLocation();
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col items-center justify-center px-6 text-center">
+      <h1 className="text-4xl font-extrabold text-slate-900 mb-3">Home Services</h1>
+      <p className="text-lg text-slate-600 mb-8">Page template — content to be customized per blueprint documentation.</p>
+      <button onClick={() => setLocation("/")} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium shadow-md transition"><Home size={18} /> Back to Home</button>
+    </div>
+  );
+}

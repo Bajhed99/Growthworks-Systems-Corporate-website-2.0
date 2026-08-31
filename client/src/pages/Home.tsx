@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, ChartNoAxesCombined, Check, ChevronDown, Clock3, Linkedin, Mail, Menu, Phone, Route, Search, X } from "lucide-react";
+import { useLocation } from "wouter";
 import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPlayHost";
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
@@ -69,6 +70,7 @@ export default function Home() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null);
   const [isHeaderCompact, setHeaderCompact] = useState(false);
+  const [, setLocation] = useLocation();
   const pageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -151,7 +153,7 @@ export default function Home() {
               const menuId = `desktop-menu-${group.label.toLowerCase().replaceAll(" ", "-")}`;
               return (
                 <div key={group.label} className="nav-group" onMouseEnter={() => setActiveDesktopMenu(group.label)}>
-                  <button type="button" className={`nav-link nav-link--group ${isOpen ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => setActiveDesktopMenu(isOpen ? null : group.label)}>
+                  <button type="button" className={`nav-link nav-link--group ${isOpen ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => { setLocation(group.href); setActiveDesktopMenu(null); }}>
                     {group.label}<ChevronDown size={13} aria-hidden="true" />
                   </button>
                   {isOpen && <div id={menuId} className="desktop-dropdown" role="menu" aria-label={`${group.label} menu`}>
@@ -169,7 +171,7 @@ export default function Home() {
           </div>
         </div>
         <div className={`mobile-nav ${mobileNavOpen ? "is-open" : ""}`}><nav className="site-shell" aria-label="Mobile primary navigation">
-          {GWS_NAV_GROUPS.map((group) => <div className="mobile-nav-group" key={group.label}><AnchorLink href={group.href} className="mobile-nav-link" onClick={() => setMobileNavOpen(false)}>{group.label}</AnchorLink><div className="mobile-nav-submenu">{group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-sublink" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}</div></div>)}
+          {GWS_NAV_GROUPS.map((group) => <div className="mobile-nav-group" key={group.label}><button type="button" className="mobile-nav-link" onClick={() => { setLocation(group.href); setMobileNavOpen(false); }}>{group.label}</button><div className="mobile-nav-submenu">{group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-sublink" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}</div></div>)}
           {GWS_NAV_LINKS.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-link" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}
         </nav></div>
       </header>

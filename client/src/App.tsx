@@ -2,6 +2,20 @@ import { useEffect, useState } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import Framework from "@/pages/Framework";
+import DiagnosticPlatform from "@/pages/DiagnosticPlatform";
+import RevenueDiagnostic from "@/pages/RevenueDiagnostic";
+import Solutions from "@/pages/Solutions";
+import AIVisibility from "@/pages/AIVisibility";
+import AIReadyWebsite from "@/pages/AIReadyWebsite";
+import CRMAutomation from "@/pages/CRMAutomation";
+import ConversionSystems from "@/pages/ConversionSystems";
+import Industries from "@/pages/Industries";
+import HomeServices from "@/pages/HomeServices";
+import FinancialAdvisors from "@/pages/FinancialAdvisors";
+import InsuranceAgencies from "@/pages/InsuranceAgencies";
+import Resources from "@/pages/Resources";
+import About from "@/pages/About";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { PasswordGate } from "./components/PasswordGate";
@@ -13,6 +27,20 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/framework"} component={Framework} />
+      <Route path={"/diagnostic-platform"} component={DiagnosticPlatform} />
+      <Route path={"/revenue-diagnostic"} component={RevenueDiagnostic} />
+      <Route path={"/solutions"} component={Solutions} />
+      <Route path={"/ai-visibility"} component={AIVisibility} />
+      <Route path={"/ai-ready-website"} component={AIReadyWebsite} />
+      <Route path={"/crm-automation"} component={CRMAutomation} />
+      <Route path={"/conversion-systems"} component={ConversionSystems} />
+      <Route path={"/industries"} component={Industries} />
+      <Route path={"/home-services"} component={HomeServices} />
+      <Route path={"/financial-advisors"} component={FinancialAdvisors} />
+      <Route path={"/insurance-agencies"} component={InsuranceAgencies} />
+      <Route path={"/resources"} component={Resources} />
+      <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
