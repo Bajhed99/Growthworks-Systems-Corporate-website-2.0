@@ -5,17 +5,16 @@
  */
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ChartNoAxesCombined, Check, ChevronDown, Clock3, Linkedin, Mail, Menu, Phone, Route, Search, X } from "lucide-react";
-import { useLocation } from "wouter";
+import { useEffect, useRef } from "react";
+import { ArrowRight, ChartNoAxesCombined, Check, Clock3, Route, Search } from "lucide-react";
 import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPlayHost";
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
+import SiteHeader from "@/components/SiteHeader";
 import { GlowyWavesHero } from "@/components/ui/glowy-waves-hero-shadcnui";
+import SiteFooter from "@/components/SiteFooter";
 import MobileSectionJump from "@/components/MobileSectionJump";
 import { getPageParallaxTravel, PAGE_PARALLAX_SCROLL_TRIGGER, PAGE_TEXT_REVEAL_TRIGGER } from "@/lib/pageParallax";
-import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
-import { shouldCompactStickyHeader } from "@/lib/stickyHeader";
 
 const problemCards = [
   { title: "Hard to find", body: "Buyers are already looking for what you do, but competitors are getting found, considered, or recommended first.", icon: Search },
@@ -51,15 +50,6 @@ const industryCards = [
   { label: "Insurance Agencies", image: "/assets/images/industries/Insurance Agencies.jpeg", alt: "Insurance professionals consulting with a client" },
 ];
 
-const footerGroups = [
-  { title: "Revenue Infrastructure", links: ["What Is Revenue Infrastructure?", "The Nine Domains", "Maturity Model", "Why GWS Is Different"] },
-  { title: "Solutions", links: ["AI Visibility", "AI-Ready Website", "CRM & Automation", "Conversion Systems", "All Solutions"] },
-  { title: "Industries", links: ["Home Services", "Financial Advisors & RIAs", "Insurance Agencies"] },
-  { title: "Company", links: ["About GWS", "Resources", "Contact", "Book Discovery Call"] },
-] as const;
-
-const OFFICIAL_LOGO = "/assets/images/branding/growthworks-official-logo.png";
-const OFFICIAL_LOGO_WHITE = "/assets/images/branding/growthworks-official-logo-white.png";
 const CLAYTON_PORTRAIT = "/assets/images/branding/clayton-tidwell.jpg";
 
 function AnchorLink({ href, children, className, onClick, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
@@ -67,22 +57,7 @@ function AnchorLink({ href, children, className, onClick, ...props }: React.Anch
 }
 
 export default function Home() {
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null);
-  const [isHeaderCompact, setHeaderCompact] = useState(false);
-  const [, setLocation] = useLocation();
   const pageRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const updateHeaderState = () => {
-      const nextCompactState = shouldCompactStickyHeader(window.scrollY);
-      setHeaderCompact((currentState) => currentState === nextCompactState ? currentState : nextCompactState);
-    };
-
-    updateHeaderState();
-    window.addEventListener("scroll", updateHeaderState, { passive: true });
-    return () => window.removeEventListener("scroll", updateHeaderState);
-  }, []);
 
   useEffect(() => {
     const page = pageRef.current;
@@ -134,47 +109,7 @@ export default function Home() {
 
   return (
     <div ref={pageRef} className="gws-page">
-      <header
-        className={`site-header ${isHeaderCompact ? "is-compact" : ""}`}
-        onMouseLeave={() => setActiveDesktopMenu(null)}
-        onKeyDown={(event) => {
-          if (event.key === "Escape") setActiveDesktopMenu(null);
-        }}
-      >
-        <div className="site-shell header-shell">
-          <AnchorLink href="#top" className="brand" aria-label="GrowthWorks Systems home">
-            <span className="brand-mark" aria-hidden="true"><img src={OFFICIAL_LOGO} alt="" /></span>
-            <span className="brand-wordmark"><span>GrowthWorks</span><span className="brand-wordmark-systems">Systems</span></span>
-          </AnchorLink>
-          <nav className="desktop-nav" aria-label="Primary navigation">
-            <div className="desktop-nav-links">
-            {GWS_NAV_GROUPS.map((group) => {
-              const isOpen = activeDesktopMenu === group.label;
-              const menuId = `desktop-menu-${group.label.toLowerCase().replaceAll(" ", "-")}`;
-              return (
-                <div key={group.label} className="nav-group" onMouseEnter={() => setActiveDesktopMenu(group.label)}>
-                  <button type="button" className={`nav-link nav-link--group ${isOpen ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => { setLocation(group.href); setActiveDesktopMenu(null); }}>
-                    {group.label}<ChevronDown size={13} aria-hidden="true" />
-                  </button>
-                  {isOpen && <div id={menuId} className="desktop-dropdown" role="menu" aria-label={`${group.label} menu`}>
-                    {group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="desktop-dropdown-link" onClick={() => setActiveDesktopMenu(null)} role="menuitem"><strong>{item.label}</strong><span>{item.description}</span></AnchorLink>)}
-                  </div>}
-                </div>
-              );
-            })}
-            {GWS_NAV_LINKS.map((item) => <AnchorLink key={item.label} href={item.href} className="nav-link" onClick={() => setActiveDesktopMenu(null)}>{item.label}</AnchorLink>)}
-            </div>
-          </nav>
-          <div className="header-actions">
-            <AnchorLink href="#revenue-diagnostic" className="button button--dark header-cta">Book Discovery Call</AnchorLink>
-            <button type="button" className="menu-button" aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen((open) => !open)}>{mobileNavOpen ? <X size={22} /> : <Menu size={22} />}</button>
-          </div>
-        </div>
-        <div className={`mobile-nav ${mobileNavOpen ? "is-open" : ""}`}><nav className="site-shell" aria-label="Mobile primary navigation">
-          {GWS_NAV_GROUPS.map((group) => <div className="mobile-nav-group" key={group.label}><button type="button" className="mobile-nav-link" onClick={() => { setLocation(group.href); setMobileNavOpen(false); }}>{group.label}</button><div className="mobile-nav-submenu">{group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-sublink" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}</div></div>)}
-          {GWS_NAV_LINKS.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-link" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}
-        </nav></div>
-      </header>
+      <SiteHeader />
 
       <main id="top">
         <div className="scroll-story-stage">
@@ -209,7 +144,7 @@ export default function Home() {
         <section id="how-gws-works" className="section section--white how-gws-works-section" aria-labelledby="process-title">
           <div className="site-shell"><div className="centered-intro" data-scroll-reveal><p className="section-kicker">How GWS works</p><h2 id="process-title">Fixing the constraint that matters most.</h2></div>
             <ol className="process-route" data-page-parallax data-parallax-shift="-26">{processSteps.map((step, index) => <li key={step.title}><span className="process-step-number">0{index + 1}</span><article className="process-step-card"><h3>{step.title}</h3><p>{step.body}</p></article></li>)}</ol>
-            <div className="section-route"><AnchorLink href="#revenue-infrastructure" className="text-link">Explore the Framework <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div>
+            <div className="section-route"><AnchorLink href="/framework" className="text-link">Explore the Framework <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div>
           </div>
         </section>
 
@@ -219,32 +154,17 @@ export default function Home() {
 
         <section id="solutions" className="section solutions-section" aria-labelledby="solutions-title"><div className="site-shell"><div className="centered-intro" data-scroll-reveal><p className="section-kicker">Four application areas</p><h2 id="solutions-title">Where <span className="solutions-heading-accent">GWS</span> strengthens revenue performance.</h2><p style={{color: 'gray'}}>One coordinated set of performance areas — not four separate services.</p></div>
           <div className="solution-matrix" data-page-parallax data-parallax-shift="24">{solutionModules.map((module) => <article className="solution-row" key={module.title}><div className="solution-heading"><span>{module.number}</span><h3>{module.title}</h3><b>{module.label}</b></div><div className="solution-detail"><p>{module.body}</p><small>{module.mechanism}</small></div></article>)}</div>
-          <div className="section-route"><AnchorLink href="#solutions" className="text-link">Explore Solutions <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div>
+          <div className="section-route"><AnchorLink href="/solutions" className="text-link">Explore Solutions <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div>
         </div></section>
 
-        <section id="industries" className="section section--gray" aria-labelledby="industries-title"><div className="site-shell fit-layout"><div className="fit-copy" data-scroll-reveal><p className="section-kicker">Who GWS serves</p><h2 id="industries-title">Built for founder-led service businesses.</h2><p>GrowthWorks works with established service businesses that have real demand and real revenue — but are losing more of it than they should.</p><div className="industry-card-grid">{industryCards.map((industry) => <AnchorLink key={industry.label} href="#industries" className="industry-image-card"><img src={industry.image} alt={industry.alt} /><span>{industry.label}</span></AnchorLink>)}</div></div><div className="fit-panel" data-page-parallax data-parallax-shift="-24">{fitSignals.map(([title, body]) => <div key={title}><Check size={17} aria-hidden="true" /><p><strong>{title}</strong><span>{body}</span></p></div>)}</div></div></section>
+        <section id="industries" className="section section--gray" aria-labelledby="industries-title"><div className="site-shell fit-layout"><div className="fit-copy" data-scroll-reveal><p className="section-kicker">Who GWS serves</p><h2 id="industries-title">Built for founder-led service businesses.</h2><p>GrowthWorks works with established service businesses that have real demand and real revenue — but are losing more of it than they should.</p><div className="industry-card-grid">{industryCards.map((industry) => <AnchorLink key={industry.label} href="/industries" className="industry-image-card"><img src={industry.image} alt={industry.alt} /><span>{industry.label}</span></AnchorLink>)}</div></div><div className="fit-panel" data-page-parallax data-parallax-shift="-24">{fitSignals.map(([title, body]) => <div key={title}><Check size={17} aria-hidden="true" /><p><strong>{title}</strong><span>{body}</span></p></div>)}</div></div></section>
 
-        <section id="founder" className="section section--white" aria-labelledby="founder-title"><div className="site-shell founder-layout"><div className="portrait-frame" data-page-parallax data-parallax-shift="18"><img src={CLAYTON_PORTRAIT} alt="Clayton Tidwell" /></div><div className="founder-copy" data-scroll-reveal><p className="section-kicker">Founder credibility</p><h2 id="founder-title">Experience built in complex systems.</h2><p>Clayton Tidwell&apos;s background spans enterprise operations, technology transformation, and systems integration. That experience shapes GWS&apos;s practical, diagnostic approach to solving revenue and operating problems.</p><ul>{["30+ years of systems integration and operating experience", "Enterprise operations & technology transformation", "Systems integration at scale"].map((proof) => <li key={proof}><Check size={16} aria-hidden="true" />{proof}</li>)}</ul><AnchorLink href="#founder" className="text-link">Meet the Founder <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div></div></section>
+        <section id="founder" className="section section--white" aria-labelledby="founder-title"><div className="site-shell founder-layout"><div className="portrait-frame" data-page-parallax data-parallax-shift="18"><img src={CLAYTON_PORTRAIT} alt="Clayton Tidwell" /></div><div className="founder-copy" data-scroll-reveal><p className="section-kicker">Founder credibility</p><h2 id="founder-title">Experience built in complex systems.</h2><p>Clayton Tidwell&apos;s background spans enterprise operations, technology transformation, and systems integration. That experience shapes GWS&apos;s practical, diagnostic approach to solving revenue and operating problems.</p><ul>{["30+ years of systems integration and operating experience", "Enterprise operations & technology transformation", "Systems integration at scale"].map((proof) => <li key={proof}><Check size={16} aria-hidden="true" />{proof}</li>)}</ul><AnchorLink href="/about" className="text-link">Meet the Founder <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div></div></section>
 
-        <section id="revenue-diagnostic" className="section section--gray diagnostic-section" aria-labelledby="diagnostic-title"><div className="site-shell diagnostic-inner" data-scroll-reveal><div className="diagnostic-flow" data-page-parallax data-parallax-shift="-20" aria-hidden="true"><span>Digital Presence</span><i></i><span>Lead Response</span><i></i><span>Sales Operations</span><i></i><span>Revenue Intelligence</span><b>Revenue Infrastructure</b></div><p className="diagnostic-bridge">The connected system behind the outcomes above.</p><h2 id="diagnostic-title">Ready to find the constraint that matters most?</h2><p className="diagnostic-copy">A Revenue Diagnostic is a focused 60-minute session to identify your highest-value revenue constraint and the system fix that addresses it. No generic audit. No pressure.</p><AnchorLink href="#revenue-diagnostic" className="button button--dark">Book a Revenue Diagnostic</AnchorLink><p className="diagnostic-meta">60 minutes · No obligation · Focused on your constraint</p></div></section>
+        <section id="revenue-diagnostic" className="section section--gray diagnostic-section" aria-labelledby="diagnostic-title"><div className="site-shell diagnostic-inner" data-scroll-reveal><div className="diagnostic-flow" data-page-parallax data-parallax-shift="-20" aria-hidden="true"><span>Digital Presence</span><i></i><span>Lead Response</span><i></i><span>Sales Operations</span><i></i><span>Revenue Intelligence</span><b>Revenue Infrastructure</b></div><p className="diagnostic-bridge">The connected system behind the outcomes above.</p><h2 id="diagnostic-title">Ready to find the constraint that matters most?</h2><p className="diagnostic-copy">A Revenue Diagnostic is a focused 60-minute session to identify your highest-value revenue constraint and the system fix that addresses it. No generic audit. No pressure.</p><AnchorLink href="/revenue-diagnostic" className="button button--dark">Book a Revenue Diagnostic</AnchorLink><p className="diagnostic-meta">60 minutes · No obligation · Focused on your constraint</p></div></section>
       </main>
 
-      <footer className="site-footer">
-        <div className="site-shell footer-main">
-          <div className="footer-brand-column">
-            <img className="footer-logo" src={OFFICIAL_LOGO_WHITE} alt="GrowthWorks Systems" />
-            <p className="footer-tagline">Build. Automate. Grow.</p>
-            <p className="footer-description">Revenue Infrastructure for founder-led service businesses.</p>
-            <address className="footer-contact-list">
-              <a href="mailto:clayton@growthworks-systems.com"><Mail size={14} aria-hidden="true" />clayton@growthworks-systems.com</a>
-              <a href="tel:+12143027720"><Phone size={14} aria-hidden="true" />214–302–7720</a>
-              <a href="#founder"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
-            </address>
-          </div>
-          {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <AnchorLink href={link === "Book Discovery Call" ? "#revenue-diagnostic" : "#top"} key={link}>{link}</AnchorLink>)}</nav>)}
-        </div>
-        <div className="footer-bottom"><div className="site-shell"><small>© 2026 GrowthWorks Systems LLC. All rights reserved.</small><em>One System. Every Touchpoint. Predictable Revenue.</em></div></div>
-      </footer>
+      <SiteFooter />
       <MobileSectionJump />
     </div>
   );

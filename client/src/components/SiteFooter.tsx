@@ -1,0 +1,37 @@
+import { Linkedin, Mail, Phone } from "lucide-react";
+import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
+
+const OFFICIAL_LOGO_WHITE = "/assets/images/branding/growthworks-official-logo-white.png";
+
+const footerGroups = [
+  { title: "Revenue Infrastructure", links: ["What Is Revenue Infrastructure?", "The Nine Domains", "Maturity Model", "Why GWS Is Different"] },
+  { title: "Solutions", links: ["AI Visibility", "AI-Ready Website", "CRM & Automation", "Conversion Systems", "All Solutions"] },
+  { title: "Industries", links: ["Home Services", "Financial Advisors & RIAs", "Insurance Agencies"] },
+  { title: "Company", links: ["About GWS", "Resources", "Contact", "Book Discovery Call"] },
+] as const;
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const path = children === "Book Discovery Call" ? "/revenue-diagnostic" : (children === "Contact" ? "#" : "/");
+  return <a href={path === "/revenue-diagnostic" ? "/revenue-diagnostic" : (path === "/" ? "/" : "#top")}>{children}</a>;
+}
+
+export default function SiteFooter() {
+  return (
+    <footer className="site-footer">
+      <div className="site-shell footer-main">
+        <div className="footer-brand-column">
+          <img className="footer-logo" src={OFFICIAL_LOGO_WHITE} alt="GrowthWorks Systems" />
+          <p className="footer-tagline">Build. Automate. Grow.</p>
+          <p className="footer-description">Revenue Infrastructure for founder-led service businesses.</p>
+          <address className="footer-contact-list">
+            <a href="mailto:clayton@growthworks-systems.com"><Mail size={14} aria-hidden="true" />clayton@growthworks-systems.com</a>
+            <a href="tel:+12143027720"><Phone size={14} aria-hidden="true" />214–302–7720</a>
+            <a href="/about"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
+          </address>
+        </div>
+        {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <a href={link === "Book Discovery Call" ? "/revenue-diagnostic" : "/"} key={link}>{link}</a>)}</nav>)}
+      </div>
+      <div className="footer-bottom"><div className="site-shell"><small>© 2026 GrowthWorks Systems LLC. All rights reserved.</small><em>One System. Every Touchpoint. Predictable Revenue.</em></div></div>
+    </footer>
+  );
+}
