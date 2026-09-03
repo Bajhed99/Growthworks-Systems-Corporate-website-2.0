@@ -7,11 +7,11 @@ const footerGroups = [
   { title: "Revenue Infrastructure", links: ["What Is Revenue Infrastructure?", "The Nine Domains", "Maturity Model", "Why GWS Is Different"] },
   { title: "Solutions", links: ["AI Visibility", "AI-Ready Website", "CRM & Automation", "Conversion Systems", "All Solutions"] },
   { title: "Industries", links: ["Home Services", "Financial Advisors & RIAs", "Insurance Agencies"] },
-  { title: "Company", links: ["About GWS", "Resources", "Contact", "Book Discovery Call"] },
+  { title: "Company", links: ["About GWS", "Resources", "Contact", "Book a Revenue Diagnostic"] },
 ] as const;
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const path = children === "Book Discovery Call" ? "/revenue-diagnostic" : (children === "Contact" ? "#" : "/");
+  const path = children === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" : (children === "Contact" ? "#" : "/");
   return <a href={path === "/revenue-diagnostic" ? "/revenue-diagnostic" : (path === "/" ? "/" : "#top")}>{children}</a>;
 }
 
@@ -29,7 +29,7 @@ export default function SiteFooter() {
             <a href="/about"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
           </address>
         </div>
-        {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <a href={link === "Book Discovery Call" ? "/revenue-diagnostic" : "/"} key={link}>{link}</a>)}</nav>)}
+        {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <a href={link === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" : "/"} key={link}>{link}</a>)}</nav>)}
       </div>
       <div className="footer-bottom"><div className="site-shell"><small>© 2026 GrowthWorks Systems LLC. All rights reserved.</small><em>One System. Every Touchpoint. Predictable Revenue.</em></div></div>
     </footer>

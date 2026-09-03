@@ -60,7 +60,7 @@ export default function SiteHeader() {
           </div>
         </nav>
         <div className="header-actions">
-          <AnchorLink href="/revenue-diagnostic" className="button button--dark header-cta">Book Discovery Call</AnchorLink>
+          <AnchorLink href="/revenue-diagnostic" className="button button--dark header-cta">Book a Revenue Diagnostic</AnchorLink>
           <button type="button" className="menu-button" aria-label={mobileNavOpen ? "Close navigation" : "Open navigation"} aria-expanded={mobileNavOpen} onClick={() => setMobileNavOpen((open) => !open)}>{mobileNavOpen ? <X size={22} /> : <Menu size={22} />}</button>
         </div>
       </div>
