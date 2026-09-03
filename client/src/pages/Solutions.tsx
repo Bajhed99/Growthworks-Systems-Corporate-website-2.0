@@ -1,19 +1,43 @@
-import { Home } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { useLocation } from "wouter";
+import { SolutionsHero } from "@/components/solutions/SolutionsHero";
+import { SolutionsRevenuePathHero } from "@/components/solutions/SolutionsRevenuePathHero";
+import { SolutionsDigitalPresenceSection } from "@/components/solutions/SolutionsDigitalPresenceSection";
+import { SolutionsLeadResponseSection } from "@/components/solutions/SolutionsLeadResponseSection";
+import { SolutionsSalesOperationsSection } from "@/components/solutions/SolutionsSalesOperationsSection";
+import { SolutionsRevenueIntelligenceSection } from "@/components/solutions/SolutionsRevenueIntelligenceSection";
+import { SolutionsConnectedSystemSection } from "@/components/solutions/SolutionsConnectedSystemSection";
+import { SolutionsConstraintFirstSection } from "@/components/solutions/SolutionsConstraintFirstSection";
+import { SolutionsBusinessOutcomesSection } from "@/components/solutions/SolutionsBusinessOutcomesSection";
+import { SolutionsClosingCTASection } from "@/components/solutions/SolutionsClosingCTASection";
 
 export default function Solutions() {
-  const [, setLocation] = useLocation();
   return (
     <>
-    <SiteHeader />
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-4xl font-extrabold text-slate-900 mb-3">Solutions</h1>
-      <p className="text-lg text-slate-600 mb-8">Page template — content to be customized per Blueprint documentation by Jhed.</p>
-      <button onClick={() => setLocation("/")} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium shadow-md transition"><Home size={18} /> Back to Home</button>
-    </div>
-    <SiteFooter />
+      <SiteHeader />
+      <main id="main-content">
+        {/* Section 01 — Hero */}
+        <SolutionsHero />
+        {/* Section 02 — One Revenue Path, Four Areas */}
+        <SolutionsRevenuePathHero />
+        {/* Section 03 — Digital Presence */}
+        <SolutionsDigitalPresenceSection />
+        {/* Section 04 — Lead Response */}
+        <SolutionsLeadResponseSection />
+        {/* Section 05 — Sales Operations */}
+        <SolutionsSalesOperationsSection />
+        {/* Section 06 — Revenue Intelligence */}
+        <SolutionsRevenueIntelligenceSection />
+        {/* Section 07 — How the Four Areas Work Together */}
+        <SolutionsConnectedSystemSection />
+        {/* Section 08 — Diagnose Before Prescribing */}
+        <SolutionsConstraintFirstSection />
+        {/* Section 09 — Business Outcomes */}
+        <SolutionsBusinessOutcomesSection />
+        {/* Section 10 — Closing CTA */}
+        <SolutionsClosingCTASection />
+      </main>
+      <SiteFooter />
     </>
   );
 }

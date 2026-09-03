@@ -1,0 +1,34 @@
+import { ArrowRight } from "lucide-react";
+
+function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
+  return <a className={className} href={href} {...props}>{children}</a>;
+}
+
+export function SolutionsHero() {
+  return (
+    <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title">
+      <div className="gws-glowy-canvas" style={{
+        background: "radial-gradient(60% 60% at 85% 10%, rgba(132, 22, 23, 0.08), transparent 72%), radial-gradient(45% 45% at 8% 80%, rgba(132, 22, 23, 0.04), transparent 72%)"
+      }} />
+      <div className="gws-glowy-content">
+        <div className="gws-glowy-content-inner">
+          <div className="gws-glowy-badge">
+            <span>Solutions</span>
+          </div>
+          <h1 id="solutions-hero-title" className="gws-glowy-title">
+            Integrated capabilities engineered to eliminate revenue leakage.
+          </h1>
+          <p className="gws-glowy-copy" style={{ maxWidth: '720px' }}>
+            GrowthWorks Systems strengthens the connected parts of the revenue path that determine whether opportunity is found, captured, converted, and improved — through Digital Presence, Lead Response, Sales Operations, and Revenue Intelligence.
+          </p>
+          <div className="gws-glowy-actions">
+            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary">
+              Book a Revenue Diagnostic
+              <ArrowRight size={16} />
+            </AnchorLink>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

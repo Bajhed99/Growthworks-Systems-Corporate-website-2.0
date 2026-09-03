@@ -1,19 +1,64 @@
-import { Home } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { useLocation } from "wouter";
+import { AIVisibilityHero } from "@/components/ai-visibility/AIVisibilityHero";
+import { AIBuyerJourneySection } from "@/components/ai-visibility/AIBuyerJourneySection";
+import { AIEvolutionSection } from "@/components/ai-visibility/AIEvolutionSection";
+import { AIOptimizationConsolidationSection } from "@/components/ai-visibility/AIOptimizationConsolidationSection";
+import { AIEntityOptimizationSection } from "@/components/ai-visibility/AIEntityOptimizationSection";
+import { AIRecommendationMechanicsSection } from "@/components/ai-visibility/AIRecommendationMechanicsSection";
+import { AITechnicalFoundationSection } from "@/components/ai-visibility/AITechnicalFoundationSection";
+import { AIServiceBusinessRelevanceSection } from "@/components/ai-visibility/AIServiceBusinessRelevanceSection";
+import { AIEvaluationSection } from "@/components/ai-visibility/AIEvaluationSection";
+import { AIVScorePlaceholderSection } from "@/components/ai-visibility/AIVScorePlaceholderSection";
+import { AILifecyclePlaceholderSection } from "@/components/ai-visibility/AILifecyclePlaceholderSection";
+import { AIMaturityProgressionSection } from "@/components/ai-visibility/AIMaturityProgressionSection";
+import { AIBusinessOutcomesSection } from "@/components/ai-visibility/AIBusinessOutcomesSection";
+import { AIRoadmapPlaceholderSection } from "@/components/ai-visibility/AIRoadmapPlaceholderSection";
+import { AIFrameworksResourcesSection } from "@/components/ai-visibility/AIFrameworksResourcesSection";
+import { AIFrequentlyAskedQuestionsSection } from "@/components/ai-visibility/AIFrequentlyAskedQuestionsSection";
+import { AICClosingCTABand } from "@/components/ai-visibility/AICClosingCTABand";
 
 export default function AIVisibility() {
-  const [, setLocation] = useLocation();
   return (
     <>
-    <SiteHeader />
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-4xl font-extrabold text-slate-900 mb-3">AI Visibility</h1>
-      <p className="text-lg text-slate-600 mb-8">Page template — content to be customized per Blueprint documentation by Jhed.</p>
-      <button onClick={() => setLocation("/")} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium shadow-md transition"><Home size={18} /> Back to Home</button>
-    </div>
-    <SiteFooter />
+      <SiteHeader />
+      <main id="main-content">
+        {/* Section 01 — Hero */}
+        <AIVisibilityHero />
+        {/* Section 02 — Buyer Journey */}
+        <AIBuyerJourneySection />
+        {/* Section 03 — AI Search Evolution */}
+        <AIEvolutionSection />
+        {/* Section 04 — Consolidated Optimization */}
+        <AIOptimizationConsolidationSection />
+        {/* Section 05 — Entity Optimization */}
+        <AIEntityOptimizationSection />
+        {/* Section 06 — Recommendation Mechanics */}
+        <AIRecommendationMechanicsSection />
+        {/* Section 07 — Technical Foundation */}
+        <AITechnicalFoundationSection />
+        {/* Section 08 — Service-Business Relevance */}
+        <AIServiceBusinessRelevanceSection />
+        {/* Section 09 — Evaluation */}
+        <AIEvaluationSection />
+        {/* Section 10 — Visibility Score */}
+        <AIVScorePlaceholderSection />
+        {/* Section 11 — Operating Lifecycle */}
+        <AILifecyclePlaceholderSection />
+        {/* Section 12 — Maturity Progression */}
+        <AIMaturityProgressionSection />
+        {/* Section 13 — Business Outcomes */}
+        <AIBusinessOutcomesSection />
+        {/* Section 14 — Improvement Path */}
+        <AIRoadmapPlaceholderSection />
+        {/* Section 15 — Frameworks & Resources */}
+        <AIFrameworksResourcesSection />
+        {/* Section 16 — FAQ */}
+        <AIFrequentlyAskedQuestionsSection />
+        {/* Section 17 — Closing CTA */}
+        <AICClosingCTABand />
+      </main>
+      <SiteFooter />
     </>
   );
 }
