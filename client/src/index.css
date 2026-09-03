@@ -371,11 +371,14 @@ h3 {
 }
 
 .header-cta {
-  min-height: 38px;
-  border-radius: 0;
-  padding: 9px 19px;
-  font-size: 11px;
+  min-height: 48px;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .menu-button {
