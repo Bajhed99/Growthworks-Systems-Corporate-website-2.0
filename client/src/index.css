@@ -549,7 +549,7 @@ h3 {
 .gws-hero-primary,
 .gws-hero-secondary {
   min-height: 48px;
-  border-radius: 7px;
+  border-radius: 0px;
   padding: 0 18px;
   font-size: 14px;
   font-weight: 800;
@@ -837,7 +837,7 @@ h3 {
 .gws-glowy-primary,
 .gws-glowy-secondary {
   min-height: 48px;
-  border-radius: 7px;
+  border-radius: 0px;
   padding: 0 20px;
   font-size: 14px;
   font-weight: 800;
