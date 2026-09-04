@@ -12,24 +12,28 @@ export function SolutionsRevenueIntelligenceSection() {
   return (
     <section aria-labelledby="revenue-intelligence-title" className="diagnostic-section section--white">
       <div className="site-shell">
-        <p className="section-kicker">04 — Revenue Intelligence</p>
-        <h2 id="revenue-intelligence-title">Make it easier to see where value is being created, where it is being lost, and what to improve next.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>04 — Revenue Intelligence</p>
+        <h2 id="revenue-intelligence-title" style={{ textAlign: 'center' }}>Make it easier to see where value is being created, where it is being lost, and what to improve next.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Revenue Intelligence closes the loop. Its purpose is to show where value is created or lost and which constraint should be improved next — not to produce analytics for their own sake.
         </p>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '12px',
           marginTop: '32px',
         }}>
-          {capabilities.map(cap => (
+          {capabilities.map((cap, idx) => (
             <div key={cap} style={{
+              width: idx < 4 ? 'calc((100% - 36px) / 4)' : 'calc((100% - 24px) / 3)',
+              minWidth: '200px',
+              maxWidth: '260px',
               padding: '14px 18px',
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '8px',
+              borderRadius: 0,
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
@@ -51,7 +55,7 @@ export function SolutionsRevenueIntelligenceSection() {
           padding: '24px 28px',
           background: '#f8f5ec',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }}>
           <h3 style={{
             fontFamily: 'DM Serif Display, Georgia, serif',

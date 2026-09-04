@@ -165,12 +165,12 @@ function HeroSection() {
               <span className="text-crimson">system</span> behind it.
             </h1>
             {/* Body Large — 20px desktop / 18px mobile */}
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/60 mb-10 max-w-[560px]">
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-black mb-10 max-w-[560px]">
               Revenue Infrastructure is the connected system of strategy, technology, data, processes, and execution that turns market opportunity into measurable revenue. When those parts work together, growth becomes easier to see, manage, and improve.
             </p>
             {/* Primary CTA */}
             <div className="flex flex-wrap gap-4">
-              <button className="bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] h-12 px-8 rounded flex items-center gap-2.5">
+              <button className="bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] h-12 px-8 rounded-none flex items-center gap-2.5">
                 BOOK A REVENUE DIAGNOSTIC <Icon name="arrow" s={16} c="white" />
               </button>
             </div>

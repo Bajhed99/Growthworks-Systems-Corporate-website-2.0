@@ -39,9 +39,9 @@ export function SolutionsRevenuePathHero() {
   return (
     <section aria-label="One Revenue Path, Four Areas of Improvement" className="diagnostic-section section--white">
       <div className="site-shell">
-        <p className="section-kicker">The Solution System</p>
-        <h2 id="four-areas-title">Each capability strengthens a different part of the same revenue journey.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>The Solution System</p>
+        <h2 id="four-areas-title" style={{ textAlign: 'center' }}>Each capability strengthens a different part of the same revenue journey.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four solution areas are organized around the business responsibility they strengthen, not around individual tools or technologies. They are connected by design.
         </p>
 
@@ -75,25 +75,25 @@ export function SolutionsRevenuePathHero() {
 
             {/* Nodes */}
             {/* 01 — top left */}
-            <rect x="20" y="48" width="200" height="64" rx="12" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+            <rect x="20" y="48" width="200" height="64" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
             <text x="36" y="66" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fontWeight="600" fill="#841617" letterSpacing="0.05em">01</text>
             <text x="36" y="84" fontFamily="DM Serif Display, Georgia, serif" fontSize="15" fontWeight="400" fill="#2B2B2B">Digital Presence</text>
             <text x="36" y="100" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Found + Understood</text>
 
             {/* 02 — top right of first row */}
-            <rect x="320" y="128" width="220" height="64" rx="12" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+            <rect x="320" y="128" width="220" height="64" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
             <text x="336" y="146" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fontWeight="600" fill="#841617" letterSpacing="0.05em">02</text>
             <text x="336" y="164" fontFamily="DM Serif Display, Georgia, serif" fontSize="15" fontWeight="400" fill="#2B2B2B">Lead Response</text>
             <text x="336" y="180" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Captured + Moving</text>
 
             {/* 03 — bottom */}
-            <rect x="640" y="128" width="220" height="64" rx="12" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+            <rect x="640" y="128" width="220" height="64" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
             <text x="656" y="146" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fontWeight="600" fill="#841617" letterSpacing="0.05em">03</text>
             <text x="656" y="164" fontFamily="DM Serif Display, Georgia, serif" fontSize="15" fontWeight="400" fill="#2B2B2B">Sales Operations</text>
             <text x="656" y="180" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Consistent + Converting</text>
 
             {/* 04 — right */}
-            <rect x="960" y="48" width="120" height="64" rx="12" fill="#FFFFFF" stroke="#841617" strokeWidth="1.5" />
+            <rect x="960" y="48" width="120" height="64" rx="0" fill="#FFFFFF" stroke="#841617" strokeWidth="1.5" />
             <text x="976" y="66" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fontWeight="600" fill="#841617" letterSpacing="0.05em">04</text>
             <text x="976" y="84" fontFamily="DM Serif Display, Georgia, serif" fontSize="15" fontWeight="400" fill="#2B2B2B">Revenue</text>
             <text x="976" y="100" fontFamily="DM Serif Display, Georgia, serif" fontSize="15" fontWeight="400" fill="#2B2B2B">Intelligence</text>
@@ -110,7 +110,7 @@ export function SolutionsRevenuePathHero() {
               {/* Card */}
               <div style={{
                 flex: 1, background: '#fff', border: idx === areas.length - 1 ? '1.5px solid #841617' : '1px solid #DDD6CC',
-                borderRadius: idx === 0 ? '12px 12px 0 0' : idx === areas.length - 1 ? '0 0 12px 12px' : '0',
+                borderRadius: 0,
                 padding: '20px 20px 20px 20px'
               }}>
                 <span style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '11px', fontWeight: 600, color: '#841617', letterSpacing: '0.05em' }}>{area.num}</span>
@@ -127,7 +127,7 @@ export function SolutionsRevenuePathHero() {
             </div>
           ))}
           {/* Feedback indicator */}
-          <div style={{ padding: '12px 16px', borderTop: '1px dashed #841617', borderBottom: '1px solid #DDD6CC', borderRadius: '0 0 12px 12px', background: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ padding: '12px 16px', borderTop: '1px dashed #841617', borderBottom: '1px solid #DDD6CC', borderRadius: 0, background: '#fff', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <RefreshCcw size={12} style={{ color: '#841617', flexShrink: 0 }} aria-hidden="true" />
             <span style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '13px', color: '#625E59', fontStyle: 'italic' }}>Learning feeds back to earlier stages</span>
           </div>

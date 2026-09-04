@@ -2,9 +2,9 @@ export function SolutionsConnectedSystemSection() {
   return (
     <section aria-label="How the Four Areas Work Together" className="diagnostic-section section--gray">
       <div className="site-shell">
-        <p className="section-kicker">Connected By Design</p>
-        <h2 id="connected-system-title">Improving one area helps. Connecting all four creates leverage.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>Connected By Design</p>
+        <h2 id="connected-system-title" style={{ textAlign: 'center' }}>Improving one area helps. Connecting all four creates leverage.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four areas represent a connected revenue path, not independent service categories. Each stage feeds the next, and Revenue Intelligence feeds learning back into all earlier stages.
         </p>
 
@@ -13,7 +13,7 @@ export function SolutionsConnectedSystemSection() {
           padding: '32px 28px',
           background: '#fff',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }} aria-label="Connected revenue path flow">
           {/* Desktop: horizontal flow with feedback loop */}
           <div className="hidden md:block" aria-hidden="false">
@@ -25,19 +25,19 @@ export function SolutionsConnectedSystemSection() {
               </defs>
 
               {/* Nodes */}
-              <rect x="0" y="8" width="175" height="56" rx="10" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+              <rect x="0" y="8" width="175" height="56" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
               <text x="24" y="34" fontFamily="DM Serif Display, Georgia, serif" fontSize="14" fontWeight="400" fill="#2B2B2B">Digital Presence</text>
               <text x="24" y="52" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Found + Understood</text>
 
-              <rect x="240" y="8" width="175" height="56" rx="10" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+              <rect x="240" y="8" width="175" height="56" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
               <text x="264" y="34" fontFamily="DM Serif Display, Georgia, serif" fontSize="14" fontWeight="400" fill="#2B2B2B">Lead Response</text>
               <text x="264" y="52" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Captured + Moving</text>
 
-              <rect x="480" y="8" width="175" height="56" rx="10" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
+              <rect x="480" y="8" width="175" height="56" rx="0" fill="#FFFFFF" stroke="#DDD6CC" strokeWidth="1" />
               <text x="500" y="34" fontFamily="DM Serif Display, Georgia, serif" fontSize="14" fontWeight="400" fill="#2B2B2B">Sales Operations</text>
               <text x="500" y="52" fontFamily="DM Sans, system-ui, sans-serif" fontSize="11" fill="#625E59">Consistent + Converting</text>
 
-              <rect x="720" y="8" width="140" height="56" rx="10" fill="#fff8f6" stroke="#841617" strokeWidth="1.5" />
+              <rect x="720" y="8" width="140" height="56" rx="0" fill="#fff8f6" stroke="#841617" strokeWidth="1.5" />
               <text x="736" y="34" fontFamily="DM Serif Display, Georgia, serif" fontSize="13" fontWeight="400" fill="#2B2B2B">Revenue</text>
               <text x="736" y="52" fontFamily="DM Serif Display, Georgia, serif" fontSize="13" fontWeight="400" fill="#2B2B2B">Intelligence</text>
 
@@ -66,7 +66,7 @@ export function SolutionsConnectedSystemSection() {
                   padding: '14px 16px',
                   background: stage.highlight ? '#fff8f6' : '#fff',
                   border: stage.highlight ? '1.5px solid #841617' : '1px solid #DDD6CC',
-                  borderRadius: '8px',
+                  borderRadius: 0,
                 }}>
                   <h4 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '17px', fontWeight: 400, color: '#2B2B2B', lineHeight: 1.3 }}>{stage.name}</h4>
                   <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '12px', color: '#625E59' }}>{stage.sub}</p>

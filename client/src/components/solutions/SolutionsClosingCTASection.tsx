@@ -25,11 +25,12 @@ export function SolutionsClosingCTASection() {
           A Revenue Diagnostic examines how the critical parts of your revenue path work together, where opportunity is being lost, and which improvements are most likely to create meaningful business impact.
         </p>
         <AnchorLink href="/revenue-diagnostic" style={{
-          display: 'inline-flex', alignItems: 'center', gap: '8px',
-          padding: '14px 28px', borderRadius: '8px',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+          padding: '14px 28px', borderRadius: 0,
           background: '#841617', color: '#fff',
-          fontFamily: 'DM Sans, system-ui, sans-serif',
+          fontFamily: 'DM Sans, Arial, sans-serif',
           fontSize: '16px', fontWeight: 600,
+          lineHeight: 1.2,
           textDecoration: 'none',
           transition: 'opacity 0.2s',
         }}>

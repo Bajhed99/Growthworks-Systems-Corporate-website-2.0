@@ -11,24 +11,28 @@ export function SolutionsLeadResponseSection() {
   return (
     <section aria-labelledby="lead-response-title" className="diagnostic-section section--white">
       <div className="site-shell">
-        <p className="section-kicker">02 — Lead Response</p>
-        <h2 id="lead-response-title">Protect buyer intent after someone raises their hand.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>02 — Lead Response</p>
+        <h2 id="lead-response-title" style={{ textAlign: 'center' }}>Protect buyer intent after someone raises their hand.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Generating an inquiry is only valuable if the opportunity receives an effective next step. Lead Response focuses on what happens between initial interest and active sales engagement.
         </p>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '12px',
           marginTop: '32px',
         }}>
           {capabilities.map(cap => (
             <div key={cap} style={{
+              width: 'calc((100% - 24px) / 3)',
+              minWidth: '220px',
+              maxWidth: '340px',
               padding: '14px 18px',
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '8px',
+              borderRadius: 0,
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
@@ -50,7 +54,7 @@ export function SolutionsLeadResponseSection() {
           padding: '24px 28px',
           background: '#f8f5ec',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }}>
           <h3 style={{
             fontFamily: 'DM Serif Display, Georgia, serif',

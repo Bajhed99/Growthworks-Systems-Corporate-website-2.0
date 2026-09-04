@@ -15,9 +15,9 @@ export function SolutionsConstraintFirstSection() {
   return (
     <section aria-labelledby="constraint-title" className="diagnostic-section section--white">
       <div className="site-shell">
-        <p className="section-kicker">Diagnose Before Prescribing</p>
-        <h2 id="constraint-title">The objective is not to install more tools.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>Diagnose Before Prescribing</p>
+        <h2 id="constraint-title" style={{ textAlign: 'center' }}>The objective is not to install more tools.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           A business may already have a website, CRM, automation, analytics, sales team, and marketing activity. The question is whether those capabilities work together well enough to convert opportunity into measurable revenue.
         </p>
 
@@ -28,7 +28,7 @@ export function SolutionsConstraintFirstSection() {
               <div key={phase.num} style={{
                 background: '#fff',
                 border: '1px solid #DDD6CC',
-                borderRadius: '12px',
+                borderRadius: 0,
                 padding: '24px 20px',
                 position: 'relative',
               }} aria-label={`${phase.name}: ${phase.desc}`}>
@@ -60,7 +60,7 @@ export function SolutionsConstraintFirstSection() {
             <div key={phase.num} style={{
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '12px',
+              borderRadius: 0,
               padding: '20px',
             }} aria-label={`${phase.name}: ${phase.desc}`}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
@@ -90,7 +90,7 @@ export function SolutionsConstraintFirstSection() {
           padding: '24px 28px',
           background: '#f8f5ec',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }}>
           <p style={{
             fontFamily: 'DM Sans, system-ui, sans-serif',
@@ -99,12 +99,13 @@ export function SolutionsConstraintFirstSection() {
             GWS uses the Revenue Infrastructure Framework to identify the constraint first, then determine which capabilities need to be strengthened, connected, redesigned, or optimized.
           </p>
           <AnchorLink href="/framework" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '6px',
-            fontFamily: 'DM Sans, system-ui, sans-serif',
-            fontSize: '14px', fontWeight: 600, color: '#841617',
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+            fontFamily: 'DM Sans, Arial, sans-serif',
+            fontSize: '16px', fontWeight: 600, color: '#841617',
+            lineHeight: 1.2,
             textDecoration: 'none',
           }}>
-            Explore the Revenue Infrastructure Framework <ArrowRight size={14} />
+            Explore the Revenue Infrastructure Framework <ArrowRight size={16} />
           </AnchorLink>
         </div>
       </div>

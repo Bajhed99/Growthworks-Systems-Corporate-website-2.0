@@ -401,7 +401,7 @@ function StayInformed() {
             <div className="flex flex-wrap items-center gap-3 mt-8">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
               </a>
@@ -485,7 +485,7 @@ function ClosingBand() {
           <div className="flex flex-wrap items-center gap-3 mt-8">
             <a
               href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
             >
               Book a Revenue Diagnostic
             </a>

@@ -11,24 +11,28 @@ export function SolutionsSalesOperationsSection() {
   return (
     <section aria-labelledby="sales-operations-title" className="diagnostic-section section--gray">
       <div className="site-shell">
-        <p className="section-kicker">03 — Sales Operations</p>
-        <h2 id="sales-operations-title">Keep qualified opportunities moving consistently toward a decision.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>03 — Sales Operations</p>
+        <h2 id="sales-operations-title" style={{ textAlign: 'center' }}>Keep qualified opportunities moving consistently toward a decision.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Sales Operations creates the operational structure behind opportunity progression. It should help the business understand where an opportunity stands, who owns the next action, what context exists, and what should happen next.
         </p>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '12px',
           marginTop: '32px',
         }}>
           {capabilities.map(cap => (
             <div key={cap} style={{
+              width: 'calc((100% - 24px) / 3)',
+              minWidth: '220px',
+              maxWidth: '340px',
               padding: '14px 18px',
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '8px',
+              borderRadius: 0,
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
@@ -50,7 +54,7 @@ export function SolutionsSalesOperationsSection() {
           padding: '24px 28px',
           background: '#fff',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }}>
           <h3 style={{
             fontFamily: 'DM Serif Display, Georgia, serif',

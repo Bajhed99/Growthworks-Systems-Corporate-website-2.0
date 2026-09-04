@@ -2,15 +2,16 @@ export function SolutionsBusinessOutcomesSection() {
   return (
     <section aria-label="Business Outcomes" className="diagnostic-section section--gray">
       <div className="site-shell">
-        <p className="section-kicker">Business Outcomes</p>
-        <h2 id="outcomes-title">The capabilities matter because of what they make possible.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>Business Outcomes</p>
+        <h2 id="outcomes-title" style={{ textAlign: 'center' }}>The capabilities matter because of what they make possible.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four solution modules are not an arbitrary service catalog. Each supports a specific business outcome that moves the revenue path from opportunity to measurable improvement.
         </p>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '16px',
           marginTop: '32px',
         }}>
@@ -21,9 +22,12 @@ export function SolutionsBusinessOutcomesSection() {
             { label: 'IMPROVE & SCALE', desc: 'Connect performance signals back into decisions so the business can improve and identify the next constraint through Revenue Intelligence.' },
           ].map(outcome => (
             <article key={outcome.label} style={{
+              width: 'calc((100% - 16px) / 2)',
+              minWidth: '280px',
+              maxWidth: '560px',
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '12px',
+              borderRadius: 0,
               padding: '24px',
             }} aria-label={outcome.label}>
               <h3 style={{

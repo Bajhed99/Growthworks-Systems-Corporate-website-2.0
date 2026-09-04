@@ -159,7 +159,7 @@ function FinancialAdvisorsHero() {
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>
@@ -328,7 +328,7 @@ function AdvisoryRevenueJourneySection() {
           {journey.map((item, idx) => (
             <RevealOnScroll key={item.stage} delay={idx * 40}>
               <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-[12px] bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
-                <div className="flex-shrink-0 w-12 h-12 rounded-[10px] border border-[#841617] bg-white flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-none border border-[#841617] bg-white flex items-center justify-center">
                   <span className="text-[14px] font-sans font-bold text-[#841617]">{item.stage}</span>
                 </div>
                 <div className="flex-1 min-w-0">
@@ -810,7 +810,7 @@ function ClosingCTASection() {
           </div>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>

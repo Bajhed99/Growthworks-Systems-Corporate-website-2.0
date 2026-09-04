@@ -279,13 +279,13 @@ function HeroSection() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
               >
                 BOOK A REVENUE DIAGNOSTIC
               </a>
               <a
                 href="#methodology"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
               >
                 VIEW METHODOLOGY
               </a>
@@ -967,13 +967,13 @@ function BeginDiagnosticSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
               >
                 BOOK A REVENUE DIAGNOSTIC
               </a>
               <a
                 href="/resources#frameworks"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
               >
                 VIEW ALL FRAMEWORKS
               </a>
@@ -1011,7 +1011,7 @@ function ClosingCTASection() {
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
           >
             BOOK A REVENUE DIAGNOSTIC
           </a>

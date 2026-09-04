@@ -107,7 +107,7 @@ const PrimaryLink = ({
   <a
     href={href}
     onClick={onClick}
-    className="inline-flex items-center justify-center gap-2 rounded-[8px] text-white font-semibold transition-colors"
+    className="inline-flex items-center justify-center gap-2 rounded-none text-white font-semibold transition-colors"
     style={{
       minHeight: 48,
       padding: "0 24px",
@@ -136,7 +136,7 @@ const SecondaryLink = ({
 }) => (
   <a
     href={href}
-    className="inline-flex items-center justify-center gap-2 rounded-[8px] font-semibold transition-colors"
+    className="inline-flex items-center justify-center gap-2 rounded-none font-semibold transition-colors"
     style={{
       minHeight: 48,
       padding: "0 22px",

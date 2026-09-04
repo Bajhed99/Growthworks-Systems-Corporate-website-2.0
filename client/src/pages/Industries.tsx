@@ -112,13 +112,13 @@ function IndustriesHero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
               </a>
               <a
                 href="#industry-routes"
-                className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-[10px] border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Explore industries
               </a>
@@ -467,7 +467,7 @@ function IndustryRoutingSection() {
                 <header className="flex items-start justify-between gap-4 mb-5">
                   <span
                     aria-hidden="true"
-                    className="inline-flex items-center justify-center w-11 h-11 rounded-[10px] border border-[#DDD6CC] text-[#841617]"
+                    className="inline-flex items-center justify-center w-11 h-11 rounded-none border border-[#DDD6CC] text-[#841617]"
                   >
                     {ind.icon}
                   </span>
@@ -506,7 +506,7 @@ function IndustryRoutingSection() {
                   <a
                     href={ind.href}
                     aria-label={`${ind.cta} — opens industry page`}
-                    className="inline-flex items-center gap-2 min-h-[48px] px-5 rounded-[10px] border border-[#841617] text-[#841617] bg-transparent hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[15px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                    className="inline-flex items-center gap-2 min-h-[48px] px-5 rounded-none border border-[#841617] text-[#841617] bg-transparent hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[15px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
                   >
                     {ind.cta}
                     <span aria-hidden="true">→</span>
@@ -674,7 +674,7 @@ function ClosingCTASection() {
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>

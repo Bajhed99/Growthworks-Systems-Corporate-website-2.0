@@ -17,24 +17,28 @@ export function SolutionsDigitalPresenceSection() {
   return (
     <section aria-labelledby="digital-presence-title" className="diagnostic-section section--gray">
       <div className="site-shell">
-        <p className="section-kicker">01 — Digital Presence</p>
-        <h2 id="digital-presence-title">Make it easier for the right buyers to find, understand, and trust your business.</h2>
-        <p className="section-intro" style={{ maxWidth: '680px' }}>
+        <p className="section-kicker" style={{ textAlign: 'center' }}>01 — Digital Presence</p>
+        <h2 id="digital-presence-title" style={{ textAlign: 'center' }}>Make it easier for the right buyers to find, understand, and trust your business.</h2>
+        <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Digital Presence strengthens the beginning of the revenue path: discovery and consideration. The objective is not simply more traffic — it is a digital presence that makes clear what the business does, who it serves, why it is relevant, and what a buyer should do next.
         </p>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
           gap: '12px',
           marginTop: '32px',
         }}>
           {capabilities.map(cap => (
             <div key={cap} style={{
+              width: 'calc((100% - 24px) / 3)',
+              minWidth: '220px',
+              maxWidth: '340px',
               padding: '14px 18px',
               background: '#fff',
               border: '1px solid #DDD6CC',
-              borderRadius: '8px',
+              borderRadius: 0,
               display: 'flex',
               alignItems: 'center',
               gap: '10px',
@@ -56,7 +60,7 @@ export function SolutionsDigitalPresenceSection() {
           padding: '24px 28px',
           background: '#fff',
           border: '1px solid #DDD6CC',
-          borderRadius: '12px',
+          borderRadius: 0,
         }}>
           <p style={{
             fontFamily: 'DM Sans, system-ui, sans-serif',
@@ -66,12 +70,13 @@ export function SolutionsDigitalPresenceSection() {
           </p>
           <div style={{ marginTop: '16px' }}>
             <AnchorLink href="/ai-visibility" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-              fontFamily: 'DM Sans, system-ui, sans-serif',
-              fontSize: '14px', fontWeight: 600, color: '#841617',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+              fontFamily: 'DM Sans, Arial, sans-serif',
+              fontSize: '16px', fontWeight: 600, color: '#841617',
+              lineHeight: 1.2,
               textDecoration: 'none',
             }}>
-              Learn about AI Visibility <ArrowRight size={14} />
+              Learn about AI Visibility <ArrowRight size={16} />
             </AnchorLink>
           </div>
         </div>

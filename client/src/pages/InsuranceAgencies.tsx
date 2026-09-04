@@ -88,13 +88,13 @@ function InsuranceHero() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
             >
               Book a Revenue Diagnostic
             </a>
             <a
               href="/framework"
-              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-[10px] border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
             >
               Explore the Framework
             </a>
@@ -621,7 +621,7 @@ function FAQSection() {
             {FAQ_ITEMS.map((item, idx) => (
               <RevealOnScroll key={item.q} delay={idx * 25}>
                 <div
-                  className="border border-[#DDD6CC] rounded-[10px] overflow-hidden bg-white"
+                  className="border border-[#DDD6CC] rounded-none overflow-hidden bg-white"
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
@@ -699,7 +699,7 @@ function ClosingCTASection() {
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>

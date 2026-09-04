@@ -112,7 +112,7 @@ function FounderHero() {
           {/* Portrait column */}
           <RevealOnScroll>
             <div className="relative">
-              <div className="aspect-[3/4] max-w-[420px] lg:max-w-[480px] rounded-[12px] overflow-hidden border border-[#DDD6CC] bg-[#F2E7E3]">
+              <div className="aspect-[3/4] max-w-[420px] lg:max-w-[480px] rounded-none overflow-hidden border border-[#DDD6CC] bg-[#F2E7E3]">
                 <img
                   src={CLAYTON_PORTRAIT}
                   alt="Clayton Tidwell — Founder, GrowthWorks Systems"
@@ -164,13 +164,13 @@ function FounderHero() {
               <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
                 <a
                   href="/revenue-diagnostic"
-                  className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
                 >
                   Book a Revenue Diagnostic
                 </a>
                 <a
                   href="#experience"
-                  className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-[10px] border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
                 >
                   Meet Clayton
                 </a>
@@ -215,7 +215,7 @@ function WhyGWSSection() {
               </p>
             </div>
 
-            <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-[12px] p-7 md:p-8">
+            <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none p-7 md:p-8">
               <p className="text-[16px] leading-[1.7] text-[#2B2B2B] font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
                 "I didn't create GrowthWorks Systems because businesses needed another marketing agency. I created it because they needed someone to design the system that makes every marketing investment work better."
               </p>
@@ -448,7 +448,7 @@ function WhyAISection() {
               </p>
             </div>
 
-            <div className="bg-white border border-[#DDD6CC] rounded-[12px] p-7 md:p-8">
+            <div className="bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8">
               <p className="text-[16px] leading-[1.7] text-[#2B2B2B] font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
                 "AI didn't create a new marketing problem. It exposed the Revenue Infrastructure problem that was already there."
               </p>
@@ -525,7 +525,7 @@ function PrinciplesSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(3,1fr)] gap-5">
             {OPERATING_PRINCIPLES.map((principle, idx) => (
               <RevealOnScroll key={principle.num} delay={idx * 50}>
-                <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-[12px] p-6 md:p-7 h-full">
+                <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none p-6 md:p-7 h-full">
                   <span className="text-[13px] font-sans font-bold tracking-[0.18em] uppercase text-[#841617] block mb-3">
                     {principle.num}
                   </span>
@@ -577,7 +577,7 @@ function BeyondFrameworkSection() {
             </div>
 
             {/* Right: personal details in editorial card */}
-            <div className="bg-white border border-[#DDD6CC] rounded-[16px] p-8 md:p-10">
+            <div className="bg-white border border-[#DDD6CC] rounded-none p-8 md:p-10">
               <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.2] text-[22px] md:text-[24px] mb-6">
                 Personal background
               </h3>
@@ -731,7 +731,7 @@ function ClosingCTASection() {
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-[10px] bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>

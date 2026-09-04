@@ -22,7 +22,7 @@ export function SolutionsHero() {
             GrowthWorks Systems strengthens the connected parts of the revenue path that determine whether opportunity is found, captured, converted, and improved — through Digital Presence, Lead Response, Sales Operations, and Revenue Intelligence.
           </p>
           <div className="gws-glowy-actions">
-            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary">
+            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary supporting-button">
               Book a Revenue Diagnostic
               <ArrowRight size={16} />
             </AnchorLink>
