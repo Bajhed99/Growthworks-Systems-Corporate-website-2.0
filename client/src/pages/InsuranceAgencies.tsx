@@ -292,7 +292,7 @@ function AIDiscoverySection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
             {DISCOVERY_SIGNALS.map((item, idx) => (
               <RevealOnScroll key={item.signal} delay={idx * 40}>
-                <div className="border border-[#DDD6CC] rounded-[12px] p-6 bg-[#FAFBFC]">
+                <div className="border border-[#DDD6CC] rounded-none p-6 bg-[#FAFBFC]">
                   <h3 className="font-sans font-bold text-[16px] text-[#841617] mb-2 tracking-wide">
                     {item.signal}
                   </h3>
@@ -386,7 +386,7 @@ function CapabilityGroupsSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {CAPABILITY_GROUPS.map((group, idx) => (
               <RevealOnScroll key={group.title} delay={idx * 50}>
-                <article className="bg-white border border-[#DDD6CC] rounded-[16px] p-7 md:p-8 flex flex-col h-full">
+                <article className="bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8 flex flex-col h-full">
                   <header className="mb-4">
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#841617]/10 text-[#841617] font-sans font-bold text-[14px] mb-3">
                       {idx + 1}

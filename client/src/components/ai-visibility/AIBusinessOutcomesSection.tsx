@@ -19,7 +19,7 @@ export function AIBusinessOutcomesSection() {
           ].map(s => (
             <div key={s.step} style={{
               flex: '1 1 200px', maxWidth: '260px', padding: '24px 20px',
-              background: '#fff', borderRadius: '12px', border: '1px solid rgba(132, 22, 23, 0.10)'
+              background: '#fff', borderRadius: '0', border: '1px solid rgba(132, 22, 23, 0.10)'
             }} aria-label={`${s.title}: ${s.desc}`}>
               <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: '6px', background: '#841617', color: '#fff', fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '12px' }}>{s.step}</span>
               <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginBottom: '8px', lineHeight: 1.3 }}>{s.title}</h3>

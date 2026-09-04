@@ -443,7 +443,7 @@ function OutcomesSection() {
                 {OUTCOMES.map((o, i) => (
                   <RevealOnScroll key={o.t} delayMs={i * 40}>
                     <li
-                      className="rounded-[12px] p-6 md:p-7"
+                      className="rounded-none p-6 md:p-7"
                       style={{
                         background: CREAM,
                         border: `1px solid ${BORDER}`,
@@ -549,7 +549,7 @@ function AuditCTASection() {
 
             {/* Right: dark informational panel */}
             <div
-              className="rounded-[12px] p-7 md:p-9"
+              className="rounded-none p-7 md:p-9"
               style={{
                 background: CHARCOAL,
                 color: WHITE,

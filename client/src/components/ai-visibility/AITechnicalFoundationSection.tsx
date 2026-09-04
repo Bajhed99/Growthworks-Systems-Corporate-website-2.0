@@ -8,7 +8,7 @@ export function AITechnicalFoundationSection() {
           Technical readiness for AI Visibility spans more than crawlability. It includes structured identity, content architecture, citation pathways, and cross-source coherence — six layers that together determine whether AI systems can understand and trust your presence.
         </p>
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px', marginTop: '32px'
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '32px'
         }}>
           {[
             { layer: '01', title: 'Structured Identity', desc: 'Schema markup, consistent naming, and entity definitions.' },
@@ -19,7 +19,7 @@ export function AITechnicalFoundationSection() {
             { layer: '06', title: 'Cross-Source Coherence', desc: 'Consistent brand identity across all discoverable sources.' },
           ].map(l => (
             <article key={l.layer} style={{
-              padding: '20px 22px', borderRadius: '12px', border: '1px solid rgba(132, 22, 23, 0.10)', background: '#fff'
+              padding: '20px 22px', borderRadius: '0', border: '1px solid rgba(132, 22, 23, 0.10)', background: '#fff'
             }}>
               <span style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '12px', fontWeight: 600, color: '#841617', letterSpacing: '0.05em' }}>{l.layer}</span>
               <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginTop: '6px', marginBottom: '10px', lineHeight: 1.3 }}>{l.title}</h3>

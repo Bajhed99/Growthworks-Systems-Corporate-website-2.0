@@ -117,7 +117,7 @@ function CalEmbed() {
       <div className="cal-embed-fallback">
         <div className="cal-embed-fallback-icon" aria-hidden="true">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <rect x="3" y="4" width="18" height="18" rx="0" ry="0" />
             <line x1="16" y1="2" x2="16" y2="6" />
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
@@ -186,7 +186,7 @@ function CalEmbed() {
         <div className="cal-embed-placeholder-inner">
           <div className="cal-embed-placeholder-icon" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <rect x="3" y="4" width="18" height="18" rx="0" ry="0" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
@@ -328,7 +328,7 @@ function WhatToExpectSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[900px]">
           {WHAT_EXPECT.map((item, i) => (
             <RevealOnScroll key={item.step} delay={i * 60}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-[14px] bg-white p-6">
+              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-6">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full border border-[#841617] bg-[#F8F5EC] flex items-center justify-center mb-5">
                   <span className="text-[13px] font-sans font-bold text-[#841617]">
                     {item.step}
@@ -399,7 +399,7 @@ function PreparationSection() {
           </RevealOnScroll>
 
           <RevealOnScroll delay={120}>
-            <div className="p-6 border border-[#841617]/25 rounded-[12px] bg-[#F8F5EC]">
+            <div className="p-6 border border-[#841617]/25 rounded-none bg-[#F8F5EC]">
               <p className="text-[15px] leading-[1.65] text-[#625E59]">
                 <strong className="text-[#2B2B2B]">Not a sales call.</strong>{" "}
                 If there is no clear fit, GWS will say so. There is no obligation.

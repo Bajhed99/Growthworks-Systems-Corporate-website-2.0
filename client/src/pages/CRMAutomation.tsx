@@ -278,7 +278,7 @@ function DiagnosticCTASection() {
 
           {/* Right — Dark info panel */}
           <RevealOnScroll delay={100}>
-            <div className="bg-[#2B2B2B] text-white rounded-[14px] p-8 md:p-10">
+            <div className="bg-[#2B2B2B] text-white rounded-none p-8 md:p-10">
               <h3 className="font-serif font-normal text-[22px] md:text-[24px] leading-[1.2] mb-6">
                 What Happens on the Call
               </h3>

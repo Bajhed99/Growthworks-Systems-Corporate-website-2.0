@@ -7,7 +7,7 @@ export function AIEntityOptimizationSection() {
         <p className="section-intro">
           AI systems don't read pages the way people do. They interpret entities — discrete units of meaning: your business, your offering, your expertise, your market — and the relationships between them. Entity optimization is the work of making those units unambiguous, well-supported, and trustworthy across the entire web.
         </p>
-        <div style={{ display: 'grid', gap: '16px', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', marginTop: '32px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '32px' }}>
           {[
             { title: 'Disambiguation', desc: 'Your brand is recognized as one specific entity — not confused with similarly named or related businesses.' },
             { title: 'Authority Signals', desc: 'Author, expertise, and citation patterns reinforce what your entity is and what it can be trusted on.' },
@@ -15,7 +15,7 @@ export function AIEntityOptimizationSection() {
             { title: 'Source Consistency', desc: 'The same information appears reliably across authoritative third-party sources that AI systems trust.' },
           ].map(item => (
             <article key={item.title} style={{
-              background: '#fff', borderRadius: '12px', padding: '24px',
+              background: '#fff', borderRadius: '0', padding: '24px',
               border: '1px solid rgba(132, 22, 23, 0.10)'
             }}>
               <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, lineHeight: 1.3, color: '#0f172a', marginBottom: '10px' }}>{item.title}</h3>

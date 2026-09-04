@@ -14,7 +14,7 @@ export function AIServiceBusinessRelevanceSection() {
           Service businesses — agencies, consultancies, professional practices — are disproportionately affected by AI-driven discovery. Your potential clients are already asking AI systems for recommendations before they've visited a single website. If you're not understood by those systems, you're invisible at the exact moment a buying decision is being made.
         </p>
         <div style={{
-          background: '#f8fafc', borderRadius: '12px', padding: '28px 24px',
+          background: '#f8fafc', borderRadius: '0', padding: '28px 24px',
           border: '1px solid rgba(132, 22, 23, 0.08)', marginTop: '32px'
         }}>
           <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginBottom: '16px', lineHeight: 1.3 }}>

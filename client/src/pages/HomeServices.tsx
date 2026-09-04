@@ -203,7 +203,7 @@ function ProblemModelSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {problems.map((problem, i) => (
             <RevealOnScroll key={problem.num} delay={i * 60}>
-              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] bg-white p-7 md:p-8">
+              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-7 md:p-8">
                 <div className="mb-4">
                   <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase">
                     {problem.num}
@@ -260,7 +260,7 @@ function RevenueJourneySection() {
         <div className="space-y-3">
           {journey.map((item, idx) => (
             <RevealOnScroll key={item.stage} delay={idx * 40}>
-              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-[12px] bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
+              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-none bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
                 <div className="flex-shrink-0 w-12 h-12 rounded-none border border-[#841617] bg-white flex items-center justify-center">
                   <span className="text-[14px] font-sans font-bold text-[#841617]">{item.stage}</span>
                 </div>
@@ -275,7 +275,7 @@ function RevenueJourneySection() {
           ))}
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-[14px] bg-[#F8F5EC]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
             <strong>The key insight:</strong> Opportunity leaks occur at transitions—when the inquiry moves from marketing to sales, when the response moves from inbound to dispatch, when the follow-up moves from one person to another. Connected Revenue Infrastructure keeps that context alive.
           </p>
@@ -333,7 +333,7 @@ function GWSApplianceSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {modules.map((module, i) => (
             <RevealOnScroll key={module.title} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] bg-white p-8">
+              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-8">
                 <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase mb-3">
                   Module {i + 1}
                 </span>
@@ -450,7 +450,7 @@ function ConnectedStateSection() {
           </RevealOnScroll>
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-[14px] bg-[#F8F5EC]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
             This isn't about individual tools or quick wins. It's about seeing where your revenue system is disconnected—and whether fixing those disconnections gives you a structural advantage.
           </p>

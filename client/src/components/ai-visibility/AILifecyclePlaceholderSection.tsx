@@ -8,7 +8,7 @@ export function AILifecyclePlaceholderSection() {
           A canonical operating lifecycle describes the seven stages through which AI Visibility is built, sustained, and improved over time. The lifecycle provides the long-arc structure within which tactical improvement work happens.
         </p>
         <div style={{
-          background: '#fff', borderRadius: '12px', padding: '24px',
+          background: '#fff', borderRadius: '0', padding: '24px',
           border: '1px solid rgba(132, 22, 23, 0.10)', marginTop: '32px'
         }}>
           <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.60, marginBottom: '14px' }}>

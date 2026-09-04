@@ -385,7 +385,7 @@ function AfterHoursCTASection() {
           <RevealOnScroll delay={120}>
             <aside
               aria-labelledby="call-info-h3"
-              className="bg-[#2B2B2B] text-white rounded-[16px] p-8 md:p-10"
+              className="bg-[#2B2B2B] text-white rounded-none p-8 md:p-10"
             >
               <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase mb-3 text-[#841617]">
                 What Happens on the Call

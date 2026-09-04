@@ -17,7 +17,7 @@ export function AIMaturityProgressionSection() {
           ].map(m => (
             <div key={m.level} style={{
               flex: '1 1 180px', maxWidth: '240px', padding: '20px',
-              background: '#fff', borderRadius: '12px',
+              background: '#fff', borderRadius: '0',
               border: '1px solid rgba(132, 22, 23, 0.10)'
             }} aria-label={`Maturity level ${m.level}: ${m.name}`}>
               <span style={{ display: 'inline-block', width: '32px', height: '32px', borderRadius: '50%', background: '#841617', color: '#fff', textAlign: 'center', lineHeight: '32px', fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '14px', fontWeight: 600, marginBottom: '12px' }}>{m.level}</span>

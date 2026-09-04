@@ -8,7 +8,7 @@ export function AIVScorePlaceholderSection() {
           A structured visibility score provides a consistent way to measure improvement over time. The score considers multiple dimensions: entity clarity, citation eligibility, source coherence, recommendation presence, and cross-source consistency.
         </p>
         <div style={{
-          background: '#f8fafc', borderRadius: '12px', padding: '28px 24px',
+          background: '#f8fafc', borderRadius: '0', padding: '28px 24px',
           border: '1px solid rgba(132, 22, 23, 0.08)', marginTop: '32px'
         }} aria-label="Seven-dimension score framework">
           <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginBottom: '16px', lineHeight: 1.3 }}>

@@ -24,7 +24,7 @@ export function AIBuyerJourneySection() {
             <div key={step.num} className="ai-flow-card" style={{
               flex: '1 1 200px', maxWidth: '260px',
               border: '1px solid rgba(132, 22, 23, 0.12)',
-              borderRadius: '12px', padding: '24px 20px',
+              borderRadius: '0', padding: '24px 20px',
               background: '#fff'
             }} aria-label={`${step.label}: ${step.desc}`}>
               <span style={{

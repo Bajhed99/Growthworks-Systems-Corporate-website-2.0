@@ -17,7 +17,7 @@ export function AIEvaluationSection() {
           ].map((item, idx) => (
             <li key={idx} style={{
               display: 'flex', alignItems: 'flex-start', gap: '14px',
-              padding: '16px 20px', background: '#fff', borderRadius: '10px',
+              padding: '16px 20px', background: '#fff', borderRadius: '0',
               border: '1px solid rgba(132, 22, 23, 0.08)'
             }}>
               <span aria-hidden="true" style={{

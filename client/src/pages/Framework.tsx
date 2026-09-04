@@ -121,9 +121,9 @@ const CONTAINER = 'max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16'
 
 function SectionLabel({ num, label, dark = false }: { num: string; label: string; dark?: boolean }) {
   return (
-    <p className={`text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 ${dark ? 'text-white/40' : 'text-gray-400'}`}>
+    <h3 className={`text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 ${dark ? 'text-white/40' : 'text-gray-400'}`}>
       {num}&ensp;{label}
-    </p>
+    </h3>
   )
 }
 
@@ -242,7 +242,7 @@ function HeroSection() {
       <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
         <button
           onClick={scrollToNext}
-          className="text-white/60 hover:text-white transition-colors font-sans font-medium text-[16px] tracking-wide"
+          className="framework-learn-more"
         >
           Learn More
         </button>
@@ -253,8 +253,8 @@ function HeroSection() {
         >
           <svg
             width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-            className="opacity-40 group-hover:opacity-80 transition-opacity animate-bounce"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity animate-bounce"
             style={{ animationDuration: '2s' }}
           >
             <polyline points="6 9 12 15 18 9" />
@@ -310,7 +310,7 @@ function CanonicalDefinitionSection() {
             </div>
 
             {/* Revenue Infrastructure — central label */}
-            <div className="w-full max-w-lg bg-crimson text-white text-center py-5 rounded-sm">
+            <div className="w-full max-w-lg bg-crimson text-white text-center py-5 rounded-none">
               <span className="font-sans font-semibold text-[16px] tracking-[0.22em] uppercase">Revenue Infrastructure</span>
             </div>
 
@@ -443,7 +443,7 @@ function NineDomainSection() {
               return (
                 <button
                   key={d.id}
-                  className="text-left rounded-2xl border p-7 transition-all duration-200 focus:outline-none group"
+                  className="text-left rounded-none border p-7 transition-all duration-200 focus:outline-none group"
                   style={{
                     borderColor:  isActive ? '#BE1E2D' : '#E5E7EB',
                     background:   isActive ? '#FFF1F2' : 'white',
@@ -459,7 +459,7 @@ function NineDomainSection() {
                   {/* Card header: icon + number */}
                   <div className="flex items-start justify-between mb-5">
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-200"
+                      className="w-11 h-11 rounded-none flex items-center justify-center transition-colors duration-200"
                       style={{ background: isActive ? '#BE1E2D' : '#F3F4F6' }}
                     >
                       <Icon name={icon} s={20} c={isActive ? 'white' : '#4B5563'} />
@@ -682,7 +682,7 @@ function RevenueInfrastructureFlywheelSection() {
               <div key={force.id} className="flex items-start gap-4">
                 {/* Force indicator */}
                 <div className="flex-shrink-0 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full"
+                  <div className="w-10 h-10 rounded-none"
                     style={{
                       background: '#BE1E2D',
                       color: 'white',
@@ -760,10 +760,10 @@ function FragmentedVsConnectedSection() {
           <div className="grid md:grid-cols-2 gap-6">
 
             {/* ── FRAGMENTED ── */}
-            <div className="border border-gray-200 rounded-2xl overflow-hidden">
+            <div className="border border-gray-200 rounded-none overflow-hidden">
               {/* Header */}
               <div className="px-8 pt-7 pb-5 border-b border-gray-100 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-crimson shrink-0" />
+                <div className="w-2 h-2 rounded-none bg-crimson shrink-0" />
                 <span className="font-sans font-semibold text-[13px] tracking-[0.18em] uppercase text-gray-500">Fragmented</span>
               </div>
 
@@ -849,10 +849,10 @@ function FragmentedVsConnectedSection() {
             </div>
 
             {/* ── CONNECTED ── */}
-            <div className="border border-connected/30 rounded-2xl overflow-hidden">
+            <div className="border border-connected/30 rounded-none overflow-hidden">
               {/* Header */}
               <div className="px-8 pt-7 pb-5 border-b border-connected/10 flex items-center gap-3" style={{ background: 'rgba(5,150,105,0.04)' }}>
-                <div className="w-2 h-2 rounded-full bg-connected shrink-0" />
+                <div className="w-2 h-2 rounded-none bg-connected shrink-0" />
                 <span className="font-sans font-semibold text-[13px] tracking-[0.18em] uppercase text-connected">Connected</span>
               </div>
 
@@ -972,7 +972,7 @@ function RevenueLeakageSection() {
                 {LEAKAGE_STAGES.map((s, i) => (
                   <div key={s.name} className="flex items-center flex-1">
                     <div className="flex flex-col items-center flex-1">
-                      <div className="w-[60px] h-[60px] rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center mb-3">
+                      <div className="w-[60px] h-[60px] rounded-none bg-white border border-gray-200 shadow-sm flex items-center justify-center mb-3">
                         <Icon name={DOMAIN_ICONS[i] ?? 'chart'} s={24} c="#374151" />
                       </div>
                       {/* Stage name — 16 px minimum */}
@@ -986,7 +986,7 @@ function RevenueLeakageSection() {
                         onClick={() => setActiveLeakage(activeLeakage === i ? null : i)}
                         aria-label={`Leakage point: ${LEAKAGE_STAGES[i].name} to ${LEAKAGE_STAGES[i + 1].name}`}
                       >
-                        <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${activeLeakage === i ? 'bg-warning/20 scale-110' : 'hover:bg-warning/10'}`}>
+                        <div className={`w-9 h-9 rounded-none flex items-center justify-center transition-all ${activeLeakage === i ? 'bg-warning/20 scale-110' : 'hover:bg-warning/10'}`}>
                           <Icon name="warning" s={20} />
                         </div>
                       </button>
@@ -1000,7 +1000,7 @@ function RevenueLeakageSection() {
           {/* Leakage detail — stable panel, 18 px body text */}
           <div className="mt-10 min-h-[80px]">
             {activeLeakage !== null && LEAKAGE_STAGES[activeLeakage].desc ? (
-              <div className="bg-warning-light border border-warning/20 rounded-xl p-8">
+              <div className="bg-warning-light border border-warning/20 rounded-none p-8">
                 <div className="flex items-start gap-4">
                   <Icon name="warning" s={22} />
                   <div>
@@ -1063,7 +1063,7 @@ function InfrastructureMaturitySection() {
                 return (
                   <button key={s.n} className="flex flex-col items-center flex-1 group" onClick={() => setActiveStage(i)}>
                     {/* Step indicator — 48 px touch target */}
-                    <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 z-10 relative transition-all ${
+                    <div className={`w-12 h-12 rounded-none flex items-center justify-center border-2 z-10 relative transition-all ${
                       isCurrent ? 'bg-crimson border-crimson text-white shadow-md scale-110'
                                 : isPast   ? 'bg-white border-crimson text-crimson'
                                            : 'bg-white border-gray-200 text-gray-400 group-hover:border-gray-400'}`}>
@@ -1080,9 +1080,9 @@ function InfrastructureMaturitySection() {
           </div>
 
           {/* Stage detail — 18 px body */}
-          <div className="bg-surface rounded-xl p-8 md:p-10 border border-gray-100 min-h-[120px]">
+          <div className="bg-surface rounded-none p-8 md:p-10 border border-gray-100 min-h-[120px]">
             <div className="flex items-start gap-6">
-              <div className="w-12 h-12 rounded-full bg-crimson flex items-center justify-center text-white text-[14px] font-sans font-bold shrink-0">{active.n}</div>
+              <div className="w-12 h-12 rounded-none bg-crimson flex items-center justify-center text-white text-[14px] font-sans font-bold shrink-0">{active.n}</div>
               <div>
                 <h3 className="font-serif font-normal text-[24px] md:text-[28px] leading-[1.25] text-gray-900 mb-3">{active.name}</h3>
                 <p className="text-[18px] font-sans text-gray-600 leading-[1.65]">{active.desc}</p>
@@ -1128,12 +1128,12 @@ function TraditionalVsRISection() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Traditional */}
-            <div className="border border-gray-200 rounded-xl p-8 md:p-10">
+            <div className="border border-gray-200 rounded-none p-8 md:p-10">
               <p className="text-[14px] font-sans font-bold tracking-[0.16em] text-gray-400 uppercase mb-8">Traditional (Specialist) Approach</p>
               <div className="flex flex-wrap gap-6 mb-10 justify-center">
                 {specialists.map((s) => (
                   <div key={s.name} className="flex flex-col items-center gap-2.5">
-                    <div className="w-16 h-16 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-none bg-gray-50 border border-gray-200 flex items-center justify-center">
                       <Icon name={s.icon} s={26} c="#9CA3AF" />
                     </div>
                     <span className="text-[14px] font-sans text-gray-400 text-center leading-tight max-w-[70px]">
@@ -1146,12 +1146,12 @@ function TraditionalVsRISection() {
             </div>
 
             {/* Revenue Infrastructure */}
-            <div className="border border-crimson/20 rounded-xl p-8 md:p-10 bg-crimson-muted">
+            <div className="border border-crimson/20 rounded-none p-8 md:p-10 bg-crimson-muted">
               <p className="text-[14px] font-sans font-bold tracking-[0.16em] text-crimson uppercase mb-8">Revenue Infrastructure Approach</p>
               <div className="flex flex-wrap gap-3 mb-10 justify-center">
                 {DOMAINS.map((d, i) => (
-                  <div key={d.id} className="flex items-center gap-2 bg-white border border-crimson/15 rounded-full px-4 py-2">
-                    <div className="w-5 h-5 rounded-full bg-crimson/12 flex items-center justify-center">
+                  <div key={d.id} className="flex items-center gap-2 bg-white border border-crimson/15 rounded-none px-4 py-2">
+                    <div className="w-5 h-5 rounded-none bg-crimson/12 flex items-center justify-center">
                       <Icon name={DOMAIN_ICONS[i]} s={12} c="#BE1E2D" />
                     </div>
                     <span className="text-[14px] font-sans font-medium text-gray-700">{d.short[0].replace(' &', '')}</span>
@@ -1221,7 +1221,7 @@ function HowGWSAppliesSection() {
                   const icon   = processIcons[i]
                   return (
                     <div key={step.name} className="flex flex-col items-center text-center">
-                      <div className="w-[80px] h-[80px] rounded-full flex items-center justify-center mb-6 relative z-10 border-2"
+                      <div className="w-[80px] h-[80px] rounded-none flex items-center justify-center mb-6 relative z-10 border-2"
                            style={{ background: `${colour}12`, borderColor: `${colour}22` }}>
                         <Icon name={icon} s={32} c={colour} />
                       </div>
@@ -1254,7 +1254,7 @@ function HowGWSAppliesSection() {
                   const icon   = processIcons[i % processIcons.length]   // Cycle through icons if needed
                   return (
                     <div key={step.name} className="flex flex-col items-center text-center">
-                      <div className="w-[80px] h-[80px] rounded-full flex items-center justify-center mb-6 relative z-10 border-2"
+                      <div className="w-[80px] h-[80px] rounded-none flex items-center justify-center mb-6 relative z-10 border-2"
                            style={{ background: `${colour}12`, borderColor: `${colour}22` }}>
                         <Icon name={icon} s={32} c={colour} />
                       </div>
@@ -1302,8 +1302,8 @@ function BusinessOutcomesSection() {
           {/* 4-up grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {outcomes.map((o) => (
-              <div key={o.name} className="bg-white border border-gray-100 rounded-xl p-8 hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
+              <div key={o.name} className="bg-white border border-gray-100 rounded-none p-8 hover:shadow-md transition-shadow">
+                <div className="w-14 h-14 rounded-none flex items-center justify-center mb-6"
                      style={{ background: `${o.color}10` }}>
                   <Icon name={o.icon} s={26} c={o.color} />
                 </div>
@@ -1367,7 +1367,7 @@ function DiagnosticCTASection() {
           <ul className="flex flex-col items-center gap-3 mb-12">
             {ctaItems.map(item => (
               <li key={item} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-crimson/25 border border-crimson/50 flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-none bg-crimson/25 border border-crimson/50 flex items-center justify-center shrink-0">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
                     <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#BE1E2D" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
@@ -1378,7 +1378,7 @@ function DiagnosticCTASection() {
           </ul>
 
           {/* CTA button — 16 px semibold, 48 px height */}
-          <button className="bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] h-12 px-10 rounded flex items-center gap-3 mx-auto">
+          <button className="bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] h-12 px-10 rounded-none flex items-center gap-3 mx-auto">
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
           </button>
 

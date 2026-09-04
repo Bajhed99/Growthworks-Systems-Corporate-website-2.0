@@ -293,7 +293,7 @@ function HeroSection() {
           </div>
 
           {/* Right: Analytical summary panel */}
-          <div className="hidden lg:block bg-[#2B2B2B] rounded-2xl p-8 border border-[#3A3A3A]">
+          <div className="hidden lg:block bg-[#2B2B2B] rounded-none p-8 border border-[#3A3A3A]">
             <div className="space-y-6">
               <div className="border-b border-[#3A3A3A] pb-5">
                 <p className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase text-white/40 mb-3">Overall RI Score</p>
@@ -367,7 +367,7 @@ function AssessmentPrinciplesSection() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {ASSESSMENT_PRINCIPLES.map((p) => (
-              <div key={p.num} className="bg-white border border-[#DDD6CC] rounded-xl p-8">
+              <div key={p.num} className="bg-white border border-[#DDD6CC] rounded-none p-8">
                 <div className="w-12 h-12 rounded-full bg-[#841617] text-white flex items-center justify-center font-sans font-bold text-[16px] mb-5">
                   {p.num}
                 </div>
@@ -448,7 +448,7 @@ function MethodologySection() {
             {METHODOLOGY_STAGES.map((stage) => {
               const phaseColor = stage.phase === "DIAGNOSTIC" ? "#841617" : stage.phase === "IMPLEMENTATION" ? "#059669" : "#2563EB";
               return (
-                <div key={stage.num} className="border border-[#DDD6CC] rounded-xl p-6 md:p-8 bg-white">
+                <div key={stage.num} className="border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white">
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className="w-14 h-14 rounded-full flex items-center justify-center border-2" style={{ borderColor: phaseColor, backgroundColor: `${phaseColor}15` }}>
@@ -505,7 +505,7 @@ function ExecutiveScorecardSection() {
               { label: "Quick Win Opportunities", value: "—" },
               { label: "Estimated Revenue Leakage", value: "—" },
             ].map((metric) => (
-              <div key={metric.label} className="bg-white border border-[#DDD6CC] rounded-xl p-6">
+              <div key={metric.label} className="bg-white border border-[#DDD6CC] rounded-none p-6">
                 <p className="text-[13px] font-sans font-bold tracking-[0.12em] uppercase text-[#625E59] mb-3">{metric.label}</p>
                 <p className="text-[28px] font-serif text-[#2B2B2B]">{metric.value}</p>
               </div>
@@ -513,7 +513,7 @@ function ExecutiveScorecardSection() {
           </div>
 
           {/* Domain scorecard */}
-          <div className="bg-white border border-[#DDD6CC] rounded-xl overflow-hidden">
+          <div className="bg-white border border-[#DDD6CC] rounded-none overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
@@ -566,7 +566,7 @@ function DomainHeatMapSection() {
             The Heat Map translates domain scores into a visual risk classification system.
           </p>
 
-          <div className="mb-8 p-4 bg-[#F8F5EC] border border-[#DDD6CC] rounded-xl">
+          <div className="mb-8 p-4 bg-[#F8F5EC] border border-[#DDD6CC] rounded-none">
             <p className="text-[14px] font-sans font-semibold text-[#625E59] text-center">
               <span className="text-[#841617] font-bold">ILLUSTRATIVE ASSESSMENT</span> — Example risk states for demonstration purposes
             </p>
@@ -579,7 +579,7 @@ function DomainHeatMapSection() {
               return (
                 <div
                   key={domain.code}
-                  className="rounded-xl p-6 border-2"
+                  className="rounded-none p-6 border-2"
                   style={{ backgroundColor: colors.bg, borderColor: colors.border }}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -660,7 +660,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="rounded-xl p-8 border-2 min-h-[240px]"
+                className="rounded-none p-8 border-2 min-h-[240px]"
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-6">
@@ -684,7 +684,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="rounded-xl p-6 border-2"
+                className="rounded-none p-6 border-2"
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-4">
@@ -745,7 +745,7 @@ function AssessmentFamilySection() {
 
           <div className="space-y-6">
             {ASSESSMENTS.map((assessment, i) => (
-              <div key={assessment.name} className="border border-[#DDD6CC] rounded-xl p-6 md:p-8 bg-white">
+              <div key={assessment.name} className="border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white">
                 <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4">
                   <div className="flex-shrink-0">
                     <span className="inline-block text-[12px] font-sans font-bold tracking-[0.14em] uppercase text-white bg-[#841617] px-3 py-1 rounded">
@@ -813,7 +813,7 @@ function ImprovementRoadmapSection() {
           {/* Phase details */}
           <div className="space-y-6">
             {ROADMAP_PHASES.map((phase) => (
-              <div key={phase.num} className="bg-white border border-[#DDD6CC] rounded-xl p-6 md:p-8">
+              <div key={phase.num} className="bg-white border border-[#DDD6CC] rounded-none p-6 md:p-8">
                 <div className="flex flex-col md:flex-row md:items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 rounded-full bg-[#841617] text-white flex items-center justify-center">
@@ -869,7 +869,7 @@ function ExecutiveReportSection() {
             The Executive Report is a comprehensive, structured document designed for executive decision-making.
           </p>
 
-          <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-xl overflow-hidden">
+          <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
@@ -892,7 +892,7 @@ function ExecutiveReportSection() {
             </div>
           </div>
 
-          <div className="mt-8 p-6 bg-[#F8F5EC] border border-[#DDD6CC] rounded-xl">
+          <div className="mt-8 p-6 bg-[#F8F5EC] border border-[#DDD6CC] rounded-none">
             <p className="text-[16px] font-sans text-[#625E59] leading-[1.6]">
               <strong className="text-[#2B2B2B] font-semibold">Note:</strong> The initial booking at{" "}
               <a href="/revenue-diagnostic" className="text-[#841617] underline underline-offset-2 hover:text-[#721315]">
@@ -925,7 +925,7 @@ function DiagnosticOutputsSection() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             {DIAGNOSTIC_OUTPUTS.map((output) => (
-              <div key={output.num} className="bg-white border border-[#DDD6CC] rounded-xl p-6">
+              <div key={output.num} className="bg-white border border-[#DDD6CC] rounded-none p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#841617] text-white flex items-center justify-center font-sans font-bold text-[14px]">
                     {output.num}

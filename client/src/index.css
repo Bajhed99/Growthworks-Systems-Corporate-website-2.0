@@ -4978,6 +4978,35 @@ h4 {
   background: linear-gradient(#DDD6CC, #841617, #DDD6CC);
 }
 
+/* Framework hero: Learn More button + accordion chevron */
+.framework-learn-more {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-sans, "DM Sans", system-ui, sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #716D67;
+  transition: color 200ms ease;
+}
+
+.framework-learn-more:hover,
+.framework-learn-more:focus-visible {
+  color: #841617;
+}
+
+.framework-learn-more-chevron {
+  stroke: #716D67;
+  transition: stroke 200ms ease;
+}
+
+.framework-learn-more-chevron:hover,
+.group:hover .framework-learn-more-chevron {
+  stroke: #841617;
+}
+
 .full-infrastructure-center {
   background: #FFFFFF;
   padding: 42px 28px;

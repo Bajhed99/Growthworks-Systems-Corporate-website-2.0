@@ -17,7 +17,7 @@ export function AICClosingCTABand() {
         </p>
         <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary" style={{
           display: 'inline-flex', alignItems: 'center', gap: '8px',
-          padding: '14px 28px', borderRadius: '8px',
+          padding: '14px 28px', borderRadius: '0',
           background: '#841617', color: '#fff', fontFamily: 'DM Sans, system-ui, sans-serif',
           fontSize: '16px', fontWeight: 600, textDecoration: 'none',
           transition: 'opacity 0.2s'

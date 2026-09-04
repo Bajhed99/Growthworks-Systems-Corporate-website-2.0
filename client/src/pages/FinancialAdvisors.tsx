@@ -100,7 +100,7 @@ function FAQItem({
   const [open, setOpen] = useState(defaultOpen);
   const id = `faq-${question.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
   return (
-    <div className="border border-[#DDD6CC] rounded-[12px] overflow-hidden">
+    <div className="border border-[#DDD6CC] rounded-none overflow-hidden">
       <button
         type="button"
         aria-expanded={open}
@@ -270,7 +270,7 @@ function AdvisoryLeakageSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {leakages.map((item, i) => (
             <RevealOnScroll key={item.num} delay={i * 60}>
-              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] bg-white p-7 md:p-8">
+              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-7 md:p-8">
                 <div className="mb-4">
                   <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase">
                     {item.num}
@@ -327,7 +327,7 @@ function AdvisoryRevenueJourneySection() {
         <div className="space-y-3">
           {journey.map((item, idx) => (
             <RevealOnScroll key={item.stage} delay={idx * 40}>
-              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-[12px] bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
+              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-none bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
                 <div className="flex-shrink-0 w-12 h-12 rounded-none border border-[#841617] bg-white flex items-center justify-center">
                   <span className="text-[14px] font-sans font-bold text-[#841617]">{item.stage}</span>
                 </div>
@@ -342,7 +342,7 @@ function AdvisoryRevenueJourneySection() {
           ))}
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-[14px] bg-[#F8F5EC]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
             <strong>The key insight:</strong> The advisory revenue journey is not a funnel. It is a relationship-building cycle where context must carry forward at every stage. Revenue Infrastructure keeps that context alive — from first research to ongoing client relationship.
           </p>
@@ -436,7 +436,7 @@ function AdvisoryFrameworkSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {domains.map((domain, i) => (
             <RevealOnScroll key={domain.title} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] bg-[#F8F5EC] p-8">
+              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-[#F8F5EC] p-8">
                 <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase mb-3">
                   Module {i + 1}
                 </span>
@@ -490,7 +490,7 @@ function TrustBeforeTechSection() {
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-10 max-w-[680px]">
             The goal is not to replace the relationship. It is to build the infrastructure that protects and strengthens it.
           </p>
-          <div className="p-6 border border-[#841617]/30 rounded-[12px] bg-white max-w-[680px]">
+          <div className="p-6 border border-[#841617]/30 rounded-none bg-white max-w-[680px]">
             <p className="text-[15px] leading-[1.65] text-[#625E59]">
               <strong className="text-[#2B2B2B]">Important:</strong> GrowthWorks Systems does not provide investment advice, legal advice, regulatory advice, or compliance advice. GWS builds Revenue Infrastructure in a manner consistent with the professional standards clients and their advisors expect. All advisory activities—investment recommendations, compliance determinations, fiduciary assessments—remain with the licensed advisor or firm.
             </p>
@@ -561,7 +561,7 @@ function AdvisoryCapabilitiesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {capabilities.map((cap, i) => (
             <RevealOnScroll key={cap.group} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] p-8">
+              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none p-8">
                 <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[21px] md:text-[24px] mb-5">
                   {cap.group}
                 </h3>
@@ -735,7 +735,7 @@ function ResearchRoutesSection() {
             <RevealOnScroll key={route.href} delay={i * 60}>
               <a
                 href={route.href}
-                className="group flex flex-col p-6 border border-[#DDD6CC] rounded-[14px] bg-white hover:border-[#841617] hover:shadow-[0_4px_16px_rgba(132,22,23,0.08)] transition-all min-h-[120px]"
+                className="group flex flex-col p-6 border border-[#DDD6CC] rounded-none bg-white hover:border-[#841617] hover:shadow-[0_4px_16px_rgba(132,22,23,0.08)] transition-all min-h-[120px]"
               >
                 <span className="font-serif font-normal text-[18px] leading-[1.3] text-[#2B2B2B] group-hover:text-[#841617] transition-colors mb-2">
                   {route.label}

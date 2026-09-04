@@ -1152,21 +1152,21 @@
     "semantic_hash": "05e779ad303968289be4f4509f291749"
   },
   "client/src/components/SiteFooter.tsx": {
-    "mtime": 1788208631.730297,
-    "seen": 1788370171.9722776,
-    "ast_hash": "27f9ad401924cee719500e977047f8df",
+    "mtime": 1788464433.3256443,
+    "seen": 1788465939.190241,
+    "ast_hash": "e445e88619dc047007acb8c90b6a5417",
     "semantic_hash": ""
   },
   "client/src/components/SiteHeader.tsx": {
-    "mtime": 1788208598.6604874,
-    "seen": 1788370171.9722788,
-    "ast_hash": "154955e54dda88fe4174d2ff044a0624",
+    "mtime": 1788464297.338728,
+    "seen": 1788465939.1902425,
+    "ast_hash": "09d7930640792969abab0bf43be0cf7c",
     "semantic_hash": ""
   },
   "client/src/pages/AIReadyWebsite.tsx": {
-    "mtime": 1788210032.8861868,
-    "seen": 1788370171.9723618,
-    "ast_hash": "2dc8c309e36be4de6107da7b4b1e5c17",
+    "mtime": 1788465746.6612706,
+    "seen": 1788465939.1903563,
+    "ast_hash": "b84092c60c0c2b2193d8f2b072abe989",
     "semantic_hash": ""
   },
   "client/src/pages/AIVisibility.tsx": {
@@ -1182,15 +1182,15 @@
     "semantic_hash": ""
   },
   "client/src/pages/CRMAutomation.tsx": {
-    "mtime": 1788210032.8882244,
-    "seen": 1788370171.972364,
-    "ast_hash": "7c3af6541c2d1d60146aa3f719808f48",
+    "mtime": 1788465626.4779398,
+    "seen": 1788465939.1903594,
+    "ast_hash": "62316c4220e8f0cff2426568e7dc3987",
     "semantic_hash": ""
   },
   "client/src/pages/ConversionSystems.tsx": {
-    "mtime": 1788210032.8882244,
-    "seen": 1788370171.972365,
-    "ast_hash": "ab277a6cdb28a078f223fa375f395765",
+    "mtime": 1788465663.4646997,
+    "seen": 1788465939.1903603,
+    "ast_hash": "44f135eaab0ab3db11a22c1234ced148",
     "semantic_hash": ""
   },
   "client/src/pages/DiagnosticPlatform.tsx": {
@@ -1236,9 +1236,9 @@
     "semantic_hash": ""
   },
   "client/src/pages/RevenueDiagnostic.tsx": {
-    "mtime": 1788210032.8955183,
-    "seen": 1788370171.972373,
-    "ast_hash": "7e45b1f52bb52518c087cc96b34b33c2",
+    "mtime": 1788464255.7245283,
+    "seen": 1788465939.1903696,
+    "ast_hash": "9fb218525b15a9503f35f3bd0520e750",
     "semantic_hash": ""
   },
   "client/src/pages/Solutions.tsx": {
@@ -2037,6 +2037,12 @@
     "mtime": 1788453731.1894546,
     "seen": 1788464050.8698852,
     "ast_hash": "4202969f07f837619f5b07aff3369c28",
+    "semantic_hash": ""
+  },
+  "ABOUT_REPORT.md": {
+    "mtime": 1788464148.9363103,
+    "seen": 1788465939.1904724,
+    "ast_hash": "c38e95d453131a5277bbc1cd66642db8",
     "semantic_hash": ""
   }
 }

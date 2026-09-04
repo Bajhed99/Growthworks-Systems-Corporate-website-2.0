@@ -463,7 +463,7 @@ function IndustryRoutingSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {INDUSTRIES.map((ind, i) => (
             <RevealOnScroll key={ind.num} delay={i * 80}>
-              <article className="group relative flex flex-col h-full bg-white border border-[#DDD6CC] rounded-[16px] p-7 md:p-8 transition-shadow hover:shadow-[0_12px_28px_rgba(43,43,43,0.08)] focus-within:shadow-[0_12px_28px_rgba(43,43,43,0.08)]">
+              <article className="group relative flex flex-col h-full bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8 transition-shadow hover:shadow-[0_12px_28px_rgba(43,43,43,0.08)] focus-within:shadow-[0_12px_28px_rgba(43,43,43,0.08)]">
                 <header className="flex items-start justify-between gap-4 mb-5">
                   <span
                     aria-hidden="true"
@@ -588,7 +588,7 @@ function ComparisonSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {COMPARISON.map((row, i) => (
             <RevealOnScroll key={row.name} delay={i * 60}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-[16px] bg-[#F8F5EC] p-7 md:p-8">
+              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-[#F8F5EC] p-7 md:p-8">
                 <span className="font-sans font-bold text-[12px] tracking-[0.18em] text-[#841617] mb-3">
                   0{i + 1}
                 </span>

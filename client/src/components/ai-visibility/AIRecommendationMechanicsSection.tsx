@@ -21,7 +21,7 @@ export function AIRecommendationMechanicsSection() {
             { stage: '04', label: 'Understanding', detail: 'Sources are interpreted, entities matched, relationships mapped.' },
             { stage: '05', label: 'Recommendation', detail: 'The final recommendation or shortlist is generated and presented.' },
           ].map(s => (
-            <li key={s.stage} style={{ flex: '1 1 200px', maxWidth: '300px', padding: '20px', background: '#fff', border: '1px solid rgba(132, 22, 23, 0.10)', borderRadius: '12px' }}>
+            <li key={s.stage} style={{ flex: '1 1 200px', maxWidth: '300px', padding: '20px', background: '#fff', border: '1px solid rgba(132, 22, 23, 0.10)', borderRadius: '0' }}>
               <span style={{ display: 'inline-block', fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '12px', fontWeight: 600, color: '#841617', letterSpacing: '0.05em', marginBottom: '8px' }}>{s.stage} — {s.label}</span>
               <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.60 }}>{s.detail}</p>
             </li>

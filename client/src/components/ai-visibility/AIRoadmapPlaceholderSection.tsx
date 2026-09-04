@@ -8,7 +8,7 @@ export function AIRoadmapPlaceholderSection() {
           Improving AI Visibility follows a structured improvement path — a progression from current state through prioritized interventions to measurable improvement. The path is organized around practical, prioritized actions rather than abstract best practices.
         </p>
         <div style={{
-          background: '#f8fafc', borderRadius: '12px', padding: '28px 24px',
+          background: '#f8fafc', borderRadius: '0', padding: '28px 24px',
           border: '1px solid rgba(132, 22, 23, 0.08)', marginTop: '32px'
         }}>
           <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginBottom: '16px', lineHeight: 1.3 }}>

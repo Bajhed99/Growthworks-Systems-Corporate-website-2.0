@@ -8,9 +8,9 @@ export function AIOptimizationConsolidationSection() {
           Rather than treating Search Engine Optimization (SEO), AI Engine Optimization (AEO), and Generative Engine Optimization (GEO) as separate disciplines, AI Visibility treats them as connected layers of the same visibility problem. The same structural, content, and credibility work that earns ranking in traditional search also strengthens inclusion in AI answers.
         </p>
         <div style={{
-          background: '#0f172a', borderRadius: '16px', padding: '32px 28px', color: '#fff', marginTop: '32px'
+          background: '#0f172a', borderRadius: '0', padding: '32px 28px', color: '#fff', marginTop: '32px'
         }} aria-label="Optimization layers summary">
-          <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
             <div>
               <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '22px', fontWeight: 400, color: '#fff', marginBottom: '10px' }}>SEO — Foundation</h3>
               <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#cbd5e1', lineHeight: 1.60 }}>
