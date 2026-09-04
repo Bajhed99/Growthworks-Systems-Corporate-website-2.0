@@ -1014,7 +1014,7 @@ function RevenueLeakageSection() {
                 </div>
               </div>
             ) : (
-              <p className="text-[16px] font-sans text-gray-400 italic">
+              <p className="text-[16px] font-sans text-gray-500 italic">
                 Select a warning marker to see where revenue is lost.
               </p>
             )}

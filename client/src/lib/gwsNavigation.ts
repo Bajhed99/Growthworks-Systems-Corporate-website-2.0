@@ -16,7 +16,7 @@ export const GWS_NAV_GROUPS: readonly NavigationGroup[] = [
     href: "/framework",
     items: [
       { label: "The Framework", description: "Nine domains. One operating system.", href: "/framework" },
-      { label: "Diagnostic Platform", description: "Methodology, scorecard, and roadmap.", href: "/diagnostic-platform" },
+      { label: "Diagnostic Platform", description: "Methodology, scorecard, and roadmap.", href: "/diagnostic" },
     ],
   },
   {

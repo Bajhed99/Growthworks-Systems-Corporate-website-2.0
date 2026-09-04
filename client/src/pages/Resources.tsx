@@ -129,7 +129,7 @@ const CATEGORIES: Category[] = [
     intro:
       "Structured assessments that measure specific dimensions of Revenue Infrastructure and identify priority improvement areas. Assessments are designed to produce actionable findings, not generic scores.",
     items: [
-      { type: "Free Assessment", title: "AI Visibility Score", desc: "A structured assessment of how visible your business is to AI-powered search systems — including ChatGPT, Gemini, Perplexity, and Google AI Overviews.", status: "available", href: "/diagnostic-platform" },
+      { type: "Free Assessment", title: "AI Visibility Score", desc: "A structured assessment of how visible your business is to AI-powered search systems — including ChatGPT, Gemini, Perplexity, and Google AI Overviews.", status: "available", href: "/diagnostic" },
       { type: "Free Assessment", title: "AI-Ready Website Audit", desc: "A structured evaluation of your website's conversion architecture, technical performance, content authority signals, and AI readiness across 40+ criteria.", status: "available", href: "/ai-ready-website" },
       { type: "Assessment", title: "Revenue Infrastructure Self-Assessment", desc: "A structured self-assessment across all Nine Domains of Revenue Infrastructure. Produces a maturity score, domain-level findings, and a prioritized improvement roadmap.", status: "in-development" },
       { type: "Assessment", title: "Revenue Leakage Diagnostic", desc: "A guided diagnostic that identifies which of the seven Revenue Leakage points are most active in your business and quantifies their estimated impact on revenue.", status: "coming-soon" },
