@@ -1,25 +1,25 @@
-# Graph Report - GWS Website 2.0  (2026-09-07)
+# Graph Report - GWS Website 2.0  (2026-09-04)
 
 ## Corpus Check
-- 321 files · ~1,698,194 words
+- 320 files · ~1,698,656 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 3592 nodes · 4681 edges · 349 communities (221 shown, 128 thin omitted)
+- 3591 nodes · 4680 edges · 354 communities (225 shown, 129 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 29 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2d91828d`
+- Built from commit: `85879625`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- context-menu.tsx
+- cn
 - validate_data.py
 - gray
 - search
-- cn
+- sidebar.tsx
 - card
 - slide_search_core.py
 - spacing
@@ -34,7 +34,7 @@
 - color
 - BM25
 - search
-- dropdown-menu.tsx
+- _palette_is_dark
 - dialog.tsx
 - _style_is_dark_primary
 - TailwindConfigGenerator
@@ -59,7 +59,7 @@
 - devDependencies
 - TestShadcnInstaller
 - detect_domain
-- toggle-group.tsx
+- test_core_data_quality.py
 - design_system.py
 - Tailwind CSS Utility Reference
 - revenue-infrastructure-package/App.tsx
@@ -69,7 +69,7 @@
 - carousel.tsx
 - field.tsx
 - dependencies
-- test_design_system_mode.py
+- _select_palette_for_mode
 - validate-tokens.cjs
 - design-tokens-starter.json
 - ShadcnInstaller
@@ -91,7 +91,7 @@
 - ._base_config
 - logo/generate.py
 - generate-tokens.cjs
-- primitive
+- duration
 - test_text_layout_resilience.py
 - card.tsx
 - vite.config.ts
@@ -104,8 +104,8 @@
 - HomepageSectionSpacing.test.ts
 - vercel.json
 - SuppliedFragmentedConnectedVisual.tsx
-- md
-- shadow
+- SiteFooter.tsx
+- sm
 - BuyerJourneyPlugAndPlayHost.test.ts
 - RevenueInfrastructurePlugAndPlayHost.test.ts
 - alert.tsx
@@ -342,7 +342,12 @@
 - SiteHeader.tsx
 - SiteFooter
 - Resources.tsx
-- .generate
+- test_design_system_mode.py
+- TestGeneratedCatalogContract
+- 16
+- 1
+- 3
+- 8
 
 ## God Nodes (most connected - your core abstractions)
 1. `cn()` - 274 edges
@@ -371,15 +376,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (349 total, 128 thin omitted)
+## Communities (354 total, 129 thin omitted)
 
-### Community 0 - "context-menu.tsx"
-Cohesion: 0.12
-Nodes (9): ContextMenuCheckboxItem(), ContextMenuContent(), ContextMenuItem(), ContextMenuLabel(), ContextMenuRadioItem(), ContextMenuSeparator(), ContextMenuShortcut(), ContextMenuSubContent() (+1 more)
+### Community 0 - "cn"
+Cohesion: 0.04
+Nodes (52): AccordionContent(), AccordionItem(), AccordionTrigger(), Avatar(), AvatarFallback(), AvatarImage(), BreadcrumbEllipsis(), BreadcrumbItem() (+44 more)
 
 ### Community 1 - "validate_data.py"
-Cohesion: 0.08
-Nodes (46): read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _catalog_date(), _check_app_interface_contract(), _check_catalog_contract() (+38 more)
+Cohesion: 0.11
+Nodes (36): _catalog_date(), _check_app_interface_contract(), _check_catalog_contract(), _check_catalog_summary(), _check_chart_contract(), _check_color_contract(), _check_core_data_contract(), _check_file() (+28 more)
 
 ### Community 2 - "gray"
 Cohesion: 0.05
@@ -389,9 +394,9 @@ Nodes (53): $type, $value, $type, $value, $type, $value, $type, $value (+45 more
 Cohesion: 0.07
 Nodes (42): BM25, detect_domain(), get_cip_brief(), _load_csv(), Load CSV and return list of dicts, Core search function using BM25, Auto-detect the most relevant domain from query, Main search function with auto-domain detection (+34 more)
 
-### Community 4 - "cn"
-Cohesion: 0.05
-Nodes (65): Avatar(), AvatarFallback(), AvatarImage(), BreadcrumbEllipsis(), BreadcrumbItem(), BreadcrumbLink(), BreadcrumbList(), BreadcrumbPage() (+57 more)
+### Community 4 - "sidebar.tsx"
+Cohesion: 0.06
+Nodes (40): Sheet(), SheetContent(), SheetDescription(), SheetFooter(), SheetHeader(), SheetOverlay(), SheetTitle(), Sidebar() (+32 more)
 
 ### Community 5 - "card"
 Cohesion: 0.20
@@ -402,16 +407,16 @@ Cohesion: 0.08
 Nodes (36): format_context(), format_result(), main(), Format a single search result for display, Format contextual recommendations for display., BM25, calculate_pattern_break(), detect_domain() (+28 more)
 
 ### Community 7 - "spacing"
-Cohesion: 0.06
-Nodes (34): $type, $value, $type, $value, $type, $value, $type, $value (+26 more)
+Cohesion: 0.09
+Nodes (22): $type, $value, $type, $value, $type, $value, $type, $value (+14 more)
 
 ### Community 8 - "search_stack"
 Cohesion: 0.11
 Nodes (6): Search stack-specific guidelines, search_stack(), _rows(), TestNativeDesktopStackFreshness, _rows(), TestWebStackFreshness
 
 ### Community 9 - "utils.ts"
-Cohesion: 0.06
-Nodes (17): AccordionContent(), AccordionItem(), AccordionTrigger(), Badge(), badgeVariants, Checkbox(), HoverCardContent(), InputOTP() (+9 more)
+Cohesion: 0.07
+Nodes (16): Badge(), badgeVariants, Checkbox(), HoverCardContent(), PopoverContent(), Progress(), ResizableHandle(), ResizablePanelGroup() (+8 more)
 
 ### Community 10 - "scripts/core.py"
 Cohesion: 0.09
@@ -449,9 +454,9 @@ Nodes (9): BM25, BM25 ranking algorithm for text search, Lowercase, normalize sy
 Cohesion: 0.12
 Nodes (7): Resolve a deprecated in-domain alias, or expose a cross-domain redirect., Main search function with auto-domain detection, search(), _style_search_destination(), TestSearchDomains, read_rows(), TestStyleTaxonomy
 
-### Community 19 - "dropdown-menu.tsx"
-Cohesion: 0.12
-Nodes (9): DropdownMenuCheckboxItem(), DropdownMenuContent(), DropdownMenuItem(), DropdownMenuLabel(), DropdownMenuRadioItem(), DropdownMenuSeparator(), DropdownMenuShortcut(), DropdownMenuSubContent() (+1 more)
+### Community 19 - "_palette_is_dark"
+Cohesion: 0.18
+Nodes (7): _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., _relative_luminance(), The exact reproduction from issue #428., TestEndToEndCoherence, TestLuminance
 
 ### Community 20 - "dialog.tsx"
 Cohesion: 0.11
@@ -466,8 +471,8 @@ Cohesion: 0.10
 Nodes (12): main(), Add custom font families. Args: fonts: Dict of font_type: [font_names] e.g.,…, Add custom spacing values. Args: spacing: Dict of name: value e.g., {'18':…, Add custom breakpoints. Args: breakpoints: Dict of name: width e.g., {'3xl':…, Add plugin requirements. Args: plugins: List of plugin names e.g.,…, Get plugin recommendations based on configuration. Returns: List of recommended…, Generate Tailwind CSS configuration files., Validate configuration. Returns: Tuple of (valid, message) (+4 more)
 
 ### Community 23 - "read_rows"
-Cohesion: 0.10
-Nodes (7): read_rows(), split_values(), style_identities(), TestGeneratedCatalogContract, TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract
+Cohesion: 0.13
+Nodes (6): read_rows(), split_values(), style_identities(), TestLandingAndStackContract, TestReasoningContract, TestStyleIdentityContract
 
 ### Community 24 - "Home.tsx"
 Cohesion: 0.17
@@ -486,8 +491,8 @@ Cohesion: 0.13
 Nodes (17): ButtonGroup(), ButtonGroupSeparator(), ButtonGroupText(), buttonGroupVariants, Item(), ItemActions(), ItemContent(), ItemDescription() (+9 more)
 
 ### Community 28 - "radius"
-Cohesion: 0.29
-Nodes (8): $type, $value, $type, $value, radius, default, full, default
+Cohesion: 0.19
+Nodes (14): $type, $value, $type, $value, $type, $value, primitive, radius (+6 more)
 
 ### Community 29 - "fetch-background.py"
 Cohesion: 0.17
@@ -541,9 +546,9 @@ Nodes (9): Test adding components in dry run mode., Test ShadcnInstaller class.,
 Cohesion: 0.23
 Nodes (3): detect_domain(), Auto-detect the most relevant domain from query. Matches are weighted by…, TestDomainDetection
 
-### Community 44 - "toggle-group.tsx"
-Cohesion: 0.43
-Nodes (5): ToggleGroup(), ToggleGroupContext, ToggleGroupItem(), Toggle(), toggleVariants
+### Community 44 - "test_core_data_quality.py"
+Cohesion: 0.17
+Nodes (10): read_rows(), TestAccessibilityGuidance, TestChartsTypographyAndIcons, TestCurrentReactGuidance, TestSemanticColors, _check_typography_contract(), _configured_font_names(), _declared_weights() (+2 more)
 
 ### Community 45 - "design_system.py"
 Cohesion: 0.11
@@ -581,9 +586,9 @@ Nodes (22): Field(), FieldContent(), FieldDescription(), FieldError(), FieldGrou
 Cohesion: 0.15
 Nodes (13): axios, express, input-otp, dependencies, axios, express, input-otp, @radix-ui/react-label (+5 more)
 
-### Community 54 - "test_design_system_mode.py"
-Cohesion: 0.16
-Nodes (12): _contrast_ratio(), _derive_dark_palette(), _palette_is_dark(), WCAG relative luminance of a #RRGGBB string, or None if unparseable., True when a colors.csv row's Background is a dark surface., WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case… (+4 more)
+### Community 54 - "_select_palette_for_mode"
+Cohesion: 0.22
+Nodes (7): _contrast_ratio(), _derive_dark_palette(), WCAG contrast ratio for two hex colors, or None if either is invalid., Keep product brand tokens while deriving accessible dark surfaces., Pick the highest-ranked palette matching the resolved mode. Only the dark case…, _select_palette_for_mode(), TestPaletteSelection
 
 ### Community 55 - "validate-tokens.cjs"
 Cohesion: 0.24
@@ -610,8 +615,8 @@ Cohesion: 0.18
 Nodes (6): Test adding components with overwrite flag., Test successful component addition., Test component addition with subprocess error., Test component addition when npx is not found., Test successful addition of all components., patch
 
 ### Community 61 - "parse_decision_rules"
-Cohesion: 0.31
-Nodes (6): apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Parse the canonical condition -> action-array representation., _validate_action()
+Cohesion: 0.19
+Nodes (8): Find matching reasoning rule for a category., Apply reasoning rules to search results., apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), Return deterministic mutations and an audit trail; never execute data., Parse the canonical condition -> action-array representation., _validate_action()
 
 ### Community 62 - "🌐 GWS Website 2.0"
 Cohesion: 0.05
@@ -646,8 +651,8 @@ Cohesion: 0.25
 Nodes (9): ChartConfig, ChartContainer(), ChartContext, ChartContextProps, ChartLegendContent(), ChartTooltipContent(), getPayloadConfigFromPayload(), THEMES (+1 more)
 
 ### Community 70 - "src/App.tsx"
-Cohesion: 0.11
-Nodes (15): App(), NOTE: About Theme, PasswordGate(), PasswordGateProps, Toaster(), Tooltip(), TooltipProvider(), TooltipTrigger() (+7 more)
+Cohesion: 0.13
+Nodes (12): App(), NOTE: About Theme, PasswordGate(), PasswordGateProps, Toaster(), Theme, ThemeContext, ThemeContextType (+4 more)
 
 ### Community 71 - "glowy-waves-hero-shadcnui.tsx"
 Cohesion: 0.24
@@ -669,9 +674,9 @@ Nodes (9): enhance_prompt(), generate_batch(), generate_logo(), load_env(), main
 Cohesion: 0.36
 Nodes (9): flattenTokens(), fs, generateCSS(), generateTailwind(), main(), parseArgs(), path, resolveReference() (+1 more)
 
-### Community 76 - "primitive"
-Cohesion: 0.18
-Nodes (11): fast, normal, slow, $type, $value, $type, $value, primitive (+3 more)
+### Community 76 - "duration"
+Cohesion: 0.20
+Nodes (10): fast, normal, slow, $type, $value, $type, $value, duration (+2 more)
 
 ### Community 77 - "test_text_layout_resilience.py"
 Cohesion: 0.22
@@ -721,13 +726,13 @@ Nodes (6): buildCommand, devCommand, framework, installCommand, outputDirectory,
 Cohesion: 0.33
 Nodes (3): connected, fragmented, systemLayers
 
-### Community 89 - "md"
-Cohesion: 0.67
-Nodes (4): $type, $value, md, md
+### Community 89 - "SiteFooter.tsx"
+Cohesion: 0.33
+Nodes (5): footerGroups, GWS_NAV_GROUPS, GWS_NAV_LINKS, NavigationGroup, NavigationMenuItem
 
-### Community 90 - "shadow"
-Cohesion: 0.47
-Nodes (6): sm, shadow, sm, sm, $type, $value
+### Community 90 - "sm"
+Cohesion: 0.60
+Nodes (5): sm, sm, sm, $type, $value
 
 ### Community 91 - "BuyerJourneyPlugAndPlayHost.test.ts"
 Cohesion: 0.40
@@ -782,8 +787,8 @@ Cohesion: 0.06
 Nodes (32): 1. Mobile-First Design, 2. Consistent Breakpoint Usage, 3. Test at Breakpoint Boundaries, 4. Use Container for Content Width, 5. Progressive Enhancement, 6. Avoid Too Many Breakpoints, Best Practices, Breakpoint System (+24 more)
 
 ### Community 125 - "Framework.tsx"
-Cohesion: 0.13
-Nodes (17): BusinessOutcomesSection(), CanonicalDefinitionSection(), DiagnosticCTASection(), DOMAIN_ICONS, DOMAINS, FragmentedVsConnectedSection(), HowGWSAppliesSection(), I (+9 more)
+Cohesion: 0.14
+Nodes (18): BusinessOutcomesSection(), CanonicalDefinitionSection(), DiagnosticCTASection(), DOMAIN_ICONS, DOMAINS, FragmentedVsConnectedSection(), GWS_PROCESS, HowGWSAppliesSection() (+10 more)
 
 ### Community 127 - "Typography Specifications"
 Cohesion: 0.06
@@ -823,7 +828,7 @@ Nodes (6): App(), BuyerJourneyPlugAndPlayHost(), DriftBeam, DriftNode, GwsPartic
 
 ### Community 234 - "DesignSystemGenerator"
 Cohesion: 0.13
-Nodes (9): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Find matching reasoning rule for a category., Apply reasoning rules to search results., Select best matching result based on priority keywords., TestReasoningMatch, The exact reproduction from issue #428. (+1 more)
+Nodes (10): DesignSystemGenerator, Generates design system recommendations from aggregated searches., Load reasoning rules from CSV., Execute searches across multiple domains., Select best matching result based on priority keywords., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None. (+2 more)
 
 ### Community 235 - "Color Palette Management"
 Cohesion: 0.08
@@ -1162,36 +1167,52 @@ Cohesion: 0.22
 Nodes (9): NavigationMenu(), NavigationMenuContent(), NavigationMenuIndicator(), NavigationMenuItem(), NavigationMenuLink(), NavigationMenuList(), NavigationMenuTrigger(), navigationMenuTriggerStyle (+1 more)
 
 ### Community 343 - "SiteHeader.tsx"
-Cohesion: 0.12
-Nodes (10): footerGroups, navigateTo(), SiteHeader(), GWS_NAV_GROUPS, GWS_NAV_LINKS, NavigationGroup, NavigationMenuItem, shouldCompactStickyHeader() (+2 more)
+Cohesion: 0.17
+Nodes (4): SiteHeader(), shouldCompactStickyHeader(), STICKY_HEADER_COMPACT_THRESHOLD, ConversionSystems()
 
 ### Community 346 - "Resources.tsx"
 Cohesion: 0.12
 Nodes (5): CATEGORIES, Category, ResourceItem, Resources(), Status
 
-### Community 347 - ".generate"
-Cohesion: 0.16
-Nodes (8): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., Execute searches across multiple domains., Extract results list from search result dict., Generate complete design system recommendation. variance/motion/density are…, Bucket a 1-10 dial value into its tier config. Returns None if value is None., _resolve_dial(), TestAntiPatternGating
+### Community 347 - "test_design_system_mode.py"
+Cohesion: 0.39
+Nodes (3): _filter_anti_patterns_for_mode(), Drop "avoid dark mode" advice once dark mode is the resolved answer., TestAntiPatternGating
+
+### Community 349 - "16"
+Cohesion: 0.67
+Nodes (3): $type, $value, 16
+
+### Community 350 - "1"
+Cohesion: 0.67
+Nodes (3): $type, $value, 1
+
+### Community 351 - "3"
+Cohesion: 0.67
+Nodes (3): $type, $value, 3
+
+### Community 352 - "8"
+Cohesion: 0.67
+Nodes (3): $type, $value, 8
 
 ## Knowledge Gaps
-- **1390 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1385 more)
+- **1391 isolated node(s):** `fs`, `path`, `fs`, `path`, `fs` (+1386 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **128 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **129 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `cn()` connect `cn` to `context-menu.tsx`, `utils.ts`, `alert-dialog.tsx`, `dropdown-menu.tsx`, `dialog.tsx`, `item.tsx`, `menubar.tsx`, `toggle-group.tsx`, `input-group.tsx`, `carousel.tsx`, `field.tsx`, `chart.tsx`, `src/App.tsx`, `card.tsx`, `empty.tsx`, `drawer.tsx`, `ErrorBoundary.tsx`, `navigation-menu.tsx`, `alert.tsx`, `select.tsx`?**
+- **Why does `cn()` connect `cn` to `select.tsx`, `sidebar.tsx`, `chart.tsx`, `menubar.tsx`, `utils.ts`, `alert-dialog.tsx`, `card.tsx`, `input-group.tsx`, `carousel.tsx`, `dialog.tsx`, `ErrorBoundary.tsx`, `drawer.tsx`, `empty.tsx`, `field.tsx`, `navigation-menu.tsx`, `item.tsx`, `alert.tsx`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `search()` connect `search` to `validate_data.py`, `generate_design_system`, `scripts/core.py`, `detect_domain`, `design_system.py`, `test_text_layout_resilience.py`, `BM25`, `_row_identities`, `.generate`?**
+- **Why does `search()` connect `search` to `generate_design_system`, `DesignSystemGenerator`, `scripts/core.py`, `detect_domain`, `design_system.py`, `test_core_data_quality.py`, `test_text_layout_resilience.py`, `BM25`, `_row_identities`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `primitive` connect `primitive` to `gray`, `fontSize`, `spacing`, `design-tokens-starter.json`, `shadow`, `radius`?**
+- **Why does `primitive` connect `radius` to `gray`, `fontSize`, `spacing`, `duration`, `design-tokens-starter.json`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `TailwindConfigGenerator` (e.g. with `TestGeneratedConfigIsValidJs` and `TestTailwindConfigGenerator`) actually correct?**
   _`TailwindConfigGenerator` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `fs`, `path`, `fs` to the rest of the system?**
-  _1390 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `context-menu.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+  _1391 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `cn` be split into smaller, more focused modules?**
+  _Cohesion score 0.042624042624042624 - nodes in this community are weakly interconnected._
 - **Should `validate_data.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.07656341320864991 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10931174089068826 - nodes in this community are weakly interconnected._

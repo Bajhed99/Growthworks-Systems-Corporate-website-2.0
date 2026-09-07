@@ -2002,6 +2002,54 @@ h3 {
   text-transform: uppercase;
 }
 
+/* Diagnostic Platform hero explore/accordion — mirrors the Home hero "Explore" cue */
+.diagnostic-hero-explore {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diagnostic-hero-explore-trigger {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-decoration: none;
+  transition: color 180ms ease-out;
+}
+
+.diagnostic-hero-explore-trigger:hover,
+.diagnostic-hero-explore-trigger:focus-visible {
+  color: var(--maroon);
+}
+
+.diagnostic-hero-explore-trigger svg {
+  transition: transform 180ms ease-out;
+}
+
+.diagnostic-hero-explore-trigger:hover svg {
+  transform: translateY(2px);
+}
+
+.diagnostic-hero-accordion {
+  width: 100%;
+  max-width: 640px;
+}
+
+.diagnostic-hero-accordion-inner {
+  padding-top: 28px;
+  padding-bottom: 4px;
+  border-top: 1px solid var(--gws-border);
+  margin-top: 24px;
+  text-align: center;
+}
+
 .site-footer {
   padding: 44px 0;
   background: var(--dark);
@@ -5684,4 +5732,11 @@ h4 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 0.5px gray top-bottom borders on every section */
+section {
+  border-top: 0.5px solid #ccc;
+  border-bottom: 0.5px solid #ccc;
+  margin-top: -1px;
 }

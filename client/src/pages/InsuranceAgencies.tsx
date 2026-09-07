@@ -4,19 +4,13 @@ import SiteFooter from "@/components/SiteFooter";
 
 // ─── Shared layout and utilities ──────────────────────────────────────────────
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
-    </p>
+    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
+    </h3>
   );
 }
 
@@ -65,7 +59,7 @@ function InsuranceHero() {
   return (
     <section
       aria-labelledby="insurance-hero-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <div className="max-w-[720px]">
@@ -74,15 +68,15 @@ function InsuranceHero() {
           </p>
           <h1
             id="insurance-hero-h1"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
             Connect lead generation, producer follow-up, and revenue visibility.
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[620px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
             Insurance agencies generate opportunity through multiple channels — referrals, local discovery, paid campaigns, website inquiries, inbound calls, partner relationships, and renewals. The challenge is keeping those opportunities connected after they enter the business.
           </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 max-w-[600px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
             Information moves between marketing platforms, phone systems, forms, producers, CRM systems, quoting processes, and follow-up tasks. Every handoff can create lost context, unclear ownership, or delayed action. GrowthWorks Systems creates a more coordinated path from inquiry to measurable business outcome.
           </p>
           <div className="flex flex-wrap items-center gap-3">
@@ -94,7 +88,7 @@ function InsuranceHero() {
             </a>
             <a
               href="/framework"
-              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
             >
               Explore the Framework
             </a>
@@ -138,18 +132,18 @@ function ProblemStatementSection() {
   return (
     <section
       aria-labelledby="problem-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="01" label="Where Agencies Leak Revenue" />
-          <blockquote className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[24px] md:text-[28px] mb-12 max-w-[720px] border-l-[3px] border-[#841617] pl-6 italic">
+          <SectionLabel label="Where Agencies Leak Revenue" />
+          <blockquote className="font-serif font-normal text-gray-900 leading-[1.15] text-[24px] md:text-[28px] mb-12 max-w-[720px] border-l-[3px] border-[#841617] pl-6 italic">
             "Most independent agencies are built on referrals and relationships. Those still matter — but they're no longer sufficient."
           </blockquote>
 
           <h2
             id="problem-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
             Six systemic challenges agencies face today
           </h2>
@@ -158,10 +152,10 @@ function ProblemStatementSection() {
             {CHALLENGES.map((challenge, idx) => (
               <RevealOnScroll key={challenge.title} delay={idx * 40}>
                 <div className="flex flex-col h-full">
-                  <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[20px] md:text-[21px] mb-3">
+                  <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[20px] md:text-[21px] mb-3">
                     {challenge.title}
                   </h3>
-                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                     {challenge.desc}
                   </p>
                 </div>
@@ -199,18 +193,18 @@ function TrustBeforeQuotingSection() {
   return (
     <section
       aria-labelledby="trust-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="Trust Before Quoting" />
+          <SectionLabel label="Trust Before Quoting" />
           <h2
             id="trust-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Buyers evaluate before they decide.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
             In insurance, the relationship decision happens before the quote. Prospects assess your responsiveness, expertise, reputation, and clarity as signals of whether you're the right partner. That evaluation window is narrow. Speed and consistency matter.
           </p>
 
@@ -225,11 +219,11 @@ function TrustBeforeQuotingSection() {
                     >
                       {idx + 1}
                     </span>
-                    <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[21px]">
+                    <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[21px]">
                       {dim.title}
                     </h3>
                   </div>
-                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] ml-11">
+                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 ml-11">
                     {dim.desc}
                   </p>
                 </div>
@@ -271,32 +265,32 @@ function AIDiscoverySection() {
   return (
     <section
       aria-labelledby="ai-discovery-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="03" label="AI Discovery Gap" />
+          <SectionLabel label="AI Discovery Gap" />
           <h2
             id="ai-discovery-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             How AI systems evaluate insurance agencies
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-4 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-4 max-w-[680px]">
             Prospects increasingly use AI-assisted tools to research and evaluate agencies. Machine systems benefit from clear signals about who you are, what you do, and whether you're trustworthy. You control most of these signals.
           </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Discoverability is concentrated. If your agency isn't visible through these signals, you miss opportunities before they even reach your website.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
             {DISCOVERY_SIGNALS.map((item, idx) => (
               <RevealOnScroll key={item.signal} delay={idx * 40}>
-                <div className="border border-[#DDD6CC] rounded-none p-6 bg-[#FAFBFC]">
+                <div className="border border-gray-200 rounded-none p-6 bg-[#FAFBFC]">
                   <h3 className="font-sans font-bold text-[16px] text-[#841617] mb-2 tracking-wide">
                     {item.signal}
                   </h3>
-                  <p className="text-[15px] leading-[1.6] text-[#2B2B2B]">
+                  <p className="text-[15px] leading-[1.6] text-gray-900">
                     {item.desc}
                   </p>
                 </div>
@@ -304,7 +298,7 @@ function AIDiscoverySection() {
             ))}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-[#DDD6CC]">
+          <div className="mt-12 pt-8 border-t border-gray-200">
             <a
               href="/ai-visibility"
               className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
@@ -368,41 +362,41 @@ function CapabilityGroupsSection() {
   return (
     <section
       aria-labelledby="capabilities-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="04" label="Revenue Infrastructure Applied" />
+          <SectionLabel label="Revenue Infrastructure Applied" />
           <h2
             id="capabilities-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             How the four Revenue Infrastructure modules work together in insurance.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
             The Revenue Infrastructure framework applies across industries. These four capability groups describe how they connect for insurance agencies.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {CAPABILITY_GROUPS.map((group, idx) => (
               <RevealOnScroll key={group.title} delay={idx * 50}>
-                <article className="bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8 flex flex-col h-full">
+                <article className="bg-white border border-gray-200 rounded-none p-7 md:p-8 flex flex-col h-full">
                   <header className="mb-4">
                     <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#841617]/10 text-[#841617] font-sans font-bold text-[14px] mb-3">
                       {idx + 1}
                     </span>
-                    <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[24px] md:text-[28px]">
+                    <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px]">
                       {group.title}
                     </h3>
                   </header>
-                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B] mb-5">
+                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-900 mb-5">
                     {group.desc}
                   </p>
                   <ul className="space-y-3 flex-1">
                     {group.actions.map((action) => (
                       <li
                         key={action}
-                        className="flex items-start gap-2 text-[15px] leading-[1.5] text-[#625E59]"
+                        className="flex items-start gap-2 text-[15px] leading-[1.5] text-gray-500"
                       >
                         <span
                           aria-hidden="true"
@@ -412,7 +406,7 @@ function CapabilityGroupsSection() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-6 pt-4 border-t border-[#DDD6CC]">
+                  <div className="mt-6 pt-4 border-t border-gray-200">
                     <a
                       href="/solutions"
                       className="inline-flex items-center gap-1 text-[#841617] font-sans font-semibold text-[14px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
@@ -488,30 +482,30 @@ function LifecycleSection() {
   return (
     <section
       aria-labelledby="lifecycle-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="05" label="The Connected Agency State" />
+          <SectionLabel label="The Connected Agency State" />
           <h2
             id="lifecycle-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             From inquiry to measurement
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
             In a connected agency, lead context, producer ownership, quote progression, follow-up consistency, and outcome visibility work as one system. This prevents opportunities from slipping through cracks.
           </p>
 
           {/* Lifecycle stages */}
           <div className="mb-16">
-            <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[22px] md:text-[24px] mb-8">
+            <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[22px] md:text-[24px] mb-8">
               The insurance agency lifecycle
             </h3>
             <div className="space-y-4">
               {stages.map((s, idx) => (
                 <RevealOnScroll key={s.stage} delay={idx * 20}>
-                  <div className="flex gap-4 md:gap-6 pb-4 border-b border-[#DDD6CC] last:border-b-0">
+                  <div className="flex gap-4 md:gap-6 pb-4 border-b border-gray-200 last:border-b-0">
                     <div className="flex-shrink-0">
                       <span
                         aria-hidden="true"
@@ -521,10 +515,10 @@ function LifecycleSection() {
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-serif font-normal text-[#2B2B2B] text-[18px] mb-1">
+                      <h4 className="font-serif font-normal text-gray-900 text-[18px] mb-1">
                         {s.stage}
                       </h4>
-                      <p className="text-[15px] leading-[1.6] text-[#625E59] mb-2">
+                      <p className="text-[15px] leading-[1.6] text-gray-500 mb-2">
                         {s.detail}
                       </p>
                       <p className="text-[14px] leading-[1.5] text-[#841617] font-sans font-semibold">
@@ -539,13 +533,13 @@ function LifecycleSection() {
 
           {/* Operating principles */}
           <div>
-            <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[22px] md:text-[24px] mb-8">
+            <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[22px] md:text-[24px] mb-8">
               Operating principles for connected agencies
             </h3>
             <div className="space-y-3">
               {principles.map((principle) => (
                 <RevealOnScroll key={principle}>
-                  <p className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
+                  <p className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.65] text-gray-900">
                     <span
                       aria-hidden="true"
                       className="mt-[8px] w-[6px] h-[6px] shrink-0 rounded-full bg-[#841617]"
@@ -605,14 +599,14 @@ function FAQSection() {
   return (
     <section
       aria-labelledby="faq-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="06" label="Frequently Asked Questions" />
+          <SectionLabel label="Frequently Asked Questions" />
           <h2
             id="faq-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
           >
             Questions agencies ask about Revenue Infrastructure
           </h2>
@@ -621,7 +615,7 @@ function FAQSection() {
             {FAQ_ITEMS.map((item, idx) => (
               <RevealOnScroll key={item.q} delay={idx * 25}>
                 <div
-                  className="border border-[#DDD6CC] rounded-none overflow-hidden bg-white"
+                  className="border border-gray-200 rounded-none overflow-hidden bg-white"
                 >
                   <button
                     onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
@@ -629,7 +623,7 @@ function FAQSection() {
                     aria-expanded={openIndex === idx}
                     aria-controls={`faq-answer-${idx}`}
                   >
-                    <span className="font-sans font-semibold text-[16px] md:text-[17px] leading-[1.5] text-[#2B2B2B] flex-1">
+                    <span className="font-sans font-semibold text-[16px] md:text-[17px] leading-[1.5] text-gray-900 flex-1">
                       {item.q}
                     </span>
                     <span
@@ -645,9 +639,9 @@ function FAQSection() {
                   {openIndex === idx && (
                     <div
                       id={`faq-answer-${idx}`}
-                      className="px-6 pb-5 pt-0 border-t border-[#DDD6CC]"
+                      className="px-6 pb-5 pt-0 border-t border-gray-200"
                     >
-                      <p className="text-[15px] md:text-[16px] leading-[1.65] text-[#625E59]">
+                      <p className="text-[15px] md:text-[16px] leading-[1.65] text-gray-500">
                         {item.a}
                       </p>
                     </div>
@@ -668,7 +662,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="insurance-closing-cta"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"

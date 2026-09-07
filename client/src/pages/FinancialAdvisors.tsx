@@ -26,7 +26,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 // ─── Shared Constants ────────────────────────────────────────────────────────
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 const BODY_CONTAINER = "max-w-[720px] mx-auto px-5 md:px-0";
 
 // ─── RevealOnScroll Helper ─────────────────────────────────────────────────
@@ -72,17 +72,11 @@ function RevealOnScroll({
 
 // ─── Section Label Helper ─────────────────────────────────────────────────
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
-    </p>
+    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
+    </h3>
   );
 }
 
@@ -100,15 +94,15 @@ function FAQItem({
   const [open, setOpen] = useState(defaultOpen);
   const id = `faq-${question.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase()}`;
   return (
-    <div className="border border-[#DDD6CC] rounded-none overflow-hidden">
+    <div className="border border-gray-200 rounded-2xl overflow-hidden">
       <button
         type="button"
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen(!open)}
-        className="w-full flex items-start justify-between gap-4 p-6 text-left bg-[#F8F5EC] hover:bg-[#F0EAE0] transition-colors min-h-[48px]"
+        className="w-full flex items-start justify-between gap-4 p-6 text-left bg-surface hover:bg-[#F0EAE0] transition-colors min-h-[48px] rounded-2xl"
       >
-        <span className="font-serif font-normal text-[#2B2B2B] text-[18px] md:text-[20px] leading-[1.3]">
+        <span className="font-serif font-normal text-gray-900 text-[18px] md:text-[20px] leading-[1.3]">
           {question}
         </span>
         <span
@@ -123,7 +117,7 @@ function FAQItem({
         role="region"
         className={`${open ? "block" : "hidden"} bg-white`}
       >
-        <div className="p-6 pt-5 text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+        <div className="p-6 pt-5 text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
           {answer}
         </div>
       </div>
@@ -137,29 +131,29 @@ function FinancialAdvisorsHero() {
   return (
     <section
       aria-labelledby="financial-advisors-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[112px] md:pb-[88px] border-b border-gray-200"
     >
       <div className={CONTAINER}>
         <div className="max-w-[680px]">
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             Financial Advisors &amp; RIAs
-          </p>
+          </h3>
           <h1
             id="financial-advisors-h1"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
             Build a clearer path from trust and discovery to qualified conversations.
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[620px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
             Financial advisory businesses operate in a consideration-heavy environment. Prospects may spend significant time researching firms, advisors, specialties, credentials, philosophies, and expertise before making contact.
           </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 max-w-[600px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
             Visibility alone does not create a client. Once inquiry occurs, response, qualification, scheduling, follow-up, advisor ownership, CRM continuity, and pipeline visibility must work together. GWS connects those parts so qualified interest has a clearer path forward.
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>
@@ -175,29 +169,29 @@ function AdvisoryFirmRealitySection() {
   return (
     <section
       aria-labelledby="advisory-reality-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="01" label="The Advisory Firm Reality" />
+          <SectionLabel label="The Advisory Firm Reality" />
           <h2
             id="advisory-reality-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Most advisory firms grew on referrals. That foundation is still essential.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             The referral relationship is genuine, trust-based, and worth protecting. But the environment in which it operates has expanded in ways that create new gaps—and new opportunities that most firms have not built for.
           </p>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-10 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-10 max-w-[680px]">
             AI-assisted discovery is becoming another environment where prospects evaluate and shorten their consideration lists. Firms that appear in those contexts with clear authority signals and structured trust indicators can enter more prospects' consideration sets. Those that do not may be invisible to a growing discovery channel.
           </p>
           <blockquote className="border-l-4 border-[#841617] pl-6 py-1 mb-10 max-w-[640px]">
-            <p className="text-[20px] md:text-[22px] leading-[1.5] font-serif font-normal text-[#2B2B2B] italic">
+            <p className="text-[20px] md:text-[22px] leading-[1.5] font-serif font-normal text-gray-900 italic">
               Technology is the implementation. Revenue performance is the objective.
             </p>
           </blockquote>
-          <p className="text-[16px] leading-[1.65] text-[#625E59] max-w-[680px]">
+          <p className="text-[16px] leading-[1.65] text-gray-500 max-w-[680px]">
             The problem most firms face is not that they lack marketing. It is that the infrastructure behind referrals, discovery, inquiry, qualification, and follow-up is disconnected from one another. Each gap leaks qualified interest that the firm has already earned.
           </p>
         </RevealOnScroll>
@@ -251,18 +245,18 @@ function AdvisoryLeakageSection() {
   return (
     <section
       aria-labelledby="leakage-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="Where Advisory Revenue Leaks" />
+          <SectionLabel label="Where Advisory Revenue Leaks" />
           <h2
             id="leakage-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Advisory firms face a Revenue Infrastructure problem — not a marketing problem.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             These are structural gaps. They compound across the research and consideration cycle, and they affect the firm's ability to convert the qualified interest it has already attracted.
           </p>
         </RevealOnScroll>
@@ -270,16 +264,16 @@ function AdvisoryLeakageSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {leakages.map((item, i) => (
             <RevealOnScroll key={item.num} delay={i * 60}>
-              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-7 md:p-8">
+              <article className="flex flex-col h-full border border-gray-200 rounded-2xl bg-white p-7 md:p-8">
                 <div className="mb-4">
                   <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase">
                     {item.num}
                   </span>
                 </div>
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[21px] md:text-[24px] mb-3">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[21px] md:text-[24px] mb-3">
                   {item.title}
                 </h3>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                   {item.description}
                 </p>
               </article>
@@ -308,18 +302,18 @@ function AdvisoryRevenueJourneySection() {
   return (
     <section
       aria-labelledby="advisory-journey-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="03" label="The Advisory Consideration Journey" />
+          <SectionLabel label="The Advisory Consideration Journey" />
           <h2
             id="advisory-journey-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             A longer cycle. Trust accumulates at every stage.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Unlike transactional businesses, advisory relationships are built over time. Each stage of the consideration journey is an opportunity to build trust—or to lose it through gaps in context, response, or follow-up.
           </p>
         </RevealOnScroll>
@@ -327,23 +321,23 @@ function AdvisoryRevenueJourneySection() {
         <div className="space-y-3">
           {journey.map((item, idx) => (
             <RevealOnScroll key={item.stage} delay={idx * 40}>
-              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-none bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
+              <div className="flex items-start gap-4 p-6 border border-gray-200 rounded-none bg-surface hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
                 <div className="flex-shrink-0 w-12 h-12 rounded-none border border-[#841617] bg-white flex items-center justify-center">
                   <span className="text-[14px] font-sans font-bold text-[#841617]">{item.stage}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-serif font-normal text-[#2B2B2B] text-[18px] md:text-[20px] leading-[1.2] mb-1">
+                  <h3 className="font-serif font-normal text-gray-900 text-[18px] md:text-[20px] leading-[1.2] mb-1">
                     {item.label}
                   </h3>
-                  <p className="text-[16px] leading-[1.6] text-[#625E59]">{item.detail}</p>
+                  <p className="text-[16px] leading-[1.6] text-gray-500">{item.detail}</p>
                 </div>
               </div>
             </RevealOnScroll>
           ))}
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-2xl bg-surface">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-900">
             <strong>The key insight:</strong> The advisory revenue journey is not a funnel. It is a relationship-building cycle where context must carry forward at every stage. Revenue Infrastructure keeps that context alive — from first research to ongoing client relationship.
           </p>
         </div>
@@ -358,26 +352,26 @@ function AIDiscoverySection() {
   return (
     <section
       aria-labelledby="ai-discovery-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="04" label="AI-Assisted Discovery" />
+          <SectionLabel label="AI-Assisted Discovery" />
           <h2
             id="ai-discovery-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             AI tools are becoming part of how prospective clients evaluate and shorten their consideration lists.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-6 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-6 max-w-[680px]">
             When a prospect asks an AI assistant to recommend a fiduciary advisor in their area, the system returns an answer based on authority signals, structured content, entity clarity, and reputation indicators it can evaluate. This is not a replacement for referrals or traditional search—it is a growing channel that most firms have not built for.
           </p>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-8 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-8 max-w-[680px]">
             Firms with clearer authority structure, better entity consistency, more comprehensive content, and stronger trust signals are more likely to appear in those results. Poor machine-readable visibility can reduce the likelihood of being surfaced during AI-assisted research.
           </p>
           <a
             href="/ai-visibility"
-            className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
           >
             Learn about AI Visibility
             <span aria-hidden="true">→</span>
@@ -417,18 +411,18 @@ function AdvisoryFrameworkSection() {
   return (
     <section
       aria-labelledby="advisory-framework-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="05" label="Revenue Infrastructure for Advisory Firms" />
+          <SectionLabel label="Revenue Infrastructure for Advisory Firms" />
           <h2
             id="advisory-framework-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             How Revenue Infrastructure shows up in an advisory firm.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             The Revenue Infrastructure framework organizes into four connected modules. Each addresses a distinct dimension of how an advisory firm attracts, qualifies, converts, and retains clients.
           </p>
         </RevealOnScroll>
@@ -436,14 +430,14 @@ function AdvisoryFrameworkSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {domains.map((domain, i) => (
             <RevealOnScroll key={domain.title} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-[#F8F5EC] p-8">
+              <div className="flex flex-col h-full border border-gray-200 rounded-2xl bg-surface p-8">
                 <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase mb-3">
                   Module {i + 1}
                 </span>
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[24px] md:text-[28px] mb-4">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px] mb-4">
                   {domain.title}
                 </h3>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                   {domain.application}
                 </p>
               </div>
@@ -455,7 +449,7 @@ function AdvisoryFrameworkSection() {
           <RevealOnScroll>
             <a
               href="/framework"
-              className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
             >
               Explore the Full Revenue Infrastructure Framework
               <span aria-hidden="true">→</span>
@@ -473,26 +467,26 @@ function TrustBeforeTechSection() {
   return (
     <section
       aria-labelledby="trust-tech-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="06" label="Our Approach" />
+          <SectionLabel label="Our Approach" />
           <h2
             id="trust-tech-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Trust before technology.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             Financial advisory businesses operate on trust. Every system GWS builds must reinforce that trust rather than undermine it. Speed, automation, and AI-assisted tools are configured to make the firm easier to trust—not just easier to find.
           </p>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-10 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-10 max-w-[680px]">
             The goal is not to replace the relationship. It is to build the infrastructure that protects and strengthens it.
           </p>
-          <div className="p-6 border border-[#841617]/30 rounded-none bg-white max-w-[680px]">
-            <p className="text-[15px] leading-[1.65] text-[#625E59]">
-              <strong className="text-[#2B2B2B]">Important:</strong> GrowthWorks Systems does not provide investment advice, legal advice, regulatory advice, or compliance advice. GWS builds Revenue Infrastructure in a manner consistent with the professional standards clients and their advisors expect. All advisory activities—investment recommendations, compliance determinations, fiduciary assessments—remain with the licensed advisor or firm.
+          <div className="p-6 border border-[#841617]/30 rounded-2xl bg-white max-w-[680px]">
+            <p className="text-[15px] leading-[1.65] text-gray-500">
+              <strong className="text-gray-900">Important:</strong> GrowthWorks Systems does not provide investment advice, legal advice, regulatory advice, or compliance advice. GWS builds Revenue Infrastructure in a manner consistent with the professional standards clients and their advisors expect. All advisory activities—investment recommendations, compliance determinations, fiduciary assessments—remain with the licensed advisor or firm.
             </p>
           </div>
         </RevealOnScroll>
@@ -542,18 +536,18 @@ function AdvisoryCapabilitiesSection() {
   return (
     <section
       aria-labelledby="capabilities-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="07" label="GWS Capabilities" />
+          <SectionLabel label="GWS Capabilities" />
           <h2
             id="capabilities-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Organized around outcomes — not activities.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each capability maps to a specific gap in the advisory revenue journey. GWS does not sell activities. We engineer revenue results across the trust-to-conversion cycle.
           </p>
         </RevealOnScroll>
@@ -561,16 +555,16 @@ function AdvisoryCapabilitiesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {capabilities.map((cap, i) => (
             <RevealOnScroll key={cap.group} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none p-8">
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[21px] md:text-[24px] mb-5">
+              <div className="flex flex-col h-full border border-gray-200 rounded-2xl p-8">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[21px] md:text-[24px] mb-5">
                   {cap.group}
                 </h3>
                 <ul className="space-y-3">
                   {cap.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-[#625E59]">
+                    <li key={item} className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-gray-500">
                       <span
                         aria-hidden="true"
-                        className="mt-[9px] w-[6px] h-[6px] shrink-0 rounded-full bg-[#841617]"
+                        className="mt-[9px] w-[6px] h-[6px] shrink-0 rounded-full bg-crimson"
                       />
                       <span>{item}</span>
                     </li>
@@ -614,14 +608,14 @@ function OperatingPrinciplesSection() {
   return (
     <section
       aria-labelledby="principles-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="08" label="Operating Principles" />
+          <SectionLabel label="Operating Principles" />
           <h2
             id="principles-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
             How GWS works with advisory firms.
           </h2>
@@ -631,10 +625,10 @@ function OperatingPrinciplesSection() {
           {principles.map((principle, i) => (
             <RevealOnScroll key={principle.title} delay={i * 60}>
               <div className="border-t-2 border-[#841617] pt-5">
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[21px] md:text-[24px] mb-3">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[21px] md:text-[24px] mb-3">
                   {principle.title}
                 </h3>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                   {principle.description}
                 </p>
               </div>
@@ -652,14 +646,14 @@ function AdvisoryFAQSection() {
   return (
     <section
       aria-labelledby="faq-h2"
-      className="bg-white py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-white py-[112px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="09" label="Frequently Asked Questions" />
+          <SectionLabel label="Frequently Asked Questions" />
           <h2
             id="faq-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
           >
             Questions advisory firms ask before engaging GWS.
           </h2>
@@ -717,14 +711,14 @@ function ResearchRoutesSection() {
   return (
     <section
       aria-labelledby="research-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[112px] md:py-[88px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="10" label="Continue Your Research" />
+          <SectionLabel label="Continue Your Research" />
           <h2
             id="research-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
             Explore the framework and supporting resources.
           </h2>
@@ -735,12 +729,12 @@ function ResearchRoutesSection() {
             <RevealOnScroll key={route.href} delay={i * 60}>
               <a
                 href={route.href}
-                className="group flex flex-col p-6 border border-[#DDD6CC] rounded-none bg-white hover:border-[#841617] hover:shadow-[0_4px_16px_rgba(132,22,23,0.08)] transition-all min-h-[120px]"
+                className="group flex flex-col p-6 border border-gray-200 rounded-2xl bg-white hover:border-[#841617] hover:shadow-[0_4px_16px_rgba(132,22,23,0.08)] transition-all min-h-[120px]"
               >
-                <span className="font-serif font-normal text-[18px] leading-[1.3] text-[#2B2B2B] group-hover:text-[#841617] transition-colors mb-2">
+                <span className="font-serif font-normal text-[18px] leading-[1.3] text-gray-900 group-hover:text-[#841617] transition-colors mb-2">
                   {route.label}
                 </span>
-                <span className="text-[14px] leading-[1.6] text-[#625E59]">
+                <span className="text-[14px] leading-[1.6] text-gray-500">
                   {route.desc}
                 </span>
               </a>
@@ -758,7 +752,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="closing-cta-h2"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -771,14 +765,14 @@ function ClosingCTASection() {
       />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
       />
 
       <div className={`${CONTAINER} relative z-10`}>
         <RevealOnScroll>
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             Start with the system
-          </p>
+          </h3>
           <h2
             id="closing-cta-h2"
             className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
@@ -810,7 +804,7 @@ function ClosingCTASection() {
           </div>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>

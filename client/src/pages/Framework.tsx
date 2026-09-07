@@ -53,13 +53,6 @@ const MATURITY_STAGES = [
   { n: '05', name: 'Revenue Engine',desc: 'A learning system. Predictable, scalable growth at every stage.' },
 ]
 
-const GWS_PROCESS = [
-  { name: 'Diagnose',   desc: 'Assess your current infrastructure. Find gaps and leakage.' },
-  { name: 'Design',     desc: 'Build the right system, aligned to your goals and market.' },
-  { name: 'Implement',  desc: 'Integrate systems, processes, and skills. Establish momentum.' },
-  { name: 'Optimize',   desc: 'Measure, learn, and refine to continuously improve.' },
-]
-
 // ─── Icons ─────────────────────────────────────────────────────────────────────
 
 const I = {
@@ -119,121 +112,464 @@ function Icon({ name, s = 20, c = 'currentColor' }: { name: string; s?: number; 
 // Container: max 1200 px, 64 px desktop gutters
 const CONTAINER = 'max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16'
 
-function SectionLabel({ num, label, dark = false }: { num: string; label: string; dark?: boolean }) {
+function SectionLabel({ label, dark = false }: { label: string; dark?: boolean }) {
   return (
-    <h3 className={`text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 ${dark ? 'text-white/40' : 'text-gray-400'}`}>
-      {num}&ensp;{label}
-    </h3>
+    <p className="text-[18px] font-sans font-semibold text-[#BE1E2D] tracking-[0.18em] uppercase mb-4">
+      {label}
+    </p>
   )
+}
+
+// ─── INFRA VISUAL FROM ZIP ─────────────────────────────────────────────────────
+const CRIMSON = "#BE1E2D";
+const CRIMSON_DIM = "rgba(132,22,23,0.3)";
+const CRIMSON_GLOW = "rgba(132,22,23,0.5)";
+
+const PILLARS = [
+  {
+    label: "Strategy",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Technology",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+    ),
+  },
+  {
+    label: "Data",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3" />
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+      </svg>
+    ),
+  },
+  {
+    label: "Processes",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
+    ),
+  },
+  {
+    label: "People",
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+      </svg>
+    ),
+  },
+];
+
+const INFRA_W = 680;
+const INFRA_H = 280;
+const INFRA_ICON_BOX_H = 60;
+// Lines start at the bottom-center of the icon box (no label offset).
+const INFRA_LINE_START_Y = INFRA_ICON_BOX_H;
+const INFRA_HUB_CX = INFRA_W / 2;
+const INFRA_HUB_CY = INFRA_H - 8;
+
+// 5 pillars evenly spaced, symmetric around the horizontal center.
+// Positions: 10%, 30%, 50%, 70%, 90% of the diagram width (4 equal gaps).
+const INFRA_X_POSITIONS = [0.1, 0.3, 0.5, 0.7, 0.9].map((r) => r * INFRA_W);
+
+function InfraVisual() {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [animated, setAnimated] = useState(false);
+  const [hubPulse, setHubPulse] = useState(false);
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => setAnimated(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHubPulse((p) => !p);
+    }, 2200);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div
+      style={{
+        minHeight: "100%",
+        background: "#fff",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "48px 24px",
+      }}
+    >
+      <style>{`
+        @keyframes drawLine {
+          from { stroke-dashoffset: 280; }
+          to   { stroke-dashoffset: 0; }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes hubAppear {
+          from { opacity: 0; transform: scale(0.85); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes pulseRing {
+          0%   { r: 7;  opacity: 0.7; }
+          70%  { r: 16; opacity: 0; }
+          100% { r: 16; opacity: 0; }
+        }
+        @keyframes particleFlow {
+          0%   { stroke-dashoffset: 280; opacity: 0.9; }
+          80%  { stroke-dashoffset: 0;   opacity: 0.9; }
+          100% { stroke-dashoffset: 0;   opacity: 0; }
+        }
+        @keyframes dropAppear {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .pillar-node {
+          transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+          cursor: default;
+        }
+        .pillar-node:hover { transform: translateY(-4px); }
+        .icon-box {
+          transition: box-shadow 0.22s ease, background 0.22s ease;
+        }
+        .pillar-node:hover .icon-box {
+          background: rgba(132,22,23,0.07) !important;
+          box-shadow: 0 0 18px rgba(132,22,23,0.22);
+        }
+      `}</style>
+
+      <div style={{ width: "100%", maxWidth: 760, display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
+
+        {/* Diagram — fixed width so SVG coords match HTML percentages 1:1 */}
+        <div style={{ position: "relative", width: INFRA_W }}>
+
+          {/* SVG layer: lines — scales proportionally within the 680px container */}
+          <svg
+            ref={svgRef}
+            viewBox={`0 0 ${INFRA_W} ${INFRA_H}`}
+            preserveAspectRatio="xMidYMid meet"
+            style={{ width: "100%", height: "auto", display: "block" }}
+            aria-hidden="true"
+          >
+            <defs>
+              <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="hubGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              {INFRA_X_POSITIONS.map((x, i) => (
+                <linearGradient key={i} id={`lineGrad${i}`} x1={x} y1={INFRA_LINE_START_Y} x2={INFRA_HUB_CX} y2={INFRA_HUB_CY} gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor={CRIMSON} stopOpacity="0.25" />
+                  <stop offset="100%" stopColor={CRIMSON} stopOpacity="0.9" />
+                </linearGradient>
+              ))}
+            </defs>
+
+            {/* Base dim lines */}
+            {INFRA_X_POSITIONS.map((x, i) => (
+              <line
+                key={`base-${i}`}
+                x1={x} y1={INFRA_LINE_START_Y}
+                x2={INFRA_HUB_CX} y2={INFRA_HUB_CY}
+                stroke={CRIMSON_DIM}
+                strokeWidth="1"
+              />
+            ))}
+
+            {/* Animated draw lines */}
+            {animated && INFRA_X_POSITIONS.map((x, i) => {
+              const dx = INFRA_HUB_CX - x;
+              const dy = INFRA_HUB_CY - INFRA_LINE_START_Y;
+              const len = Math.sqrt(dx * dx + dy * dy);
+              const isHov = hovered === i;
+              return (
+                <line
+                  key={`anim-${i}`}
+                  x1={x} y1={INFRA_LINE_START_Y}
+                  x2={INFRA_HUB_CX} y2={INFRA_HUB_CY}
+                  stroke={isHov ? CRIMSON : `url(#lineGrad${i})`}
+                  strokeWidth={isHov ? 1.8 : 1.2}
+                  strokeDasharray={len}
+                  strokeDashoffset={0}
+                  filter={isHov ? "url(#lineGlow)" : undefined}
+                  style={{
+                    animation: `drawLine 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 0.1}s both`,
+                    transition: "stroke 0.2s, stroke-width 0.2s",
+                  }}
+                />
+              );
+            })}
+
+            {/* Particle dots flowing along lines */}
+            {animated && INFRA_X_POSITIONS.map((x, i) => {
+              const dx = INFRA_HUB_CX - x;
+              const dy = INFRA_HUB_CY - INFRA_LINE_START_Y;
+              const len = Math.sqrt(dx * dx + dy * dy);
+              return (
+                <line
+                  key={`particle-${i}`}
+                  x1={x} y1={INFRA_LINE_START_Y}
+                  x2={INFRA_HUB_CX} y2={INFRA_HUB_CY}
+                  stroke={CRIMSON}
+                  strokeWidth="2"
+                  strokeDasharray={`4 ${len}`}
+                  strokeLinecap="round"
+                  style={{
+                    animation: `particleFlow 2.4s ease-in ${1.0 + i * 0.15}s infinite`,
+                    opacity: 0,
+                  }}
+                />
+              );
+            })}
+
+            {/* Hub dot */}
+            {animated && (
+              <>
+                <circle
+                  cx={INFRA_HUB_CX} cy={INFRA_HUB_CY} r="5"
+                  fill={CRIMSON}
+                  filter="url(#hubGlow)"
+                  style={{ animation: "hubAppear 0.4s ease 0.8s both" }}
+                />
+                <circle
+                  cx={INFRA_HUB_CX} cy={INFRA_HUB_CY}
+                  fill="none"
+                  stroke={CRIMSON}
+                  strokeWidth="1"
+                  style={{
+                    animation: `pulseRing 2.2s ease-out ${hubPulse ? "0s" : "1.1s"} infinite`,
+                  }}
+                />
+              </>
+            )}
+          </svg>
+
+          {/* Pillar icon nodes */}
+          <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+            {PILLARS.map((p, i) => {
+              const pct = INFRA_X_POSITIONS[i] / INFRA_W;
+              return (
+                <div
+                  key={i}
+                  className="pillar-node"
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: `${pct * 100}%`,
+                    transform: "translateX(-50%)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 6,
+                    pointerEvents: "auto",
+                    opacity: animated ? 1 : 0,
+                    animation: animated ? `fadeUp 0.5s ease ${0.1 + i * 0.08}s both` : undefined,
+                  }}
+                >
+                  <div
+                    className="icon-box"
+                    style={{
+                      width: 60,
+                      height: 60,
+                      border: `1.5px solid ${hovered === i ? CRIMSON : CRIMSON_DIM}`,
+                      background: "#fff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: CRIMSON,
+                      position: "relative",
+                    }}
+                  >
+                    <span style={{ position: "absolute", top: -1, left: -1, width: 6, height: 6, borderTop: `1px solid ${CRIMSON}`, borderLeft: `1px solid ${CRIMSON}` }} />
+                    <span style={{ position: "absolute", top: -1, right: -1, width: 6, height: 6, borderTop: `1px solid ${CRIMSON}`, borderRight: `1px solid ${CRIMSON}` }} />
+                    <span style={{ position: "absolute", bottom: -1, left: -1, width: 6, height: 6, borderBottom: `1px solid ${CRIMSON}`, borderLeft: `1px solid ${CRIMSON}` }} />
+                    <span style={{ position: "absolute", bottom: -1, right: -1, width: 6, height: 6, borderBottom: `1px solid ${CRIMSON}`, borderRight: `1px solid ${CRIMSON}` }} />
+                    {p.icon}
+                  </div>
+
+                  <span
+                    style={{
+                      fontSize: 10,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: hovered === i ? CRIMSON : "#444",
+                      fontFamily: "sans-serif",
+                      fontWeight: 500,
+                      transition: "color 0.2s",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {p.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Revenue Infrastructure — central label */}
+        {animated && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: -4,
+              animation: "hubAppear 0.5s ease 0.9s both",
+              opacity: 0,
+            }}
+          >
+            <div
+              style={{
+                background: "#fff",
+                border: `1.5px solid ${CRIMSON}`,
+                padding: "16px 40px",
+                textAlign: "center",
+                boxShadow: `0 0 24px rgba(132,22,23,0.12)`,
+                position: "relative",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "sans-serif",
+                  fontWeight: 600,
+                  fontSize: 13,
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: CRIMSON,
+                }}
+              >
+                Revenue Infrastructure
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Connector arrow */}
+        {animated && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginTop: 0,
+              gap: 0,
+              animation: "dropAppear 0.5s ease 1.3s both",
+              opacity: 0,
+            }}
+          >
+            <div style={{ width: 1, height: 36, background: `linear-gradient(to bottom, ${CRIMSON_DIM}, ${CRIMSON})` }} />
+            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+              <path d="M5 8L0 0h10L5 8z" fill={CRIMSON} />
+            </svg>
+          </div>
+        )}
+
+        {/* Revenue Outcomes */}
+        {animated && (
+          <div
+            style={{
+              marginTop: 12,
+              border: `1px solid rgba(0,0,0,0.12)`,
+              padding: "20px 48px",
+              textAlign: "center",
+              animation: "dropAppear 0.5s ease 1.5s both",
+              opacity: 0,
+              position: "relative",
+              background: "#fafafa",
+            }}
+          >
+            <h3
+              style={{
+                fontFamily: "Georgia, serif",
+                fontWeight: 400,
+                fontSize: 20,
+                color: "#111",
+                margin: 0,
+                marginBottom: 6,
+                letterSpacing: "0.02em",
+              }}
+            >
+              Revenue Outcomes
+            </h3>
+            <p
+              style={{
+                fontFamily: "sans-serif",
+                fontSize: 11,
+                color: "rgba(0,0,0,0.4)",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                margin: 0,
+              }}
+            >
+              Growth&nbsp;&nbsp;·&nbsp;&nbsp;Efficiency&nbsp;&nbsp;·&nbsp;&nbsp;Predictability&nbsp;&nbsp;·&nbsp;&nbsp;Scalability
+            </p>
+          </div>
+        )}
+
+      </div>
+    </div>
+  );
 }
 
 // ─── SECTION 01: HERO ──────────────────────────────────────────────────────────
 function HeroSection() {
-  const [drawn, setDrawn] = useState(false)
-  useEffect(() => { const t = setTimeout(() => setDrawn(true), 400); return () => clearTimeout(t) }, [])
-
   const scrollToNext = () => {
     document.getElementById('canonical-definition')?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const inputs = [
-    { label: 'Strategy',   yPct: 15 },
-    { label: 'Technology', yPct: 30 },
-    { label: 'Data',       yPct: 50 },
-    { label: 'Processes',  yPct: 70 },
-    { label: 'People',     yPct: 85 },
-  ]
-  const CX = 420, CY = 200
-
   return (
-    <section className="bg-gws-dark text-white min-h-screen flex flex-col relative overflow-hidden pt-[88px] pb-14">
+    <section className="bg-gws-dark text-white min-h-[532px] flex flex-col relative overflow-hidden pt-[88px] pb-14">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.04]"
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       {/* Glow */}
-      <div className="absolute right-1/3 top-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-crimson/20 blur-[120px] pointer-events-none" />
+      <div className="absolute right-1/3 top-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-none bg-crimson/20 blur-[120px] pointer-events-none" />
 
       <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center`}>
-        <div className="grid lg:grid-cols-[1fr_560px] gap-16 items-center w-full">
+        <div className="w-full max-w-[720px]">
 
-          {/* Left copy */}
-          <div className="max-w-[800px]">
-            <SectionLabel num="01" label="REVENUE INFRASTRUCTURE" dark />
+          {/* Copy */}
+          <div>
+            <SectionLabel label="REVENUE INFRASTRUCTURE" dark />
             {/* H1 — 60px desktop / 40px mobile, DM Serif Display */}
-            <h1 className="font-serif font-normal text-[40px] md:text-[60px] leading-[1.08] tracking-tight mb-6 max-w-[760px]">
-              Revenue growth depends on the{' '}
-              <span className="text-crimson">system</span> behind it.
+            <h1 className="font-serif font-normal text-[40px] md:text-[60px] leading-[1.08] tracking-tight mb-6">
+              Revenue <span className="text-[#BE1E2D]">growth</span> depends on the{' '}
+              <span className="text-[#BE1E2D]">system</span> behind it.
             </h1>
             {/* Body Large — 20px desktop / 18px mobile */}
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-black mb-10 max-w-[560px]">
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-black max-w-[560px]">
               Revenue Infrastructure is the connected system of strategy, technology, data, processes, and execution that turns market opportunity into measurable revenue. When those parts work together, growth becomes easier to see, manage, and improve.
             </p>
-            {/* Primary CTA */}
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] h-12 px-8 rounded-none flex items-center gap-2.5">
-                BOOK A REVENUE DIAGNOSTIC <Icon name="arrow" s={16} c="white" />
-              </button>
-            </div>
-          </div>
-
-          {/* Right SVG visual — hidden below lg */}
-          <div className="hidden lg:block">
-            <svg viewBox="0 0 560 400" className="w-full" aria-hidden="true">
-              <defs>
-                <filter id="glow"><feGaussianBlur stdDeviation="10" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                <marker id="arrW" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="white" opacity="0.5"/>
-                </marker>
-              </defs>
-
-              {/* Paths from inputs to hub */}
-              {inputs.map((inp, i) => {
-                const sy = inp.yPct / 100 * 400
-                return (
-                  <path key={i}
-                    d={`M 90 ${sy} Q 255 ${sy} ${CX} ${CY}`}
-                    fill="none" stroke="white" strokeOpacity={0.2} strokeWidth={1.2}
-                    strokeDasharray="5 4"
-                    className={drawn ? 'path-draw' : ''}
-                    style={{ animationDelay: `${i * 0.18}s` }}
-                  />
-                )
-              })}
-
-              {/* Hub */}
-              <circle cx={CX} cy={CY} r={66} fill="#BE1E2D" filter="url(#glow)" />
-              <circle cx={CX} cy={CY} r={66} fill="#BE1E2D" />
-              {/* Hub text — 14px SVG inside visual element */}
-              <text x={CX} y={CY - 14} textAnchor="middle" fill="white" fontSize="13" fontWeight="600" letterSpacing="2" fontFamily="'DM Sans', sans-serif">REVENUE</text>
-              <text x={CX} y={CY + 4}  textAnchor="middle" fill="white" fontSize="13" fontWeight="600" letterSpacing="2" fontFamily="'DM Sans', sans-serif">INFRA-</text>
-              <text x={CX} y={CY + 22} textAnchor="middle" fill="white" fontSize="13" fontWeight="600" letterSpacing="2" fontFamily="'DM Sans', sans-serif">STRUCTURE</text>
-
-              {/* Output arrow */}
-              <line x1={CX + 68} y1={CY} x2={500} y2={CY} stroke="white" strokeOpacity={0.5} strokeWidth={1.5}
-                    markerEnd="url(#arrW)"
-                    className={drawn ? 'path-draw' : ''} style={{ animationDelay: '1.1s' }} />
-
-              {/* Revenue Outcomes box */}
-              <rect x={510} y={CY - 50} width={42} height={100} rx={4} fill="none" stroke="white" strokeOpacity={0.2} strokeWidth={1} />
-              <text x={531} y={CY - 24} textAnchor="middle" fill="white" fillOpacity={0.8} fontSize="10" fontFamily="'DM Sans', sans-serif">Revenue</text>
-              <text x={531} y={CY - 10} textAnchor="middle" fill="white" fillOpacity={0.8} fontSize="10" fontFamily="'DM Sans', sans-serif">Outcomes</text>
-              <line x1={516} y1={CY + 2} x2={546} y2={CY + 2} stroke="white" strokeOpacity={0.25} strokeWidth={0.8} />
-              {['Growth', 'Clarity', 'Scale'].map((t, i) => (
-                <text key={t} x={531} y={CY + 16 + i * 13} textAnchor="middle" fill="white" fillOpacity={0.4} fontSize="9" fontFamily="'DM Sans', sans-serif">{t}</text>
-              ))}
-
-              {/* Input nodes + labels */}
-              {inputs.map((inp, i) => {
-                const sy = inp.yPct / 100 * 400
-                return (
-                  <g key={i}>
-                    <circle cx={72} cy={sy} r={20} fill="white" fillOpacity={0.06} stroke="white" strokeOpacity={0.18} strokeWidth={1} />
-                    <text x={72} y={sy + 4} textAnchor="middle" fill="white" fillOpacity={0.6} fontSize="10" fontFamily="'DM Sans', sans-serif">{inp.label.slice(0, 3)}</text>
-                    <text x={28} y={sy + 4} textAnchor="middle" fill="white" fillOpacity={0.5} fontSize="11" fontFamily="'DM Sans', sans-serif">{inp.label}</text>
-                  </g>
-                )
-              })}
-            </svg>
+            {/* Primary CTA removed */}
           </div>
         </div>
       </div>
@@ -253,7 +589,7 @@ function HeroSection() {
         >
           <svg
             width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            stroke="#BE1E2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
             className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity animate-bounce"
             style={{ animationDuration: '2s' }}
           >
@@ -269,64 +605,29 @@ function HeroSection() {
 function CanonicalDefinitionSection() {
   const { ref, visible } = useReveal()
   const inputs = [
-    { label: 'Strategy',   Icon: () => <Icon name="target"   s={24} c="#6B7280" /> },
-    { label: 'Technology', Icon: () => <Icon name="monitor"  s={24} c="#6B7280" /> },
-    { label: 'Data',       Icon: () => <Icon name="database" s={24} c="#6B7280" /> },
-    { label: 'Processes',  Icon: () => <Icon name="gear"     s={24} c="#6B7280" /> },
-    { label: 'People',     Icon: () => <Icon name="heart"    s={24} c="#6B7280" /> },
+    { label: 'Strategy',   Icon: () => <Icon name="target"   s={24} c="#BE1E2D" /> },
+    { label: 'Technology', Icon: () => <Icon name="monitor"  s={24} c="#BE1E2D" /> },
+    { label: 'Data',       Icon: () => <Icon name="database" s={24} c="#BE1E2D" /> },
+    { label: 'Processes',  Icon: () => <Icon name="gear"     s={24} c="#BE1E2D" /> },
+    { label: 'People',     Icon: () => <Icon name="heart"    s={24} c="#BE1E2D" /> },
   ]
 
   return (
     <section id="canonical-definition" ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
       <div className={CONTAINER}>
-        <SectionLabel num="02" label="Canonical Definition" />
+        <SectionLabel label="Canonical Definition" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
-          {/* Intro — max 720 px */}
-          <p className="text-[17px] md:text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[720px]">
-            Revenue Infrastructure is the interconnected system through which a business creates demand, captures opportunity, converts buyers, delivers value, retains customers, and learns from the results. It includes the strategies, technologies, data, processes, people, and feedback loops that connect the entire revenue journey. It is not a marketing funnel, a CRM, a technology stack, or a collection of isolated tactics.
-          </p>
-
-          {/* Convergence diagram */}
-          <div className="flex flex-col items-center gap-8 max-w-[800px] mx-auto">
-            {/* Five inputs */}
-            <div className="flex gap-6 md:gap-12 justify-center flex-wrap">
-              {inputs.map((inp) => (
-                <div key={inp.label} className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 rounded-full border border-gray-200 bg-surface flex items-center justify-center">
-                    <inp.Icon />
-                  </div>
-                  <span className="text-[16px] font-sans text-gray-500 font-medium">{inp.label}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Convergence lines */}
-            <div className="w-full max-w-lg h-8 relative">
-              <svg viewBox="0 0 480 32" className="w-full h-full" aria-hidden="true">
-                {[40, 140, 240, 340, 440].map((x, i) => (
-                  <line key={i} x1={x} y1={0} x2={240} y2={32} stroke="#E5E7EB" strokeWidth={1.5} />
-                ))}
-              </svg>
-            </div>
-
-            {/* Revenue Infrastructure — central label */}
-            <div className="w-full max-w-lg bg-crimson text-white text-center py-5 rounded-none">
-              <span className="font-sans font-semibold text-[16px] tracking-[0.22em] uppercase">Revenue Infrastructure</span>
-            </div>
-
-            {/* Downward connector */}
-            <div className="flex flex-col items-center">
-              <div className="w-px h-8 bg-gray-300" />
-              <div className="w-0 h-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent border-t-gray-400" />
-            </div>
-
-            {/* Revenue Outcomes */}
-            <div className="border border-gray-200 rounded px-10 py-5 text-center">
-              {/* H3 — 28 px, DM Serif Display */}
-              <h3 className="font-serif font-normal text-[24px] md:text-[28px] leading-[1.25] text-gray-900 mb-2">Revenue Outcomes</h3>
-              <p className="text-[16px] font-sans text-gray-500">
-                Growth&thinsp;•&thinsp;Efficiency&thinsp;•&thinsp;Predictability&thinsp;•&thinsp;Scalability
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left column — text */}
+            <div>
+              <p className="text-[17px] md:text-[18px] leading-[1.65] text-gray-500 mb-8">
+                Revenue Infrastructure is the interconnected system through which a business creates demand, captures opportunity, converts buyers, delivers value, retains customers, and learns from the results. It includes the strategies, technologies, data, processes, people, and feedback loops that connect the entire revenue journey. It is not a marketing funnel, a CRM, a technology stack, or a collection of isolated tactics.
               </p>
+            </div>
+
+            {/* Right column — Infrastructure visuals from zip (direct JSX, animations/colors preserved) */}
+            <div className="w-full">
+              <InfraVisual />
             </div>
           </div>
         </div>
@@ -352,7 +653,7 @@ function WhyItMattersSection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel num="03" label="Why Revenue Infrastructure Matters" />
+        <SectionLabel label="Why Revenue Infrastructure Matters" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           {/* H2 */}
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
@@ -370,7 +671,7 @@ function WhyItMattersSection() {
                 {stages.map((s, i) => (
                   <div key={s.label} className="flex items-center flex-1">
                     <div className="flex flex-col items-center flex-1">
-                      <div className="w-14 h-14 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-none bg-white border border-gray-200 shadow-sm flex items-center justify-center">
                         <Icon name={s.icon} s={22} c="#374151" />
                       </div>
                     </div>
@@ -425,7 +726,7 @@ function NineDomainSection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white">
       <div className={CONTAINER}>
-        <SectionLabel num="04" label="Nine-Domain Framework" />
+        <SectionLabel label="Nine-Domain Framework" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             Nine domains. One connected system.
@@ -445,11 +746,11 @@ function NineDomainSection() {
                   key={d.id}
                   className="text-left rounded-none border p-7 transition-all duration-200 focus:outline-none group"
                   style={{
-                    borderColor:  isActive ? '#BE1E2D' : '#E5E7EB',
+                    borderColor:  isActive ? '#841617' : '#E5E7EB',
                     background:   isActive ? '#FFF1F2' : 'white',
                     opacity:      isOther ? 0.45 : 1,
                     boxShadow:    isActive
-                      ? '0 0 0 3px rgba(190,30,45,0.08), 0 4px 16px rgba(190,30,45,0.1)'
+                      ? '0 0 0 3px rgba(132,22,23,0.08), 0 4px 16px rgba(132,22,23,0.1)'
                       : '0 1px 4px rgba(0,0,0,0.05)',
                   }}
                   onMouseEnter={() => setActiveDomain(d.id)}
@@ -460,13 +761,13 @@ function NineDomainSection() {
                   <div className="flex items-start justify-between mb-5">
                     <div
                       className="w-11 h-11 rounded-none flex items-center justify-center transition-colors duration-200"
-                      style={{ background: isActive ? '#BE1E2D' : '#F3F4F6' }}
+                      style={{ background: isActive ? '#841617' : '#F3F4F6' }}
                     >
                       <Icon name={icon} s={20} c={isActive ? 'white' : '#4B5563'} />
                     </div>
                     <span
                       className="font-sans font-bold text-[12px] tracking-[0.14em]"
-                      style={{ color: isActive ? '#BE1E2D' : '#D1D5DB' }}
+                      style={{ color: isActive ? '#841617' : '#D1D5DB' }}
                     >
                       {String(d.id).padStart(2, '0')}
                     </span>
@@ -475,7 +776,7 @@ function NineDomainSection() {
                   {/* Domain name */}
                   <h4
                     className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.3] mb-3"
-                    style={{ color: isActive ? '#BE1E2D' : '#111827' }}
+                    style={{ color: isActive ? '#841617' : '#111827' }}
                   >
                     {d.name}
                   </h4>
@@ -496,232 +797,283 @@ function NineDomainSection() {
 
 // ─── SECTION 05: REVENUE INFRASTRUCTURE FLYWHEEL ────────────────────────────────────────
 function RevenueInfrastructureFlywheelSection() {
-  const { ref, visible } = useReveal()
-  const [hovered, setHovered] = useState<number | null>(null)
+  const [active, setActive] = useState<number | null>(null)
+  const CX = 350
+  const CY = 350
+  const RING_R = 190
+  const NODE_R = 32
+  const LABEL_R = 258
+  const HUB_R = 78
+  const RED = '#BE1E2D'
 
-  // The six forces of the Revenue Infrastructure Flywheel
-  const forces = [
-    { id: 1, name: 'Visibility',      icon: 'eye',       desc: 'Ensures the right audience discovers and recognizes the brand' },
-    { id: 2, name: 'Trust',           icon: 'target',    desc: 'Builds credibility and confidence in the brand and offering' },
-    { id: 3, name: 'Conversion',      icon: 'magnet',    desc: 'Turns interest into qualified leads and customers' },
-    { id: 4, name: 'Operations',      icon: 'database',  desc: 'Delivers value consistently and efficiently' },
-    { id: 5, name: 'Intelligence',    icon: 'chart',     desc: 'Captures insights and learns from performance data' },
-    { id: 6, name: 'Optimization',    icon: 'gear',      desc: 'Applies learnings to improve the entire system' },
+  const STEPS = [
+    { n: '01', label: 'Discover',  sub: 'Surface insights'    },
+    { n: '02', label: 'Define',    sub: 'Frame the challenge'  },
+    { n: '03', label: 'Design',    sub: 'Shape solutions'      },
+    { n: '04', label: 'Develop',   sub: 'Build precisely'      },
+    { n: '05', label: 'Deploy',    sub: 'Ship confidently'     },
+    { n: '06', label: 'Measure',   sub: 'Learn and iterate'    },
   ]
 
-  // SVG coordinate space for the flywheel (circular layout)
-  const VW = 600, VH = 600
-  const centerX = VW / 2, centerY = VH / 2
-  const radius = 180
-  const nodeR = 28
+  const step = active !== null ? STEPS[active] : null
 
-  // Calculate positions for the six forces in a circle
-  const positions = forces.map((_, i) => {
-    const angle = (i / forces.length) * 2 * Math.PI - Math.PI / 2 // Start at top
-    return {
-      x: centerX + radius * Math.cos(angle),
-      y: centerY + radius * Math.sin(angle)
-    }
-  })
+  const ANCHORS = ['middle', 'start', 'start', 'middle', 'end', 'end'] as const
+  const toRad = (d: number) => (d * Math.PI) / 180
+  const ANGS = STEPS.map((_, i) => toRad(-90 + i * 60))
+
+  const nodePts = ANGS.map(a => ({ x: CX + RING_R * Math.cos(a), y: CY + RING_R * Math.sin(a) }))
+  const labelPts = ANGS.map(a => ({ x: CX + LABEL_R * Math.cos(a), y: CY + LABEL_R * Math.sin(a) }))
+
+  const GAP = Math.asin((NODE_R + 8) / RING_R)
+
+  function arcPath(i: number) {
+    const j = (i + 1) % 6
+    const a1 = ANGS[i] + GAP
+    const a2 = ANGS[j] - GAP
+    const x1 = (CX + RING_R * Math.cos(a1)).toFixed(2)
+    const y1 = (CY + RING_R * Math.sin(a1)).toFixed(2)
+    const x2 = (CX + RING_R * Math.cos(a2)).toFixed(2)
+    const y2 = (CY + RING_R * Math.sin(a2)).toFixed(2)
+    return `M ${x1} ${y1} A ${RING_R} ${RING_R} 0 0 1 ${x2} ${y2}`
+  }
+
+  // Cookie-cutter tags — disable circular corners sitewide
+  const zeroRadius = { borderRadius: 0 }
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface">
-      <div className={CONTAINER}>
-        <SectionLabel num="05" label="Revenue Infrastructure Flywheel" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
-            Revenue Infrastructure compounds when the system reinforces itself.
-          </h2>
-          <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Each strength builds on the previous, creating a self-reinforcing cycle of growth.
-          </p>
-
-          {/* ── Desktop flywheel diagram ── */}
-          <div className="hidden lg:block">
-            <div className="relative w-full" style={{ aspectRatio: `${VW} / ${VH}` }}>
-              {/* SVG: flywheel geometry and connections */}
-              <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${VW} ${VH}`} aria-hidden="true">
-                <defs>
-                  {/* Arrow markers for connections */}
-                  <marker id="flywheel-arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                    <path d="M0,0 L0,8 L8,4 z" fill="#BE1E2D" />
-                  </marker>
-                  <marker id="flywheel-arrow-active" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-                    <path d="M0,0 L0,8 L8,4 z" fill="#BE1E2D" />
-                  </marker>
-                </defs>
-
-                {/* Circular path for the flywheel */}
-                <path
-                  d={`M ${centerX + radius},${centerY}
-                     A ${radius},${radius} 0 1,1 ${centerX - radius},${centerY}
-                     A ${radius},${radius} 0 1,1 ${centerX + radius},${centerY}`}
-                  fill="none"
-                  stroke="#E5E7EB"
-                  strokeWidth="2"
-                />
-
-                {/* Connections between forces (arrows) */}
-                {forces.map((force, i) => {
-                  const nextIndex = (i + 1) % forces.length
-                  const fromPos = positions[i]
-                  const toPos = positions[nextIndex]
-
-                  // Calculate arrow positioning on the circle
-                  const angleFrom = Math.atan2(fromPos.y - centerY, fromPos.x - centerX)
-                  const angleTo = Math.atan2(toPos.y - centerY, toPos.x - centerX)
-
-                  const fromX = centerX + (radius - nodeR) * Math.cos(angleFrom)
-                  const fromY = centerY + (radius - nodeR) * Math.sin(angleFrom)
-                  const toX = centerX + (radius - nodeR) * Math.cos(angleTo)
-                  const toY = centerY + (radius - nodeR) * Math.sin(angleTo)
-
-                  const isActive = hovered === force.id || hovered === forces[nextIndex].id
-
-                  return (
-                    <path
-                      key={i}
-                      d={`M ${fromX},${fromY} L ${toX},${toY}`}
-                      fill="none"
-                      stroke={isActive ? '#BE1E2D' : '#E5E7EB'}
-                      strokeWidth={isActive ? 2 : 1.5}
-                      markerEnd="url(#flywheel-arrow)"
-                      style={{ transition: 'stroke 0.3s, stroke-width 0.3s' }}
-                    />
-                  )
-                })}
-
-                {/* Pulse animation - one signal traveling around the loop */}
-                {/* This would be implemented with CSS animation or SMIL in a real implementation */}
-                {/* For now, we'll show the complete state */}
-              </svg>
-
-              {/* HTML nodes (force labels) positioned over SVG */}
-              {forces.map((force, i) => {
-                const pos = positions[i]
-                const xPct = (pos.x / VW) * 100
-                const yPct = (pos.y / VH) * 100
-                const isActive = hovered === force.id
-                const isOther = hovered !== null && !isActive
-
-                return (
-                  <div key={force.id}>
-                    {/* Force button/node */}
-                    <button
-                      className="absolute flex items-center justify-center transition-all duration-200 focus:outline-none"
-                      style={{
-                        width: 56, height: 56,
-                        left: `${xPct}%`, top: `${yPct}%`,
-                        transform: 'translate(-50%, -50%)',
-                        background: isActive ? '#BE1E2D' : 'white',
-                        border: `${isActive ? 2 : 1.5}px solid ${isActive ? 'white' : '#E5E7EB'}`,
-                        color: isActive ? 'white' : '#4B5563',
-                        opacity: isOther ? 0.3 : 1,
-                        boxShadow: isActive
-                          ? '0 0 0 4px rgba(190,30,45,0.15), 0 3px 8px rgba(190,30,45,0.2)'
-                          : '0 1px 3px rgba(0,0,0,0.1)',
-                        zIndex: 10
-                      }}
-                      onMouseEnter={() => setHovered(force.id)}
-                      onMouseLeave={() => setHovered(null)}
-                      aria-label={force.name}
-                    >
-                      <Icon name={force.icon} s={20} c={isActive ? 'white' : '#4B5563'} />
-                    </button>
-
-                    {/* Force label */}
-                    <div
-                      className="absolute pointer-events-none text-center"
-                      style={{
-                        left: `${xPct}%`,
-                        top: `${((pos.y + nodeR + 18) / VH) * 100}%`,
-                        width: 80,
-                        transform: 'translateX(-50%)',
-                        textAlign: 'center',
-                        opacity: isOther ? 0.2 : 1,
-                        transition: 'opacity 0.2s',
-                        zIndex: 10
-                      }}
-                    >
-                      <span className="block font-sans font-semibold text-[11px] tracking-[0.15em]"
-                        style={{ color: isActive ? '#BE1E2D' : '#6B7280' }}>
-                        {String(force.id).padStart(2, '0')}
-                      </span>
-                      <span className="block font-sans font-semibold text-[14px]"
-                        style={{ color: isActive ? '#BE1E2D' : '#1F2937', marginTop: 2 }}>
-                        {force.name}
-                      </span>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-
-            {/* Description panel */}
-            <div className="mt-6 text-center space-y-3">
-              {hovered ? (
-                <div>
-                  <h3 className="font-serif font-normal text-[24px] md:text-[28px] leading-[1.25]">
-                    {forces[hovered - 1].name}
-                  </h3>
-                  <p className="text-[16px] font-sans text-gray-600 leading-[1.6] max-w-[500px] mx-auto">
-                    {forces[hovered - 1].desc}
-                  </p>
-                </div>
-              ) : (
-                <p className="text-[16px] font-sans text-gray-500">
-                  Hover any force to see how it strengthens the next
-                </p>
-              )}
-            </div>
+    <section className="py-[40px] bg-[#000000] text-white relative overflow-hidden" style={zeroRadius}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left column — text */}
+          <div>
+            <p className="text-[18px] font-sans font-semibold text-[#BE1E2D] tracking-[0.18em] uppercase mb-4">
+              05&ensp;Revenue Infrastructure Flywheel
+            </p>
+            <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-white mb-5 max-w-[720px]">
+              <span style={{ color: '#BE1E2D' }}>Revenue Infrastructure</span> <span style={{ color: '#ffffff' }}>compounds when the system reinforces itself.</span>
+            </h2>
+            <p className="text-[18px] leading-[1.65] text-white/60 mb-16 max-w-[620px]">
+              Each strength builds on the previous, creating a self-reinforcing cycle of growth.
+            </p>
           </div>
 
-          {/* ── Mobile: vertical sequence ── */}
-          <div className="lg:hidden mt-4 space-y-6">
-            {forces.map((force, i) => (
-              <div key={force.id} className="flex items-start gap-4">
-                {/* Force indicator */}
-                <div className="flex-shrink-0 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-none"
-                    style={{
-                      background: '#BE1E2D',
-                      color: 'white',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: 10,
-                      fontWeight: 600
-                    }}>
-                    {String(force.id).padStart(2, '0')}
-                  </div>
-                </div>
+          {/* Right column — flywheel */}
+          <div className="flex items-center justify-center py-10 lg:py-0" style={{ minHeight: '560px' }}>
+            <div className="relative" style={{ width: 'min(700px, 100vw)', height: '136vh', maxHeight: '1400px', aspectRatio: '1' }}>
+            <svg viewBox="0 0 700 700" style={{ width: '100%', height: '100%' }} aria-hidden="true">
+              <defs>
+                <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor={RED} stopOpacity="0.1" />
+                  <stop offset="100%" stopColor={RED} stopOpacity="0" />
+                </radialGradient>
+                <radialGradient id="hub-fill" cx="40%" cy="35%" r="60%">
+                  <stop offset="0%" stopColor="#1A1A1A" />
+                  <stop offset="100%" stopColor="#000000" />
+                </radialGradient>
+                <radialGradient id="node-active" cx="40%" cy="35%" r="65%">
+                  <stop offset="0%" stopColor="#E8253A" />
+                  <stop offset="100%" stopColor="#7A0010" />
+                </radialGradient>
+                <filter id="arrow-glow" x="-60%" y="-60%" width="220%" height="220%" colorInterpolationFilters="sRGB">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <marker id="tip" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+                  <path d="M0,2 L0,8 L9,5 z" fill={RED} />
+                </marker>
+              </defs>
 
-                {/* Force content */}
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <Icon name={force.icon} s={18} c="#BE1E2D" />
-                    <h3 className="font-serif font-normal text-[20px] md:text-[22px] leading-[1.3]">
-                      {force.name}
-                    </h3>
-                  </div>
-                  <p className="text-[16px] font-sans text-gray-600 leading-[1.6]">
-                    {force.desc}
-                  </p>
-                </div>
+              {/* Background radial glow */}
+              <circle cx={CX} cy={CY} r={250} fill="url(#bg-glow)" />
 
-                {/* Connection arrow (except for last item) */}
-                {i < forces.length - 1 && (
-                  <div className="w-2 h-2 flex items-center justify-center mt-4">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M4 8L8 12M8 12L12 8" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
+              {/* Outer orbit ring */}
+              <circle cx={CX} cy={CY} r={220} fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+
+              {/* Main track ring */}
+              <circle cx={CX} cy={CY} r={RING_R} fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="1.5" />
+
+              {/* Spinning dashed highlight */}
+              <circle
+                cx={CX} cy={CY} r={RING_R}
+                fill="none"
+                stroke={RED}
+                strokeOpacity="0.28"
+                strokeWidth="1"
+                strokeDasharray="4 30"
+                style={{
+                  transformBox: 'fill-box',
+                  transformOrigin: 'center',
+                  animation: 'ring-spin 18s linear infinite',
+                }}
+              />
+
+              {/* Arc arrows */}
+              {STEPS.map((_, i) => {
+                const dim = active !== null && active !== i
+                return (
+                  <g key={i} style={{ transition: 'opacity 0.3s ease' }} opacity={dim ? 0.18 : 1}>
+                    {/* soft glow layer */}
+                    <path
+                      d={arcPath(i)}
+                      fill="none"
+                      stroke={RED}
+                      strokeWidth="7"
+                      strokeLinecap="round"
+                      opacity="0.15"
+                    />
+                    {/* main arc */}
+                    <path
+                      d={arcPath(i)}
+                      fill="none"
+                      stroke={RED}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      markerEnd="url(#tip)"
+                    />
+                  </g>
+                )
+              })}
+
+              {/* Center hub */}
+              <circle cx={CX} cy={CY} r={HUB_R + 6} fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+              <circle cx={CX} cy={CY} r={HUB_R} fill="url(#hub-fill)" stroke="rgba(255,255,255,0.09)" strokeWidth="1" />
+
+              {/* Hub default label */}
+              {active === null && (
+                <text
+                  x={CX} y={CY}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill="rgba(255,255,255,0.22)"
+                  fontSize="15"
+                  fontWeight="700"
+                  letterSpacing="0.2em"
+                  fontFamily="'Inter', system-ui, sans-serif"
+                >
+                  FLYWHEEL
+                </text>
+              )}
+
+              {/* Hub active content */}
+              {step && (
+                <>
+                  <text x={CX} y={CY - 28} textAnchor="middle" dominantBaseline="middle"
+                    fill={RED} fontSize="15" fontWeight="700" letterSpacing="0.15em"
+                    fontFamily="'Inter', system-ui, sans-serif">
+                    {step.n}
+                  </text>
+                  <text x={CX} y={CY + 3} textAnchor="middle" dominantBaseline="middle"
+                    fill="white" fontSize="24" fontWeight="700" letterSpacing="0.01em"
+                    fontFamily="'Inter', system-ui, sans-serif">
+                    {step.label}
+                  </text>
+                  <text x={CX} y={CY + 33} textAnchor="middle" dominantBaseline="middle"
+                    fill="rgba(255,255,255,0.4)" fontSize="15" fontWeight="400"
+                    fontFamily="'Inter', system-ui, sans-serif">
+                    {step.sub}
+                  </text>
+                </>
+              )}
+
+              {/* Node circles */}
+              {STEPS.map((s, i) => {
+                const { x, y } = nodePts[i]
+                const isActive = active === i
+                return (
+                  <g
+                    key={i}
+                    style={{ cursor: 'pointer' }}
+                    onMouseEnter={() => setActive(i)}
+                    onMouseLeave={() => setActive(null)}
+                  >
+                    {/* outer glow ring on hover */}
+                    <circle
+                      cx={x} cy={y} r={NODE_R + 14}
+                      fill={RED}
+                      opacity={isActive ? 0.12 : 0}
+                      style={{ transition: 'opacity 0.25s ease' }}
+                    />
+                    {/* node body */}
+                    <circle
+                      cx={x} cy={y} r={NODE_R}
+                      fill={isActive ? 'url(#node-active)' : '#0D1122'}
+                      stroke={isActive ? RED : 'rgba(255,255,255,0.2)'}
+                      strokeWidth={isActive ? '2' : '1.5'}
+                      style={{ transition: 'fill 0.25s ease, stroke 0.25s ease' }}
+                    />
+                    {/* step number */}
+                    <text
+                      x={x} y={y}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fill={isActive ? 'white' : 'rgba(255,255,255,0.45)'}
+                      fontSize="18"
+                      fontWeight="600"
+                      letterSpacing="0.05em"
+                      fontFamily="'Inter', system-ui, sans-serif"
+                      style={{ transition: 'fill 0.25s', userSelect: 'none' }}
+                    >
+                      {s.n}
+                    </text>
+                  </g>
+                )
+              })}
+
+              {/* Outer labels */}
+              {STEPS.map((s, i) => {
+                const { x, y } = labelPts[i]
+                const anchor = ANCHORS[i]
+                const isActive = active === i
+                const dimmed = active !== null && !isActive
+                return (
+                  <g
+                    key={i}
+                    style={{ cursor: 'pointer' }}
+                    onMouseEnter={() => setActive(i)}
+                    onMouseLeave={() => setActive(null)}
+                  >
+                    <text
+                      x={x} y={y - 14}
+                      textAnchor={anchor}
+                      dominantBaseline="middle"
+                      fill={dimmed ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.88)'}
+                      fontSize="20"
+                      fontWeight="600"
+                      letterSpacing="0.01em"
+                      fontFamily="'Inter', system-ui, sans-serif"
+                      style={{ transition: 'fill 0.3s', userSelect: 'none' }}
+                    >
+                      {s.label}
+                    </text>
+                    <text
+                      x={x} y={y + 18}
+                      textAnchor={anchor}
+                      dominantBaseline="middle"
+                      fill={isActive ? `${RED}cc` : dimmed ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)'}
+                      fontSize="14"
+                      fontWeight="400"
+                      fontFamily="'Inter', system-ui, sans-serif"
+                      style={{ transition: 'fill 0.3s', userSelect: 'none' }}
+                    >
+                      {s.sub}
+                    </text>
+                  </g>
+                )
+              })}
+            </svg>
+            </div>
           </div>
         </div>
       </div>
+      <style>{`
+        @keyframes ring-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </section>
   )
 }
@@ -746,9 +1098,9 @@ function FragmentedVsConnectedSection() {
   const xs = [44, 136, 228, 320, 412]
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[72px] md:py-[112px] bg-white">
+    <section ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[112px] bg-white">
       <div className={CONTAINER}>
-        <SectionLabel num="06" label="Fragmented vs Connected" />
+        <SectionLabel label="Fragmented vs Connected" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             Same components. Very different outcomes.
@@ -955,7 +1307,7 @@ function RevenueLeakageSection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel num="07" label="Revenue Leakage Points" />
+        <SectionLabel label="Revenue Leakage Points" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             Value is lost at the gaps between systems.
@@ -1038,7 +1390,7 @@ function InfrastructureMaturitySection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
       <div className={CONTAINER}>
-        <SectionLabel num="08" label="Revenue Infrastructure Maturity" />
+        <SectionLabel label="Revenue Infrastructure Maturity" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             Most organisations are somewhere on the journey.
@@ -1120,7 +1472,7 @@ function TraditionalVsRISection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel num="09" label="Traditional Approaches vs Revenue Infrastructure" />
+        <SectionLabel label="Traditional Approaches vs Revenue Infrastructure" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
             Specialists optimise a part. Revenue Infrastructure orchestrates the whole.
@@ -1196,7 +1548,7 @@ function HowGWSAppliesSection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
       <div className={CONTAINER}>
-        <SectionLabel num="10" label="How GWS Applies the Framework" />
+        <SectionLabel label="How GWS Applies the Framework" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             Our process aligns your infrastructure to drive predictable growth.
@@ -1290,7 +1642,7 @@ function BusinessOutcomesSection() {
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel num="11" label="Business Outcomes" />
+        <SectionLabel label="Business Outcomes" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
             A stronger system. Better results.
@@ -1331,35 +1683,35 @@ function DiagnosticCTASection() {
   })
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-gws-dark text-white relative overflow-hidden">
+    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface text-gray-900 relative overflow-hidden border-t border-[#D8D5CE]">
       {/* Dot grid */}
-      <div className="absolute inset-0 opacity-[0.04]"
-           style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+      <div className="absolute inset-0 opacity-[0.06]"
+           style={{ backgroundImage: 'radial-gradient(circle, #BE1E2D 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       {/* Crimson glow */}
-      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[300px] bg-crimson/15 blur-[100px] pointer-events-none" />
+      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[300px] bg-crimson/10 blur-[100px] pointer-events-none" />
       {/* System motif */}
       <div className="absolute right-16 top-1/2 -translate-y-1/2 opacity-[0.07] hidden lg:block" aria-hidden="true">
         <svg viewBox="0 0 140 140" width={280} height={280}>
-          <circle cx={70} cy={70} r={50} fill="none" stroke="white" strokeWidth={0.8} strokeDasharray="4 3"/>
-          <circle cx={70} cy={70} r={18} fill="white" fillOpacity={0.3}/>
+          <circle cx={70} cy={70} r={50} fill="none" stroke="#BE1E2D" strokeWidth={0.8} strokeDasharray="4 3"/>
+          <circle cx={70} cy={70} r={18} fill="#BE1E2D" fillOpacity={0.3}/>
           {bgDomains.map((p, i) => (
             <g key={i}>
-              <circle cx={p.x} cy={p.y} r={7} fill="none" stroke="white" strokeWidth={0.8}/>
-              <line x1={70} y1={70} x2={p.x} y2={p.y} stroke="white" strokeWidth={0.5} strokeOpacity={0.5}/>
+              <circle cx={p.x} cy={p.y} r={7} fill="none" stroke="#BE1E2D" strokeWidth={0.8}/>
+              <line x1={70} y1={70} x2={p.x} y2={p.y} stroke="#BE1E2D" strokeWidth={0.5} strokeOpacity={0.5}/>
             </g>
           ))}
         </svg>
       </div>
 
       <div className={`${CONTAINER} relative z-10 text-center`}>
-        <SectionLabel num="12" label="Revenue Diagnostic CTA" dark />
+        <SectionLabel label="Revenue Diagnostic CTA" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           {/* H2 */}
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[720px] mx-auto">
             Start with the{' '}
             <span className="text-crimson">system.</span>
           </h2>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/60 mb-10 max-w-[560px] mx-auto">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-500 mb-10 max-w-[560px] mx-auto">
             Find where your Revenue Infrastructure is helping — or limiting — growth.
           </p>
 
@@ -1367,22 +1719,26 @@ function DiagnosticCTASection() {
           <ul className="flex flex-col items-center gap-3 mb-12">
             {ctaItems.map(item => (
               <li key={item} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-none bg-crimson/25 border border-crimson/50 flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-none bg-crimson/10 border border-crimson/40 flex items-center justify-center shrink-0">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
                     <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#BE1E2D" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <span className="text-[18px] font-sans text-white/75">{item}</span>
+                <span className="text-[18px] font-sans text-gray-600">{item}</span>
               </li>
             ))}
           </ul>
 
           {/* CTA button — 16 px semibold, 48 px height */}
-          <button className="bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] h-12 px-10 rounded-none flex items-center gap-3 mx-auto">
+          <a
+            href="/revenue-diagnostic"
+            style={{ color: '#ffffff', backgroundColor: '#BE1E2D' }}
+            className="inline-flex items-center justify-center bg-[#BE1E2D] hover:bg-[#721315] transition-colors !text-white visited:!text-white focus:!text-white active:!text-white font-['DM_Sans'] font-semibold text-[16px] h-12 px-8 rounded w-fit mx-auto no-underline hover:no-underline"
+          >
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
-          </button>
+          </a>
 
-          <p className="font-sans text-white/25 text-[14px] mt-12 tracking-wide">
+          <p className="font-sans text-gray-400 text-[14px] mt-20 tracking-wide">
             One system. Real alignment. Predictable growth.
           </p>
         </div>

@@ -1,10 +1,14 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
 import { shouldCompactStickyHeader } from "@/lib/stickyHeader";
 
 const OFFICIAL_LOGO = "/assets/images/branding/growthworks-official-logo.png";
+
+function navigateTo(href: string) {
+  window.scrollTo(0, 0);
+  window.location.href = href;
+}
 
 function AnchorLink({ href, children, className, onClick, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
   return <a className={className} href={href} onClick={onClick} {...props}>{children}</a>;
@@ -14,7 +18,7 @@ export default function SiteHeader() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null);
   const [isHeaderCompact, setHeaderCompact] = useState(false);
-  const [, setLocation] = useLocation();
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
 
   useEffect(() => {
     const updateHeaderState = () => {
@@ -44,10 +48,11 @@ export default function SiteHeader() {
           <div className="desktop-nav-links">
             {GWS_NAV_GROUPS.map((group) => {
               const isOpen = activeDesktopMenu === group.label;
+              const groupIsActive = currentPath === group.href || group.items.some((item) => item.href === currentPath);
               const menuId = `desktop-menu-${group.label.toLowerCase().replaceAll(" ", "-")}`;
               return (
                 <div key={group.label} className="nav-group" onMouseEnter={() => setActiveDesktopMenu(group.label)}>
-                  <button type="button" className={`nav-link nav-link--group ${isOpen ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => { setLocation(group.href); setActiveDesktopMenu(null); }}>
+                  <button type="button" className={`nav-link nav-link--group ${isOpen || groupIsActive ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => { navigateTo(group.href); setActiveDesktopMenu(null); }}>
                     {group.label}<ChevronDown size={13} aria-hidden="true" />
                   </button>
                   {isOpen && <div id={menuId} className="desktop-dropdown" role="menu" aria-label={`${group.label} menu`}>
@@ -56,7 +61,10 @@ export default function SiteHeader() {
                 </div>
               );
             })}
-            {GWS_NAV_LINKS.map((item) => <AnchorLink key={item.label} href={item.href} className="nav-link" onClick={() => setActiveDesktopMenu(null)}>{item.label}</AnchorLink>)}
+            {GWS_NAV_LINKS.map((item) => {
+              const linkIsActive = currentPath === item.href;
+              return <AnchorLink key={item.label} href={item.href} className={`nav-link ${linkIsActive ? "is-active" : ""}`} onClick={() => setActiveDesktopMenu(null)}>{item.label}</AnchorLink>;
+            })}
           </div>
         </nav>
         <div className="header-actions">
@@ -65,7 +73,7 @@ export default function SiteHeader() {
         </div>
       </div>
       <div className={`mobile-nav ${mobileNavOpen ? "is-open" : ""}`}><nav className="site-shell" aria-label="Mobile primary navigation">
-        {GWS_NAV_GROUPS.map((group) => <div className="mobile-nav-group" key={group.label}><button type="button" className="mobile-nav-link" onClick={() => { setLocation(group.href); setMobileNavOpen(false); }}>{group.label}</button><div className="mobile-nav-submenu">{group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-sublink" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}</div></div>)}
+        {GWS_NAV_GROUPS.map((group) => <div className="mobile-nav-group" key={group.label}><button type="button" className="mobile-nav-link" onClick={() => { navigateTo(group.href); setMobileNavOpen(false); }}>{group.label}</button><div className="mobile-nav-submenu">{group.items.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-sublink" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}</div></div>)}
         {GWS_NAV_LINKS.map((item) => <AnchorLink key={item.label} href={item.href} className="mobile-nav-link" onClick={() => setMobileNavOpen(false)}>{item.label}</AnchorLink>)}
       </nav></div>
     </header>

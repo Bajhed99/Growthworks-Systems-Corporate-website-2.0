@@ -21,23 +21,18 @@ export function SolutionsBusinessOutcomesSection() {
             { label: 'CONVERT CONSISTENTLY', desc: 'Give people and systems the context necessary to move qualified opportunities toward revenue with less friction through Sales Operations.' },
             { label: 'IMPROVE & SCALE', desc: 'Connect performance signals back into decisions so the business can improve and identify the next constraint through Revenue Intelligence.' },
           ].map(outcome => (
-            <article key={outcome.label} style={{
+            <article key={outcome.label} className="rounded-2xl border border-gray-200 bg-white" style={{
               width: 'calc((100% - 16px) / 2)',
               minWidth: '280px',
               maxWidth: '560px',
-              background: '#fff',
-              border: '1px solid #DDD6CC',
-              borderRadius: 0,
               padding: '24px',
             }} aria-label={outcome.label}>
-              <h3 style={{
-                fontFamily: 'DM Serif Display, Georgia, serif',
-                fontSize: '22px', fontWeight: 400, color: '#841617',
+              <h3 className="font-serif text-crimson" style={{
+                fontSize: '22px', fontWeight: 400,
                 letterSpacing: '0.02em', lineHeight: 1.2,
                 marginBottom: '12px',
               }}>{outcome.label}</h3>
               <p style={{
-                fontFamily: 'DM Sans, system-ui, sans-serif',
                 fontSize: '15px', color: '#334155', lineHeight: 1.65,
               }}>{outcome.desc}</p>
             </article>

@@ -996,10 +996,10 @@
     "semantic_hash": ""
   },
   "client/src/pages/NotFound.tsx": {
-    "mtime": 1788542681.1736069,
-    "seen": 1788780432.2755675,
-    "ast_hash": "3fba63d47b01ab17f48efa6ba38c24ef",
-    "semantic_hash": ""
+    "mtime": 1788208320.4880393,
+    "seen": 1788370171.972371,
+    "ast_hash": "9003d82eb8ae3e14409648f90ab30373",
+    "semantic_hash": "9003d82eb8ae3e14409648f90ab30373"
   },
   "components.json": {
     "mtime": 315417600.0,
@@ -1158,15 +1158,15 @@
     "semantic_hash": ""
   },
   "client/src/components/SiteHeader.tsx": {
-    "mtime": 1788776533.5078523,
-    "seen": 1788780432.2752671,
-    "ast_hash": "8a658b7cc208b23bbcf41c9f8da39d90",
+    "mtime": 1788532986.1539004,
+    "seen": 1788535405.2409678,
+    "ast_hash": "09d7930640792969abab0bf43be0cf7c",
     "semantic_hash": ""
   },
   "client/src/pages/AIReadyWebsite.tsx": {
-    "mtime": 1788546828.5317833,
-    "seen": 1788780432.2755446,
-    "ast_hash": "9fc624d001c24b321cc236b205abf800",
+    "mtime": 1788532985.59558,
+    "seen": 1788535405.2410877,
+    "ast_hash": "15c9665546b856707e56ea097bf258c7",
     "semantic_hash": ""
   },
   "client/src/pages/AIVisibility.tsx": {
@@ -1176,69 +1176,69 @@
     "semantic_hash": ""
   },
   "client/src/pages/About.tsx": {
-    "mtime": 1788780410.3420126,
-    "seen": 1788780432.2755492,
-    "ast_hash": "7dd3f2db737d8070d2f826972df6548a",
+    "mtime": 1788534358.1269505,
+    "seen": 1788535405.24109,
+    "ast_hash": "010b0e6311384701725b9a6c0b00c261",
     "semantic_hash": ""
   },
   "client/src/pages/CRMAutomation.tsx": {
-    "mtime": 1788544735.3247037,
-    "seen": 1788780432.2755518,
-    "ast_hash": "5e5ededb8bc2ebd386d3310252b82663",
+    "mtime": 1788533199.9415503,
+    "seen": 1788535405.241091,
+    "ast_hash": "5505e2329cdd99e7e1e0fe7a50211a1f",
     "semantic_hash": ""
   },
   "client/src/pages/ConversionSystems.tsx": {
-    "mtime": 1788541085.5318353,
-    "seen": 1788780432.2755532,
-    "ast_hash": "f904a2b07aec545120dee3e8ccb75ef9",
+    "mtime": 1788532985.731682,
+    "seen": 1788535405.2410922,
+    "ast_hash": "8cf949f64ec9e92a8ad500df83586e6d",
     "semantic_hash": ""
   },
   "client/src/pages/DiagnosticPlatform.tsx": {
-    "mtime": 1788541301.8260596,
-    "seen": 1788780432.2755551,
-    "ast_hash": "9a81099adfb1047df0a11013f6f02191",
+    "mtime": 1788533804.8670673,
+    "seen": 1788535405.2410932,
+    "ast_hash": "9a427a25c3d05d14624df7c0e5e19bcc",
     "semantic_hash": ""
   },
   "client/src/pages/FinancialAdvisors.tsx": {
-    "mtime": 1788542280.7774327,
-    "seen": 1788780432.2755566,
-    "ast_hash": "fe2ce442221e696709caf1c97f8027e6",
+    "mtime": 1788532985.7532845,
+    "seen": 1788535405.2410939,
+    "ast_hash": "891669a7c0547965ef6b6937f4f8896a",
     "semantic_hash": ""
   },
   "client/src/pages/Framework.tsx": {
-    "mtime": 1788780022.5234826,
-    "seen": 1788780432.2755582,
-    "ast_hash": "594f573a8a2b765cada586774beca23c",
+    "mtime": 1788535317.796481,
+    "seen": 1788535405.2410948,
+    "ast_hash": "e45a873255f5e350f46ddf4f5ebc02c0",
     "semantic_hash": ""
   },
   "client/src/pages/HomeServices.tsx": {
-    "mtime": 1788541614.050008,
-    "seen": 1788780432.2755616,
-    "ast_hash": "8372b732073ca562537a48d9b6f7a0f0",
+    "mtime": 1788532985.7829823,
+    "seen": 1788535405.241097,
+    "ast_hash": "a6fca3e9a777c507d29585fdec2cf159",
     "semantic_hash": ""
   },
   "client/src/pages/Industries.tsx": {
-    "mtime": 1788541757.388516,
-    "seen": 1788780432.2755632,
-    "ast_hash": "5441c9ef78260643d1988e3c82978d1e",
+    "mtime": 1788532985.8072922,
+    "seen": 1788535405.2410977,
+    "ast_hash": "fe69d974219bc5150476b70a31677358",
     "semantic_hash": ""
   },
   "client/src/pages/InsuranceAgencies.tsx": {
-    "mtime": 1788541156.5286977,
-    "seen": 1788780432.2755654,
-    "ast_hash": "e7cd40b90568d3d1cb56b60b606117b3",
+    "mtime": 1788532985.8270276,
+    "seen": 1788535405.2410984,
+    "ast_hash": "674ad07eeeb6ee06ecb5f74f15c379c9",
     "semantic_hash": ""
   },
   "client/src/pages/Resources.tsx": {
-    "mtime": 1788542348.4241962,
-    "seen": 1788780432.275569,
-    "ast_hash": "e9ec5cf19730bbd1c5c29b4f00dc01c7",
+    "mtime": 1788534266.9432535,
+    "seen": 1788535405.2411003,
+    "ast_hash": "fcc97e29ac0dbc7084e4ebe68d6028df",
     "semantic_hash": ""
   },
   "client/src/pages/RevenueDiagnostic.tsx": {
-    "mtime": 1788549382.7353072,
-    "seen": 1788780432.2755709,
-    "ast_hash": "fc6b78a93d25f1993de2227717bfcf22",
+    "mtime": 1788464255.7245283,
+    "seen": 1788465939.1903696,
+    "ast_hash": "9fb218525b15a9503f35f3bd0520e750",
     "semantic_hash": ""
   },
   "client/src/pages/Solutions.tsx": {
@@ -1860,117 +1860,117 @@
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIBusinessOutcomesSection.tsx": {
-    "mtime": 1788542257.888974,
-    "seen": 1788780432.2753289,
-    "ast_hash": "acb0f6dec774a289b69f85356cbd8c7d",
+    "mtime": 1788441456.014679,
+    "seen": 1788453209.9939547,
+    "ast_hash": "95831ca53b15b4138835bbbc03982178",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIBuyerJourneySection.tsx": {
-    "mtime": 1788536293.8682363,
-    "seen": 1788780432.2753327,
-    "ast_hash": "0357a723e76f69b2f41088e830ceddf9",
+    "mtime": 1788441001.382504,
+    "seen": 1788453209.9939556,
+    "ast_hash": "a5543c0a1c99f47ea05bc7cfaa4d7a9a",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AICClosingCTABand.tsx": {
-    "mtime": 1788536302.0232327,
-    "seen": 1788780432.2753358,
-    "ast_hash": "ac2a3218cd903db4495aa31714a357ac",
+    "mtime": 1788441590.478991,
+    "seen": 1788453209.9939568,
+    "ast_hash": "813872f9f1adce77722c636b11578f27",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIEntityOptimizationSection.tsx": {
-    "mtime": 1788541941.4921768,
-    "seen": 1788780432.2753384,
-    "ast_hash": "41cce873b23140cdbb8bc7b2f95eb0ee",
+    "mtime": 1788441155.4769342,
+    "seen": 1788453209.9939575,
+    "ast_hash": "55147aa05a2400b1334e5d26101284ac",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIEvaluationSection.tsx": {
-    "mtime": 1788536333.1475325,
-    "seen": 1788780432.2753403,
-    "ast_hash": "ccd3d0336d64f26b8d7de0c613c24038",
+    "mtime": 1788441306.6669316,
+    "seen": 1788453209.9939587,
+    "ast_hash": "0eaaf9cc71a478be0f9237fa601532b2",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIEvolutionSection.tsx": {
-    "mtime": 1788536345.1776597,
-    "seen": 1788780432.2753422,
-    "ast_hash": "f34952922dd27bb4a7e3fea9346efb8d",
+    "mtime": 1788441068.1840813,
+    "seen": 1788453209.9939594,
+    "ast_hash": "18893274e82bdd8d522b94de6010d760",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIFrameworksResourcesSection.tsx": {
-    "mtime": 1788541655.0738916,
-    "seen": 1788780432.2753448,
-    "ast_hash": "71117386287df87566bac28f975b567d",
+    "mtime": 1788441522.4048924,
+    "seen": 1788453209.9939601,
+    "ast_hash": "80d31e44752a9aa1d16d728bc9856ccd",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIFrequentlyAskedQuestionsSection.tsx": {
-    "mtime": 1788536382.254331,
-    "seen": 1788780432.2753472,
-    "ast_hash": "5e7c3258e2b7bcbe4cc2ade3f861a064",
+    "mtime": 1788441561.5539877,
+    "seen": 1788453209.9939618,
+    "ast_hash": "3e5a1b84ca7f6095f0af397bacd835a9",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AILifecyclePlaceholderSection.tsx": {
-    "mtime": 1788536393.5399804,
-    "seen": 1788780432.2753496,
-    "ast_hash": "40d47398fdf9ed3a685b92a64883b34a",
+    "mtime": 1788441387.605285,
+    "seen": 1788453209.993963,
+    "ast_hash": "3352b617ba68dff79730389787ef0850",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIMaturityProgressionSection.tsx": {
-    "mtime": 1788536402.291251,
-    "seen": 1788780432.2753513,
-    "ast_hash": "b9f0d12e91f7cfa8205981a411693a51",
+    "mtime": 1788441427.7355568,
+    "seen": 1788453209.9939637,
+    "ast_hash": "490d9f28a4399a6069e7f666303393da",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIOptimizationConsolidationSection.tsx": {
-    "mtime": 1788536414.3023374,
-    "seen": 1788780432.2753532,
-    "ast_hash": "2b3a7eb59f5a7c0bfeb7cd585395d30a",
+    "mtime": 1788441123.193839,
+    "seen": 1788453209.9939642,
+    "ast_hash": "008a4a6bdb23969b8a1d0725e1f94886",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIRecommendationMechanicsSection.tsx": {
-    "mtime": 1788536428.1663759,
-    "seen": 1788780432.2753553,
-    "ast_hash": "bf6faa7c14c0ed7900086b6bd1c782bb",
+    "mtime": 1788441193.2958655,
+    "seen": 1788453209.9939654,
+    "ast_hash": "23b6f020d0fb1d047bdca8972ec5c601",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIRoadmapPlaceholderSection.tsx": {
-    "mtime": 1788536437.7690425,
-    "seen": 1788780432.2753575,
-    "ast_hash": "5de4c7e9c05606f285caa93ab029d1cf",
+    "mtime": 1788441492.3275056,
+    "seen": 1788453209.9939663,
+    "ast_hash": "8d6d80eca0596943e1db335cb16a6872",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIServiceBusinessRelevanceSection.tsx": {
-    "mtime": 1788536448.9619603,
-    "seen": 1788780432.2753592,
-    "ast_hash": "eab9eba2b979e88cbf9567c0b74f2b87",
+    "mtime": 1788441269.2269633,
+    "seen": 1788453209.993967,
+    "ast_hash": "033d35cd31cccbd04ddc7deb2cd14e13",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AITechnicalFoundationSection.tsx": {
-    "mtime": 1788541601.7960365,
-    "seen": 1788780432.2753608,
-    "ast_hash": "764109fbf998392ef4622f64311384ca",
+    "mtime": 1788441223.7466166,
+    "seen": 1788453209.993968,
+    "ast_hash": "18be2dff9fc0c237e238b2835690bb92",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIVScorePlaceholderSection.tsx": {
-    "mtime": 1788536473.8838089,
-    "seen": 1788780432.2753623,
-    "ast_hash": "720599cacbae9657154aac837f4e0a28",
+    "mtime": 1788441339.5178626,
+    "seen": 1788453209.993969,
+    "ast_hash": "e74f2dbb8ec6490131656d8640b911b5",
     "semantic_hash": ""
   },
   "client/src/components/ai-visibility/AIVisibilityHero.tsx": {
-    "mtime": 1788542489.3510098,
-    "seen": 1788780432.2753642,
-    "ast_hash": "128b3d667ac0122c92bf13cf6bd4cbf5",
+    "mtime": 1788440954.8239102,
+    "seen": 1788453209.9939694,
+    "ast_hash": "fc3717f1727cfefca45fc4e3c167eade",
     "semantic_hash": ""
   },
   "client/src/components/solutions/SolutionsBusinessOutcomesSection.tsx": {
-    "mtime": 1788542445.5107055,
-    "seen": 1788780432.2753732,
-    "ast_hash": "18be6dbc54fee96af8a13f86d28e30a1",
+    "mtime": 1788533528.3707218,
+    "seen": 1788535405.241006,
+    "ast_hash": "bcff860b0a0877edc00d389a604d3cd4",
     "semantic_hash": ""
   },
   "client/src/components/solutions/SolutionsClosingCTASection.tsx": {
-    "mtime": 1788542374.0149674,
-    "seen": 1788780432.2753754,
-    "ast_hash": "ff4eea9a2783c0e2f072aed056cfe95a",
+    "mtime": 1788533560.5263078,
+    "seen": 1788535405.2410069,
+    "ast_hash": "a490ac93998c05613202e0c04d49257f",
     "semantic_hash": ""
   },
   "client/src/components/solutions/SolutionsConnectedSystemSection.tsx": {
@@ -2049,12 +2049,6 @@
     "mtime": 1788465994.5558858,
     "seen": 1788535405.241258,
     "ast_hash": "9925308e254ef59030e1b06a2da4a90a",
-    "semantic_hash": ""
-  },
-  "audit_findings.json": {
-    "mtime": 1788538614.6265864,
-    "seen": 1788780432.2752068,
-    "ast_hash": "886fbbebcf7a2afa0424dc3a5c16757e",
     "semantic_hash": ""
   }
 }

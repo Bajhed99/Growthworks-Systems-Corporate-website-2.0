@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { ChevronDown } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -266,56 +267,28 @@ function HeroSection() {
       className="bg-[#F8F5EC] pt-[96px] md:pt-[128px] pb-[72px] md:pb-[96px] border-b border-[#DDD6CC]"
     >
       <div className={CONTAINER}>
-        <div className={`grid lg:grid-cols-[1fr_480px] gap-12 items-center reveal ${visible ? "visible" : ""}`}>
-          {/* Left: Copy + CTAs */}
-          <div>
-            <SectionLabel label="DIAGNOSTIC PLATFORM" />
-            <h1 className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6">
-              Revenue Infrastructure Diagnostic
-            </h1>
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-10 max-w-[600px]">
-              A disciplined, repeatable methodology for evaluating and improving the systems that determine a business's ability to attract, convert, retain, and grow profitable customers.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
-              >
-                BOOK A REVENUE DIAGNOSTIC
-              </a>
-              <a
-                href="#methodology"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
-              >
-                VIEW METHODOLOGY
-              </a>
-            </div>
-          </div>
+        <div className={`flex flex-col items-center text-center reveal ${visible ? "visible" : ""}`}>
+          <SectionLabel label="DIAGNOSTIC PLATFORM" />
+          <h1 className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6">
+            Revenue Infrastructure <span style={{ color: "var(--gws-crimson)" }}>Diagnostic</span>
+          </h1>
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-10 max-w-[640px]">
+            A disciplined, repeatable methodology for evaluating and improving the systems that determine a business&apos;s ability to attract, convert, retain, and grow profitable customers.
+          </p>
+          <a
+            href="/revenue-diagnostic"
+            className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-['DM_Sans'] font-semibold text-[16px] mb-16"
+          >
+            BOOK A REVENUE DIAGNOSTIC
+          </a>
 
-          {/* Right: Analytical summary panel */}
-          <div className="hidden lg:block bg-[#2B2B2B] rounded-none p-8 border border-[#3A3A3A]">
-            <div className="space-y-6">
-              <div className="border-b border-[#3A3A3A] pb-5">
-                <p className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase text-white/40 mb-3">Overall RI Score</p>
-                <p className="text-[48px] font-serif font-normal text-white leading-none">—</p>
-                <p className="text-[14px] font-sans text-white/60 mt-2">Pending Assessment</p>
-              </div>
-              <div className="border-b border-[#3A3A3A] pb-5">
-                <p className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase text-white/40 mb-3">Maturity Level</p>
-                <p className="text-[20px] font-serif text-white">—</p>
-              </div>
-              <div>
-                <p className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase text-white/40 mb-3">Domains Assessed</p>
-                <div className="flex flex-wrap gap-2">
-                  {["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9"].map((d) => (
-                    <span key={d} className="text-[13px] font-sans font-semibold text-white/30 bg-white/5 px-3 py-1 rounded">
-                      {d}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <a
+            href="#methodology"
+            className="diagnostic-hero-explore-trigger"
+          >
+            <span>Explore</span>
+            <ChevronDown size={16} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
@@ -341,7 +314,7 @@ function DiagnosticQuestionsSection() {
             {DIAGNOSTIC_QUESTIONS.map((q, i) => (
               <div key={q.num} className="border-t-4 border-[#841617] pt-6">
                 <span className="text-[14px] font-sans font-bold tracking-[0.14em] uppercase text-[#841617] mb-4 block">{q.num}</span>
-                <h3 className="font-serif font-normal text-[20px] md:text-[24px] leading-[1.25] text-[#2B2B2B] mb-3">{q.title}</h3>
+                <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-3">{q.title}</h3>
                 <p className="text-[16px] font-sans text-[#625E59] leading-[1.6]">{q.desc}</p>
               </div>
             ))}
@@ -371,7 +344,7 @@ function AssessmentPrinciplesSection() {
                 <div className="w-12 h-12 rounded-full bg-[#841617] text-white flex items-center justify-center font-sans font-bold text-[16px] mb-5">
                   {p.num}
                 </div>
-                <h3 className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.3] text-[#2B2B2B] mb-3">{p.title}</h3>
+                <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-3">{p.title}</h3>
                 <p className="text-[16px] font-sans text-[#625E59] leading-[1.6]">{p.desc}</p>
               </div>
             ))}
@@ -459,7 +432,7 @@ function MethodologySection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-3">
-                        <h3 className="font-serif font-normal text-[20px] md:text-[24px] leading-[1.25] text-[#2B2B2B]">{stage.name}</h3>
+                        <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617]">{stage.name}</h3>
                         <span className="text-[14px] font-sans text-[#625E59]">{stage.timing}</span>
                       </div>
                       <p className="text-[16px] font-sans text-[#625E59] leading-[1.6] mb-4">{stage.desc}</p>
@@ -593,7 +566,7 @@ function DomainHeatMapSection() {
                       {domain.risk}
                     </span>
                   </div>
-                  <h3 className="font-sans font-semibold text-[16px] leading-[1.3]" style={{ color: colors.text }}>
+                  <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3]" style={{ color: colors.text }}>
                     {domain.short}
                   </h3>
                 </div>
@@ -664,7 +637,7 @@ function PrioritizationMatrixSection() {
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-6">
-                  <h3 className="font-serif font-normal text-[24px] leading-[1.25] text-[#2B2B2B] mb-1">{q.name}</h3>
+                  <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-1">{q.name}</h3>
                   <p className="text-[14px] font-sans text-[#625E59]">{q.subtitle}</p>
                 </div>
                 <ul className="space-y-2">
@@ -688,7 +661,7 @@ function PrioritizationMatrixSection() {
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-4">
-                  <h3 className="font-serif font-normal text-[20px] leading-[1.25] text-[#2B2B2B] mb-1">{q.name}</h3>
+                  <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-1">{q.name}</h3>
                   <p className="text-[14px] font-sans text-[#625E59]">{q.subtitle}</p>
                 </div>
                 <ul className="space-y-2">
@@ -753,7 +726,7 @@ function AssessmentFamilySection() {
                     </span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-serif font-normal text-[20px] md:text-[24px] leading-[1.25] text-[#2B2B2B]">{assessment.name}</h3>
+                    <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617]">{assessment.name}</h3>
                   </div>
                 </div>
                 <div>
@@ -822,7 +795,7 @@ function ImprovementRoadmapSection() {
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4 mb-2">
-                      <h3 className="font-serif font-normal text-[24px] md:text-[28px] leading-[1.25] text-[#2B2B2B]">{phase.name}</h3>
+                      <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617]">{phase.name}</h3>
                       <span className="text-[14px] font-sans text-[#625E59]">{phase.timing}</span>
                     </div>
                     <p className="text-[16px] font-sans font-semibold text-[#841617] mb-4">{phase.focus}</p>
@@ -931,7 +904,7 @@ function DiagnosticOutputsSection() {
                     {output.num}
                   </div>
                   <div>
-                    <h3 className="font-serif font-normal text-[18px] md:text-[20px] leading-[1.3] text-[#2B2B2B] mb-1">{output.name}</h3>
+                    <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-1">{output.name}</h3>
                     <p className="text-[15px] font-sans text-[#625E59] leading-[1.6]">{output.desc}</p>
                   </div>
                 </div>

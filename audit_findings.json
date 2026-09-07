@@ -1,0 +1,150 @@
+{
+  "findings": [
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 7,
+      "category": "FONT_CONSTANT",
+      "current": "const CRIMSON = \"#841617\"; const CHARCOAL = \"#2B2B2B\"; ...",
+      "expected": "Use Tailwind tokens bg-crimson / text-gray-900; no literal hex constants",
+      "severity": "critical",
+      "reason": "Page defines 8 design-token constants duplicating the /framework color/spacing/typography system instead of using Tailwind utilities."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 16,
+      "category": "CONTAINER_GUTTER",
+      "current": "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16",
+      "expected": "Same (actually correct here; deviation is on line 246 etc with md:px-10)",
+      "severity": "minor",
+      "reason": "References correct container; see line 246/493 for md:px-10 deviation."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 21,
+      "category": "SECTION_SPACING",
+      "current": "py-[72px] md:py-[112px]",
+      "expected": "py-[112px] / py-[144px] per /framework scale",
+      "severity": "major",
+      "reason": "SECTION_DEFAULT uses 72px base instead of 112px; inconsistent with established scale."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 24,
+      "category": "HEADING_FONT",
+      "current": "font-normal text-[40px] ... (no font-serif)",
+      "expected": "font-serif font-normal ...",
+      "severity": "major",
+      "reason": "H1_CLASS/H2_CLASS/H3_CLASS omit font-serif; headings rely on inline style fontFamily instead of Tailwind class."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 80,
+      "category": "SECTION_LABEL",
+      "current": "<p ... style={{color:MUTED,...}}>",
+      "expected": "<h3> with text-gray-400, no inline fontFamily",
+      "severity": "major",
+      "reason": "SectionLabel is <p> not <h3>; color is MUTED (#625E59) not text-gray-400; uses fontFamily inline style."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 107,
+      "category": "BUTTON_BG",
+      "current": "style={{background:CRIMSON,...}} + rounded-none",
+      "expected": "bg-crimson hover:bg-crimson-dark rounded (not rounded-none)",
+      "severity": "critical",
+      "reason": "Primary button uses inline background style + rounded-none instead of Tailwind bg-crimson utilities and rounded radius."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 248,
+      "category": "SECTION_LABEL",
+      "current": "style={{color:CRIMSON}} (red eyebrow on hero)",
+      "expected": "text-gray-400",
+      "severity": "major",
+      "reason": "Hero eyebrow is crimson (#841617) instead of muted gray-400 per /framework sectionLabel."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 249,
+      "category": "SECTION_LABEL",
+      "current": "<p> uppercase tracking-[0.18em] ... (not <h3>)",
+      "expected": "<h3> text-[14px] font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400",
+      "severity": "major",
+      "reason": "Eyebrow is <p> not semantic <h3>; missing mb-4 and wrong color."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 253,
+      "category": "COLOR_TOKEN",
+      "current": "style={{color:CHARCOAL}} on hero h1",
+      "expected": "text-gray-900 (or use font-serif with text-gray-900 class)",
+      "severity": "minor",
+      "reason": "Uses CHARCOAL hex instead of text-gray-900 token; also missing font-serif class."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 446,
+      "category": "CARD_RADIUS",
+      "current": "rounded-none p-6 ... (cards in outcomes)",
+      "expected": "rounded-2xl (16px)",
+      "severity": "major",
+      "reason": "Outcome cards use rounded-none instead of rounded-2xl per cardRadius spec."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 552,
+      "category": "CARD_RADIUS",
+      "current": "rounded-none p-7 ... (dark panel)",
+      "expected": "rounded-2xl or at least consistent radius",
+      "severity": "minor",
+      "reason": "Audit dark panel uses rounded-none instead of rounded-2xl."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": 619,
+      "category": "SECTION_SPACING",
+      "current": "py-[80px] md:py-[112px]",
+      "expected": "py-[112px] / py-[144px]",
+      "severity": "minor",
+      "reason": "Closing band uses 80px base instead of 112px scale."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": "246,493,500,968",
+      "category": "CONTAINER_GUTTER",
+      "current": "px-5 md:px-10 lg:px-16 (inside CONTAINER usage or direct)",
+      "expected": "px-5 md:px-8 lg:px-16",
+      "severity": "major",
+      "reason": "Multiple sections apply md:px-10 instead of md:px-8; deviates from max-w container spec."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": "301,360,430,506,633",
+      "category": "HEADING_FONT",
+      "current": "style={{fontFamily:FONT_SERIF}} on h2/h1",
+      "expected": "font-serif class directly, no inline fontFamily",
+      "severity": "major",
+      "reason": "Every heading applies fontFamily via inline style rather than Tailwind font-serif class; duplicates design system."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": "310,367,436,511,641",
+      "category": "COLOR_TOKEN",
+      "current": "style={{color:CHARCOAL}} / color:MUTED / background:CREAM / background:WHITE",
+      "expected": "text-gray-900 / text-gray-500 / bg-surface / bg-white",
+      "severity": "major",
+      "reason": "Widespread literal hex colors (CHARCOAL, MUTED, CREAM, WHITE) instead of design-token classes."
+    },
+    {
+      "file": "client/src/pages/AIReadyWebsite.tsx",
+      "line": "374,447,449",
+      "category": "BORDER_COLOR",
+      "current": "borderColor:BORDER (#DDD6CC) / border-[#D8D5CE] on cards/ol",
+      "expected": "border-gray-200 (except consistent section separator ok)",
+      "severity": "minor",
+      "reason": "Cards and list dividers use BORDER (#DDD6CC) instead of border-gray-200; minor deviation."
+    }
+  ],
+  "pageSummary": "AIReadyWebsite.tsx is a thick custom-design page with extensive deviations from /framework: it defines its own token constants (CRIMSON/CHARCOAL/CREAM etc), uses inline style colors/Fonts instead of Tailwind utilities, omits font-serif on heading classes, uses rounded-none buttons/cards, applies md:px-10 gutter, and uses 72px section spacing instead of 112px/144px. Essentially every category flagged is present at scale.",
+  "totalOccurrences": 34
+}

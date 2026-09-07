@@ -31,11 +31,11 @@ import SiteFooter from "@/components/SiteFooter";
 
 // ─── Layout Constants ───────────────────────────────────────────────────────────
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 // Narrower reading width for long-form biography
-const BIO_CONTAINER = "max-w-[680px] mx-auto px-5 md:px-10 lg:px-16";
+const BIO_CONTAINER = "max-w-[680px] mx-auto px-5 md:px-8 lg:px-16";
 // Portrait zone can exceed reading width
-const PORTRAIT_WIDTH = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const PORTRAIT_WIDTH = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 // ─── RevealOnScroll Helper ─────────────────────────────────────────────────────
 
@@ -80,16 +80,9 @@ function RevealOnScroll({
 
 // ─── Section Label ─────────────────────────────────────────────────────────────
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num ? `${num} ` : ""}
+    <p className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
       {label}
     </p>
   );
@@ -105,14 +98,14 @@ function FounderHero() {
   return (
     <section
       aria-labelledby="founder-hero-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[128px] pb-[80px] md:pb-[96px] border-b border-[#D8D5CE] overflow-hidden"
+      className="bg-surface pt-[112px] md:pt-[128px] pb-[80px] md:pb-[96px] border-b border-[#D8D5CE] overflow-hidden"
     >
       <div className={PORTRAIT_WIDTH}>
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
           {/* Portrait column */}
           <RevealOnScroll>
             <div className="relative">
-              <div className="aspect-[3/4] max-w-[420px] lg:max-w-[480px] rounded-none overflow-hidden border border-[#DDD6CC] bg-[#F2E7E3]">
+              <div className="aspect-[3/4] max-w-[420px] lg:max-w-[480px] rounded-none overflow-hidden border border-gray-200 bg-[#F2E7E3]">
                 <img
                   src={CLAYTON_PORTRAIT}
                   alt="Clayton Tidwell — Founder, GrowthWorks Systems"
@@ -125,7 +118,7 @@ function FounderHero() {
                   href="https://www.linkedin.com/in/clayton-tidwell-11a2525"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[14px] font-sans font-semibold text-[#625E59] hover:text-[#841617] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center gap-2 text-[14px] font-sans font-semibold text-gray-500 hover:text-[#841617] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -150,15 +143,15 @@ function FounderHero() {
               </p>
               <h1
                 id="founder-hero-h1"
-                className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[52px] mb-4"
+                className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[52px] mb-4"
                 style={{ textWrap: "balance" }}
               >
                 Clayton Tidwell
               </h1>
-              <p className="text-[18px] leading-[1.5] text-[#625E59] font-sans font-medium mb-6">
+              <p className="text-[18px] leading-[1.5] text-gray-500 font-sans font-medium mb-6">
                 Founder, GrowthWorks Systems
               </p>
-              <p className="text-[17px] leading-[1.7] text-[#2B2B2B] mb-8 max-w-[560px]">
+              <p className="text-[17px] leading-[1.7] text-gray-900 mb-8 max-w-[560px]">
                 After three decades helping organizations transform operations, he concluded most growing businesses were no longer constrained by operations. They were constrained by fragmented revenue systems — and no one had designed the complete solution.
               </p>
               <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
@@ -170,7 +163,7 @@ function FounderHero() {
                 </a>
                 <a
                   href="#experience"
-                  className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
                 >
                   Meet Clayton
                 </a>
@@ -194,29 +187,29 @@ function WhyGWSSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="01" label="Why GWS Exists" />
+          <SectionLabel label="Why GWS Exists" />
           <h2
             id="why-gws-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
             Businesses have been sold disconnected solutions. No one designed the complete system.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
             <div>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6 max-w-[640px]">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6 max-w-[640px]">
                 Firms collected isolated tools — websites, SEO campaigns, unimplemented CRMs, unaccountable advertising, automated-but-wrong workflows, AI features on broken systems — each vendor optimizing only one piece.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6 max-w-[640px]">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6 max-w-[640px]">
                 The outcome: irregular revenue, invisible leakage, and marketing spend lacking explanation. Every new tool was supposed to fix something — but the system underneath kept producing the same results.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#625E59] max-w-[640px]">
+              <p className="text-[17px] leading-[1.75] text-gray-500 max-w-[640px]">
                 GrowthWorks Systems was founded to design the complete system that makes every marketing investment work better.
               </p>
             </div>
 
-            <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none p-7 md:p-8">
-              <p className="text-[16px] leading-[1.7] text-[#2B2B2B] font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
+            <div className="bg-surface border border-gray-200 rounded-none p-7 md:p-8">
+              <p className="text-[16px] leading-[1.7] text-gray-900 font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
                 "I didn't create GrowthWorks Systems because businesses needed another marketing agency. I created it because they needed someone to design the system that makes every marketing investment work better."
               </p>
               <p className="text-[13px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617]">
@@ -264,18 +257,18 @@ function ExperienceSection() {
     <section
       id="experience"
       aria-labelledby="experience-h2"
-      className="bg-[#F8F5EC] py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="The Experience Behind the Framework" />
+          <SectionLabel label="The Experience Behind the Framework" />
           <h2
             id="experience-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
           >
             Derived from three decades of operational problem solving, not marketing theory.
           </h2>
-          <p className="text-[17px] leading-[1.7] text-[#625E59] mb-14 max-w-[640px]">
+          <p className="text-[17px] leading-[1.7] text-gray-500 mb-14 max-w-[640px]">
             The Revenue Infrastructure framework wasn't invented in a marketing course. It was forged in environments where systems, processes, data, and people had to work together reliably — or the operation failed.
           </p>
         </RevealOnScroll>
@@ -283,23 +276,23 @@ function ExperienceSection() {
         <div className="space-y-0">
           {EXPERIENCE_PILLARS.map((pillar, idx) => (
             <RevealOnScroll key={pillar.num} delay={idx * 60}>
-              <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6 lg:gap-12 py-10 border-b border-[#DDD6CC] last:border-b-0">
+              <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6 lg:gap-12 py-10 border-b border-gray-200 last:border-b-0">
                 {/* Label column */}
                 <div className="flex flex-col">
                   <span className="text-[13px] font-sans font-bold tracking-[0.18em] uppercase text-[#841617] mb-2">
                     {pillar.num}
                   </span>
-                  <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.2] text-[22px] md:text-[24px] mb-1">
+                  <h3 className="font-serif font-normal text-gray-900 leading-[1.2] text-[22px] md:text-[24px] mb-1">
                     {pillar.title}
                   </h3>
-                  <p className="text-[14px] font-sans font-medium text-[#625E59] leading-[1.5]">
+                  <p className="text-[14px] font-sans font-medium text-gray-500 leading-[1.5]">
                     {pillar.subtitle}
                   </p>
                 </div>
 
                 {/* Body column */}
                 <div className="flex-1">
-                  <p className="text-[16px] md:text-[17px] leading-[1.75] text-[#2B2B2B]">
+                  <p className="text-[16px] md:text-[17px] leading-[1.75] text-gray-900">
                     {pillar.body}
                   </p>
                 </div>
@@ -322,23 +315,23 @@ function WhyRevenueInfrastructureSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="03" label="Why Revenue Infrastructure" />
+          <SectionLabel label="Why Revenue Infrastructure" />
           <h2
             id="why-ri-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
             An operating system, not another marketing methodology.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <div>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6">
                 Marketing tactics change. SEO, paid ads, social platforms, AI tools — the tactics shift year to year. What doesn't change is the need for durable architecture underneath.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6">
                 Revenue Infrastructure defines how a firm attracts, converts, retains, and grows customers permanently — as an integrated system. Built correctly once, every future marketing, technology, and AI investment compounds.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#625E59]">
+              <p className="text-[17px] leading-[1.75] text-gray-500">
                 Enterprise systems thinking, applied to revenue for founder-led businesses at accessible scale.
               </p>
             </div>
@@ -349,8 +342,8 @@ function WhyRevenueInfrastructureSection() {
                   <span className="text-[13px] font-sans font-bold text-[#841617]">1</span>
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-[16px] text-[#2B2B2B] mb-1">Systems</h4>
-                  <p className="text-[15px] leading-[1.6] text-[#625E59]">
+                  <h4 className="font-sans font-semibold text-[16px] text-gray-900 mb-1">Systems</h4>
+                  <p className="text-[15px] leading-[1.6] text-gray-500">
                     The connected architecture behind your revenue path.
                   </p>
                 </div>
@@ -360,8 +353,8 @@ function WhyRevenueInfrastructureSection() {
                   <span className="text-[13px] font-sans font-bold text-[#841617]">2</span>
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-[16px] text-[#2B2B2B] mb-1">Digital Assets</h4>
-                  <p className="text-[15px] leading-[1.6] text-[#625E59]">
+                  <h4 className="font-sans font-semibold text-[16px] text-gray-900 mb-1">Digital Assets</h4>
+                  <p className="text-[15px] leading-[1.6] text-gray-500">
                     Website, content, discoverability, authority signals.
                   </p>
                 </div>
@@ -371,8 +364,8 @@ function WhyRevenueInfrastructureSection() {
                   <span className="text-[13px] font-sans font-bold text-[#841617]">3</span>
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-[16px] text-[#2B2B2B] mb-1">Processes</h4>
-                  <p className="text-[15px] leading-[1.6] text-[#625E59]">
+                  <h4 className="font-sans font-semibold text-[16px] text-gray-900 mb-1">Processes</h4>
+                  <p className="text-[15px] leading-[1.6] text-gray-500">
                     How inquiry, qualification, follow-up, and conversion work.
                   </p>
                 </div>
@@ -382,8 +375,8 @@ function WhyRevenueInfrastructureSection() {
                   <span className="text-[13px] font-sans font-bold text-[#841617]">4</span>
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-[16px] text-[#2B2B2B] mb-1">Authority & AI</h4>
-                  <p className="text-[15px] leading-[1.6] text-[#625E59]">
+                  <h4 className="font-sans font-semibold text-[16px] text-gray-900 mb-1">Authority & AI</h4>
+                  <p className="text-[15px] leading-[1.6] text-gray-500">
                     Trust signals and AI-discoverable business presence.
                   </p>
                 </div>
@@ -393,14 +386,14 @@ function WhyRevenueInfrastructureSection() {
                   <span className="text-[13px] font-sans font-bold text-[#841617]">5</span>
                 </div>
                 <div>
-                  <h4 className="font-sans font-semibold text-[16px] text-[#2B2B2B] mb-1">Measurement</h4>
-                  <p className="text-[15px] leading-[1.6] text-[#625E59]">
+                  <h4 className="font-sans font-semibold text-[16px] text-gray-900 mb-1">Measurement</h4>
+                  <p className="text-[15px] leading-[1.6] text-gray-500">
                     Connecting activity to business outcomes.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-[#DDD6CC]">
+              <div className="mt-6 pt-6 border-t border-gray-200">
                 <a
                   href="/framework"
                   className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
@@ -423,40 +416,40 @@ function WhyAISection() {
   return (
     <section
       aria-labelledby="why-ai-h2"
-      className="bg-[#F8F5EC] py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="04" label="Why AI Changed Everything" />
+          <SectionLabel label="Why AI Changed Everything" />
           <h2
             id="why-ai-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
             AI made Revenue Infrastructure more important — not less.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
             <div>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6">
                 AI-powered search synthesizes structured data, authority signals, review patterns, content architecture, and entity relationships. It doesn't browse websites the way a human would.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-6">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-6">
                 Businesses with structured Revenue Infrastructure get recommended by AI systems. Disconnected businesses become invisible to AI-assisted buyers — not because the quality is lower, but because the infrastructure is missing.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#625E59]">
+              <p className="text-[17px] leading-[1.75] text-gray-500">
                 AI didn't create a new marketing problem. It exposed the Revenue Infrastructure problem that was already there.
               </p>
             </div>
 
-            <div className="bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8">
-              <p className="text-[16px] leading-[1.7] text-[#2B2B2B] font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
+            <div className="bg-white border border-gray-200 rounded-none p-7 md:p-8">
+              <p className="text-[16px] leading-[1.7] text-gray-900 font-serif italic border-l-[3px] border-[#841617] pl-5 mb-6">
                 "AI didn't create a new marketing problem. It exposed the Revenue Infrastructure problem that was already there."
               </p>
               <p className="text-[13px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617]">
                 — Clayton Tidwell, Founder
               </p>
 
-              <div className="mt-8 pt-6 border-t border-[#DDD6CC]">
+              <div className="mt-8 pt-6 border-t border-gray-200">
                 <a
                   href="/ai-visibility"
                   className="inline-flex items-center gap-2 border-b border-[#841617] pb-1 text-[#841617] font-sans font-semibold text-[15px] hover:text-[#721315] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
@@ -511,28 +504,28 @@ function PrinciplesSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="05" label="What Clients Can Expect" />
+          <SectionLabel label="What Clients Can Expect" />
           <h2
             id="principles-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
           >
             Five operating principles govern every engagement.
           </h2>
-          <p className="text-[17px] leading-[1.7] text-[#625E59] mb-14 max-w-[640px]">
+          <p className="text-[17px] leading-[1.7] text-gray-500 mb-14 max-w-[640px]">
             Not aspirational values. Operational commitments that shape how every engagement runs.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[repeat(3,1fr)] gap-5">
             {OPERATING_PRINCIPLES.map((principle, idx) => (
               <RevealOnScroll key={principle.num} delay={idx * 50}>
-                <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none p-6 md:p-7 h-full">
+                <div className="bg-surface border border-gray-200 rounded-none p-6 md:p-7 h-full">
                   <span className="text-[13px] font-sans font-bold tracking-[0.18em] uppercase text-[#841617] block mb-3">
                     {principle.num}
                   </span>
-                  <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[20px] md:text-[21px] mb-3">
+                  <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[20px] md:text-[21px] mb-3">
                     {principle.title}
                   </h3>
-                  <p className="text-[15px] leading-[1.65] text-[#625E59]">
+                  <p className="text-[15px] leading-[1.65] text-gray-500">
                     {principle.desc}
                   </p>
                 </div>
@@ -551,34 +544,34 @@ function BeyondFrameworkSection() {
   return (
     <section
       aria-labelledby="beyond-h2"
-      className="bg-[#F8F5EC] py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[80px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-16 items-start">
             {/* Left: heading + copy */}
             <div>
-              <SectionLabel num="" label="Beyond the Framework" />
+              <SectionLabel label="Beyond the Framework" />
               <h2
                 id="beyond-h2"
-                className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[520px]"
+                className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[520px]"
               >
                 The human context behind the methodology.
               </h2>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B] mb-5">
+              <p className="text-[17px] leading-[1.75] text-gray-900 mb-5">
                 Revenue Infrastructure didn't come from studying AI or marketing theory. It came from operational problem solving — and the observation that the same systems failures kept appearing across very different industries.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#625E59] mb-6">
+              <p className="text-[17px] leading-[1.75] text-gray-500 mb-6">
                 The best business systems, like the best organizations, are never finished. They evolve through observation, measurement, disciplined execution, and continuous improvement.
               </p>
-              <p className="text-[17px] leading-[1.75] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.75] text-gray-900">
                 That philosophy shapes everything at GrowthWorks Systems — including how the firm itself operates.
               </p>
             </div>
 
             {/* Right: personal details in editorial card */}
-            <div className="bg-white border border-[#DDD6CC] rounded-none p-8 md:p-10">
-              <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.2] text-[22px] md:text-[24px] mb-6">
+            <div className="bg-white border border-gray-200 rounded-none p-8 md:p-10">
+              <h3 className="font-serif font-normal text-gray-900 leading-[1.2] text-[22px] md:text-[24px] mb-6">
                 Personal background
               </h3>
               <div className="space-y-5">
@@ -586,7 +579,7 @@ function BeyondFrameworkSection() {
                   <p className="text-[14px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617] mb-2">
                     Education
                   </p>
-                  <p className="text-[16px] leading-[1.6] text-[#2B2B2B]">
+                  <p className="text-[16px] leading-[1.6] text-gray-900">
                     University of Oklahoma alumnus
                   </p>
                 </div>
@@ -594,7 +587,7 @@ function BeyondFrameworkSection() {
                   <p className="text-[14px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617] mb-2">
                     Background
                   </p>
-                  <p className="text-[16px] leading-[1.6] text-[#2B2B2B]">
+                  <p className="text-[16px] leading-[1.6] text-gray-900">
                     U.S. Marine Corps Corporal and Military Police officer. Desert Shield / Desert Storm veteran. The discipline, clarity, and systems orientation that shaped his operating approach.
                   </p>
                 </div>
@@ -602,7 +595,7 @@ function BeyondFrameworkSection() {
                   <p className="text-[14px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617] mb-2">
                     Interests
                   </p>
-                  <p className="text-[16px] leading-[1.6] text-[#2B2B2B]">
+                  <p className="text-[16px] leading-[1.6] text-gray-900">
                     Tracking AI evolution, business strategy, and the continuous refinement of the Revenue Infrastructure methodology. Oklahoma Sooners football season-ticket holder.
                   </p>
                 </div>
@@ -610,7 +603,7 @@ function BeyondFrameworkSection() {
                   <p className="text-[14px] font-sans font-semibold tracking-[0.1em] uppercase text-[#841617] mb-2">
                     Operating belief
                   </p>
-                  <p className="text-[16px] leading-[1.65] text-[#625E59] italic">
+                  <p className="text-[16px] leading-[1.65] text-gray-500 italic">
                     "The best systems are never finished — they evolve through observation, measurement, and disciplined execution."
                   </p>
                 </div>
@@ -656,14 +649,14 @@ function DiagnosticSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="" label="What Happens on the Diagnostic" />
+          <SectionLabel label="What Happens on the Diagnostic" />
           <h2
             id="diagnostic-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[640px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[640px]"
           >
             No pitch. No obligation. A real read on where your revenue system is working — and where it isn't.
           </h2>
-          <p className="text-[17px] leading-[1.7] text-[#625E59] mb-12 max-w-[600px]">
+          <p className="text-[17px] leading-[1.7] text-gray-500 mb-12 max-w-[600px]">
             The Revenue Diagnostic examines the connected path from discovery through conversion, sales progression, and measurement to identify where opportunity is being lost.
           </p>
 
@@ -677,10 +670,10 @@ function DiagnosticSection() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="font-sans font-semibold text-[17px] text-[#2B2B2B] mb-2">
+                    <h3 className="font-sans font-semibold text-[17px] text-gray-900 mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-[15px] leading-[1.65] text-[#625E59]">
+                    <p className="text-[15px] leading-[1.65] text-gray-500">
                       {step.desc}
                     </p>
                   </div>
@@ -700,7 +693,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="about-closing-cta"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"

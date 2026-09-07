@@ -7,6 +7,7 @@ import DiagnosticPlatform from "@/pages/DiagnosticPlatform";
 import RevenueDiagnostic from "@/pages/RevenueDiagnostic";
 import Solutions from "@/pages/Solutions";
 import AIVisibility from "@/pages/AIVisibility";
+import AIVisibilityCall from "@/pages/AIVisibilityCall";
 import AIReadyWebsite from "@/pages/AIReadyWebsite";
 import CRMAutomation from "@/pages/CRMAutomation";
 import ConversionSystems from "@/pages/ConversionSystems";
@@ -33,6 +34,7 @@ function Router() {
       <Route path={"/revenue-diagnostic"} component={RevenueDiagnostic} />
       <Route path={"/solutions"} component={Solutions} />
       <Route path={"/ai-visibility"} component={AIVisibility} />
+      <Route path={"/ai-visibility-call"} component={AIVisibilityCall} />
       <Route path={"/ai-ready-website"} component={AIReadyWebsite} />
       <Route path={"/crm-automation"} component={CRMAutomation} />
       <Route path={"/conversion-systems"} component={ConversionSystems} />

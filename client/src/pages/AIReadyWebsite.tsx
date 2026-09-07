@@ -1,30 +1,15 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 /* ─── Tokens (sitewide) ─────────────────────────────────────────────── */
-const CRIMSON = "#841617";
-const CRIMSON_HOVER = "#721315";
-const CRIMSON_ACTIVE = "#611012";
-const CREAM = "#F8F5EC";
-const CHARCOAL = "#2B2B2B";
-const BORDER = "#DDD6CC";
-const MUTED = "#625E59";
-const WHITE = "#FFFFFF";
-
 const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
-
-const FONT_SERIF = '"DM Serif Display", Georgia, serif';
-const FONT_SANS = '"DM Sans", system-ui, sans-serif';
-
 const SECTION_DEFAULT = "py-[72px] md:py-[112px]";
 const SECTION_HERO = "py-[88px] md:py-[128px]";
-
-const H1_CLASS = "font-normal text-[40px] md:text-[60px] leading-[1.10]";
-const H2_CLASS = "font-normal text-[32px] md:text-[44px] leading-[1.15]";
-const H3_CLASS = "font-normal text-[24px] md:text-[28px] leading-[1.25]";
-const H4_CLASS = "font-normal text-[20px] md:text-[21px] leading-[1.30]";
+const H1_CLASS = "font-normal text-[40px] md:text-[60px] leading-[1.10] text-gray-900 font-serif";
+const H2_CLASS = "font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 font-serif";
+const H4_CLASS = "font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900 font-serif";
 
 /* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
 function RevealOnScroll({
@@ -77,21 +62,16 @@ function RevealOnScroll({
   );
 }
 
-const SectionLabel = ({ num, label }: { num: string; label: string }) => (
-  <p
-    className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-3"
-    style={{ color: MUTED, fontFamily: FONT_SANS }}
+const SectionLabel = ({ label }: { label: string }) => (
+  <h3
+    className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]"
   >
-    {num}&ensp;{label}
-  </p>
+    {label}
+  </h3>
 );
 
 const CrimsonRule = () => (
-  <span
-    aria-hidden="true"
-    className="block mb-6"
-    style={{ width: 48, height: 2, background: CRIMSON }}
-  />
+  <span aria-hidden="true" className="block mb-6 w-12 h-[2px] bg-crimson" />
 );
 
 /* ─── Primary CTA (48px) ────────────────────────────────────────────── */
@@ -107,21 +87,7 @@ const PrimaryLink = ({
   <a
     href={href}
     onClick={onClick}
-    className="inline-flex items-center justify-center gap-2 rounded-none text-white font-semibold transition-colors"
-    style={{
-      minHeight: 48,
-      padding: "0 24px",
-      background: CRIMSON,
-      fontFamily: FONT_SANS,
-      fontSize: 16,
-      textDecoration: "none",
-      outlineOffset: 3,
-    }}
-    onMouseEnter={(e) => (e.currentTarget.style.background = CRIMSON_HOVER)}
-    onMouseLeave={(e) => (e.currentTarget.style.background = CRIMSON)}
-    onMouseDown={(e) => (e.currentTarget.style.background = CRIMSON_ACTIVE)}
-    onFocus={(e) => (e.currentTarget.style.boxShadow = `0 0 0 3px ${CHARCOAL}`)}
-    onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
+    className="inline-flex items-center justify-center gap-2 rounded bg-crimson text-white font-sans font-semibold text-[16px] h-12 px-8 hover:bg-crimson-dark transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
   >
     {children}
   </a>
@@ -136,28 +102,7 @@ const SecondaryLink = ({
 }) => (
   <a
     href={href}
-    className="inline-flex items-center justify-center gap-2 rounded-none font-semibold transition-colors"
-    style={{
-      minHeight: 48,
-      padding: "0 22px",
-      background: "transparent",
-      color: CHARCOAL,
-      border: `1px solid ${BORDER}`,
-      fontFamily: FONT_SANS,
-      fontSize: 16,
-      textDecoration: "none",
-      outlineOffset: 3,
-    }}
-    onMouseEnter={(e) => {
-      e.currentTarget.style.background = CREAM;
-      e.currentTarget.style.borderColor = CHARCOAL;
-    }}
-    onMouseLeave={(e) => {
-      e.currentTarget.style.background = "transparent";
-      e.currentTarget.style.borderColor = BORDER;
-    }}
-    onFocus={(e) => (e.currentTarget.style.boxShadow = `0 0 0 3px ${CHARCOAL}`)}
-    onBlur={(e) => (e.currentTarget.style.boxShadow = "none")}
+    className="inline-flex items-center justify-center gap-2 rounded border border-gray-200 text-gray-900 font-sans font-semibold text-[16px] h-12 px-8 bg-transparent hover:bg-gray-50 hover:border-gray-900 transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
   >
     {children}
   </a>
@@ -240,27 +185,21 @@ function Hero() {
   return (
     <section
       aria-labelledby="ai-ready-h1"
-      className={SECTION_HERO}
-      style={{ background: CREAM }}
+      className={`${SECTION_HERO} bg-surface`}
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <p
-            className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
-            style={{ color: CRIMSON, fontFamily: FONT_SANS }}
-          >
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-5 text-gray-400">
             AI-Ready Website
-          </p>
+          </h3>
           <h1
             id="ai-ready-h1"
-            className={`${H1_CLASS} mb-6 max-w-[820px]`}
-            style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
+            className={`${H1_CLASS} mb-6 max-w-[820px] text-gray-900 font-serif`}
           >
             A website is not a brochure. It is a revenue asset.
           </h1>
           <p
-            className="text-[18px] md:text-[20px] leading-[1.60] mb-10 max-w-[720px]"
-            style={{ color: CHARCOAL, fontFamily: FONT_SANS }}
+            className="text-[18px] md:text-[20px] leading-[1.60] mb-10 max-w-[720px] text-gray-700 font-sans"
           >
             An AI-Ready Website is the conversion engine at the center of your
             Revenue Infrastructure. It establishes authority, earns trust, and
@@ -288,27 +227,25 @@ function BusinessProblemSection() {
     <section
       aria-labelledby="ai-ready-problem-h2"
       className={SECTION_DEFAULT}
-      style={{ background: WHITE }}
+      className="bg-white"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
-              <SectionLabel num="01" label="The Business Problem" />
+              <SectionLabel label="The Business Problem" />
             </div>
             <div className="max-w-[720px]">
               <CrimsonRule />
               <h2
                 id="ai-ready-problem-h2"
                 className={`${H2_CLASS} mb-6`}
-                style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
               >
                 Most websites describe services. Qualified buyers need to trust
                 the firm.
               </h2>
               <p
                 className="text-[18px] leading-[1.65] mb-6"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS }}
               >
                 Most service-business websites explain what the company does.
                 Qualified buyers need more than service descriptions. They need
@@ -317,14 +254,12 @@ function BusinessProblemSection() {
               </p>
               <ul
                 className="space-y-4"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS, fontSize: 17, lineHeight: 1.65 }}
               >
                 {PROBLEMS.map((p, i) => (
                   <li key={i} className="flex gap-3">
                     <span
                       aria-hidden="true"
                       className="mt-[10px] inline-block shrink-0 rounded-full"
-                      style={{ width: 6, height: 6, background: CRIMSON }}
                     />
                     <span>{p}</span>
                   </li>
@@ -344,56 +279,52 @@ function ApproachSection() {
     <section
       aria-labelledby="ai-ready-approach-h2"
       className={SECTION_DEFAULT}
-      style={{ background: CREAM }}
+      className="bg-surface"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
-              <SectionLabel num="02" label="The GWS Approach" />
+              <SectionLabel label="The GWS Approach" />
             </div>
             <div className="max-w-[820px]">
               <CrimsonRule />
               <h2
                 id="ai-ready-approach-h2"
                 className={`${H2_CLASS} mb-4`}
-                style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
               >
                 Engineered for conversions, AI indexing, and executive
                 credibility.
               </h2>
               <p
                 className="text-[18px] leading-[1.65] mb-10"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS }}
               >
                 Six interconnected components — each one a distinct discipline
                 that an AI-Ready Website must perform well.
               </p>
               <ol
                 className="divide-y"
-                style={{ borderColor: BORDER }}
+                className="border-gray-200"
               >
                 {APPROACH.map((row, i) => (
                   <RevealOnScroll key={row.n} delayMs={i * 40}>
                     <li
                       className="grid grid-cols-1 md:grid-cols-[64px_220px_1fr] gap-4 md:gap-6 py-6 first:pt-0"
-                      style={{ borderTop: i === 0 ? "none" : `1px solid ${BORDER}` }}
+                      className={i===0 ? '' : 'border-t border-gray-200'}
                     >
                       <span
                         className="text-[16px] font-semibold tracking-[0.12em]"
-                        style={{ color: CRIMSON, fontFamily: FONT_SANS }}
                       >
                         {row.n}
                       </span>
                       <h3
                         className={H4_CLASS}
-                        style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
                       >
                         {row.t}
                       </h3>
                       <p
                         className="text-[16px] md:text-[17px] leading-[1.65]"
-                        style={{ color: MUTED, fontFamily: FONT_SANS }}
+                       
                       >
                         {row.d}
                       </p>
@@ -415,26 +346,24 @@ function OutcomesSection() {
     <section
       aria-labelledby="ai-ready-outcomes-h2"
       className={SECTION_DEFAULT}
-      style={{ background: WHITE }}
+      className="bg-white"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
-              <SectionLabel num="03" label="Expected Business Outcomes" />
+              <SectionLabel label="Expected Business Outcomes" />
             </div>
             <div className="max-w-[820px]">
               <CrimsonRule />
               <h2
                 id="ai-ready-outcomes-h2"
                 className={`${H2_CLASS} mb-6`}
-                style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
               >
                 A website that works as hard as your best salesperson.
               </h2>
               <p
                 className="text-[18px] leading-[1.65] mb-10"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS }}
               >
                 What the system is designed to deliver — treated as outcomes to
                 engineer for, not guarantees to claim.
@@ -452,20 +381,18 @@ function OutcomesSection() {
                       <div className="flex items-baseline gap-4 mb-2">
                         <span
                           className="text-[14px] font-semibold tracking-[0.12em]"
-                          style={{ color: CRIMSON, fontFamily: FONT_SANS }}
                         >
                           0{i + 1}
                         </span>
                         <h3
                           className={H4_CLASS}
-                          style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
                         >
                           {o.t}
                         </h3>
                       </div>
                       <p
                         className="text-[16px] md:text-[17px] leading-[1.65]"
-                        style={{ color: MUTED, fontFamily: FONT_SANS }}
+                       
                       >
                         {o.d}
                       </p>
@@ -487,7 +414,7 @@ function AuditCTASection() {
     <section
       aria-labelledby="ai-ready-audit-h2"
       className={SECTION_DEFAULT}
-      style={{ background: CREAM }}
+      className="bg-surface"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
@@ -496,20 +423,17 @@ function AuditCTASection() {
             <div>
               <p
                 className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-3"
-                style={{ color: CRIMSON, fontFamily: FONT_SANS }}
               >
                 Website Audit
               </p>
               <h2
                 id="ai-ready-audit-h2"
                 className={`${H2_CLASS} mb-5 max-w-[480px]`}
-                style={{ color: CHARCOAL, fontFamily: FONT_SERIF }}
               >
                 Is your website working as a revenue asset?
               </h2>
               <p
                 className="text-[18px] leading-[1.65] mb-6 max-w-[520px]"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS }}
               >
                 A focused evaluation of conversion architecture, technical
                 performance, AI readiness, and authority signals — followed by
@@ -517,7 +441,6 @@ function AuditCTASection() {
               </p>
               <ul
                 className="space-y-3 mb-8"
-                style={{ color: CHARCOAL, fontFamily: FONT_SANS, fontSize: 16, lineHeight: 1.6 }}
               >
                 {[
                   "Conversion architecture review",
@@ -530,7 +453,6 @@ function AuditCTASection() {
                     <span
                       aria-hidden="true"
                       className="mt-[8px] inline-block shrink-0 rounded-full"
-                      style={{ width: 6, height: 6, background: CRIMSON }}
                     />
                     <span>{it}</span>
                   </li>
@@ -549,16 +471,11 @@ function AuditCTASection() {
 
             {/* Right: dark informational panel */}
             <div
-              className="rounded-none p-7 md:p-9"
-              style={{
-                background: CHARCOAL,
-                color: WHITE,
-                border: `1px solid ${CHARCOAL}`,
-              }}
+              className="rounded-none p-7 md:p-9 bg-gws-dark text-white border border-gray-900"
             >
               <p
                 className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
-                style={{ color: "rgba(255,255,255,0.55)", fontFamily: FONT_SANS }}
+               
               >
                 What Happens on the Call
               </p>
@@ -570,19 +487,12 @@ function AuditCTASection() {
                   >
                     <span
                       className="text-[14px] font-semibold tracking-[0.10em] mt-[2px]"
-                      style={{
-                        color: CRIMSON,
-                        fontFamily: FONT_SANS,
-                      }}
                     >
                       0{i + 1}
                     </span>
                     <p
                       className="text-[16px] md:text-[17px] leading-[1.60]"
-                      style={{
-                        color: "rgba(255,255,255,0.88)",
-                        fontFamily: FONT_SANS,
-                      }}
+                     
                     >
                       {s}
                     </p>
@@ -591,14 +501,11 @@ function AuditCTASection() {
               </ol>
               <div
                 className="mt-7 pt-6"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.16)" }}
+               
               >
                 <p
                   className="text-[14px] leading-[1.55]"
-                  style={{
-                    color: "rgba(255,255,255,0.6)",
-                    fontFamily: FONT_SANS,
-                  }}
+                 
                 >
                   60 minutes · Focused on your constraint · No obligation
                 </p>
@@ -617,31 +524,28 @@ function ClosingBand() {
     <section
       aria-labelledby="ai-ready-closing-h2"
       className="py-[80px] md:py-[112px]"
-      style={{ background: CHARCOAL }}
+      className="bg-gws-dark"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <div>
             <p
               className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
-              style={{ color: "rgba(255,255,255,0.55)", fontFamily: FONT_SANS }}
+             
             >
               The Next Step
             </p>
             <h2
               id="ai-ready-closing-h2"
               className={`${H2_CLASS} mb-6`}
-              style={{ color: WHITE, fontFamily: FONT_SERIF }}
+             
             >
               Your business doesn't have a marketing problem. It has a Revenue
               Infrastructure problem.
             </h2>
             <p
               className="text-[18px] leading-[1.65] mb-9"
-              style={{
-                color: "rgba(255,255,255,0.78)",
-                fontFamily: FONT_SANS,
-              }}
+             
             >
               A website is one part of that infrastructure. The Revenue
               Diagnostic examines how all the parts work together — and which
@@ -653,10 +557,7 @@ function ClosingBand() {
             </PrimaryLink>
             <p
               className="mt-5 text-[14px]"
-              style={{
-                color: "rgba(255,255,255,0.55)",
-                fontFamily: FONT_SANS,
-              }}
+             
             >
               60 minutes · No obligation · Focused on your constraint
             </p>

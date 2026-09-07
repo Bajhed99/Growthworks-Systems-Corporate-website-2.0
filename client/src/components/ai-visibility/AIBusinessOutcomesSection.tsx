@@ -1,10 +1,10 @@
 export function AIBusinessOutcomesSection() {
   return (
     <section aria-label="Business Outcomes" className="diagnostic-section section--gray">
-      <div className="site-shell">
-        <p className="section-kicker">Business Outcomes</p>
-        <h2>From Discoverability to Revenue Growth</h2>
-        <p className="section-intro">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
+        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Business Outcomes</h3>
+        <h2 className="font-serif">From Discoverability to Revenue Growth</h2>
+        <p className="font-sans text-[15px] text-gray-700 leading-[1.55]">
           AI Visibility isn't just about being found. It's about being found at the right time, by the right buyer, with the right authority — and turning that discovery into business outcomes that compound over time.
         </p>
         <div style={{
@@ -19,15 +19,15 @@ export function AIBusinessOutcomesSection() {
           ].map(s => (
             <div key={s.step} style={{
               flex: '1 1 200px', maxWidth: '260px', padding: '24px 20px',
-              background: '#fff', borderRadius: '0', border: '1px solid rgba(132, 22, 23, 0.10)'
-            }} aria-label={`${s.title}: ${s.desc}`}>
-              <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: '6px', background: '#841617', color: '#fff', fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '12px' }}>{s.step}</span>
-              <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, color: '#0f172a', marginBottom: '8px', lineHeight: 1.3 }}>{s.title}</h3>
-              <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.55 }}>{s.desc}</p>
+              background: '#fff'
+            }} className="rounded-2xl border-gray-200" aria-label={`${s.title}: ${s.desc}`}>
+              <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '12px' }} className="bg-crimson text-white">{s.step}</span>
+              <h3 className="font-serif text-[20px] font-normal text-gray-900 mb-2 leading-tight">{s.title}</h3>
+              <p className="font-sans text-[15px] text-gray-700 leading-[1.55]">{s.desc}</p>
             </div>
           ))}
         </div>
-        <p style={{ fontSize: '13px', color: '#64748b', marginTop: '24px', lineHeight: 1.6 }}>
+        <p className="font-sans text-[13px] text-gray-500 mt-6 leading-[1.6]">
           Source-dependency note: The five-step outcomes chain is presented at the conceptual level. Specific intermediate stages, measurement methods, and outcome tracking criteria should be verified with source-approved business outcomes documentation.
         </p>
       </div>

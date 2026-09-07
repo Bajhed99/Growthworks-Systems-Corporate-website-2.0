@@ -24,7 +24,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 // ─── Shared Constants ─────────────────────────────────────────────────────
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 // ─── RevealOnScroll Helper ────────────────────────────────────────────────
 
@@ -69,17 +69,11 @@ function RevealOnScroll({
 
 // ─── Section Label Helper ─────────────────────────────────────────────────
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
-    </p>
+    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
+    </h3>
   );
 }
 
@@ -89,29 +83,29 @@ function HomeServicesHero() {
   return (
     <section
       aria-labelledby="home-services-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="max-w-[680px]">
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             Home Services
-          </p>
+          </h3>
           <h1
             id="home-services-h1"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
             Turn local demand into a more reliable revenue system.
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[620px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
             Home-service businesses often operate in a high-intent environment. When a homeowner needs help, the business that is easiest to find, fastest to respond, simplest to schedule, and most consistent in follow-up can have an advantage.
           </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 max-w-[600px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
             The problem is that these activities often sit in separate systems. Marketing creates demand. Calls and forms capture it. Dispatch or scheduling takes over. Sales follows up. CRM records may or may not stay current. Reporting often focuses on channels rather than the complete customer path.
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-crimson-dark active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
           >
             Book a Revenue Diagnostic
           </a>
@@ -131,17 +125,17 @@ function OperatingRealitySection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="01" label="Operating Reality" />
+          <SectionLabel label="Operating Reality" />
           <h2
             id="operating-reality-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             The core challenge: opportunity leaks between handoffs.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             Home service revenue flows through multiple stages and systems. Each transition—from discovery to inquiry, inquiry to response, response to scheduling, scheduling to estimate, estimate to service, service to follow-up—creates a point where information can fragment, context can be lost, and the homeowner's intent can leak away to a faster, more organized competitor.
           </p>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-10 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-10 max-w-[680px]">
             The businesses that win are those where these handoffs are intentional, visible, and measured—not accidental.
           </p>
         </RevealOnScroll>
@@ -184,18 +178,18 @@ function ProblemModelSection() {
   return (
     <section
       aria-labelledby="problem-model-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="Five Structural Gaps" />
+          <SectionLabel label="Five Structural Gaps" />
           <h2
             id="problem-model-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Where home service revenue typically leaks.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             These are structural gaps, not individual channel problems. They compound across discovery, inquiry, response, and conversion.
           </p>
         </RevealOnScroll>
@@ -203,16 +197,16 @@ function ProblemModelSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {problems.map((problem, i) => (
             <RevealOnScroll key={problem.num} delay={i * 60}>
-              <article className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-7 md:p-8">
+              <article className="flex flex-col h-full border border-gray-200 rounded-none bg-white p-7 md:p-8">
                 <div className="mb-4">
                   <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase">
                     {problem.num}
                   </span>
                 </div>
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[24px] md:text-[28px] mb-3">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px] mb-3">
                   {problem.title}
                 </h3>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                   {problem.description}
                 </p>
               </article>
@@ -245,14 +239,14 @@ function RevenueJourneySection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="03" label="The Complete Journey" />
+          <SectionLabel label="The Complete Journey" />
           <h2
             id="journey-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             How demand becomes booked, measurable revenue.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each stage has different systems, ownership, and visibility. Connected Revenue Infrastructure means each handoff preserves context and intent.
           </p>
         </RevealOnScroll>
@@ -260,23 +254,23 @@ function RevenueJourneySection() {
         <div className="space-y-3">
           {journey.map((item, idx) => (
             <RevealOnScroll key={item.stage} delay={idx * 40}>
-              <div className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-none bg-[#F8F5EC] hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
+              <div className="flex items-start gap-4 p-6 border border-gray-200 rounded-none bg-surface hover:shadow-[0_4px_12px_rgba(43,43,43,0.06)] transition-shadow">
                 <div className="flex-shrink-0 w-12 h-12 rounded-none border border-[#841617] bg-white flex items-center justify-center">
                   <span className="text-[14px] font-sans font-bold text-[#841617]">{item.stage}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-serif font-normal text-[#2B2B2B] text-[18px] md:text-[20px] leading-[1.2] mb-1">
+                  <h3 className="font-serif font-normal text-gray-900 text-[18px] md:text-[20px] leading-[1.2] mb-1">
                     {item.label}
                   </h3>
-                  <p className="text-[16px] leading-[1.6] text-[#625E59]">{item.detail}</p>
+                  <p className="text-[16px] leading-[1.6] text-gray-500">{item.detail}</p>
                 </div>
               </div>
             </RevealOnScroll>
           ))}
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-surface">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-900">
             <strong>The key insight:</strong> Opportunity leaks occur at transitions—when the inquiry moves from marketing to sales, when the response moves from inbound to dispatch, when the follow-up moves from one person to another. Connected Revenue Infrastructure keeps that context alive.
           </p>
         </div>
@@ -314,18 +308,18 @@ function GWSApplianceSection() {
   return (
     <section
       aria-labelledby="gws-applies-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="04" label="GWS Revenue Infrastructure" />
+          <SectionLabel label="GWS Revenue Infrastructure" />
           <h2
             id="gws-applies-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Connect those pieces around one objective: reduce the opportunity lost between local discovery and booked, completed, measurable revenue.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             GWS Revenue Infrastructure organizes into four connected modules. In home services, each one directly addresses the gaps above.
           </p>
         </RevealOnScroll>
@@ -333,14 +327,14 @@ function GWSApplianceSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {modules.map((module, i) => (
             <RevealOnScroll key={module.title} delay={i * 80}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-white p-8">
+              <div className="flex flex-col h-full border border-gray-200 rounded-none bg-white p-8">
                 <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase mb-3">
                   Module {i + 1}
                 </span>
-                <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[24px] md:text-[28px] mb-4">
+                <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px] mb-4">
                   {module.title}
                 </h3>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                   {module.description}
                 </p>
               </div>
@@ -362,10 +356,10 @@ function ConnectedStateSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="05" label="What Connected Looks Like" />
+          <SectionLabel label="What Connected Looks Like" />
           <h2
             id="connected-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             For a home service business, Revenue Infrastructure means one coherent operating system.
           </h2>
@@ -374,10 +368,10 @@ function ConnectedStateSection() {
         <div className="mt-12 space-y-4 max-w-[720px]">
           <RevealOnScroll delay={0}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">1</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Homeowner discovers</strong> your service through local search, map listing, or referral.
               </p>
             </div>
@@ -385,10 +379,10 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={80}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">2</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Inquiry is captured</strong> consistently across phone, form, chat, or message—and immediately acknowledged, even outside business hours.
               </p>
             </div>
@@ -396,10 +390,10 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={160}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">3</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Routing and scheduling</strong> happen with full context. The right team member gets the right information immediately.
               </p>
             </div>
@@ -407,10 +401,10 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={240}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">4</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Estimate or service</strong> context is carried forward. Nothing is re-explained or lost.
               </p>
             </div>
@@ -418,10 +412,10 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={320}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">5</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Follow-up</strong> is triggered automatically and consistently based on pipeline stage and opportunity priority.
               </p>
             </div>
@@ -429,10 +423,10 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={400}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">6</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Revenue outcome</strong> is recorded—where it came from, how long it took, what the revenue amount was.
               </p>
             </div>
@@ -440,18 +434,18 @@ function ConnectedStateSection() {
 
           <RevealOnScroll delay={480}>
             <div className="flex gap-4 items-start">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center mt-1">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center mt-1">
                 <span className="text-white text-[12px] font-sans font-bold">7</span>
               </div>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B]">
+              <p className="text-[17px] leading-[1.65] text-gray-900">
                 <strong>Learning informs</strong> future visibility, response strategy, and operational adjustments.
               </p>
             </div>
           </RevealOnScroll>
         </div>
 
-        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-[#F8F5EC]">
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B]">
+        <div className="mt-12 p-8 border border-[#841617] rounded-none bg-surface">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-900">
             This isn't about individual tools or quick wins. It's about seeing where your revenue system is disconnected—and whether fixing those disconnections gives you a structural advantage.
           </p>
         </div>
@@ -466,18 +460,18 @@ function CompetitiveContextSection() {
   return (
     <section
       aria-labelledby="competitive-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="06" label="Competitive Reality" />
+          <SectionLabel label="Competitive Reality" />
           <h2
             id="competitive-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             As buyer discovery and response expectations evolve, businesses with clearer systems can be easier to discover, faster to respond, and easier to measure.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-8 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-8 max-w-[680px]">
             Home service buyers increasingly expect:
           </p>
         </RevealOnScroll>
@@ -493,18 +487,18 @@ function CompetitiveContextSection() {
           ].map((item) => (
             <li
               key={item}
-              className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-[#2B2B2B]"
+              className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-gray-900"
             >
               <span
                 aria-hidden="true"
-                className="mt-[10px] w-[6px] h-[6px] shrink-0 rounded-full bg-[#841617]"
+                className="mt-[10px] w-[6px] h-[6px] shrink-0 rounded-full bg-crimson"
               />
               <span>{item}</span>
             </li>
           ))}
         </ul>
 
-        <p className="text-[18px] leading-[1.65] text-[#625E59] max-w-[680px]">
+        <p className="text-[18px] leading-[1.65] text-gray-500 max-w-[680px]">
           Businesses that systematically meet these expectations capture more of the demand already being generated. Those that don't will continue to leak opportunity to competitors who have built more reliable systems.
         </p>
       </div>
@@ -529,10 +523,10 @@ function OutcomesSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="07" label="Outcomes" />
+          <SectionLabel label="Outcomes" />
           <h2
             id="outcomes-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             What connected Revenue Infrastructure enables.
           </h2>
@@ -541,14 +535,14 @@ function OutcomesSection() {
         <ul className="space-y-4 max-w-[720px] mt-8">
           {outcomes.map((outcome, idx) => (
             <RevealOnScroll key={outcome} delay={idx * 60}>
-              <li className="flex items-start gap-4 p-6 border border-[#DDD6CC] rounded-[12px] bg-[#F8F5EC]">
+              <li className="flex items-start gap-4 p-6 border border-gray-200 rounded-[12px] bg-surface">
                 <span
                   aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 rounded-full bg-[#841617] flex items-center justify-center text-white text-[12px] font-sans font-bold"
+                  className="flex-shrink-0 w-6 h-6 rounded-full bg-crimson flex items-center justify-center text-white text-[12px] font-sans font-bold"
                 >
                   {idx + 1}
                 </span>
-                <span className="text-[17px] leading-[1.65] text-[#2B2B2B]">{outcome}</span>
+                <span className="text-[17px] leading-[1.65] text-gray-900">{outcome}</span>
               </li>
             </RevealOnScroll>
           ))}
@@ -564,21 +558,21 @@ function AIVisibilityContextSection() {
   return (
     <section
       aria-labelledby="ai-context-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="08" label="AI Discoverability" />
+          <SectionLabel label="AI Discoverability" />
           <h2
             id="ai-context-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             AI-powered search is reshaping how homeowners discover service providers.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-6 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-6 max-w-[680px]">
             Conversational AI (ChatGPT, Google AI, Perplexia) now plays a role in discovery. Homeowners ask questions in natural language, and these systems return recommendations based on availability, reviews, and service clarity.
           </p>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-8 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-8 max-w-[680px]">
             To be recommended consistently in AI discovery, you need an AI-ready digital presence: clear service descriptions, reliable business data, transparent reviews, and structured local authority signals. This is the foundation of what we call AI Visibility.
           </p>
           <a
@@ -600,7 +594,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="closing-cta-h2"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -613,13 +607,13 @@ function ClosingCTASection() {
       />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
       />
 
       <div className={`${CONTAINER} relative z-10 text-center`}>
-        <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
           Start with the system
-        </p>
+        </h3>
         <h2
           id="closing-cta-h2"
           className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
@@ -631,7 +625,7 @@ function ClosingCTASection() {
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-crimson hover:bg-crimson-dark active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>

@@ -23,19 +23,13 @@ import SiteFooter from "@/components/SiteFooter";
 // ─── Shared layout primitives ─────────────────────────────────────────────────
 // Site shell max 1120px / 96px desktop gutter; use a wider 1200–1280px container
 // only for the editorial routing band per the locked spec.
-const HUB_CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const HUB_CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
-    </p>
+    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
+    </h3>
   );
 }
 
@@ -87,38 +81,38 @@ function IndustriesHero() {
   return (
     <section
       aria-labelledby="industries-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
     >
       <div className={HUB_CONTAINER}>
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
           {/* Copy column */}
           <div className="max-w-[680px]">
-            <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
               Who GWS Serves
-            </p>
+            </h3>
             <h1
               id="industries-h1"
-              className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+              className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
               style={{ textWrap: "balance" }}
             >
               Revenue Infrastructure for founder-led service businesses.
             </h1>
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[620px]">
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
               GrowthWorks Systems works with service businesses where revenue depends on being found, responding quickly, converting opportunities consistently, and understanding what is working across the full customer journey.
             </p>
-            <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 max-w-[600px]">
+            <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
               Explore how those challenges show up in your industry.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
               </a>
               <a
                 href="#industry-routes"
-                className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Explore industries
               </a>
@@ -288,14 +282,14 @@ function SharedContextSection() {
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="Shared Revenue-System Context" />
+          <SectionLabel label="Shared Revenue-System Context" />
           <h2
             id="shared-context-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             One framework. Different operating environments.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             The Revenue Infrastructure framework applies across industries. The implementation varies according to:
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3 mb-10 max-w-[820px]">
@@ -311,11 +305,11 @@ function SharedContextSection() {
             ].map((item) => (
               <li
                 key={item}
-                className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-[#2B2B2B]"
+                className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-gray-900"
               >
                 <span
                   aria-hidden="true"
-                  className="mt-[10px] w-[6px] h-[6px] shrink-0 rounded-full bg-[#841617]"
+                  className="mt-[10px] w-[6px] h-[6px] shrink-0 rounded-full bg-crimson"
                 />
                 <span>{item}</span>
               </li>
@@ -441,18 +435,18 @@ function IndustryRoutingSection() {
     <section
       id="industry-routes"
       aria-labelledby="industry-routing-h2"
-      className="bg-[#F8F5EC] py-[88px] md:py-[144px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[88px] md:py-[144px] border-b border-[#D8D5CE]"
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="03" label="Explore the Three Priority Industries" />
+          <SectionLabel label="Explore the Three Priority Industries" />
           <h2
             id="industry-routing-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Choose the operating environment that looks like yours.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each route below opens a dedicated industry page with deeper context on the buyer, the journey, and where revenue typically leaks.
           </p>
         </RevealOnScroll>
@@ -463,27 +457,27 @@ function IndustryRoutingSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {INDUSTRIES.map((ind, i) => (
             <RevealOnScroll key={ind.num} delay={i * 80}>
-              <article className="group relative flex flex-col h-full bg-white border border-[#DDD6CC] rounded-none p-7 md:p-8 transition-shadow hover:shadow-[0_12px_28px_rgba(43,43,43,0.08)] focus-within:shadow-[0_12px_28px_rgba(43,43,43,0.08)]">
+              <article className="group relative flex flex-col h-full bg-white border border-gray-200 rounded-none p-7 md:p-8 transition-shadow hover:shadow-[0_12px_28px_rgba(43,43,43,0.08)] focus-within:shadow-[0_12px_28px_rgba(43,43,43,0.08)]">
                 <header className="flex items-start justify-between gap-4 mb-5">
                   <span
                     aria-hidden="true"
-                    className="inline-flex items-center justify-center w-11 h-11 rounded-none border border-[#DDD6CC] text-[#841617]"
+                    className="inline-flex items-center justify-center w-11 h-11 rounded-none border border-gray-200 text-[#841617]"
                   >
                     {ind.icon}
                   </span>
-                  <span className="font-sans font-bold text-[12px] tracking-[0.18em] text-[#625E59]">
+                  <span className="font-sans font-bold text-[12px] tracking-[0.18em] text-gray-500">
                     {ind.num}
                   </span>
                 </header>
 
                 <h3
-                  className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[24px] md:text-[28px] mb-3"
+                  className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px] mb-3"
                   style={{ textWrap: "balance" }}
                 >
                   {ind.name}
                 </h3>
 
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#2B2B2B] mb-5">
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-900 mb-5">
                   {ind.desc}
                 </p>
 
@@ -491,11 +485,11 @@ function IndustryRoutingSection() {
                   {ind.orientation.map((theme) => (
                     <li
                       key={theme}
-                      className="flex items-start gap-2 text-[14px] leading-[1.45] text-[#625E59] font-sans font-medium"
+                      className="flex items-start gap-2 text-[14px] leading-[1.45] text-gray-500 font-sans font-medium"
                     >
                       <span
                         aria-hidden="true"
-                        className="mt-[7px] w-[5px] h-[5px] shrink-0 rounded-full bg-[#841617]/70"
+                        className="mt-[7px] w-[5px] h-[5px] shrink-0 rounded-full bg-crimson/70"
                       />
                       <span>{theme}</span>
                     </li>
@@ -573,14 +567,14 @@ function ComparisonSection() {
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="04" label="How the Challenge Changes by Industry" />
+          <SectionLabel label="How the Challenge Changes by Industry" />
           <h2
             id="comparison-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Same systemic philosophy. Different revenue journey.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             A short comparative read on what each priority industry is pressured by — and how the buyer moves through the system. Use it to choose where to go next.
           </p>
         </RevealOnScroll>
@@ -588,34 +582,34 @@ function ComparisonSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
           {COMPARISON.map((row, i) => (
             <RevealOnScroll key={row.name} delay={i * 60}>
-              <div className="flex flex-col h-full border border-[#DDD6CC] rounded-none bg-[#F8F5EC] p-7 md:p-8">
+              <div className="flex flex-col h-full border border-gray-200 rounded-none bg-surface p-7 md:p-8">
                 <span className="font-sans font-bold text-[12px] tracking-[0.18em] text-[#841617] mb-3">
                   0{i + 1}
                 </span>
                 <h3
-                  className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[22px] md:text-[24px] mb-4"
+                  className="font-serif font-normal text-gray-900 leading-[1.25] text-[22px] md:text-[24px] mb-4"
                 >
                   {row.name}
                 </h3>
 
                 <div className="mb-5">
-                  <p className="text-[14px] font-sans font-semibold tracking-[0.12em] uppercase text-[#625E59] mb-1">
+                  <p className="text-[14px] font-sans font-semibold tracking-[0.12em] uppercase text-gray-500 mb-1">
                     Primary pressure
                   </p>
-                  <p className="text-[16px] leading-[1.6] text-[#2B2B2B]">
+                  <p className="text-[16px] leading-[1.6] text-gray-900">
                     {row.pressure}
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-[14px] font-sans font-semibold tracking-[0.12em] uppercase text-[#625E59] mb-3">
+                  <p className="text-[14px] font-sans font-semibold tracking-[0.12em] uppercase text-gray-500 mb-3">
                     Typical journey
                   </p>
                   <ol className="space-y-2">
                     {row.journey.map((step, idx) => (
                       <li
                         key={step}
-                        className="flex items-start gap-3 text-[15px] leading-[1.5] text-[#2B2B2B]"
+                        className="flex items-start gap-3 text-[15px] leading-[1.5] text-gray-900"
                       >
                         <span
                           aria-hidden="true"
@@ -643,7 +637,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="industries-closing-cta"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -656,13 +650,13 @@ function ClosingCTASection() {
       />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
       />
 
       <div className={`${HUB_CONTAINER} relative z-10 text-center`}>
-        <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
           Start with the system
-        </p>
+        </h3>
         <h2
           id="industries-closing-cta"
           className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
@@ -674,7 +668,7 @@ function ClosingCTASection() {
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>

@@ -17,7 +17,7 @@ import SiteFooter from "@/components/SiteFooter";
  * (Cream + dark info panel) → Dark Closing Band → Footer
  */
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 function RevealOnScroll({
   children,
@@ -58,11 +58,11 @@ function RevealOnScroll({
   );
 }
 
-function SectionLabel({ num, label }: { num: string; label: string }) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
-    </p>
+    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
+    </h3>
   );
 }
 
@@ -72,33 +72,33 @@ function Hero() {
   return (
     <section
       aria-labelledby="crm-hero-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="max-w-[680px]">
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             CRM &amp; Automation
-          </p>
+          </h3>
           <h1
             id="crm-hero-h1"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
             Revenue leakage lives in the gaps between your systems.
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[620px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
             CRM and Revenue Operations close the gaps between marketing, sales and delivery — reducing handoff failures, inconsistent follow-up, and limited visibility that cost businesses qualified pipeline every month.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
             >
               Book a Revenue Diagnostic
             </a>
             <a
               href="/solutions"
-              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-[#F8F5EC] hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
             >
               View All Solutions
             </a>
@@ -127,14 +127,14 @@ function ProblemSection() {
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="01" label="The Business Problem" />
+          <SectionLabel label="The Business Problem" />
           <h2
             id="problem-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Most businesses have a CRM. Few have a revenue system.
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-10 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-gray-900 mb-10 max-w-[680px]">
             A CRM that isn't connected to your marketing, website, and communication systems is a contact database — not a revenue system. Without automated workflows, consistent follow-up, and pipeline visibility, qualified leads fall through gaps that are invisible until a prospect chooses a competitor.
           </p>
         </RevealOnScroll>
@@ -142,11 +142,11 @@ function ProblemSection() {
         <div className="max-w-[720px] space-y-0">
           {items.map((text, i) => (
             <RevealOnScroll key={i} delay={i * 60}>
-              <div className="flex gap-4 py-5 border-b border-[#DDD6CC] first:border-t first:border-[#DDD6CC]">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] text-white text-[13px] font-sans font-bold flex items-center justify-center mt-0.5">
+              <div className="flex gap-4 py-5 border-b border-gray-200 first:border-t first:border-gray-200">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson text-white text-[13px] font-sans font-bold flex items-center justify-center mt-0.5">
                   {i + 1}
                 </span>
-                <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">{text}</p>
+                <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">{text}</p>
               </div>
             </RevealOnScroll>
           ))}
@@ -195,14 +195,14 @@ function ApproachSection() {
   return (
     <section
       aria-labelledby="approach-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel num="02" label="The GWS Approach" />
+          <SectionLabel label="The GWS Approach" />
           <h2
             id="approach-h2"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
             Six components of a functioning revenue system.
           </h2>
@@ -211,15 +211,15 @@ function ApproachSection() {
         <div className="max-w-[720px] space-y-0">
           {components.map((c, i) => (
             <RevealOnScroll key={c.num} delay={i * 60}>
-              <div className="flex gap-5 md:gap-6 py-6 border-b border-[#DDD6CC] first:border-t first:border-[#DDD6CC]">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#841617] text-white text-[14px] font-sans font-bold flex items-center justify-center mt-0.5">
+              <div className="flex gap-5 md:gap-6 py-6 border-b border-gray-200 first:border-t first:border-gray-200">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-crimson text-white text-[14px] font-sans font-bold flex items-center justify-center mt-0.5">
                   {c.num}
                 </div>
                 <div>
-                  <h3 className="font-serif font-normal text-[#2B2B2B] text-[20px] md:text-[22px] leading-[1.25] mb-2">
+                  <h3 className="font-serif font-normal text-gray-900 text-[20px] md:text-[22px] leading-[1.25] mb-2">
                     {c.title}
                   </h3>
-                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">{c.desc}</p>
+                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">{c.desc}</p>
                 </div>
               </div>
             </RevealOnScroll>
@@ -243,26 +243,26 @@ function DiagnosticCTASection() {
   return (
     <section
       aria-labelledby="diagnostic-cta-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[88px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="grid lg:grid-cols-[1fr_0.85fr] gap-12 lg:gap-16 items-start">
           {/* Left — CTA */}
           <RevealOnScroll>
-            <SectionLabel num="03" label="Revenue Operations" />
+            <SectionLabel label="Revenue Operations" />
             <h2
               id="diagnostic-cta-h2"
-              className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[640px]"
+              className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[640px]"
             >
               Find out where your revenue operations are leaking.
             </h2>
-            <p className="text-[18px] leading-[1.65] text-[#625E59] mb-8 max-w-[580px]">
+            <p className="text-[18px] leading-[1.65] text-gray-500 mb-8 max-w-[580px]">
               A diagnostic conversation about your current CRM, automation, and pipeline visibility — and the highest-impact improvements that deserve first attention.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
               </a>
@@ -278,14 +278,14 @@ function DiagnosticCTASection() {
 
           {/* Right — Dark info panel */}
           <RevealOnScroll delay={100}>
-            <div className="bg-[#2B2B2B] text-white rounded-none p-8 md:p-10">
+            <div className="bg-gws-dark text-white rounded-none p-8 md:p-10">
               <h3 className="font-serif font-normal text-[22px] md:text-[24px] leading-[1.2] mb-6">
                 What Happens on the Call
               </h3>
               <div className="space-y-5">
                 {steps.map((step) => (
                   <div key={step.num} className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#841617] flex items-center justify-center text-[13px] font-sans font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-crimson flex items-center justify-center text-[13px] font-sans font-bold">
                       {step.num}
                     </div>
                     <div>
@@ -311,7 +311,7 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="closing-h2"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -323,13 +323,13 @@ function ClosingBand() {
       />
       <div
         aria-hidden="true"
-        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
       />
       <div className={`${CONTAINER} relative z-10`}>
         <RevealOnScroll>
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             Start with the system
-          </p>
+          </h3>
           <h2
             id="closing-h2"
             className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
@@ -345,7 +345,7 @@ function ClosingBand() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
             >
               Book a Revenue Diagnostic
             </a>

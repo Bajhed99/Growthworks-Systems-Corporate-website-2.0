@@ -32,7 +32,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 // ─── Shared Constants ─────────────────────────────────────────────────────
 
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-10 lg:px-16";
+const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 // ─── RevealOnScroll Helper ────────────────────────────────────────────────
 
@@ -77,16 +77,10 @@ function RevealOnScroll({
 
 // ─── Section Label Helper ─────────────────────────────────────────────────
 
-function SectionLabel({
-  num,
-  label,
-}: {
-  num: string;
-  label: string;
-}) {
+function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-      {num}&ensp;{label}
+    <p className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+      {label}
     </p>
   );
 }
@@ -97,7 +91,7 @@ function ConversionSystemsHero() {
   return (
     <section
       aria-labelledby="conversion-systems-h1"
-      className="bg-[#F8F5EC] pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="max-w-[720px]">
@@ -106,15 +100,15 @@ function ConversionSystemsHero() {
           </p>
           <h1
             id="conversion-systems-h1"
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
             Every missed call is a missed opportunity. Most are preventable.
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-6 max-w-[640px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[640px]">
             Conversion Systems are designed to capture inbound opportunity with timely response, qualification, routing, booking, and follow-up—including periods when staff may not immediately be available.
           </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 max-w-[620px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[620px]">
             When a prospect reaches out, the speed, clarity, and structure of the response often shapes whether that inquiry becomes a conversation, a booked appointment, or a missed opportunity.
           </p>
           <div className="flex flex-wrap items-center gap-3">
@@ -155,7 +149,7 @@ function BusinessProblemSection() {
               01
             </span>
             <div className="lg:mt-3">
-              <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase text-[#625E59]">
+              <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase text-gray-500">
                 The Business Problem
               </p>
             </div>
@@ -165,17 +159,17 @@ function BusinessProblemSection() {
             <RevealOnScroll>
               <h2
                 id="business-problem-h2"
-                className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6"
+                className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6"
               >
                 Qualified leads are being lost before the first conversation.
               </h2>
-              <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5">
+              <p className="text-[18px] leading-[1.65] text-gray-900 mb-5">
                 Response time matters. The longer a high-intent inquiry sits without meaningful engagement, the more likely it is that momentum is lost, intent cools, or a faster-responding competitor captures the opportunity.
               </p>
-              <p className="text-[18px] leading-[1.65] text-[#2B2B2B] mb-5">
+              <p className="text-[18px] leading-[1.65] text-gray-900 mb-5">
                 Delays in response can materially reduce the likelihood that a high-intent inquiry progresses.
               </p>
-              <p className="text-[17px] leading-[1.65] text-[#625E59] mb-5">
+              <p className="text-[17px] leading-[1.65] text-gray-500 mb-5">
                 Many service businesses discover that their most preventable losses are not from a lack of demand, but from response friction across:
               </p>
               <ul className="space-y-3 mb-6 max-w-[620px]">
@@ -188,7 +182,7 @@ function BusinessProblemSection() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-[#2B2B2B]"
+                    className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-gray-900"
                   >
                     <span
                       aria-hidden="true"
@@ -198,7 +192,7 @@ function BusinessProblemSection() {
                   </li>
                 ))}
               </ul>
-              <p className="text-[17px] leading-[1.65] text-[#625E59]">
+              <p className="text-[17px] leading-[1.65] text-gray-500">
                 These are structural gaps, not individual failures. They emerge when inbound demand, response capacity, and qualification routing are not designed as one system.
               </p>
             </RevealOnScroll>
@@ -254,7 +248,7 @@ function GWSApproachSection() {
   return (
     <section
       aria-labelledby="gws-approach-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 items-start mb-10 md:mb-12">
@@ -266,7 +260,7 @@ function GWSApproachSection() {
               02
             </span>
             <div className="lg:mt-3">
-              <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase text-[#625E59]">
+              <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase text-gray-500">
                 The GWS Approach
               </p>
             </div>
@@ -276,11 +270,11 @@ function GWSApproachSection() {
             <RevealOnScroll>
               <h2
                 id="gws-approach-h2"
-                className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-4"
+                className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4"
               >
                 Systematic conversion infrastructure across every inbound channel.
               </h2>
-              <p className="text-[17px] leading-[1.65] text-[#625E59]">
+              <p className="text-[17px] leading-[1.65] text-gray-500">
                 Conversion Systems organize six capabilities designed to work together. Each one addresses a specific point where opportunity can be lost—and where a designed system can preserve it.
               </p>
             </RevealOnScroll>
@@ -293,7 +287,7 @@ function GWSApproachSection() {
             <RevealOnScroll key={component.num} delay={i * 50}>
               <div
                 className={`grid grid-cols-[60px_1fr] md:grid-cols-[80px_minmax(220px,1fr)_2fr] gap-4 md:gap-8 py-7 md:py-8 ${
-                  i < components.length - 1 ? "border-b border-[#DDD6CC]" : ""
+                  i < components.length - 1 ? "border-b border-gray-200" : ""
                 }`}
               >
                 <div>
@@ -302,12 +296,12 @@ function GWSApproachSection() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-serif font-normal text-[#2B2B2B] leading-[1.25] text-[20px] md:text-[22px]">
+                  <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[20px] md:text-[22px]">
                     {component.title}
                   </h3>
                 </div>
                 <div>
-                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59]">
+                  <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500">
                     {component.description}
                   </p>
                 </div>
@@ -318,8 +312,8 @@ function GWSApproachSection() {
 
         {/* Lead Response taxonomy link */}
         <div className="mt-10 max-w-[1000px]">
-          <p className="text-[15px] leading-[1.6] text-[#625E59]">
-            <span className="font-sans font-semibold text-[#2B2B2B]">Part of:</span>{" "}
+          <p className="text-[15px] leading-[1.6] text-gray-500">
+            <span className="font-sans font-semibold text-gray-900">Part of:</span>{" "}
             Conversion Systems is the depth implementation of the{" "}
             <a
               href="/solutions#lead-response"
@@ -341,7 +335,7 @@ function AfterHoursCTASection() {
   return (
     <section
       aria-labelledby="after-hours-cta-h2"
-      className="bg-[#F8F5EC] py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
+      className="bg-surface py-[72px] md:py-[112px] border-b border-[#D8D5CE]"
     >
       <div className={CONTAINER}>
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
@@ -353,14 +347,14 @@ function AfterHoursCTASection() {
               </p>
               <h2
                 id="after-hours-cta-h2"
-                className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[40px] mb-6"
+                className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[40px] mb-6"
               >
                 How many qualified leads are you losing after hours?
               </h2>
-              <p className="text-[17px] leading-[1.65] text-[#2B2B2B] mb-5">
+              <p className="text-[17px] leading-[1.65] text-gray-900 mb-5">
                 The Revenue Diagnostic can help identify where response gaps, missed-call handling, after-hours coverage, qualification friction, booking friction, and routing gaps may be affecting opportunity.
               </p>
-              <p className="text-[17px] leading-[1.65] text-[#625E59] mb-8">
+              <p className="text-[17px] leading-[1.65] text-gray-500 mb-8">
                 It is designed to assess the potential business impact of these gaps—not as a sales presentation, but as a structured look at where your conversion system is helping and where it is limiting.
               </p>
               <div className="flex flex-wrap items-center gap-3">
@@ -385,7 +379,7 @@ function AfterHoursCTASection() {
           <RevealOnScroll delay={120}>
             <aside
               aria-labelledby="call-info-h3"
-              className="bg-[#2B2B2B] text-white rounded-none p-8 md:p-10"
+              className="bg-gws-dark text-white rounded-none p-8 md:p-10"
             >
               <p className="text-[12px] font-sans font-bold tracking-[0.18em] uppercase mb-3 text-[#841617]">
                 What Happens on the Call
@@ -477,7 +471,7 @@ function DarkClosingBand() {
   return (
     <section
       aria-labelledby="closing-band-h2"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden border-b border-[#D8D5CE]"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden border-b border-[#D8D5CE]"
     >
       <div
         aria-hidden="true"

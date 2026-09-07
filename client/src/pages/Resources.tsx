@@ -143,10 +143,10 @@ function StatusLabel({ status }: { status: Status }) {
   const text = status === "available" ? "AVAILABLE" : status === "in-development" ? "IN DEVELOPMENT" : "COMING SOON";
   const colorClass =
     status === "available"
-      ? "bg-[#841617] text-white"
+      ? "bg-crimson text-white"
       : status === "in-development"
         ? "bg-[#625E59] text-white"
-        : "bg-[#DDD6CC] text-[#625E59]";
+        : "bg-[#DDD6CC] text-gray-500";
   return (
     <span className={`inline-block text-[11px] font-sans font-bold tracking-[0.08em] uppercase px-2.5 py-0.5 rounded-full ${colorClass}`}>
       {text}
@@ -201,7 +201,7 @@ function Hero() {
   return (
     <section
       aria-labelledby="resources-hero-h1"
-      className="bg-[#2B2B2B] pt-[120px] md:pt-[144px] pb-[72px] md:pb-[96px] border-b border-[#3A3A3A] relative overflow-hidden"
+      className="bg-gws-dark pt-[120px] md:pt-[144px] pb-[72px] md:pb-[96px] border-b border-[#3A3A3A] relative overflow-hidden"
     >
       {/* Subtle dot texture overlay */}
       <div
@@ -214,9 +214,9 @@ function Hero() {
       />
       <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="max-w-[780px]">
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-5 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-5 text-gray-400">
             GWS KNOWLEDGE PLATFORM
-          </p>
+          </h3>
           <h1
             id="resources-hero-h1"
             className="font-serif font-normal text-white leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
@@ -239,7 +239,7 @@ function BetaStatus() {
   return (
     <section
       aria-label="Platform status"
-      className="bg-[#841617] text-white"
+      className="bg-crimson text-white"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 py-5 md:py-6">
         <div className="flex flex-col md:flex-row md:items-start md:gap-8 gap-3">
@@ -275,7 +275,7 @@ function CategoryNav() {
   return (
     <nav
       aria-label="Resource categories"
-      className="bg-[#2B2B2B] border-b border-[#3A3A3A] sticky top-0 z-40"
+      className="bg-gws-dark border-b border-[#3A3A3A] sticky top-0 z-40"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="flex flex-wrap gap-x-1 gap-y-2 md:gap-x-3 md:gap-y-0 py-3 md:py-3">
@@ -300,7 +300,7 @@ function ResourceRow({ item, delay }: { item: ResourceItem; delay: number }) {
   return (
     <RevealOnScroll delay={delay}>
       <article
-        className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 py-5 md:py-6 border-b border-[#DDD6CC] first:border-t first:border-[#DDD6CC]"
+        className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 py-5 md:py-6 border-b border-gray-200 first:border-t first:border-gray-200"
       >
         {/* Type */}
         <div className="flex-shrink-0 sm:w-[140px] md:w-[160px]">
@@ -311,7 +311,7 @@ function ResourceRow({ item, delay }: { item: ResourceItem; delay: number }) {
 
         {/* Title + Description */}
         <div className="flex-1 min-w-0">
-          <h3 className="font-serif font-normal text-[#2B2B2B] text-[18px] md:text-[20px] leading-[1.25] mb-1.5">
+          <h3 className="font-serif font-normal text-gray-900 text-[18px] md:text-[20px] leading-[1.25] mb-1.5">
             {item.status === "available" && item.href ? (
               <a href={item.href} className="hover:text-[#841617] hover:underline underline-offset-[3px] focus-visible:outline focus-visible:outline-[2px] focus-visible:outline-[#841617] focus-visible:outline-offset-[2px] transition-colors">
                 {item.title}
@@ -320,7 +320,7 @@ function ResourceRow({ item, delay }: { item: ResourceItem; delay: number }) {
               item.title
             )}
           </h3>
-          <p className="text-[15px] md:text-[16px] leading-[1.6] text-[#625E59]">{item.desc}</p>
+          <p className="text-[15px] md:text-[16px] leading-[1.6] text-gray-500">{item.desc}</p>
         </div>
 
         {/* Status + Action */}
@@ -344,19 +344,19 @@ function ResourceRow({ item, delay }: { item: ResourceItem; delay: number }) {
 
 function ResourceSection({ category }: { category: Category }) {
   return (
-    <section id={category.id} aria-labelledby={`${category.id}-h2`} className="bg-white py-[72px] md:py-[96px] border-b border-[#DDD6CC] scroll-mt-[72px]">
+    <section id={category.id} aria-labelledby={`${category.id}-h2`} className="bg-white py-[72px] md:py-[96px] border-b border-gray-200 scroll-mt-[72px]">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             {category.eyebrow}
-          </p>
+          </h3>
           <h2
             id={`${category.id}-h2`}
-            className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[28px] md:text-[40px] md:leading-[1.10] mb-4 max-w-[720px]"
+            className="font-serif font-normal text-gray-900 leading-[1.15] text-[28px] md:text-[40px] md:leading-[1.10] mb-4 max-w-[720px]"
           >
             {category.title}
           </h2>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-[#625E59] mb-10 md:mb-12 max-w-[680px]">
+          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 md:mb-12 max-w-[680px]">
             {category.intro}
           </p>
         </RevealOnScroll>
@@ -377,23 +377,23 @@ function StayInformed() {
   return (
     <section
       aria-labelledby="stay-informed-h2"
-      className="bg-[#F8F5EC] py-[80px] md:py-[120px] border-b border-[#DDD6CC]"
+      className="bg-surface py-[80px] md:py-[120px] border-b border-gray-200"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="max-w-[680px]">
           <RevealOnScroll>
-            <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
               STAY INFORMED
-            </p>
+            </h3>
             <h2
               id="stay-informed-h2"
-              className="font-serif font-normal text-[#2B2B2B] leading-[1.15] text-[32px] md:text-[44px] mb-6"
+              className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6"
             >
               New frameworks, research, and diagnostic tools are published as they are completed.
             </h2>
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-4 max-w-[560px]">
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-4 max-w-[560px]">
               Visitors may discuss how Revenue Infrastructure applies to their business and may learn about newly released resources through direct conversation.
             </p>
           </RevealOnScroll>
@@ -401,7 +401,7 @@ function StayInformed() {
             <div className="flex flex-wrap items-center gap-3 mt-8">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
               </a>
@@ -426,10 +426,10 @@ function PlatformSummary() {
     { label: "Assessments", value: "2 available, 2 in progress" },
   ];
   return (
-    <section aria-label="Platform summary" className="bg-white border-b border-[#DDD6CC]">
+    <section aria-label="Platform summary" className="bg-white border-b border-gray-200">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 py-16 md:py-20">
         <RevealOnScroll>
-          <h3 className="font-serif font-normal text-[#2B2B2B] text-[22px] md:text-[28px] leading-[1.2] mb-8 max-w-[600px]">
+          <h3 className="font-serif font-normal text-gray-900 text-[22px] md:text-[28px] leading-[1.2] mb-8 max-w-[600px]">
             What is available now — and what is being built next.
           </h3>
         </RevealOnScroll>
@@ -438,7 +438,7 @@ function PlatformSummary() {
             <RevealOnScroll key={c.label} delay={i * 60}>
               <div className="border-t-2 border-[#841617]/20 pt-4">
                 <p className="text-[14px] font-sans font-bold tracking-[0.08em] uppercase text-[#841617] mb-1">{c.label}</p>
-                <p className="text-[15px] md:text-[16px] leading-[1.45] text-[#2B2B2B]">{c.value}</p>
+                <p className="text-[15px] md:text-[16px] leading-[1.45] text-gray-900">{c.value}</p>
               </div>
             </RevealOnScroll>
           ))}
@@ -454,7 +454,7 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="closing-h2"
-      className="bg-[#2B2B2B] text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -470,9 +470,9 @@ function ClosingBand() {
       />
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
         <RevealOnScroll>
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
             UNDERSTAND THE FRAMEWORK
-          </p>
+          </h3>
           <h2
             id="closing-h2"
             className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
@@ -485,7 +485,7 @@ function ClosingBand() {
           <div className="flex flex-wrap items-center gap-3 mt-8">
             <a
               href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
             >
               Book a Revenue Diagnostic
             </a>

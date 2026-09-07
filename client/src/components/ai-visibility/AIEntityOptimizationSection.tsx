@@ -1,8 +1,8 @@
 export function AIEntityOptimizationSection() {
   return (
-    <section aria-label="Entity Optimization" className="diagnostic-section section--gray">
-      <div className="site-shell">
-        <p className="section-kicker">Entity Optimization</p>
+    <section aria-label="Entity Optimization" className="bg-surface py-[112px]">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
+        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Entity Optimization</h3>
         <h2>How AI Understands Who You Are</h2>
         <p className="section-intro">
           AI systems don't read pages the way people do. They interpret entities — discrete units of meaning: your business, your offering, your expertise, your market — and the relationships between them. Entity optimization is the work of making those units unambiguous, well-supported, and trustworthy across the entire web.
@@ -14,12 +14,9 @@ export function AIEntityOptimizationSection() {
             { title: 'Relationship Mapping', desc: 'Connected entities — services, industries, locations, founders — establish the full context AI systems need to understand your role.' },
             { title: 'Source Consistency', desc: 'The same information appears reliably across authoritative third-party sources that AI systems trust.' },
           ].map(item => (
-            <article key={item.title} style={{
-              background: '#fff', borderRadius: '0', padding: '24px',
-              border: '1px solid rgba(132, 22, 23, 0.10)'
-            }}>
-              <h3 style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '20px', fontWeight: 400, lineHeight: 1.3, color: '#0f172a', marginBottom: '10px' }}>{item.title}</h3>
-              <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.60 }}>{item.desc}</p>
+            <article key={item.title} className="bg-white rounded-2xl p-6 border border-gray-200">
+              <h3 className="font-serif text-[20px] font-normal leading-[1.3] text-gray-900 mb-2.5">{item.title}</h3>
+              <p className="font-sans text-[15px] text-gray-500 leading-[1.60]">{item.desc}</p>
             </article>
           ))}
         </div>

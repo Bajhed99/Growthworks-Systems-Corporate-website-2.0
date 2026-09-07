@@ -6,12 +6,11 @@ function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAtt
 
 export function SolutionsClosingCTASection() {
   return (
-    <section aria-label="Start With The Constraint" className="diagnostic-section section--dark" style={{ background: '#2B2B2B' }}>
+    <section aria-label="Start With The Constraint" className="diagnostic-section section--dark bg-gws-dark" style={{ background: '#2B2B2B' }}>
       <div className="site-shell" style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}>
         <p className="section-kicker" style={{ color: '#94a3b8' }}>Next Step</p>
-        <h2 id="solutions-closing-cta" style={{
+        <h2 id="solutions-closing-cta" className="font-serif" style={{
           color: '#fff',
-          fontFamily: 'DM Serif Display, Georgia, serif',
           fontSize: '36px', lineHeight: 1.15, fontWeight: 400,
           marginBottom: '20px',
         }}>
@@ -24,10 +23,10 @@ export function SolutionsClosingCTASection() {
         }}>
           A Revenue Diagnostic examines how the critical parts of your revenue path work together, where opportunity is being lost, and which improvements are most likely to create meaningful business impact.
         </p>
-        <AnchorLink href="/revenue-diagnostic" style={{
+        <AnchorLink href="/revenue-diagnostic" className="rounded bg-crimson text-white" style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-          padding: '14px 28px', borderRadius: 0,
-          background: '#841617', color: '#fff',
+          padding: '14px 28px',
+          color: '#fff',
           fontFamily: 'DM Sans, Arial, sans-serif',
           fontSize: '16px', fontWeight: 600,
           lineHeight: 1.2,
