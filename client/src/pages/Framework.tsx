@@ -114,14 +114,14 @@ const CONTAINER = 'max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16'
 
 function SectionLabel({ label, dark = false }: { label: string; dark?: boolean }) {
   return (
-    <p className="text-[18px] font-sans font-semibold text-[#BE1E2D] tracking-[0.18em] uppercase mb-4">
+    <p className="text-[18px] font-sans font-semibold text-[#841617] tracking-[0.18em] uppercase mb-4">
       {label}
     </p>
   )
 }
 
 // ─── INFRA VISUAL FROM ZIP ─────────────────────────────────────────────────────
-const CRIMSON = "#BE1E2D";
+const CRIMSON = "#841617";
 const CRIMSON_DIM = "rgba(132,22,23,0.3)";
 const CRIMSON_GLOW = "rgba(132,22,23,0.5)";
 
@@ -605,11 +605,11 @@ function HeroSection() {
 function CanonicalDefinitionSection() {
   const { ref, visible } = useReveal()
   const inputs = [
-    { label: 'Strategy',   Icon: () => <Icon name="target"   s={24} c="#BE1E2D" /> },
-    { label: 'Technology', Icon: () => <Icon name="monitor"  s={24} c="#BE1E2D" /> },
-    { label: 'Data',       Icon: () => <Icon name="database" s={24} c="#BE1E2D" /> },
-    { label: 'Processes',  Icon: () => <Icon name="gear"     s={24} c="#BE1E2D" /> },
-    { label: 'People',     Icon: () => <Icon name="heart"    s={24} c="#BE1E2D" /> },
+    { label: 'Strategy',   Icon: () => <Icon name="target"   s={24} c="#841617" /> },
+    { label: 'Technology', Icon: () => <Icon name="monitor"  s={24} c="#841617" /> },
+    { label: 'Data',       Icon: () => <Icon name="database" s={24} c="#841617" /> },
+    { label: 'Processes',  Icon: () => <Icon name="gear"     s={24} c="#841617" /> },
+    { label: 'People',     Icon: () => <Icon name="heart"    s={24} c="#841617" /> },
   ]
 
   return (
@@ -804,7 +804,7 @@ function RevenueInfrastructureFlywheelSection() {
   const NODE_R = 32
   const LABEL_R = 258
   const HUB_R = 78
-  const RED = '#BE1E2D'
+  const RED = '#841617'
 
   const STEPS = [
     { n: '01', label: 'Discover',  sub: 'Surface insights'    },
@@ -846,11 +846,11 @@ function RevenueInfrastructureFlywheelSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column — text */}
           <div>
-            <p className="text-[18px] font-sans font-semibold text-[#BE1E2D] tracking-[0.18em] uppercase mb-4">
+            <p className="text-[18px] font-sans font-semibold text-[#841617] tracking-[0.18em] uppercase mb-4">
               05&ensp;Revenue Infrastructure Flywheel
             </p>
             <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-white mb-5 max-w-[720px]">
-              <span style={{ color: '#BE1E2D' }}>Revenue Infrastructure</span> <span style={{ color: '#ffffff' }}>compounds when the system reinforces itself.</span>
+              <span style={{ color: '#841617' }}>Revenue Infrastructure</span> <span style={{ color: '#ffffff' }}>compounds when the system reinforces itself.</span>
             </h2>
             <p className="text-[18px] leading-[1.65] text-white/60 mb-16 max-w-[620px]">
               Each strength builds on the previous, creating a self-reinforcing cycle of growth.
@@ -858,8 +858,8 @@ function RevenueInfrastructureFlywheelSection() {
           </div>
 
           {/* Right column — flywheel */}
-          <div className="flex items-center justify-center py-10 lg:py-0" style={{ minHeight: '560px' }}>
-            <div className="relative" style={{ width: 'min(700px, 100vw)', height: '136vh', maxHeight: '1400px', aspectRatio: '1' }}>
+          <div className="flex items-center justify-center py-10 lg:py-0">
+            <div className="relative" style={{ width: 'min(700px, 100%)', aspectRatio: '1' }}>
             <svg viewBox="0 0 700 700" style={{ width: '100%', height: '100%' }} aria-hidden="true">
               <defs>
                 <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
@@ -871,8 +871,8 @@ function RevenueInfrastructureFlywheelSection() {
                   <stop offset="100%" stopColor="#000000" />
                 </radialGradient>
                 <radialGradient id="node-active" cx="40%" cy="35%" r="65%">
-                  <stop offset="0%" stopColor="#E8253A" />
-                  <stop offset="100%" stopColor="#7A0010" />
+                  <stop offset="0%" stopColor="#A62832" />
+                  <stop offset="100%" stopColor="#5A0C14" />
                 </radialGradient>
                 <filter id="arrow-glow" x="-60%" y="-60%" width="220%" height="220%" colorInterpolationFilters="sRGB">
                   <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
@@ -1504,7 +1504,7 @@ function TraditionalVsRISection() {
                 {DOMAINS.map((d, i) => (
                   <div key={d.id} className="flex items-center gap-2 bg-white border border-crimson/15 rounded-none px-4 py-2">
                     <div className="w-5 h-5 rounded-none bg-crimson/12 flex items-center justify-center">
-                      <Icon name={DOMAIN_ICONS[i]} s={12} c="#BE1E2D" />
+                      <Icon name={DOMAIN_ICONS[i]} s={12} c="#841617" />
                     </div>
                     <span className="text-[14px] font-sans font-medium text-gray-700">{d.short[0].replace(' &', '')}</span>
                   </div>
@@ -1526,7 +1526,7 @@ function TraditionalVsRISection() {
 function HowGWSAppliesSection() {
   const { ref, visible } = useReveal()
   const processIcons  = ['search', 'pen', 'gear', 'chart']
-  const processColors = ['#BE1E2D', '#059669', '#2563EB', '#7C3AED']
+  const processColors = ['#841617', '#059669', '#2563EB', '#7C3AED']
 
   // Four-step summary process
   const GWS_PROCESS = [
@@ -1633,7 +1633,7 @@ function HowGWSAppliesSection() {
 function BusinessOutcomesSection() {
   const { ref, visible } = useReveal()
   const outcomes = [
-    { icon: 'eye',       name: 'Be Found',             desc: 'Attract the right audience with clarity and consistency.', color: '#BE1E2D' },
+    { icon: 'eye',       name: 'Be Found',             desc: 'Attract the right audience with clarity and consistency.', color: '#841617' },
     { icon: 'magnet',    name: 'Capture & Respond',    desc: 'Engage at the right time and respond fast.',                color: '#059669' },
     { icon: 'cart',      name: 'Convert Consistently', desc: 'Turn interest into qualified pipeline and closed revenue.', color: '#2563EB' },
     { icon: 'chart',     name: 'Improve & Scale',      desc: 'Use data and insight to optimise and scale growth.',        color: '#7C3AED' },
@@ -1686,18 +1686,18 @@ function DiagnosticCTASection() {
     <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface text-gray-900 relative overflow-hidden border-t border-[#D8D5CE]">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.06]"
-           style={{ backgroundImage: 'radial-gradient(circle, #BE1E2D 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+           style={{ backgroundImage: 'radial-gradient(circle, #841617 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
       {/* Crimson glow */}
       <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[300px] bg-crimson/10 blur-[100px] pointer-events-none" />
       {/* System motif */}
       <div className="absolute right-16 top-1/2 -translate-y-1/2 opacity-[0.07] hidden lg:block" aria-hidden="true">
         <svg viewBox="0 0 140 140" width={280} height={280}>
-          <circle cx={70} cy={70} r={50} fill="none" stroke="#BE1E2D" strokeWidth={0.8} strokeDasharray="4 3"/>
-          <circle cx={70} cy={70} r={18} fill="#BE1E2D" fillOpacity={0.3}/>
+          <circle cx={70} cy={70} r={50} fill="none" stroke="#841617" strokeWidth={0.8} strokeDasharray="4 3"/>
+          <circle cx={70} cy={70} r={18} fill="#841617" fillOpacity={0.3}/>
           {bgDomains.map((p, i) => (
             <g key={i}>
-              <circle cx={p.x} cy={p.y} r={7} fill="none" stroke="#BE1E2D" strokeWidth={0.8}/>
-              <line x1={70} y1={70} x2={p.x} y2={p.y} stroke="#BE1E2D" strokeWidth={0.5} strokeOpacity={0.5}/>
+              <circle cx={p.x} cy={p.y} r={7} fill="none" stroke="#841617" strokeWidth={0.8}/>
+              <line x1={70} y1={70} x2={p.x} y2={p.y} stroke="#841617" strokeWidth={0.5} strokeOpacity={0.5}/>
             </g>
           ))}
         </svg>
@@ -1721,7 +1721,7 @@ function DiagnosticCTASection() {
               <li key={item} className="flex items-center gap-3">
                 <div className="w-5 h-5 rounded-none bg-crimson/10 border border-crimson/40 flex items-center justify-center shrink-0">
                   <svg width="9" height="9" viewBox="0 0 9 9" fill="none">
-                    <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#BE1E2D" strokeWidth="1.5" strokeLinecap="round"/>
+                    <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#841617" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
                 </div>
                 <span className="text-[18px] font-sans text-gray-600">{item}</span>
@@ -1732,8 +1732,8 @@ function DiagnosticCTASection() {
           {/* CTA button — 16 px semibold, 48 px height */}
           <a
             href="/revenue-diagnostic"
-            style={{ color: '#ffffff', backgroundColor: '#BE1E2D' }}
-            className="inline-flex items-center justify-center bg-[#BE1E2D] hover:bg-[#721315] transition-colors !text-white visited:!text-white focus:!text-white active:!text-white font-['DM_Sans'] font-semibold text-[16px] h-12 px-8 rounded w-fit mx-auto no-underline hover:no-underline"
+            style={{ color: '#ffffff', backgroundColor: '#841617' }}
+            className="inline-flex items-center justify-center bg-[#841617] hover:bg-[#721315] transition-colors !text-white visited:!text-white focus:!text-white active:!text-white font-['DM_Sans'] font-semibold text-[16px] h-12 px-8 rounded w-fit mx-auto no-underline hover:no-underline"
           >
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
           </a>
