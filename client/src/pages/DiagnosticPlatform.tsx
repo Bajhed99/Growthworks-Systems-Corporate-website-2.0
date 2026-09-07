@@ -277,8 +277,8 @@ function HeroSection() {
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-['DM_Sans'] font-semibold text-[16px] mb-16"
-            style={{ fontWeight: 600 }}
+            className="diagnostic-hero-cta"
+            style={{ marginBottom: '32px' }}
           >
             BOOK A REVENUE DIAGNOSTIC
           </a>
@@ -287,7 +287,7 @@ function HeroSection() {
             href="#methodology"
             className="diagnostic-hero-explore-trigger"
           >
-            <span>Explore</span>
+            <span>Explore Methodology</span>
             <ChevronDown size={16} aria-hidden="true" />
           </a>
         </div>
@@ -313,7 +313,10 @@ function DiagnosticQuestionsSection() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {DIAGNOSTIC_QUESTIONS.map((q, i) => (
-              <div key={q.num} className="border-t-4 border-[#841617] pt-6">
+              <div
+                key={q.num}
+                className="diagnostic-card border-t-4 border-[#841617] bg-white p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
                 <span className="text-[14px] font-sans font-bold tracking-[0.14em] uppercase text-[#841617] mb-4 block">{q.num}</span>
                 <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-3">{q.title}</h3>
                 <p className="text-[16px] font-sans text-[#625E59] leading-[1.6]">{q.desc}</p>
@@ -341,7 +344,10 @@ function AssessmentPrinciplesSection() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {ASSESSMENT_PRINCIPLES.map((p) => (
-              <div key={p.num} className="bg-white border border-[#DDD6CC] rounded-none p-8">
+              <div
+                key={p.num}
+                className="diagnostic-card bg-white border border-[#DDD6CC] rounded-none p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]"
+              >
                 <div className="w-12 h-12 rounded-full bg-[#841617] text-white flex items-center justify-center font-sans font-bold text-[16px] mb-5">
                   {p.num}
                 </div>
@@ -422,7 +428,7 @@ function MethodologySection() {
             {METHODOLOGY_STAGES.map((stage) => {
               const phaseColor = stage.phase === "DIAGNOSTIC" ? "#841617" : stage.phase === "IMPLEMENTATION" ? "#059669" : "#2563EB";
               return (
-                <div key={stage.num} className="border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white">
+                <div key={stage.num} className="diagnostic-card border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className="w-14 h-14 rounded-full flex items-center justify-center border-2" style={{ borderColor: phaseColor, backgroundColor: `${phaseColor}15` }}>
@@ -479,7 +485,7 @@ function ExecutiveScorecardSection() {
               { label: "Quick Win Opportunities", value: "—" },
               { label: "Estimated Revenue Leakage", value: "—" },
             ].map((metric) => (
-              <div key={metric.label} className="bg-white border border-[#DDD6CC] rounded-none p-6">
+              <div key={metric.label} className="diagnostic-card bg-white border border-[#DDD6CC] rounded-none p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
                 <p className="text-[13px] font-sans font-bold tracking-[0.12em] uppercase text-[#625E59] mb-3">{metric.label}</p>
                 <p className="text-[28px] font-serif text-[#2B2B2B]">{metric.value}</p>
               </div>
@@ -487,7 +493,7 @@ function ExecutiveScorecardSection() {
           </div>
 
           {/* Domain scorecard */}
-          <div className="bg-white border border-[#DDD6CC] rounded-none overflow-hidden">
+          <div className="diagnostic-card bg-white border border-[#DDD6CC] rounded-none overflow-hidden transition-all duration-300 hover:shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
@@ -553,7 +559,7 @@ function DomainHeatMapSection() {
               return (
                 <div
                   key={domain.code}
-                  className="rounded-none p-6 border-2"
+                  className="diagnostic-card rounded-none p-6 border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]"
                   style={{ backgroundColor: colors.bg, borderColor: colors.border }}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -634,7 +640,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="rounded-none p-8 border-2 min-h-[240px]"
+                className="diagnostic-card rounded-none p-8 border-2 min-h-[240px] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01]"
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-6">
@@ -658,7 +664,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="rounded-none p-6 border-2"
+                className="diagnostic-card rounded-none p-6 border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
               >
                 <div className="mb-4">
@@ -719,7 +725,7 @@ function AssessmentFamilySection() {
 
           <div className="space-y-6">
             {ASSESSMENTS.map((assessment, i) => (
-              <div key={assessment.name} className="border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white">
+              <div key={assessment.name} className="diagnostic-card border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
                 <div className="flex flex-col md:flex-row md:items-start gap-4 mb-4">
                   <div className="flex-shrink-0">
                     <span className="inline-block text-[12px] font-sans font-bold tracking-[0.14em] uppercase text-white bg-[#841617] px-3 py-1 rounded">
@@ -787,7 +793,7 @@ function ImprovementRoadmapSection() {
           {/* Phase details */}
           <div className="space-y-6">
             {ROADMAP_PHASES.map((phase) => (
-              <div key={phase.num} className="bg-white border border-[#DDD6CC] rounded-none p-6 md:p-8">
+              <div key={phase.num} className="diagnostic-card bg-white border border-[#DDD6CC] rounded-none p-6 md:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
                 <div className="flex flex-col md:flex-row md:items-start gap-6 mb-6">
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 rounded-full bg-[#841617] text-white flex items-center justify-center">
@@ -843,7 +849,7 @@ function ExecutiveReportSection() {
             The Executive Report is a comprehensive, structured document designed for executive decision-making.
           </p>
 
-          <div className="bg-[#F8F5EC] border border-[#DDD6CC] rounded-none overflow-hidden">
+          <div className="diagnostic-card bg-[#F8F5EC] border border-[#DDD6CC] rounded-none overflow-hidden transition-all duration-300 hover:shadow-xl">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
@@ -899,7 +905,7 @@ function DiagnosticOutputsSection() {
 
           <div className="grid sm:grid-cols-2 gap-6">
             {DIAGNOSTIC_OUTPUTS.map((output) => (
-              <div key={output.num} className="bg-white border border-[#DDD6CC] rounded-none p-6">
+              <div key={output.num} className="diagnostic-card bg-white border border-[#DDD6CC] rounded-none p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#841617] text-white flex items-center justify-center font-sans font-bold text-[14px]">
                     {output.num}

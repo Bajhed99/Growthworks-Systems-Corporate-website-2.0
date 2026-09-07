@@ -1,0 +1,175 @@
+// ─── SECTION 06: FRAGMENTED VS CONNECTED (Figma-designed) ─────────────────────
+function FragmentedVsConnectedSection() {
+  const { ref, visible } = useReveal()
+
+  // From Figma package src/App.tsx — plug-and-play section
+  const nodes = [
+    { cx: 52, label: "Marketing", icon: "eye" },
+    { cx: 158, label: "Website", icon: "monitor" },
+    { cx: 264, label: "CRM", icon: "db" },
+    { cx: 370, label: "Sales", icon: "briefcase" },
+    { cx: 476, label: "Customer", icon: "heart" },
+  ] as const;
+  const CY = 118; const LABEL_Y = 174;
+  const GAPS = [
+    { x1: 52 + 26, x2: 158 - 26 },
+    { x1: 158 + 26, x2: 264 - 26 },
+    { x1: 264 + 26, x2: 370 - 26 },
+    { x1: 370 + 26, x2: 476 - 26 },
+  ];
+  const InlineSvgIcon = ({ type, stroke }: { type: string; stroke: string }) => {
+    const p = { fill: "none", stroke, strokeWidth: 1.4, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+    if (type === "eye") return <g {...p}><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></g>;
+    if (type === "monitor") return <g {...p}><rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" /></g>;
+    if (type === "db") return <g {...p}><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" /><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" /></g>;
+    if (type === "briefcase") return <g {...p}><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></g>;
+    return <g {...p}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></g>;
+  };
+
+  return (
+    <section ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[112px] bg-[#FAFAF8]">
+      <div className={CONTAINER}>
+        <div className={"reveal " + (visible ? "visible" : "")}>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#841617", marginBottom: 16 }}>
+              Fragmented vs Connected
+            </p>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 44, fontWeight: 400, color: "#0f0d0d", lineHeight: 1.1, margin: 0 }}>
+              Two ways to connect your systems.<br />
+              <em style={{ color: "#841617" }}>One that actually works.</em>
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, maxWidth: 960, margin: "0 auto" }}>
+            {/* FRAGMENTED */}
+            <div className="panel-card panel-frag" style={{ background: "#F8F6EC", border: "1px solid #E4DFD0", overflow: "hidden" }}>
+              <div style={{ padding: "20px 36px", borderBottom: "1px solid #E4DFD0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#841617", opacity: 0.5 }} />
+                  <span style={{ fontSize: 13.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#9A8F80" }}>Fragmented</span>
+                </div>
+                <span style={{ fontSize: 14, color: "#B5AA97" }}>5 silos</span>
+              </div>
+              <div style={{ position: "relative", aspectRatio: "528/260", background: "#F0EDE3" }}>
+                <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 528 260">
+                  <defs>
+                    <pattern id="dotG" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="1" cy="1" r="0.9" fill="#C9C3B5" />
+                    </pattern>
+                  </defs>
+                  <rect width="528" height="260" fill="#F0EDE3" />
+                  <rect width="528" height="260" fill="url(#dotG)" />
+                  {GAPS.map((g, i) => {
+                    const mx = (g.x1 + g.x2) / 2;
+                    return (
+                      <g key={i}>
+                        <line x1={g.x1} y1={CY} x2={mx - 12} y2={CY} stroke="#C5B89F" strokeWidth="1.5" strokeDasharray="5 4" />
+                        <line x1={mx + 12} y1={CY} x2={g.x2} y2={CY} stroke="#C5B89F" strokeWidth="1.5" strokeDasharray="5 4" />
+                        <text className="frag-x" x={mx} y={CY + 6} textAnchor="middle" fill="#841617" fontSize="18" opacity="0.45" fontFamily="sans-serif">✕</text>
+                      </g>
+                    );
+                  })}
+                  {nodes.map(({ cx, label, icon }) => (
+                    <g key={cx} className="frag-node">
+                      <circle className="frag-circle" cx={cx} cy={CY} r="30" fill="#EDE8DC" stroke="#D4CCBB" strokeWidth="1.5" style={{ transition: "fill 0.25s, stroke 0.25s" }} />
+                      <g transform={"translate(" + (cx - 12) + ", " + (CY - 12) + ")"}>
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                          <InlineSvgIcon type={icon} stroke="#B5A990" />
+                        </svg>
+                      </g>
+                      <text x={cx} y={LABEL_Y} textAnchor="middle" fill="#9A8F7E" fontSize="14" fontFamily="'DM Sans', sans-serif" fontWeight="500">{label}</text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+              <div style={{ padding: "26px 36px 30px", background: "#F8F6EC" }}>
+                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 13 }}>
+                  {["Disconnected systems", "Missing handoffs", "Isolated data silos", "Context lost at every stage"].map((item) => (
+                    <li key={item} className="list-item" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <svg width="18" height="18" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                        <circle cx="7" cy="7" r="6" stroke="#841617" strokeWidth="1" strokeOpacity="0.35" />
+                        <path d="M4 4l6 6M10 4L4 10" stroke="#841617" strokeWidth="1.1" strokeOpacity="0.6" strokeLinecap="round" />
+                      </svg>
+                      <span className="list-text" style={{ fontSize: 17.5, color: "#7A7060", fontWeight: 500, transition: "color 0.2s" }}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* CONNECTED */}
+            <div className="panel-card panel-con" style={{ background: "#100c0c", border: "1px solid #2e1e1e", overflow: "hidden" }}>
+              <div style={{ padding: "20px 36px", borderBottom: "1px solid #2e1e1e", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#140e0e" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#841617" }} />
+                  <span style={{ fontSize: 13.5, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "#841617" }}>Connected</span>
+                </div>
+                <span style={{ fontSize: 14, color: "#5a3a3a" }}>unified layer</span>
+              </div>
+              <div style={{ position: "relative", aspectRatio: "528/260", background: "#0d0909" }}>
+                <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 528 260">
+                  <defs>
+                    <pattern id="dotD" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="1" cy="1" r="0.9" fill="#2a1a1a" />
+                    </pattern>
+                    <radialGradient id="cGlow" cx="50%" cy="45%" r="55%">
+                      <stop offset="0%" stopColor="#841617" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="#841617" stopOpacity="0" />
+                    </radialGradient>
+                    <filter id="ng" x="-60%" y="-60%" width="220%" height="220%">
+                      <feGaussianBlur stdDeviation="6" result="b" />
+                      <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
+                    <marker id="cArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                      <path d="M0,1 L5,3 L0,5z" fill="#c8383b" />
+                    </marker>
+                    <marker id="rArr" markerWidth="5" markerHeight="5" refX="1" refY="2.5" orient="auto">
+                      <path d="M4,1 L0,2.5 L4,4z" fill="#841617" fillOpacity="0.4" />
+                    </marker>
+                  </defs>
+                  <rect width="528" height="260" fill="#0d0909" />
+                  <rect width="528" height="260" fill="url(#dotD)" />
+                  <rect width="528" height="260" fill="url(#cGlow)" />
+                  {GAPS.map((g, i) => (
+                    <g key={i}>
+                      <line x1={g.x1} y1={CY - 6} x2={g.x2} y2={CY - 6} stroke="#4a1a1a" strokeWidth="1.8" />
+                      <line className="con-flow" x1={g.x1} y1={CY - 6} x2={g.x2} y2={CY - 6} stroke="#c8383b" strokeWidth="1.8" markerEnd="url(#cArr)" style={{ animationDelay: (i * 0.18) + "s" }} />
+                      <line x1={g.x2} y1={CY + 6} x2={g.x1} y2={CY + 6} stroke="#841617" strokeWidth="0.9" strokeOpacity="0.3" markerEnd="url(#rArr)" />
+                    </g>
+                  ))}
+                  {nodes.map(({ cx, label, icon }) => (
+                    <g key={cx} className="con-node" filter="url(#ng)">
+                      <circle className="con-circle" cx={cx} cy={CY} r="30" fill="#1e0f0f" stroke="#841617" strokeWidth="1.8" style={{ transition: "stroke 0.25s, stroke-width 0.25s" }} />
+                      <g transform={"translate(" + (cx - 12) + ", " + (CY - 12) + ")"}>
+                        <svg width="24" height="24" viewBox="0 0 24 24">
+                          <InlineSvgIcon type={icon} stroke="#c8383b" />
+                        </svg>
+                      </g>
+                      <text x={cx} y={LABEL_Y} textAnchor="middle" fill="#7a5050" fontSize="14" fontFamily="'DM Sans', sans-serif" fontWeight="500">{label}</text>
+                    </g>
+                  ))}
+                </svg>
+              </div>
+              <div style={{ padding: "26px 36px 30px", background: "#100c0c" }}>
+                <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 13 }}>
+                  {["Continuous signal flow", "Shared context at every stage", "Coordinated next actions", "Feedback and intelligence loop"].map((item) => (
+                    <li key={item} className="list-item" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <svg width="18" height="18" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0 }}>
+                        <circle cx="7" cy="7" r="6" fill="rgba(200,56,59,0.15)" stroke="#c8383b" strokeWidth="1" strokeOpacity="0.6" />
+                        <path d="M3.5 7l2.5 2.5 4.5-5" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span className="list-text" style={{ fontSize: 17.5, color: "#C4A0A0", fontWeight: 500, transition: "color 0.2s" }}>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p style={{ marginTop: 36, fontSize: 15.5, color: "#B5AA97", letterSpacing: "0.04em", textAlign: "center" }}>
+            Every handoff without shared context is a conversion lost.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
