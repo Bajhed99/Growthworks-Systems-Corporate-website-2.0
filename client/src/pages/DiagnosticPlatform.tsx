@@ -374,7 +374,7 @@ function MethodologySection() {
           {/* Phase groupings */}
           <div className="mb-12 flex flex-wrap gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-[#841617]"></div>
+              <div className="w-3 h-3 rounded-full bg-[#841617] text-white"></div>
               <span className="text-[14px] font-sans font-bold tracking-[0.12em] uppercase text-[#625E59]">Diagnostic Phase</span>
               <span className="text-[14px] font-sans text-[#625E59]">Stages 01–05</span>
             </div>

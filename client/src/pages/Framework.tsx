@@ -562,8 +562,8 @@ function HeroSection() {
             <SectionLabel label="REVENUE INFRASTRUCTURE" dark />
             {/* H1 — 60px desktop / 40px mobile, DM Serif Display */}
             <h1 className="font-serif font-normal text-[40px] md:text-[60px] leading-[1.08] tracking-tight mb-6">
-              Revenue <span className="text-[#BE1E2D]">growth</span> depends on the{' '}
-              <span className="text-[#BE1E2D]">system</span> behind it.
+              Revenue <span className="text-[#841617]">growth</span> depends on the{' '}
+              <span className="text-[#841617]">system</span> behind it.
             </h1>
             {/* Body Large — 20px desktop / 18px mobile */}
             <p className="text-[18px] md:text-[20px] leading-[1.6] text-black max-w-[560px]">
@@ -589,7 +589,7 @@ function HeroSection() {
         >
           <svg
             width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="#BE1E2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
             className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity animate-bounce"
             style={{ animationDuration: '2s' }}
           >
