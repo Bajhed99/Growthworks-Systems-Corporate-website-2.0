@@ -278,6 +278,7 @@ function HeroSection() {
           <a
             href="/revenue-diagnostic"
             className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-['DM_Sans'] font-semibold text-[16px] mb-16"
+            style={{ fontWeight: 600 }}
           >
             BOOK A REVENUE DIAGNOSTIC
           </a>

@@ -1683,7 +1683,7 @@ function DiagnosticCTASection() {
   })
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface text-gray-900 relative overflow-hidden border-t border-[#D8D5CE]">
+    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-white text-gray-900 relative overflow-hidden">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.06]"
            style={{ backgroundImage: 'radial-gradient(circle, #841617 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
@@ -1738,7 +1738,7 @@ function DiagnosticCTASection() {
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
           </a>
 
-          <p className="font-sans text-gray-400 text-[14px] mt-20 tracking-wide">
+          <p className="font-sans text-gray-500 text-[15px] mt-[35px] tracking-wide">
             One system. Real alignment. Predictable growth.
           </p>
         </div>
