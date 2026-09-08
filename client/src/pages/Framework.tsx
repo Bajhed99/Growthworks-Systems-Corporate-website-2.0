@@ -602,78 +602,269 @@ function CanonicalDefinitionSection() {
 // ─── SECTION 03: WHY IT MATTERS ────────────────────────────────────────────────
 function WhyItMattersSection() {
   const { ref, visible } = useReveal()
+  const [active, setActive] = useState<number>(0)
+  const [paused, setPaused] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const CRIMSON = "#841617"
+  const CREAM = "#F5F0E8"
+  const DM_SERIF = "'DM Serif Display', serif"
+  const DM_SANS = "'DM Sans', sans-serif"
+
   const stages = [
-    { label: 'Opportunity', icon: 'target' },
-    { label: 'Capture',     icon: 'magnet' },
-    { label: 'Conversion',  icon: 'cart' },
-    { label: 'Delivery',    icon: 'briefcase' },
-    { label: 'Retention',   icon: 'heart' },
-    { label: 'Intelligence',icon: 'chart' },
-    { label: 'Optimization',icon: 'gear' },
+    {
+      label: "Opportunity",
+      pain: "Poor visibility",
+      description: "Identify and prioritize high-value prospects before they slip through the cracks.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
+    },
+    {
+      label: "Capture",
+      pain: "Disjointed experience",
+      description: "Unify every touchpoint so no signal, intent, or interest goes unrecorded.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M6 15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <path d="M18 15h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" />
+          <path d="M4 6v7a8 8 0 0 0 16 0V6" />
+        </svg>
+      ),
+    },
+    {
+      label: "Conversion",
+      pain: "Slow follow-up",
+      description: "Move prospects to close with speed and precision — no lag, no dropped threads.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+      ),
+    },
+    {
+      label: "Delivery",
+      pain: "Disconnected handoff",
+      description: "Bridge sales to service so value promised is value delivered — every time.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      ),
+    },
+    {
+      label: "Retention",
+      pain: "No insight loop",
+      description: "Keep customers engaged, satisfied, and expanding — not quietly churning.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        </svg>
+      ),
+    },
+    {
+      label: "Intelligence",
+      pain: "No optimization",
+      description: "Surface patterns across every stage so the team improves with every cycle.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" /><line x1="2" y1="20" x2="22" y2="20" />
+        </svg>
+      ),
+    },
+    {
+      label: "Optimization",
+      pain: null,
+      description: "Continuously tune the entire system — not just isolated parts — for compounding growth.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </svg>
+      ),
+    },
   ]
-  const gaps = ['Poor visibility', 'Disjointed experience', 'Slow follow-up', 'Disconnected handoff', 'No insight loop', 'No optimization']
+
+  useEffect(() => {
+    if (paused) return
+    timerRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % stages.length)
+    }, 2500)
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [paused, stages.length])
+
+  const handleMouseEnter = (i: number) => {
+    setPaused(true)
+    setActive(i)
+  }
+
+  const handleMouseLeave = () => {
+    setPaused(false)
+  }
 
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
-      <div className={CONTAINER}>
-        <SectionLabel label="Why Revenue Infrastructure Matters" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          {/* H2 */}
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
-            Revenue is a journey.
-          </h2>
-          <p className="text-[17px] md:text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Value is either passed forward — or lost at the handoffs.
-          </p>
+      <div id="why-revenue-matters" className={CONTAINER}>
+        <div data-reveal className={`reveal ${visible ? 'visible' : ''}`}>
+          {/* Header block */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+            <div className="max-w-[600px]">
+              <p className="text-[12px] font-semibold tracking-[0.22em] uppercase mb-5" style={{ color: CRIMSON, fontFamily: DM_SANS }}>
+                Why Revenue Infrastructure Matters
+              </p>
+              <h2 className="font-normal leading-[1.08] text-black" style={{ fontFamily: DM_SERIF, fontSize: "44px" }}>
+                Revenue is a journey.<br />
+                <span style={{ color: CRIMSON }}>Not a moment.</span>
+              </h2>
+            </div>
+            <p className="leading-[1.7] max-w-[340px] md:text-right" style={{ fontSize: "18px", fontWeight: 400, color: "rgba(0,0,0,0.55)", fontFamily: DM_SANS }}>
+              Value is either passed forward — or lost at the handoffs.
+            </p>
+          </div>
 
-          {/* Journey visual */}
-          <div className="overflow-x-auto -mx-5 px-5 md:-mx-8 md:px-8 lg:mx-0 lg:px-0">
-            <div className="min-w-[700px]">
-              {/* Icons row */}
-              <div className="flex items-center">
-                {stages.map((s, i) => (
-                  <div key={s.label} className="flex items-center flex-1">
-                    <div className="flex flex-col items-center flex-1">
-                      <div className="w-14 h-14 rounded-none bg-white border border-gray-200 shadow-sm flex items-center justify-center">
-                        <Icon name={s.icon} s={22} c="#374151" />
-                      </div>
-                    </div>
-                    {i < stages.length - 1 && (
-                      <div className="flex items-center shrink-0 px-0.5">
-                        <div className="w-5 h-px bg-gray-300" />
-                        <div className="w-0 h-0 border-l-[5px] border-t-[4px] border-b-[4px] border-l-gray-400 border-t-transparent border-b-transparent" />
-                      </div>
-                    )}
+          {/* Stage cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
+            {stages.map((stage, i) => {
+              const isActive = active === i
+              const isLast = i === stages.length - 1
+              return (
+                <button
+                  key={stage.label}
+                  onMouseEnter={() => handleMouseEnter(i)}
+                  onMouseLeave={handleMouseLeave}
+                  className="text-left group relative flex flex-col gap-4 p-4 transition-all duration-300 focus:outline-none"
+                  style={{
+                    background: isActive ? "#1a1a1a" : "#fff",
+                    border: isActive ? "1.5px solid #1a1a1a" : `1.5px solid ${isLast ? CRIMSON + "55" : "rgba(0,0,0,0.1)"}`,
+                    boxShadow: isActive ? "0 12px 32px rgba(0,0,0,0.15)" : "0 1px 4px rgba(0,0,0,0.04)",
+                    transform: isActive ? "translateY(-4px)" : "none",
+                  }}
+                >
+                  {/* Step number */}
+                  <span className="text-[11px] font-semibold tracking-widest" style={{ color: isActive ? CRIMSON : "rgba(0,0,0,0.25)", fontFamily: DM_SANS }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Icon */}
+                  <div className="w-10 h-10 flex items-center justify-center shrink-0" style={{
+                    background: isActive ? "rgba(132,22,23,0.12)" : CREAM,
+                    color: isActive ? CRIMSON : "#1a1a1a",
+                  }}>
+                    {stage.icon}
                   </div>
-                ))}
+
+                  {/* Label */}
+                  <span className="font-semibold leading-tight" style={{
+                    fontSize: "13px",
+                    color: isActive ? "#fff" : "#1a1a1a",
+                    fontFamily: DM_SANS,
+                  }}>
+                    {stage.label}
+                  </span>
+
+                  {/* Crimson accent bar on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 transition-all duration-300" style={{
+                    height: 2,
+                    background: CRIMSON,
+                    opacity: isActive ? 1 : 0,
+                    transform: isActive ? "scaleX(1)" : "scaleX(0)",
+                    transformOrigin: "left",
+                  }} />
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Expanded detail panel */}
+          <div className="transition-all duration-300 overflow-hidden" style={{ maxHeight: 120, opacity: 1 }}>
+            <div className="flex items-start gap-6 px-6 py-5" style={{
+              background: "#1a1a1a",
+              borderTop: `3px solid ${CRIMSON}`,
+            }}>
+              <div className="w-8 h-8 flex items-center justify-center shrink-0 mt-0.5" style={{ color: CRIMSON }}>
+                {stages[active].icon}
               </div>
-
-              {/* Stage labels — 16 px minimum */}
-              <div className="flex mt-4 mb-8">
-                {stages.map((s) => (
-                  <div key={s.label} className="flex-1 text-center">
-                    <span className="text-[14px] font-sans font-medium text-gray-600">{s.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Gap / leakage markers */}
-              <div className="flex px-7 mb-2">
-                {gaps.map((g, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center">
-                    <Icon name="warning" s={20} />
-                    <p className="text-[14px] font-sans text-gray-400 text-center leading-tight mt-2 max-w-[72px]">{g}</p>
-                  </div>
-                ))}
+              <div>
+                <p className="font-semibold mb-1" style={{ fontSize: "14px", color: "#fff", fontFamily: DM_SANS, letterSpacing: "0.02em" }}>
+                  {stages[active].label}
+                  {stages[active].pain && (
+                    <span className="ml-3 text-[11px] font-medium tracking-widest uppercase" style={{ color: CRIMSON }}>
+                      ⚠ {stages[active].pain}
+                    </span>
+                  )}
+                </p>
+                <p style={{ fontSize: "18px", fontWeight: 400, color: "rgba(255,255,255,0.7)", fontFamily: DM_SANS, lineHeight: 1.6 }}>
+                  {stages[active].description}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Summary */}
-          <div className="mt-16 border-t border-gray-200 pt-10">
-            <p className="text-center text-[18px] font-sans font-medium text-gray-700 max-w-[620px] mx-auto leading-[1.6]">
-              Revenue Infrastructure eliminates gaps, aligns the journey, and accelerates outcomes.
+          {/* Flow connector */}
+          <div className="hidden lg:flex items-center gap-0 mt-3 mb-12 px-[0.5px]">
+            {stages.map((_, i) => (
+              <div key={i} className="flex items-center flex-1">
+                <div style={{ flex: 1, height: 1, background: i < stages.length - 1 ? "rgba(132,22,23,0.2)" : "transparent" }} />
+                {i < stages.length - 1 && (
+                  <div style={{
+                    width: 0, height: 0,
+                    borderLeft: "5px solid #841617",
+                    borderTop: "3px solid transparent",
+                    borderBottom: "3px solid transparent",
+                    opacity: 0.35,
+                  }} />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Pain-point strip */}
+          <div className="hidden lg:grid grid-cols-7 gap-3 mb-20">
+            {stages.map((stage, i) =>
+              stage.pain ? (
+                <div key={stage.label} className="flex flex-col items-center gap-1.5">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#841617" strokeWidth="2" strokeLinecap="round" opacity={0.6}>
+                    <path d="m10.29 3.86-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.71-3.14l-8-14a2 2 0 0 0-3.42 0z" />
+                    <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                  <p className="text-center leading-snug" style={{ fontSize: "11px", color: "rgba(0,0,0,0.45)", fontFamily: DM_SANS, fontWeight: 400 }}>
+                    {stage.pain}
+                  </p>
+                </div>
+              ) : (
+                <div key={stage.label} />
+              )
+            )}
+          </div>
+
+          {/* Bottom callout */}
+          <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 px-10 py-10" style={{
+            background: "#1a1a1a",
+            borderLeft: `4px solid ${CRIMSON}`,
+          }}>
+            <div className="absolute inset-y-0 right-0 w-1/3 pointer-events-none" style={{ background: "linear-gradient(to left, rgba(245,240,232,0.04), transparent)" }} />
+
+            <p className="leading-[1.6] max-w-[520px]" style={{ fontSize: "18px", fontWeight: 400, color: "rgba(255,255,255,0.82)", fontFamily: DM_SANS }}>
+              Revenue Infrastructure <span style={{ color: CRIMSON, fontWeight: 500 }}>eliminates gaps</span>, aligns the journey, and <span style={{ color: CRIMSON, fontWeight: 500 }}>accelerates outcomes</span> — at every stage, not just the close.
             </p>
+
+            <button onClick={() => document.getElementById('nine-domain-framework')?.scrollIntoView({ behavior: 'smooth' })} className="shrink-0 flex items-center gap-2.5 px-7 py-3.5 font-semibold transition-all duration-200 hover:gap-4" style={{
+              background: CRIMSON,
+              color: "#fff",
+              fontFamily: DM_SANS,
+              fontSize: "14px",
+              letterSpacing: "0.04em",
+            }}>
+              See the Full Framework
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

@@ -75,11 +75,16 @@ const STAGES = [
 
 export default function RevenueMaturity() {
   const [active, setActive] = useState(0);
-  const [sectionVisible, setSectionVisible] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [sectionVisible, setSectionVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const stage = STAGES[active];
   const progress = (active / (STAGES.length - 1)) * 100;
+
+  const handleStageClick = (index: number) => {
+    setActive(index);
+    setIsPaused(!isPaused);
+  };
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -101,12 +106,7 @@ export default function RevenueMaturity() {
   }, [isPaused, sectionVisible]);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-28 bg-white"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section ref={sectionRef} className="py-28 bg-white">
 
       {/* Mobile floating stage nav — right side, visible only below md breakpoint and while section is in view */}
       <div
@@ -121,7 +121,7 @@ export default function RevenueMaturity() {
           return (
             <button
               key={s.id}
-              onClick={() => setActive(i)}
+              onClick={() => handleStageClick(i)}
               aria-label={`Stage ${s.id}: ${s.label}`}
               className={[
                 "flex flex-col items-center justify-center w-11 h-11 transition-all duration-200 focus:outline-none",
@@ -182,7 +182,7 @@ export default function RevenueMaturity() {
               return (
                 <button
                   key={s.id}
-                  onClick={() => setActive(i)}
+                  onClick={() => handleStageClick(i)}
                   className="flex flex-col items-center flex-1 group focus:outline-none"
                   aria-label={`Stage ${s.id}: ${s.label}`}
                   aria-pressed={isActive}
@@ -298,14 +298,14 @@ export default function RevenueMaturity() {
         {/* Navigation */}
         <div className="flex justify-between mt-5">
           <button
-            onClick={() => setActive((p) => Math.max(0, p - 1))}
+            onClick={() => handleStageClick(Math.max(0, active - 1))}
             disabled={active === 0}
             className="font-sans font-medium text-[15px] text-gray-500 hover:text-black transition-colors disabled:opacity-0 disabled:pointer-events-none"
           >
             ← Previous stage
           </button>
           <button
-            onClick={() => setActive((p) => Math.min(STAGES.length - 1, p + 1))}
+            onClick={() => handleStageClick(Math.min(STAGES.length - 1, active + 1))}
             disabled={active === STAGES.length - 1}
             className="font-sans font-semibold text-[15px] text-crimson hover:text-crimson-dark transition-colors disabled:opacity-0 disabled:pointer-events-none"
           >
