@@ -540,7 +540,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="bg-gws-dark text-white min-h-[532px] flex flex-col relative overflow-hidden pt-[88px] pb-14">
+    <section className="bg-gws-dark text-white min-h-[532px] flex flex-col relative overflow-hidden pt-[108px] pb-14">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.04]"
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
