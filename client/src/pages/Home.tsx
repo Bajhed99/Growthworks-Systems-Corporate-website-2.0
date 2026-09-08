@@ -11,7 +11,6 @@ import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPla
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
 import SiteHeader from "@/components/SiteHeader";
-import { GlowyWavesHero } from "@/components/ui/glowy-waves-hero-shadcnui";
 import SiteFooter from "@/components/SiteFooter";
 import MobileSectionJump from "@/components/MobileSectionJump";
 import { getPageParallaxTravel, PAGE_PARALLAX_SCROLL_TRIGGER, PAGE_TEXT_REVEAL_TRIGGER } from "@/lib/pageParallax";
@@ -114,7 +113,28 @@ export default function Home() {
       <main id="top">
         <div className="scroll-story-stage">
           <div className="scroll-story-frame">
-            <div className="scroll-story-hero"><GlowyWavesHero /></div>
+            <div className="scroll-story-hero">
+              <div className="gws-glowy-hero" style={{ background: "var(--cream)" }}>
+                <div className="gws-glowy-content">
+                  <div className="gws-glowy-content-inner">
+                    <div className="gws-glowy-narrative">
+                      <div className="gws-glowy-badge">
+                        <span aria-hidden="true" /> Revenue Infrastructure <span aria-hidden="true" />
+                      </div>
+                      <h1 id="hero-title" className="gws-glowy-title">
+                        Turn more of your existing opportunity into <span>revenue.</span>
+                      </h1>
+                      <p className="gws-glowy-copy">
+                        GrowthWorks Systems helps founder-led service businesses identify and repair the gaps that prevent demand, leads, and customers from producing their full value.
+                      </p>
+                      <div className="gws-glowy-actions">
+                        <a href="#revenue-diagnostic" className="gws-glowy-primary supporting-button">Book a Revenue Diagnostic <ArrowRight size={16} aria-hidden="true" /></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <section id="credibility" className="credibility-bridge scroll-story-bridge" aria-labelledby="credibility-title">
               <div className="site-shell">
