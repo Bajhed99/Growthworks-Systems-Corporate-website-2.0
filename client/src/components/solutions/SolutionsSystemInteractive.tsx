@@ -86,7 +86,7 @@ export function SolutionsSystemInteractive() {
   const c = cards[active];
 
   return (
-    <div className="size-full bg-white overflow-auto" style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
+    <div className="bg-white" style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
       <section style={{ backgroundColor: "#ffffff" }}>
 
         {/* Top kicker band */}
