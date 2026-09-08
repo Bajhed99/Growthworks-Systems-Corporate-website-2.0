@@ -648,7 +648,7 @@ function ClosingCTASection() {
       />
 
       <div className={`${HUB_CONTAINER} relative z-10 text-center`}>
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
+        <h3 className="industries-section-label text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
           Start with the system
         </h3>
         <h2

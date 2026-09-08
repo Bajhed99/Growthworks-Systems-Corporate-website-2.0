@@ -937,7 +937,7 @@ function BeginDiagnosticSection() {
           <div className="max-w-[720px] mx-auto text-center">
             <SectionLabel label="BEGIN THE DIAGNOSTIC" />
             <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-6">
-              The <span style={{ color: "#841617" }}>Discovery Call</span> is the first stage of the diagnostic.
+              The <span style={{ color: "#841617" }}>Discovery Call</span> is the first stage of the <span style={{ color: "#841617" }}>diagnostic.</span>
             </h2>
             <p className="text-[18px] leading-[1.65] text-[#625E59] mb-4 max-w-[640px] mx-auto">
               The first conversation helps gather business context, identify likely areas of concern, understand current systems, and establish whether deeper assessment is appropriate.
