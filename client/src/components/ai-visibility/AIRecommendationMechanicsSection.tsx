@@ -10,7 +10,7 @@ export function AIRecommendationMechanicsSection() {
     <section aria-label="AI Recommendation Mechanics" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Recommendation Mechanics</p>
-        <h2>How AI Forms a Recommendation</h2>
+        <h2 className="font-serif">How AI Forms a <span className="heading-accent">Recommendation</span></h2>
         <p className="section-intro">
           AI recommendations don't come from a single ranking score. They emerge from a cascade of judgments — about relevance, credibility, and fit — made at each stage of the process. Improving visibility requires addressing all of them, not just one.
         </p>

@@ -3,7 +3,7 @@ export function AILifecyclePlaceholderSection() {
     <section aria-label="Operating Lifecycle" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker">Operating Lifecycle</p>
-        <h2>Seven-Stage Operating Lifecycle</h2>
+        <h2 className="font-serif"><span className="heading-accent">Seven-Stage</span> Operating Lifecycle</h2>
         <p className="section-intro">
           A canonical operating lifecycle describes the seven stages through which AI Visibility is built, sustained, and improved over time. The lifecycle provides the long-arc structure within which tactical improvement work happens.
         </p>

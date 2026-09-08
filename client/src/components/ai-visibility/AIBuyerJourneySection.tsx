@@ -10,7 +10,7 @@ export function AIBuyerJourneySection() {
     <section aria-label="From Search to Recommendation" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Buyer Journey</p>
-        <h2>From Search to Recommendation</h2>
+        <h2 className="font-serif">From Search to <span className="heading-accent">Recommendation</span></h2>
         <p className="section-intro">
           Modern buyer journeys no longer start on your website. They start inside AI systems — where questions are interpreted, entities are matched, and recommendations are formed before any human sees your homepage.
         </p>

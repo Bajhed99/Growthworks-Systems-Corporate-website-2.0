@@ -3,7 +3,7 @@ export function AIMaturityProgressionSection() {
     <section aria-label="Maturity Progression" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Maturity Model</p>
-        <h2>The Path to Authority</h2>
+        <h2 className="font-serif">The Path to <span className="heading-accent">Authority</span></h2>
         <p className="section-intro">
           AI Visibility improves through a progression of five maturity levels. Each level unlocks a new form of presence — from basic discoverability to becoming the definitive recommendation in your category. Progressing through the levels requires intentional work at each stage.
         </p>

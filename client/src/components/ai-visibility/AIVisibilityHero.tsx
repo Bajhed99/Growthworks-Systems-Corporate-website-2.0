@@ -13,11 +13,11 @@ export function AIVisibilityHero() {
       }} />
       <div className="gws-glowy-content max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 w-full">
         <div className="gws-glowy-content-inner">
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
+          <p className="hero-kicker">
             AI Visibility
-          </h3>
+          </p>
           <h1 id="ai-visibility-hero-title" className="gws-glowy-title font-serif">
-            Be understood before the buyer ever reaches your website.
+            Be <span className="heading-accent">understood</span> before the buyer ever reaches your website.
           </h1>
           <p className="gws-glowy-copy font-sans">
             AI-powered search engines now shape how buyers discover, evaluate, and choose solutions — before they ever visit your website. AI Visibility ensures your business is understood, trusted, and recommended at the moment that matters most.

@@ -9,8 +9,8 @@ export function AICClosingCTABand() {
   return (
     <section aria-label="Book a Revenue Diagnostic" className="diagnostic-section section--dark" style={{ background: '#0f172a' }}>
       <div className="site-shell" style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}>
-        <p className="section-kicker" style={{ color: '#94a3b8' }}>Next Step</p>
-        <h2 id="closing-cta-title" style={{ color: '#fff', fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '36px', lineHeight: 1.15, fontWeight: 400, marginBottom: '20px' }}>
+        <p className="section-kicker">Next Step</p>
+        <h2 id="closing-cta-title" className="text-white font-serif" style={{ fontSize: '36px', lineHeight: 1.15, marginBottom: '20px' }}>
           Understand how your business is seen — before the buyer decides.
         </h2>
         <p style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '18px', color: '#cbd5e1', lineHeight: 1.65, marginBottom: '32px' }}>

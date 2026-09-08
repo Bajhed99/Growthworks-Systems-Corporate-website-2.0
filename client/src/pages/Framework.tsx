@@ -888,6 +888,8 @@ function NineDomainSection() {
 // ─── SECTION 05: REVENUE INFRASTRUCTURE FLYWHEEL ────────────────────────────────────────
 function RevenueInfrastructureFlywheelSection() {
   const [active, setActive] = useState<number | null>(null)
+  const [autoPlay, setAutoPlay] = useState(true)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const CX = 350
   const CY = 350
   const RING_R = 190
@@ -904,6 +906,23 @@ function RevenueInfrastructureFlywheelSection() {
     { n: '05', label: 'Deploy',    sub: 'Ship confidently'     },
     { n: '06', label: 'Measure',   sub: 'Learn and iterate'    },
   ]
+
+  // Auto-play: cycle through flywheel steps
+  useEffect(() => {
+    if (!autoPlay) {
+      if (timerRef.current) clearInterval(timerRef.current)
+      return
+    }
+    timerRef.current = setInterval(() => {
+      setActive(current => {
+        if (current === null) return 0
+        return (current + 1) % STEPS.length
+      })
+    }, 2200)
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [autoPlay])
 
   const step = active !== null ? STEPS[active] : null
 
@@ -949,7 +968,7 @@ function RevenueInfrastructureFlywheelSection() {
 
           {/* Right column — flywheel */}
           <div className="flex items-center justify-center py-10 lg:py-0">
-            <div className="relative" style={{ width: 'min(700px, 100%)', aspectRatio: '1' }}>
+            <div className="flywheel-container relative w-full max-w-[700px] aspect-square mx-auto">
             <svg viewBox="0 0 700 700" preserveAspectRatio="xMidYMid meet" className="w-full h-full block" aria-hidden="true">
               <defs>
                 <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
@@ -1085,8 +1104,8 @@ function RevenueInfrastructureFlywheelSection() {
                     data-name={`node-group-${s.label.toLowerCase()}`}
                     key={i}
                     style={{ cursor: 'pointer' }}
-                    onMouseEnter={() => setActive(i)}
-                    onMouseLeave={() => setActive(null)}
+                    onMouseEnter={() => { setAutoPlay(false); setActive(i) }}
+                    onMouseLeave={() => { setAutoPlay(true); setActive(null) }}
                     aria-label={`Flywheel node: ${s.label}`}
                   >
                     {/* outer glow ring on hover */}
@@ -1139,8 +1158,8 @@ function RevenueInfrastructureFlywheelSection() {
                     data-name={`label-group-${s.label.toLowerCase()}`}
                     key={i}
                     style={{ cursor: 'pointer' }}
-                    onMouseEnter={() => setActive(i)}
-                    onMouseLeave={() => setActive(null)}
+                    onMouseEnter={() => { setAutoPlay(false); setActive(i) }}
+                    onMouseLeave={() => { setAutoPlay(true); setActive(null) }}
                     aria-label={`Label group for ${s.label}`}
                   >
                     <text

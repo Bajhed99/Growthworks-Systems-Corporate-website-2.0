@@ -5,7 +5,7 @@ export function AIFrequentlyAskedQuestionsSection() {
     <section aria-label="Frequently Asked Questions" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">FAQ</p>
-        <h2>Common Questions</h2>
+        <h2 className="font-serif">Common <span className="heading-accent">Questions</span></h2>
         <p className="section-intro">
           The questions below clarify common misconceptions and reinforce the core premise: AI Visibility is about being understood and recommended — not about controlling AI platforms, guaranteeing rankings, or replacing strategic business work.
         </p>

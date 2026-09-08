@@ -3,7 +3,7 @@ export function AIRoadmapPlaceholderSection() {
     <section aria-label="AI Visibility Roadmap" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Improvement Path</p>
-        <h2>How to Improve AI Visibility</h2>
+        <h2 className="font-serif">How to <span className="heading-accent">Improve</span> AI Visibility</h2>
         <p className="section-intro">
           Improving AI Visibility follows a structured improvement path — a progression from current state through prioritized interventions to measurable improvement. The path is organized around practical, prioritized actions rather than abstract best practices.
         </p>

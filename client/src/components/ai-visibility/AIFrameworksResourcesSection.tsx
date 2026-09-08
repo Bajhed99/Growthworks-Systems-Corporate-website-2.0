@@ -2,8 +2,8 @@ export function AIFrameworksResourcesSection() {
   return (
     <section aria-label="Frameworks and Resources" className="diagnostic-section section--gray">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Resources</h3>
-        <h2>Frameworks, Tools, and References</h2>
+        <p className="section-kicker">Resources</p>
+        <h2 className="font-serif">Frameworks, Tools, and <span className="heading-accent">References</span></h2>
         <p className="section-intro">
           AI Visibility work benefits from structured frameworks and consistent reference points — the Revenue Infrastructure Framework provides the operational context, and the AI Visibility framework provides the specific visibility model.
         </p>

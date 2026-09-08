@@ -3,7 +3,7 @@ export function AIVScorePlaceholderSection() {
     <section aria-label="AI Visibility Score" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Visibility Score</p>
-        <h2>AI Visibility Score — Source-Dependent Metrics</h2>
+        <h2 className="font-serif">AI Visibility <span className="heading-accent">Score</span> — Source-Dependent Metrics</h2>
         <p className="section-intro">
           A structured visibility score provides a consistent way to measure improvement over time. The score considers multiple dimensions: entity clarity, citation eligibility, source coherence, recommendation presence, and cross-source consistency.
         </p>

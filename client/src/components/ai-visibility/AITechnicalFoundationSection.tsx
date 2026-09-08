@@ -2,8 +2,8 @@ export function AITechnicalFoundationSection() {
   return (
     <section aria-label="Technical Foundation" className="diagnostic-section section--gray">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Technical Foundation</h3>
-        <h2 className="font-serif">Six Layers of Technical Readiness</h2>
+        <p className="section-kicker">Technical Foundation</p>
+        <h2 className="font-serif">Six Layers of Technical <span className="heading-accent">Readiness</span></h2>
         <p className="section-intro">
           Technical readiness for AI Visibility spans more than crawlability. It includes structured identity, content architecture, citation pathways, and cross-source coherence — six layers that together determine whether AI systems can understand and trust your presence.
         </p>

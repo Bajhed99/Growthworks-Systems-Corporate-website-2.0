@@ -2,8 +2,8 @@ export function AIEntityOptimizationSection() {
   return (
     <section aria-label="Entity Optimization" className="bg-surface py-[112px]">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Entity Optimization</h3>
-        <h2>How AI Understands Who You Are</h2>
+        <p className="section-kicker">Entity Optimization</p>
+        <h2 className="font-serif">How AI <span className="heading-accent">Understands</span> Who You Are</h2>
         <p className="section-intro">
           AI systems don't read pages the way people do. They interpret entities — discrete units of meaning: your business, your offering, your expertise, your market — and the relationships between them. Entity optimization is the work of making those units unambiguous, well-supported, and trustworthy across the entire web.
         </p>

@@ -10,7 +10,7 @@ export function AIServiceBusinessRelevanceSection() {
     <section aria-label="Service Business Relevance" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Why It Matters for Service Businesses</p>
-        <h2>AI Visibility Is Not Optional Anymore</h2>
+        <h2 className="font-serif">AI Visibility Is <span className="heading-accent">Not Optional</span> Anymore</h2>
         <p className="section-intro">
           Service businesses — agencies, consultancies, professional practices — are disproportionately affected by AI-driven discovery. Your potential clients are already asking AI systems for recommendations before they've visited a single website. If you're not understood by those systems, you're invisible at the exact moment a buying decision is being made.
         </p>

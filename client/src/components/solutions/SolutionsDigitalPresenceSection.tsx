@@ -83,12 +83,10 @@ const SLIDE_INTERVAL = 2500;
 export function SolutionsDigitalPresenceSection() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [clickPaused, setClickPaused] = useState(false);
   const [sectionVisible, setSectionVisible] = useState(false);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
-  const pausedAtRef = useRef<number>(0);
-  const elapsedAtPauseRef = useRef<number>(0);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -111,15 +109,10 @@ export function SolutionsDigitalPresenceSection() {
     return () => observer.disconnect();
   }, []);
 
-  // [ANIM: auto-slide with pause-on-hover resume support]
+  // [ANIM: auto-slide — no hover pause, click pauses briefly then resumes]
   const tick = useCallback((now: number) => {
     if (startRef.current === null) startRef.current = now;
-    if (pausedAtRef.current > 0) {
-      startRef.current = now - pausedAtRef.current;
-      pausedAtRef.current = 0;
-    }
     const elapsed = now - startRef.current;
-    elapsedAtPauseRef.current = elapsed % SLIDE_INTERVAL;
     const pct = (elapsed % SLIDE_INTERVAL) / SLIDE_INTERVAL;
     setProgress(pct);
     if (elapsed >= SLIDE_INTERVAL) {
@@ -135,33 +128,34 @@ export function SolutionsDigitalPresenceSection() {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [tick]);
 
-  // [ANIM: pause on hover — cancel rAF and record elapsed time]
+  // [ANIM: brief pause on card click, then auto-resume]
   useEffect(() => {
-    if (paused) {
+    if (clickPaused) {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      if (startRef.current !== null) {
-        pausedAtRef.current = elapsedAtPauseRef.current;
-      }
+      resumeTimerRef.current = setTimeout(() => {
+        setClickPaused(false);
+        startRef.current = null;
+        rafRef.current = requestAnimationFrame(tick);
+      }, 1800);
     } else {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      startRef.current = null;
       rafRef.current = requestAnimationFrame(tick);
     }
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-  }, [paused, tick]);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, [clickPaused, tick]);
 
   const goTo = useCallback((i: number) => {
     setActive(i);
-    setPaused(true);
+    setClickPaused(true);
     startRef.current = null;
-    pausedAtRef.current = 0;
-    elapsedAtPauseRef.current = 0;
     setProgress(0);
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => setPaused(false), 1800);
   }, []);
 
-  useEffect(() => () => {
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-  }, []);
+  const c = CAPABILITIES[active];
 
   return (
     <section
@@ -187,7 +181,7 @@ export function SolutionsDigitalPresenceSection() {
           <div style={{ width: 28, height: 1.5, background: '#841617', opacity: 0.4 }} />
         </div>
 
-        <h2 id="digital-presence-title" style={{ textAlign: 'center' }}>
+        <h2 id="digital-presence-title" style={{ textAlign: 'center', fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 400, lineHeight: 1.15, color: '#1a1a1a', marginBottom: 14 }}>
           Make it easier for the right buyers to find, understand, and{' '}
           <span style={{ color: 'var(--maroon)' }}>trust your business.</span>
         </h2>
@@ -201,16 +195,14 @@ export function SolutionsDigitalPresenceSection() {
           why it is relevant, and what a buyer should do next.
         </p>
 
-        {/* [ENHANCED: 3-column card grid — all 6 visible at once, auto-highlighted] */}
+        {/* [ENHANCED: smooth crossfade carousel — all slides stacked, CSS transition] */}
         <div
+          className="mob-slide"
           style={{
             marginTop: '44px',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '16px',
-            opacity: sectionVisible ? 1 : 0,
-            transform: sectionVisible ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
+            position: 'relative',
+            minHeight: 300,
+            overflow: 'hidden',
           }}
         >
           {CAPABILITIES.map((cap, i) => {
@@ -218,34 +210,39 @@ export function SolutionsDigitalPresenceSection() {
             return (
               <div
                 key={cap.num}
-                onClick={() => goTo(i)}
+                className="mob-slide-inner"
                 style={{
-                  background: isActive ? '#ffffff' : '#fafaf9',
-                  border: isActive ? '2px solid #1a1a1a' : '1px solid #e7e5e4',
-                  borderTop: isActive ? '4px solid #841617' : '1px solid #e7e5e4',
-                  padding: '28px 24px',
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
-                  transform: isActive ? 'translateY(-2px)' : 'translateY(0)',
-                  boxShadow: isActive ? '0 8px 24px rgba(132,22,23,0.08)' : 'none',
+                  position: 'absolute',
+                  inset: 0,
+                  background: '#ffffff',
+                  border: '2px solid #1a1a1a',
+                  borderTop: '4px solid #841617',
+                  padding: '48px 44px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  opacity: isActive ? 1 : 0,
+                  transform: isActive ? 'translateY(0)' : 'translateY(10px)',
+                  transition: 'opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+                  pointerEvents: isActive ? 'auto' : 'none',
+                  willChange: 'opacity, transform',
                 }}
               >
                 {/* [DECORATIVE: ghost number] */}
                 <span
+                  className="mob-ghost"
                   aria-hidden="true"
                   style={{
                     position: 'absolute',
-                    top: '-8px',
-                    right: '4px',
+                    top: '-12px',
+                    right: '8px',
                     fontFamily: "'DM Serif Display', Georgia, serif",
-                    fontSize: '80px',
+                    fontSize: '120px',
                     fontWeight: 400,
                     lineHeight: 1,
                     color: '#841617',
-                    opacity: isActive ? 0.06 : 0.03,
-                    transition: 'opacity 0.35s ease',
+                    opacity: 0.05,
                     pointerEvents: 'none',
                     userSelect: 'none',
                   }}
@@ -254,63 +251,54 @@ export function SolutionsDigitalPresenceSection() {
                 </span>
 
                 {/* [ICON: black circle with crimson ring] */}
-                <div style={{
-                  width: 36,
-                  height: 36,
+                <div className="mob-icon" style={{
+                  width: 40,
+                  height: 40,
                   borderRadius: '50%',
-                  background: isActive ? '#1a1a1a' : '#f5f5f4',
-                  border: isActive ? '2px solid #841617' : '2px solid #d6d3d1',
+                  background: '#1a1a1a',
+                  border: '2px solid #841617',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  marginBottom: '14px',
-                  transition: 'all 0.35s ease',
+                  marginBottom: '18px',
                 }}>
-                  <cap.Icon
-                    size={16}
-                    strokeWidth={1.5}
-                    color={isActive ? '#ffffff' : '#a8a29e'}
-                  />
+                  <c.Icon size={18} strokeWidth={1.5} color="#ffffff" />
                 </div>
 
                 {/* [CRIMSON: active indicator bar] */}
                 <div style={{
-                  width: isActive ? 24 : 0,
+                  width: 28,
                   height: 2,
                   background: '#841617',
-                  marginBottom: isActive ? '10px' : '0',
-                  transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+                  marginBottom: '12px',
                 }} />
 
                 {/* [CRIMSON: impactful words highlighted] */}
-                <h3 style={{
+                <h3 className="mob-heading" style={{
                   fontFamily: "'DM Serif Display', Georgia, serif",
-                  fontSize: '15px',
+                  fontSize: '30px',
                   fontWeight: 400,
-                  color: isActive ? '#1a1a1a' : '#78716c',
-                  lineHeight: 1.3,
-                  marginBottom: '8px',
-                  transition: 'color 0.3s ease',
+                  color: '#1a1a1a',
+                  lineHeight: 1.2,
+                  marginBottom: '10px',
                 }}>
                   {highlight(cap.body, cap.highlightBody)}
                 </h3>
 
-                {/* [Active: show detail text; Inactive: show title only] */}
-                {isActive && (
-                  <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
-                    fontSize: '13px',
-                    color: '#57534e',
-                    lineHeight: 1.6,
-                    margin: 0,
-                    animation: 'fadeSlideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-                  }}>
-                    {highlight(cap.detail, cap.highlightDetail)}
-                  </p>
-                )}
+                {/* [DETAIL: expanded text] */}
+                <p className="mob-detail" style={{
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '15px',
+                  color: '#57534e',
+                  lineHeight: 1.7,
+                  maxWidth: '600px',
+                  margin: 0,
+                }}>
+                  {highlight(cap.detail, cap.highlightDetail)}
+                </p>
 
-                {/* [ANIM: progress bar at bottom of active card] */}
+                {/* [ANIM: progress bar at bottom of active slide] */}
                 {isActive && (
                   <div style={{
                     position: 'absolute',
@@ -324,7 +312,7 @@ export function SolutionsDigitalPresenceSection() {
                       width: `${progress * 100}%`,
                       height: '100%',
                       background: '#841617',
-                      transition: 'width 0.1s linear',
+                      transition: 'width 0.08s linear',
                     }} />
                   </div>
                 )}
@@ -333,15 +321,40 @@ export function SolutionsDigitalPresenceSection() {
           })}
         </div>
 
-        {/* [NAV: dot indicators + counter] */}
-        <div style={{
+        {/* [NAV: dot indicators + counter + prev/next arrows] */}
+        <div className="mob-nav-row" style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '10px',
-          marginTop: '24px',
+          marginTop: '20px',
         }}>
-          <span style={{
+          {/* Prev arrow */}
+          <button
+            className="mob-arrow"
+            onClick={() => goTo((active - 1 + CAPABILITIES.length) % CAPABILITIES.length)}
+            aria-label="Previous capability"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              border: '1px solid #d6d3d1',
+              background: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: '#1a1a1a',
+              padding: 0,
+              transition: 'border-color 0.35s ease, background 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#841617'; e.currentTarget.style.transform = 'scale(1.08)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#d6d3d1'; e.currentTarget.style.transform = 'scale(1)'; }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
+
+          <span className="mob-counter" style={{
             fontFamily: "'DM Sans', system-ui, sans-serif",
             fontSize: '12px',
             fontWeight: 500,
@@ -352,28 +365,58 @@ export function SolutionsDigitalPresenceSection() {
           }}>
             {String(active + 1).padStart(2, '0')} / {String(CAPABILITIES.length).padStart(2, '0')}
           </span>
-          <div style={{ width: 1, height: 14, background: '#d6d3d1' }} />
-          {CAPABILITIES.map((cap, i) => (
-            <button
-              key={cap.num}
-              onClick={() => goTo(i)}
-              aria-label={`View ${cap.title}`}
-              style={{
-                width: active === i ? 24 : 8,
-                height: 8,
-                borderRadius: 4,
-                border: 'none',
-                background: active === i ? '#841617' : '#d6d3d1',
-                cursor: 'pointer',
-                padding: 0,
-                transition: 'width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease',
-              }}
-            />
-          ))}
+
+          {/* Dot indicators */}
+          <div className="mob-dots" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            {CAPABILITIES.map((cap, i) => (
+              <button
+                key={cap.num}
+                className={active === i ? 'mob-dot-active' : 'mob-dot'}
+                onClick={() => goTo(i)}
+                aria-label={`View ${cap.title}`}
+                style={{
+                  width: active === i ? 28 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  border: 'none',
+                  background: active === i ? '#841617' : '#d6d3d1',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'width 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.4s ease',
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Next arrow */}
+          <button
+            className="mob-arrow"
+            onClick={() => goTo((active + 1) % CAPABILITIES.length)}
+            aria-label="Next capability"
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              border: '1px solid #d6d3d1',
+              background: '#ffffff',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: '#1a1a1a',
+              padding: 0,
+              transition: 'border-color 0.35s ease, background 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#841617'; e.currentTarget.style.transform = 'scale(1.08)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#d6d3d1'; e.currentTarget.style.transform = 'scale(1)'; }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+          </button>
         </div>
 
         {/* Outcome callout */}
         <div
+          className="mob-outcome"
           style={{
             marginTop: '36px',
             padding: '28px 32px',
@@ -388,12 +431,12 @@ export function SolutionsDigitalPresenceSection() {
           }}
         >
           <div
+            className="mob-bar"
             style={{
               width: '3px',
               height: '48px',
               background: '#1a1a1a',
               flexShrink: 0,
-              borderRadius: 0,
             }}
             aria-hidden="true"
           />
@@ -413,13 +456,13 @@ export function SolutionsDigitalPresenceSection() {
               gap: '12px',
               marginBottom: '10px',
             }}>
-              <span style={{
+              <span className="mob-stat" style={{
                 fontFamily: "'DM Serif Display', Georgia, serif",
                 fontSize: '28px',
                 color: '#1a1a1a',
                 lineHeight: 1,
               }}>3x</span>
-              <span style={{
+              <span className="mob-stat-text" style={{
                 fontFamily: "'DM Sans', system-ui, sans-serif",
                 fontSize: '13px',
                 color: '#57534e',
@@ -429,7 +472,6 @@ export function SolutionsDigitalPresenceSection() {
               width: '100%',
               height: 3,
               background: '#e7e5e4',
-              borderRadius: 0,
               overflow: 'hidden',
               marginBottom: '14px',
             }}>
@@ -440,7 +482,7 @@ export function SolutionsDigitalPresenceSection() {
                 transition: 'width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s',
               }} />
             </div>
-            <p style={{
+            <p className="mob-body" style={{
               fontFamily: "'DM Sans', system-ui, sans-serif",
               fontSize: '15px',
               color: '#44403c',
@@ -453,6 +495,7 @@ export function SolutionsDigitalPresenceSection() {
             </p>
             <div style={{ marginTop: '14px' }}>
               <AnchorLink
+                className="mob-cta"
                 href="/ai-visibility"
                 style={{
                   display: 'inline-flex',
@@ -544,6 +587,93 @@ export function SolutionsDigitalPresenceSection() {
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Mobile overrides: only below 768px ===== */
+        @media (max-width: 768px) {
+          /* Inner slide cards (stacked, position:absolute) */
+          .mob-slide-inner {
+            padding: 28px 20px !important;
+          }
+          .mob-slide-inner .mob-ghost {
+            font-size: 72px !important;
+            top: -6px !important;
+            right: 4px !important;
+          }
+          .mob-slide-inner .mob-icon {
+            width: 32px !important;
+            height: 32px !important;
+            margin-bottom: 14px !important;
+          }
+          .mob-slide-inner .mob-icon svg {
+            width: 14px !important;
+            height: 14px !important;
+          }
+          .mob-slide-inner .mob-heading {
+            font-size: 20px !important;
+            margin-bottom: 8px !important;
+            text-align: center !important;
+          }
+          .mob-slide-inner .mob-detail {
+            font-size: 14px !important;
+            line-height: 1.65 !important;
+            text-align: center !important;
+          }
+          .mob-slide-inner .mob-body {
+            text-align: center !important;
+          }
+          .mob-slide-inner {
+            text-align: center !important;
+          }
+          /* Nav */
+          .mob-nav-row {
+            gap: 6px !important;
+            margin-top: 14px !important;
+          }
+          .mob-nav-row .mob-arrow {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          .mob-nav-row .mob-arrow svg {
+            width: 12px !important;
+            height: 12px !important;
+          }
+          .mob-nav-row .mob-counter {
+            font-size: 11px !important;
+            min-width: 34px !important;
+          }
+          .mob-nav-row .mob-dots {
+            gap: 5px !important;
+          }
+          .mob-nav-row .mob-dot {
+            width: 6px !important;
+            height: 6px !important;
+          }
+          .mob-nav-row .mob-dot-active {
+            width: 22px !important;
+          }
+          /* Outcome */
+          .mob-outcome {
+            padding: 20px !important;
+            gap: 14px !important;
+            margin-top: 24px !important;
+          }
+          .mob-outcome .mob-bar {
+            width: 2px !important;
+            height: 36px !important;
+          }
+          .mob-outcome .mob-stat {
+            font-size: 24px !important;
+          }
+          .mob-outcome .mob-stat-text {
+            font-size: 12px !important;
+          }
+          .mob-outcome .mob-body {
+            font-size: 14px !important;
+          }
+          .mob-outcome .mob-cta {
+            font-size: 14px !important;
+          }
         }
       `}</style>
     </section>

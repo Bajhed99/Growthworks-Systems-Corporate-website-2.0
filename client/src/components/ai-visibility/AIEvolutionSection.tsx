@@ -3,7 +3,7 @@ export function AIEvolutionSection() {
     <section aria-labelledby="ai-evolution-title" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker">AI Search Landscape</p>
-        <h2 id="ai-evolution-title">How Search Has Changed — And Why It Matters</h2>
+        <h2 id="ai-evolution-title" className="font-serif">How Search Has <span className="heading-accent">Changed</span> — And Why It Matters</h2>
         <p className="section-intro">
           The evolution from traditional search engines to AI-powered answer engines represents a fundamental shift in how buyers discover solutions. Each era introduces new requirements for visibility.
         </p>

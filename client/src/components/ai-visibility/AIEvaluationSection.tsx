@@ -3,7 +3,7 @@ export function AIEvaluationSection() {
     <section aria-label="AI Visibility Evaluation" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker">Evaluation</p>
-        <h2>How Visibility Is Assessed</h2>
+        <h2 className="font-serif">How Visibility Is <span className="heading-accent">Assessed</span></h2>
         <p className="section-intro">
           Assessing AI Visibility requires more than running an SEO audit. It requires understanding how AI systems interpret your business, what entities and sources they associate with you, and whether you're being included in the recommendations that actually matter to your buyers.
         </p>

@@ -2,8 +2,8 @@ export function AIBusinessOutcomesSection() {
   return (
     <section aria-label="Business Outcomes" className="diagnostic-section section--gray">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">Business Outcomes</h3>
-        <h2 className="font-serif">From Discoverability to Revenue Growth</h2>
+        <p className="section-kicker">Business Outcomes</p>
+        <h2 className="font-serif">From Discoverability to <span className="heading-accent">Revenue Growth</span></h2>
         <p className="font-sans text-[15px] text-gray-700 leading-[1.55]">
           AI Visibility isn't just about being found. It's about being found at the right time, by the right buyer, with the right authority — and turning that discovery into business outcomes that compound over time.
         </p>

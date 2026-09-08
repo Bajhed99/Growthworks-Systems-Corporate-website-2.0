@@ -3,7 +3,7 @@ export function AIOptimizationConsolidationSection() {
     <section aria-label="SEO AEO GEO Consolidation" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker">Consolidated View</p>
-        <h2>SEO, AEO, and GEO — One System</h2>
+        <h2 className="font-serif">SEO, AEO, and GEO — <span className="heading-accent">One System</span></h2>
         <p className="section-intro">
           Rather than treating Search Engine Optimization (SEO), AI Engine Optimization (AEO), and Generative Engine Optimization (GEO) as separate disciplines, AI Visibility treats them as connected layers of the same visibility problem. The same structural, content, and credibility work that earns ranking in traditional search also strengthens inclusion in AI answers.
         </p>
