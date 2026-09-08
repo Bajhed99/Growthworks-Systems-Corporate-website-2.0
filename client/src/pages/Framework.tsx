@@ -931,7 +931,7 @@ function RevenueInfrastructureFlywheelSection() {
   const zeroRadius = { borderRadius: 0 }
 
   return (
-    <section className="pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout', overflow: 'visible' }}>
+    <section className="pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout' }}>
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column — text */}
@@ -949,8 +949,8 @@ function RevenueInfrastructureFlywheelSection() {
 
           {/* Right column — flywheel */}
           <div className="flex items-center justify-center py-10 lg:py-0">
-            <div className="relative" style={{ width: 'min(700px, 100%)', aspectRatio: '1', overflow: 'visible' }}>
-            <svg viewBox="0 0 700 700" style={{ width: '100%', height: '100%', transform: 'scale(1.48)', transformOrigin: 'center center', overflow: 'visible' }} aria-hidden="true">
+            <div className="relative" style={{ width: 'min(700px, 100%)', aspectRatio: '1' }}>
+            <svg viewBox="0 0 700 700" preserveAspectRatio="xMidYMid meet" className="w-full h-full block" aria-hidden="true">
               <defs>
                 <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stopColor={RED} stopOpacity="0.1" />
@@ -1813,7 +1813,7 @@ function TraditionalVsRISection() {
                     </div>
 
                     {/* Chips */}
-                    <div className="grid grid-cols-3 gap-1.5">
+                    <div className="grid grid-cols-3 sm:grid-cols-1 gap-1.5">
                       {row.map((cap, ci) => (
                         <div key={cap.label} data-reveal className="flex flex-col items-center gap-1.5 border py-3 px-1" style={{ backgroundColor: "#FFFFFF", borderColor: "#D6CFC3", borderTop: "2px solid #841617", "--delay": `${400 + ri * 80 + ci * 35}ms` } as React.CSSProperties}>
                           <div className="w-7 h-7 flex items-center justify-center" style={{ color: "#841617" }}>
@@ -2113,8 +2113,8 @@ function BusinessOutcomesSection() {
       <div style={{ backgroundColor: CREAM }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "96px 48px" }}>
           {/* Header block */}
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px",
+          <div className="business-outcomes-header" style={{
+            gridTemplateColumns: "1fr 1fr", gap: "64px",
             alignItems: "end", marginBottom: "80px",
           }}>
             <div>
@@ -2142,8 +2142,9 @@ function BusinessOutcomesSection() {
           </div>
 
           {/* Outcome cards */}
-          <div style={{
-            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          <div className="business-outcomes-cards"
+          style={{
+            display: "grid",
             border: `1px solid ${BLACK}`,
           }}>
             {outcomes.map((item, i) => {
@@ -2216,7 +2217,7 @@ function BusinessOutcomesSection() {
           </div>
 
           {/* Bottom stat bar */}
-          <div style={{
+          <div className="outcome-stats-grid" style={{
             borderLeft: `1px solid ${BLACK}`, borderRight: `1px solid ${BLACK}`,
             borderBottom: `1px solid ${BLACK}`,
             display: "grid", gridTemplateColumns: "repeat(4, 1fr)",

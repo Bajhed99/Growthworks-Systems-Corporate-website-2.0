@@ -5,52 +5,80 @@ function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAtt
   return <a className={className} href={href} {...props}>{children}</a>;
 }
 
+const CRIMSON = "#841617";
+
+const highlight = (text: string, words: string[]) => {
+  let result: React.ReactNode[] = [];
+  const regex = new RegExp(`(\\b${words.join("\\b|\\b")}\\b)`, "gi");
+  const parts = text.split(regex);
+  parts.forEach((part, i) => {
+    if (words.some(w => w.toLowerCase() === part.toLowerCase())) {
+      result.push(<span key={i} style={{ color: CRIMSON, fontWeight: 600 }}>{part}</span>);
+    } else {
+      result.push(part);
+    }
+  });
+  return result;
+};
+
 const CAPABILITIES = [
   {
     num: '01',
     title: 'Website Experience',
     body: 'A digital front door that earns trust and directs attention to what matters next.',
+    highlightBody: ['trust'],
     detail: 'Your website is the first impression. We design experiences that communicate clarity, credibility, and purpose — so visitors understand what you offer and what to do next.',
+    highlightDetail: ['first impression', 'clarity, credibility, and purpose'],
     Icon: Globe,
   },
   {
     num: '02',
     title: 'AI-Ready Website Foundations',
     body: 'Structure and markup that AI systems can read, interpret, and present confidently.',
-    detail: 'AI platforms surface answers, not just links. We ensure your website\'s structure, schema, and content architecture are organized for AI interpretation and presentation.',
+    highlightBody: ['confidently'],
+    detail: "AI platforms surface answers, not just links. We ensure your website's structure, schema, and content architecture are organized for AI interpretation and presentation.",
+    highlightDetail: ['surface answers', 'interpretation and presentation'],
     Icon: Layout,
   },
   {
     num: '03',
     title: 'Search & Discoverability',
     body: 'Positioning that makes the business visible to the people actively looking for it.',
+    highlightBody: ['actively looking'],
     detail: 'Visibility is not accidental. We build the positioning and content structure that help the right buyers find you through the channels they use most.',
+    highlightDetail: ['not accidental'],
     Icon: Search,
   },
   {
     num: '04',
     title: 'AI Visibility',
     body: 'Presence in AI-generated answers, not just traditional search results.',
+    highlightBody: ['AI-generated answers'],
     detail: 'When buyers ask AI tools for recommendations, your business needs to appear in the answer. We build the entity signals and answer-engine optimization that earn that placement.',
+    highlightDetail: ['appear in the answer', 'earn that placement'],
     Icon: Bot,
   },
   {
     num: '05',
     title: 'Positioning & Messaging',
     body: 'Clear statements of what the business does, who it serves, and why it matters.',
+    highlightBody: ['why it matters'],
     detail: 'Unclear positioning is invisible positioning. We refine the language that tells buyers who you are, who you serve, and why they should take the next step.',
+    highlightDetail: ['invisible positioning'],
     Icon: Megaphone,
   },
   {
     num: '06',
     title: 'Conversion Path Design',
     body: 'A defined next step for every visitor, so attention becomes action.',
+    highlightBody: ['action'],
     detail: 'Traffic without a path is waste. We design the sequences, offers, and next steps that move visitors from awareness to conversation.',
+    highlightDetail: ['waste', 'awareness to conversation'],
     Icon: Target,
   },
 ];
 
-const SLIDE_INTERVAL = 4000;
+const SLIDE_INTERVAL = 2500;
 
 export function SolutionsDigitalPresenceSection() {
   const [active, setActive] = useState(0);
@@ -62,7 +90,7 @@ export function SolutionsDigitalPresenceSection() {
   const pausedAtRef = useRef<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // [ANIM: section reveal + start auto-slide on visibility]
+  // [ANIM: section reveal on scroll]
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -81,11 +109,11 @@ export function SolutionsDigitalPresenceSection() {
     return () => observer.disconnect();
   }, []);
 
-  // [ANIM: auto-slide carousel — runs only when section is visible]
+  // [ANIM: auto-slide carousel — starts on mount, pauses on hover]
   const tick = useCallback((now: number) => {
-    if (startRef.current === null) startRef.current = now - pausedAtRef.current * SLIDE_INTERVAL;
-    const elapsed = (now - startRef.current) % SLIDE_INTERVAL;
-    const pct = elapsed / SLIDE_INTERVAL;
+    if (startRef.current === null) startRef.current = now;
+    const elapsed = now - startRef.current;
+    const pct = (elapsed % SLIDE_INTERVAL) / SLIDE_INTERVAL;
     setProgress(pct);
     if (elapsed >= SLIDE_INTERVAL) {
       startRef.current = now;
@@ -95,13 +123,23 @@ export function SolutionsDigitalPresenceSection() {
   }, []);
 
   useEffect(() => {
-    if (!sectionVisible || paused) {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      return;
-    }
+    startRef.current = null;
     rafRef.current = requestAnimationFrame(tick);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-  }, [sectionVisible, paused, tick]);
+  }, [tick]);
+
+  // [ANIM: pause on hover]
+  useEffect(() => {
+    if (paused) {
+      pausedAtRef.current = performance.now() - (startRef.current || performance.now());
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    } else {
+      startRef.current = null;
+      pausedAtRef.current = 0;
+      rafRef.current = requestAnimationFrame(tick);
+    }
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+  }, [paused, tick]);
 
   const goTo = useCallback((i: number) => {
     setActive(i);
@@ -242,6 +280,7 @@ export function SolutionsDigitalPresenceSection() {
                   {c.num} — {c.title}
                 </div>
 
+                {/* [CRIMSON: impactful words highlighted in h3] */}
                 <h3 style={{
                   fontFamily: "'DM Serif Display', Georgia, serif",
                   fontSize: 'clamp(24px, 3vw, 32px)',
@@ -252,15 +291,20 @@ export function SolutionsDigitalPresenceSection() {
                   letterSpacing: '-0.01em',
                   borderLeft: '3px solid #841617',
                   paddingLeft: '16px',
-                }}>{c.body}</h3>
+                }}>
+                  {highlight(c.body, c.highlightBody)}
+                </h3>
 
+                {/* [CRIMSON: impactful words highlighted in detail] */}
                 <p style={{
                   fontFamily: "'DM Sans', system-ui, sans-serif",
                   fontSize: '15px',
                   color: '#44403c',
                   lineHeight: 1.7,
                   marginBottom: '20px',
-                }}>{c.detail}</p>
+                }}>
+                  {highlight(c.detail, c.highlightDetail)}
+                </p>
 
                 {/* [ENHANCED: progress bar — black fill with crimson endpoint] */}
                 <div style={{
@@ -359,7 +403,7 @@ export function SolutionsDigitalPresenceSection() {
             </button>
           </div>
 
-          {/* [NAV: dot indicators + counter in black] */}
+          {/* [NAV: dot indicators + counter] */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -565,41 +609,6 @@ export function SolutionsDigitalPresenceSection() {
           Visibility page. Solutions provides the overview and routes deeper.
         </p>
 
-        {/* [ENHANCED: section divider — black lines with crimson center] */}
-        <div
-          style={{
-            marginTop: '48px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-            opacity: sectionVisible ? 1 : 0,
-            transform: sectionVisible ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.6s ease 0.5s, transform 0.6s ease 0.5s',
-          }}
-        >
-          <div style={{ width: 48, height: 1.5, background: '#1a1a1a', opacity: 0.35 }} />
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-          }}>
-            <span style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '11px',
-              fontWeight: 600,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#841617',
-              opacity: 0.7,
-            }}>02 — Lead Response</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#841617" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.55 }}>
-              <path d="M5 12h14" />
-              <path d="m12 5 7 7-7 7" />
-            </svg>
-          </div>
-          <div style={{ width: 48, height: 1.5, background: '#1a1a1a', opacity: 0.35 }} />
-        </div>
       </div>
 
       <style>{`

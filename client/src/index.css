@@ -5955,12 +5955,20 @@ h4 {
     max-width: 100% !important;
   }
 
-  /* BusinessOutcomesSection — stack outcome cards */
+  /* BusinessOutcomesSection — responsive header and cards */
+  .business-outcomes-header,
   .business-outcomes-cards {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   .outcome-stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 850px) {
+  /* Flywheel SVG — natural scaling via container width */
+  .flywheel-container {
+    max-width: 100%;
   }
 }
 
