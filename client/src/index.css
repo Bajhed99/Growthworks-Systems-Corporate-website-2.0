@@ -325,11 +325,14 @@ h3 {
   border-bottom: 1px solid var(--gws-section-separator);
   background: var(--paper);
   color: var(--ink);
+  min-height: 60px;
   height: 60px;
+  transition: height 200ms ease-out;
 }
 
 .header-shell {
   min-height: 60px;
+  height: 60px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -4602,8 +4605,13 @@ h4 {
 }
 
 @media (max-width:760px) {
+  .site-header.is-compact {
+    height: 52px;
+  }
+
   .site-header.is-compact .header-shell {
     min-height: 52px;
+    height: 52px;
   }
 
   .site-header.is-compact .brand-mark {
@@ -4618,8 +4626,13 @@ h4 {
 
 /* Desktop navigation geometry requested for the restored GWS header. */
 @media (min-width:761px) {
+  .site-header {
+    height: 80px;
+  }
+
   .site-header .header-shell {
     min-height: 80px;
+    height: 80px;
     align-items: center;
   }
 
@@ -4655,8 +4668,13 @@ h4 {
     padding: 10px 20px;
   }
 
+  .site-header.is-compact {
+    height: 64px;
+  }
+
   .site-header.is-compact .header-shell {
     min-height: 64px;
+    height: 64px;
   }
 
   .site-header.is-compact .nav-link {
