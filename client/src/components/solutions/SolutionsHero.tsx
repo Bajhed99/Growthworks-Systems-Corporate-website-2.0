@@ -7,14 +7,14 @@ function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAtt
 
 export function SolutionsHero() {
   return (
-    <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title">
+    <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title" style={{ paddingBlock: "40px" }}>
       <div className="gws-glowy-canvas" />
-      <div className="gws-glowy-content">
+      <div className="gws-glowy-content" style={{ paddingBlock: "40px" }}>
         <div className="gws-glowy-content-inner">
           <div className="gws-glowy-badge">
             Solutions
           </div>
-          <h1 id="solutions-hero-title" className="gws-glowy-title">
+          <h2 id="solutions-hero-title" className="gws-glowy-title">
             Integrated capabilities engineered to <span style={{ color: 'var(--maroon)' }}>eliminate revenue leakage.</span>
           </h1>
           <p className="gws-glowy-copy" style={{ maxWidth: '720px' }}>

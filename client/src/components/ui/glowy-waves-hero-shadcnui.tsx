@@ -2,7 +2,6 @@
  * GWS adaptation of the user-supplied GlowyWavesHero component.
  * Retains the canvas-wave interaction model while using approved GWS content and color tokens.
  */
-import { motion, type Variants } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ChevronDown } from "lucide-react";
@@ -23,24 +22,6 @@ interface WaveConfig {
   color: string;
   opacity: number;
 }
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, staggerChildren: 0.12 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
 
 export function GlowyWavesHero({ motionReduced = false }: { motionReduced?: boolean }) {
   const heroRef = useRef<HTMLElement | null>(null);
@@ -267,35 +248,35 @@ export function GlowyWavesHero({ motionReduced = false }: { motionReduced?: bool
         <div data-parallax-layer="3" className="gws-glowy-photo-foreground" aria-hidden="true" />
 
         <div className="gws-glowy-content">
-          <motion.div variants={containerVariants} initial={motionReduced ? false : "hidden"} animate="visible" className="gws-glowy-content-inner">
+          <div className="gws-glowy-content-inner">
             <div data-parallax-layer="4" className="gws-glowy-narrative">
-            <motion.div variants={itemVariants} className="gws-glowy-badge">
+            <div className="gws-glowy-badge">
               <span aria-hidden="true" /> Revenue Infrastructure <span aria-hidden="true" />
-            </motion.div>
+            </div>
 
-            <motion.h1 variants={itemVariants} id="hero-title" className="gws-glowy-title">
+            <h1 id="hero-title" className="gws-glowy-title">
               Turn more of your existing opportunity into <span>revenue.</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p variants={itemVariants} className="gws-glowy-copy">
+            <p className="gws-glowy-copy">
               GrowthWorks Systems helps founder-led service businesses identify and repair the gaps that prevent demand, leads, and customers from producing their full value.
-            </motion.p>
+            </p>
 
-            <motion.div variants={itemVariants} className="gws-glowy-actions">
+            <div className="gws-glowy-actions">
               <Button asChild size="lg" className="gws-glowy-primary">
                 <a href="#revenue-diagnostic">Book a Revenue Diagnostic <ArrowRight aria-hidden="true" /></a>
               </Button>
-            </motion.div>
-
-            <motion.p variants={itemVariants} className="gws-glowy-flow" aria-label="Opportunity, Capture, Revenue">
-              <span>Opportunity</span><i aria-hidden="true">→</i><span>Capture</span><i aria-hidden="true">→</i><strong>Revenue</strong>
-            </motion.p>
             </div>
 
-            <motion.a variants={itemVariants} href="#credibility" className="gws-glowy-explore" onClick={handleExploreClick}>
+            <p className="gws-glowy-flow" aria-label="Opportunity, Capture, Revenue">
+              <span>Opportunity</span><i aria-hidden="true">→</i><span>Capture</span><i aria-hidden="true">→</i><strong>Revenue</strong>
+            </p>
+            </div>
+
+            <a href="#credibility" className="gws-glowy-explore" onClick={handleExploreClick}>
               <span>Explore</span><ChevronDown aria-hidden="true" />
-            </motion.a>
-          </motion.div>
+            </a>
+          </div>
         </div>
       </div>
     </section>

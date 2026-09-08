@@ -97,7 +97,7 @@ export function SolutionsSystemInteractive() {
         </div>
 
         {/* Hero text */}
-        <div style={{ maxWidth: 860, marginInline: "auto", paddingBlock: "72px 64px", paddingInline: 24, textAlign: "center" }}>
+        <div style={{ maxWidth: 860, marginInline: "auto", paddingBlock: "40px 40px", paddingInline: 24, textAlign: "center" }}>
           <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(32px, 5vw, 44px)", fontWeight: 400, lineHeight: 1.13, color: "#111111", letterSpacing: "-0.01em", marginBottom: 12 }}>
             Each capability strengthens a different part<br />
             of the same{" "}
@@ -281,8 +281,8 @@ export function SolutionsSystemInteractive() {
         </div>
 
         {/* Closing band */}
-        <div style={{ borderTop: "1px solid #e0d9cf", background: "#f5f0e8", paddingBlock: 52, paddingInline: 24, textAlign: "center" }}>
-          <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#4a4744", maxWidth: 580, marginInline: "auto" }}>
+        <div style={{ borderTop: "1px solid #333", background: "#000000", paddingBlock: 52, paddingInline: 24, textAlign: "center" }}>
+          <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#DDD6CC", maxWidth: 580, marginInline: "auto" }}>
             These four capabilities form one connected system. Each one reinforces the others.{" "}
             <span style={{ color: "#9B1C1C", fontWeight: 500 }}>Learn how they work together below.</span>
           </p>
