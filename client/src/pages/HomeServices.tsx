@@ -38,6 +38,19 @@ function RevealOnScroll({
   delay?: number;
 }) {
   const [visible, setVisible] = useState(false);
+  const hasSetVisible = React.useRef(false);
+
+  React.useEffect(() => {
+    if (hasSetVisible.current) return;
+    const el = document.querySelector(`[data-reveal="${className.match(/data-reveal="([^"]+)"/)?.[1] || ''}"]`) || document.querySelector(`.${className}`);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      hasSetVisible.current = true;
+    }
+  }, [className]);
+
   return (
     <div
       className={className}
@@ -53,6 +66,7 @@ function RevealOnScroll({
             entries.forEach((e) => {
               if (e.isIntersecting) {
                 setVisible(true);
+                hasSetVisible.current = true;
                 obs.disconnect();
               }
             });
