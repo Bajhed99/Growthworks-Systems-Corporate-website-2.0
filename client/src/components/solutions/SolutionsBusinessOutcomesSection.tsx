@@ -3,7 +3,7 @@ export function SolutionsBusinessOutcomesSection() {
     <section aria-label="Business Outcomes" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>Business Outcomes</p>
-        <h2 id="outcomes-title" style={{ textAlign: 'center' }}>The capabilities matter because of what they make possible.</h2>
+        <h2 id="outcomes-title" style={{ textAlign: 'center' }}><span style={{ color: 'var(--maroon)' }}>The capabilities matter</span> because of what they make possible.</h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four solution modules are not an arbitrary service catalog. Each supports a specific business outcome that moves the revenue path from opportunity to measurable improvement.
         </p>

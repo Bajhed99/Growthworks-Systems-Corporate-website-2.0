@@ -18,7 +18,7 @@ export function SolutionsDigitalPresenceSection() {
     <section aria-labelledby="digital-presence-title" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>01 — Digital Presence</p>
-        <h2 id="digital-presence-title" style={{ textAlign: 'center' }}>Make it easier for the right buyers to find, understand, and trust your business.</h2>
+        <h2 id="digital-presence-title" style={{ textAlign: 'center' }}>Make it easier for the right buyers to find, understand, and <span style={{ color: 'var(--maroon)' }}>trust your business.</span></h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Digital Presence strengthens the beginning of the revenue path: discovery and consideration. The objective is not simply more traffic — it is a digital presence that makes clear what the business does, who it serves, why it is relevant, and what a buyer should do next.
         </p>

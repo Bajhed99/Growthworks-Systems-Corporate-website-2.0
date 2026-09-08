@@ -7,9 +7,7 @@ function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAtt
 export function SolutionsHero() {
   return (
     <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title">
-      <div className="gws-glowy-canvas" style={{
-        background: "radial-gradient(60% 60% at 85% 10%, rgba(132, 22, 23, 0.08), transparent 72%), radial-gradient(45% 45% at 8% 80%, rgba(132, 22, 23, 0.04), transparent 72%)"
-      }} />
+      <div className="gws-glowy-canvas" />
       <div className="gws-glowy-content">
         <div className="gws-glowy-content-inner">
           <div className="gws-glowy-badge">

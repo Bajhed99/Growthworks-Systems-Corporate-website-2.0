@@ -308,7 +308,7 @@ function DiagnosticQuestionsSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <div className="max-w-[720px] mb-12">
             <SectionLabel label="THE DIAGNOSTIC ANSWERS THREE QUESTIONS" />
-            <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B]">
+            <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B]">
               Where revenue is lost. What it costs. <span style={{ color: "#841617" }}>What to fix first.</span>
             </h2>
           </div>
@@ -340,7 +340,7 @@ function AssessmentPrinciplesSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="ASSESSMENT PRINCIPLES" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-12">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-12">
             Educate. Score. Recommend.
           </h2>
 
@@ -373,7 +373,7 @@ function MethodologySection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="CONSULTING METHODOLOGY" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Eight stages from first contact to <span style={{ color: "#841617" }}>compounding advantage.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -470,7 +470,7 @@ function ExecutiveScorecardSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE SCORECARD" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             A single view of your <span style={{ color: "#841617" }}>Revenue Infrastructure</span> performance.
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -541,7 +541,7 @@ function DomainHeatMapSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DOMAIN HEAT MAP" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Business risk and opportunity visualized across all <span style={{ color: "#841617" }}>Nine Domains.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -624,7 +624,7 @@ function PrioritizationMatrixSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="PRIORITIZATION MATRIX" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Business impact versus implementation effort. <span style={{ color: "#841617" }}>Sequence matters.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -718,7 +718,7 @@ function AssessmentFamilySection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="ASSESSMENT FAMILY" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Six specialized assessments. <span style={{ color: "#841617" }}>One unified methodology.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -766,7 +766,7 @@ function ImprovementRoadmapSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="IMPROVEMENT ROADMAP" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Four phases from stabilization to <span style={{ color: "#841617" }}>compounding advantage.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -844,7 +844,7 @@ function ExecutiveReportSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE REPORT" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             A board-ready document. <span style={{ color: "#841617" }}>Not a marketing deck.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -898,7 +898,7 @@ function DiagnosticOutputsSection() {
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DIAGNOSTIC OUTPUTS" />
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
             Eight artifacts. <span style={{ color: "#841617" }}>One complete picture.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
@@ -936,7 +936,7 @@ function BeginDiagnosticSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <div className="max-w-[720px] mx-auto text-center">
             <SectionLabel label="BEGIN THE DIAGNOSTIC" />
-            <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-6">
+            <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-6">
               The <span style={{ color: "#841617" }}>Discovery Call</span> is the first stage of the <span style={{ color: "#841617" }}>diagnostic.</span>
             </h2>
             <p className="text-[18px] leading-[1.65] text-[#625E59] mb-4 max-w-[640px] mx-auto">

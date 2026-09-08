@@ -18,6 +18,10 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     text === "Contact" ? "#" :
     text === "The Nine Domains" ? "/framework#nine-domain-framework" :
     text === "What Is Revenue Infrastructure?" ? "/framework#canonical-definition" :
+    text === "Maturity Model" ? "/framework#revenue-maturity" :
+    text === "Why GWS Is Different" ? "/framework#why-revenue-matters" :
+    text === "AI Visibility" ? "/ai-visibility" :
+    text === "Conversion Systems" ? "/conversion-systems" :
     "/"
   return <Link href={path}>{children}</Link>;
 }

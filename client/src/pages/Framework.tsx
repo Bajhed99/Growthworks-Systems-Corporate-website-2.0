@@ -2304,6 +2304,21 @@ function DiagnosticCTASection() {
 
 // ─── Main Page Component ───────────────────────────────────────────────────────
 export default function Framework() {
+  useEffect(() => {
+    // Small delay to ensure components have fully mounted and IDs are in the DOM
+    const timer = setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-full antialiased">
       <SiteHeader />

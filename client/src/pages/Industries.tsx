@@ -281,7 +281,7 @@ function SharedContextSection() {
             id="shared-context-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            One framework. Different operating environments.
+            One framework. <span className="text-[#841617]">Different operating environments.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             The Revenue Infrastructure framework applies across industries. The implementation varies according to:
@@ -438,7 +438,7 @@ function IndustryRoutingSection() {
             id="industry-routing-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Choose the operating environment that looks like yours.
+            Choose the <span className="text-[#841617]">operating environment</span> that looks like yours.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each route below opens a dedicated industry page with deeper context on the buyer, the journey, and where revenue typically leaks.
@@ -566,7 +566,7 @@ function ComparisonSection() {
             id="comparison-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Same systemic philosophy. Different revenue journey.
+            Same systemic philosophy. Different <span className="text-[#841617]">revenue journey.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             A short comparative read on what each priority industry is pressured by — and how the buyer moves through the system. Use it to choose where to go next.
@@ -642,10 +642,6 @@ function ClosingCTASection() {
           backgroundSize: "32px 32px",
         }}
       />
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
-      />
 
       <div className={`${HUB_CONTAINER} relative z-10 text-center`}>
         <h3 className="industries-section-label text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
@@ -655,9 +651,9 @@ function ClosingCTASection() {
           id="industries-closing-cta"
           className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
         >
-          Find where your infrastructure is helping — or limiting — growth.
+          Find where your infrastructure is helping — <span className="text-[#841617]">or limiting — growth.</span>
         </h2>
-        <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-10 max-w-[600px] mx-auto">
+        <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-400 mb-10 max-w-[600px] mx-auto">
           A Revenue Diagnostic maps the system behind your revenue. No replacement funnels. No quick wins. Just a clear read on what to fix first.
         </p>
         <a
@@ -666,7 +662,7 @@ function ClosingCTASection() {
         >
           Book a Revenue Diagnostic
         </a>
-        <p className="text-white/40 text-[14px] mt-12 tracking-wide">
+        <p className="text-gray-500 text-[14px] mt-16 tracking-wide">
           One system. Real alignment. Predictable revenue.
         </p>
       </div>

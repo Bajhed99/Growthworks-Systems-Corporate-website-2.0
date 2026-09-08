@@ -3,7 +3,7 @@ export function SolutionsConnectedSystemSection() {
     <section aria-label="How the Four Areas Work Together" className="diagnostic-section section--gray">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>Connected By Design</p>
-        <h2 id="connected-system-title" style={{ textAlign: 'center' }}>Improving one area helps. Connecting all four creates leverage.</h2>
+        <h2 id="connected-system-title" style={{ textAlign: 'center' }}>Improving one area helps. Connecting all four <span style={{ color: 'var(--maroon)' }}>creates leverage.</span></h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four areas represent a connected revenue path, not independent service categories. Each stage feeds the next, and Revenue Intelligence feeds learning back into all earlier stages.
         </p>

@@ -13,7 +13,7 @@ export function SolutionsRevenueIntelligenceSection() {
     <section aria-labelledby="revenue-intelligence-title" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>04 — Revenue Intelligence</p>
-        <h2 id="revenue-intelligence-title" style={{ textAlign: 'center' }}>Make it easier to see where value is being created, where it is being lost, and what to improve next.</h2>
+        <h2 id="revenue-intelligence-title" style={{ textAlign: 'center' }}>Make it easier to see <span style={{ color: 'var(--maroon)' }}>where value is being created,</span> where it is being lost, and what to improve next.</h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           Revenue Intelligence closes the loop. Its purpose is to show where value is created or lost and which constraint should be improved next — not to produce analytics for their own sake.
         </p>

@@ -14,7 +14,7 @@ export function SolutionsClosingCTASection() {
           fontSize: '36px', lineHeight: 1.15, fontWeight: 400,
           marginBottom: '20px',
         }}>
-          Find the part of your revenue system that deserves attention first.
+          Find the part of your <span style={{ color: 'var(--maroon)' }}>revenue system</span> that deserves <span style={{ color: 'var(--maroon)' }}>attention first.</span>
         </h2>
         <p style={{
           fontFamily: 'DM Sans, system-ui, sans-serif',

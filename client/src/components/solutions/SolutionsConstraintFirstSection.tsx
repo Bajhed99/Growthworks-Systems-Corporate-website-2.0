@@ -16,7 +16,7 @@ export function SolutionsConstraintFirstSection() {
     <section aria-labelledby="constraint-title" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>Diagnose Before Prescribing</p>
-        <h2 id="constraint-title" style={{ textAlign: 'center' }}>The objective is not to install more tools.</h2>
+        <h2 id="constraint-title" style={{ textAlign: 'center' }}><span style={{ color: 'var(--maroon)' }}>The objective is not</span> to install more tools.</h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           A business may already have a website, CRM, automation, analytics, sales team, and marketing activity. The question is whether those capabilities work together well enough to convert opportunity into measurable revenue.
         </p>

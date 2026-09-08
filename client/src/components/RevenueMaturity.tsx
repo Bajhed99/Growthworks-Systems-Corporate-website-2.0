@@ -106,7 +106,7 @@ export default function RevenueMaturity() {
   }, [isPaused, sectionVisible]);
 
   return (
-    <section ref={sectionRef} className="py-28 bg-white">
+    <section ref={sectionRef} id="revenue-maturity" className="py-28 bg-white">
 
       {/* Mobile floating stage nav — right side, visible only below md breakpoint and while section is in view */}
       <div
