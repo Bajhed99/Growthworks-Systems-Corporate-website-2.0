@@ -2,6 +2,8 @@ import { Fragment, useState, useEffect, useRef } from 'react'
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import NineDomainFramework from "@/components/NineDomainFramework";
+import CanonicalDefinition from "@/components/CanonicalDefinition";
+import RevenueMaturity from "@/components/RevenueMaturity";
 
 // ─── Scroll-reveal hook ────────────────────────────────────────────────────────
 function useReveal(threshold = 0.12) {
@@ -44,14 +46,6 @@ const LEAKAGE_STAGES = [
   { name: 'Sales',      desc: 'Onboarding or delivery doesn\'t meet expectations set during the sale.' },
   { name: 'Customer',   desc: 'No feedback loop exists to learn from experience and improve.' },
   { name: 'Intelligence', desc: null },
-]
-
-const MATURITY_STAGES = [
-  { n: '01', name: 'Fragmented',    desc: 'Silos. Manual processes. Limited visibility across the revenue system.' },
-  { n: '02', name: 'Stabilized',    desc: 'Core systems in place. Basic alignment between teams and tools.' },
-  { n: '03', name: 'Integrated',    desc: 'Systems connect. Data flows. Handoffs between domains improve.' },
-  { n: '04', name: 'AI-Enabled',    desc: 'Intelligence drives actions, prioritization, and next-best steps.' },
-  { n: '05', name: 'Revenue Engine',desc: 'A learning system. Predictable, scalable growth at every stage.' },
 ]
 
 // ─── Icons ─────────────────────────────────────────────────────────────────────
@@ -115,7 +109,7 @@ const CONTAINER = 'max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16'
 
 function SectionLabel({ label, dark = false }: { label: string; dark?: boolean }) {
   return (
-    <p className="text-[18px] font-sans font-semibold text-[#841617] tracking-[0.18em] uppercase mb-4">
+    <p className="text-[14px] font-sans font-[600] text-[#841617] tracking-[0.18em] uppercase mb-4">
       {label}
     </p>
   )
@@ -602,39 +596,9 @@ function HeroSection() {
   )
 }
 
-// ─── SECTION 02: CANONICAL DEFINITION ─────────────────────────────────────────
+// ─── SECTION 02: CANONICAL DEFINITION (zip package — as-is) ───────────────────
 function CanonicalDefinitionSection() {
-  const { ref, visible } = useReveal()
-  const inputs = [
-    { label: 'Strategy',   Icon: () => <Icon name="target"   s={24} c="#841617" /> },
-    { label: 'Technology', Icon: () => <Icon name="monitor"  s={24} c="#841617" /> },
-    { label: 'Data',       Icon: () => <Icon name="database" s={24} c="#841617" /> },
-    { label: 'Processes',  Icon: () => <Icon name="gear"     s={24} c="#841617" /> },
-    { label: 'People',     Icon: () => <Icon name="heart"    s={24} c="#841617" /> },
-  ]
-
-  return (
-    <section id="canonical-definition" ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
-      <div className={CONTAINER}>
-        <SectionLabel label="Canonical Definition" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left column — text */}
-            <div>
-              <p className="text-[17px] md:text-[18px] leading-[1.65] text-gray-500 mb-8">
-                Revenue Infrastructure is the interconnected system through which a business creates demand, captures opportunity, converts buyers, delivers value, retains customers, and learns from the results. It includes the strategies, technologies, data, processes, people, and feedback loops that connect the entire revenue journey. It is not a marketing funnel, a CRM, a technology stack, or a collection of isolated tactics.
-              </p>
-            </div>
-
-            {/* Right column — Infrastructure visuals from zip (direct JSX, animations/colors preserved) */}
-            <div className="w-full">
-              <InfraVisual />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+  return <CanonicalDefinition />
 }
 
 // ─── SECTION 03: WHY IT MATTERS ────────────────────────────────────────────────
@@ -657,7 +621,7 @@ function WhyItMattersSection() {
         <SectionLabel label="Why Revenue Infrastructure Matters" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           {/* H2 */}
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
+          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
             Revenue is a journey.
           </h2>
           <p className="text-[17px] md:text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
@@ -770,15 +734,15 @@ function RevenueInfrastructureFlywheelSection() {
   const zeroRadius = { borderRadius: 0 }
 
   return (
-    <section className="py-[40px] bg-[#000000] text-white relative overflow-hidden" style={zeroRadius}>
+    <section className="pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout', overflow: 'visible' }}>
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column — text */}
           <div>
-            <p className="text-[18px] font-sans font-semibold text-[#841617] tracking-[0.18em] uppercase mb-4">
-              05&ensp;Revenue Infrastructure Flywheel
+            <p className="text-[14px] font-sans font-[600] tracking-[0.18em] uppercase mb-4" style={{ color: '#ffffff' }}>
+              Revenue Infrastructure Flywheel
             </p>
-            <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-white mb-5 max-w-[720px]">
+            <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-white mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
               <span style={{ color: '#841617' }}>Revenue Infrastructure</span> <span style={{ color: '#ffffff' }}>compounds when the system reinforces itself.</span>
             </h2>
             <p className="text-[18px] leading-[1.65] text-white/60 mb-16 max-w-[620px]">
@@ -1215,7 +1179,7 @@ function RevenueLeakageSection() {
       <div className={CONTAINER}>
         <SectionLabel label="Revenue Leakage Points" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
+          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
             Value is lost at the gaps between systems.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
@@ -1287,82 +1251,6 @@ function RevenueLeakageSection() {
   )
 }
 
-// ─── SECTION 08: INFRASTRUCTURE MATURITY ──────────────────────────────────────
-function InfrastructureMaturitySection() {
-  const { ref, visible } = useReveal()
-  const [activeStage, setActiveStage] = useState(0)
-  const active = MATURITY_STAGES[activeStage]
-
-  return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
-      <div className={CONTAINER}>
-        <SectionLabel label="Revenue Infrastructure Maturity" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
-            Most organisations are somewhere on the journey.
-          </h2>
-          <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Select a stage to explore where you are and what comes next.
-          </p>
-
-          {/* Maturity rail */}
-          <div className="relative mb-16">
-            {/* Track */}
-            <div className="absolute top-6 left-[8%] right-[8%] h-0.5 bg-gray-200" />
-            <div
-              className="absolute top-6 left-[8%] h-0.5 bg-crimson transition-all duration-500"
-              style={{ width: `${(activeStage / (MATURITY_STAGES.length - 1)) * 84}%` }}
-            />
-
-            <div className="flex justify-between relative">
-              {MATURITY_STAGES.map((s, i) => {
-                const isPast    = i < activeStage
-                const isCurrent = i === activeStage
-                return (
-                  <button key={s.n} className="flex flex-col items-center flex-1 group" onClick={() => setActiveStage(i)}>
-                    {/* Step indicator — 48 px touch target */}
-                    <div className={`w-12 h-12 rounded-none flex items-center justify-center border-2 z-10 relative transition-all ${
-                      isCurrent ? 'bg-crimson border-crimson text-white shadow-md scale-110'
-                                : isPast   ? 'bg-white border-crimson text-crimson'
-                                           : 'bg-white border-gray-200 text-gray-400 group-hover:border-gray-400'}`}>
-                      <span className="font-sans font-bold text-[14px]">{s.n}</span>
-                    </div>
-                    {/* Stage name — 16 px */}
-                    <span className={`mt-3 text-[16px] font-sans font-semibold text-center leading-snug ${isCurrent ? 'text-crimson' : isPast ? 'text-gray-700' : 'text-gray-400'}`}>
-                      {s.name}
-                    </span>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Stage detail — 18 px body */}
-          <div className="bg-surface rounded-none p-8 md:p-10 border border-gray-100 min-h-[120px]">
-            <div className="flex items-start gap-6">
-              <div className="w-12 h-12 rounded-none bg-crimson flex items-center justify-center text-white text-[14px] font-sans font-bold shrink-0">{active.n}</div>
-              <div>
-                <h3 className="font-serif font-normal text-[24px] md:text-[28px] leading-[1.25] text-gray-900 mb-3">{active.name}</h3>
-                <p className="text-[18px] font-sans text-gray-600 leading-[1.65]">{active.desc}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-between mt-8">
-            <button className={`font-sans font-medium text-[16px] text-gray-500 hover:text-gray-800 transition-colors ${activeStage === 0 ? 'opacity-0 pointer-events-none' : ''}`}
-                    onClick={() => setActiveStage(s => Math.max(0, s - 1))}>
-              ← Previous stage
-            </button>
-            <button className={`font-sans font-semibold text-[16px] text-crimson hover:text-crimson-dark transition-colors ${activeStage === MATURITY_STAGES.length - 1 ? 'opacity-0 pointer-events-none' : ''}`}
-                    onClick={() => setActiveStage(s => Math.min(MATURITY_STAGES.length - 1, s + 1))}>
-              Next stage →
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // ─── SECTION 09: TRADITIONAL vs REVENUE INFRASTRUCTURE ────────────────────────
 function TraditionalVsRISection() {
@@ -1535,9 +1423,9 @@ function HowGWAppliesTheFrameworkSection() {
       <div className={CONTAINER}>
         <SectionLabel label="How GWS Applies the Framework" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h1 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "clamp(32px, 4.5vw, 52px)", lineHeight: 1.1, color: "#000", fontWeight: 400 }} className="mb-6 max-w-[760px]">
+          <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "44px", lineHeight: 1.1, color: "#000", fontWeight: 400 }} className="mb-6 max-w-[760px]">
             Infrastructure aligned to drive <em style={{ color: CRIMSON, fontStyle: "italic" }}>predictable growth.</em>
-          </h1>
+          </h2>
           <div style={{ width: 48, height: 2, background: CRIMSON, marginBottom: 40 }} />
 
           <ProcessSection label="Four-Step Summary" steps={fourSteps} />
@@ -1570,7 +1458,7 @@ function BusinessOutcomesSection() {
       <div className={CONTAINER}>
         <SectionLabel label="Business Outcomes" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]">
+          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
             A stronger system. Better results.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
@@ -1633,7 +1521,7 @@ function DiagnosticCTASection() {
         <SectionLabel label="Revenue Diagnostic CTA" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           {/* H2 */}
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[720px] mx-auto">
+          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[720px] mx-auto" style={{ fontFamily: "'DM Serif Display', serif" }}>
             Start with the{' '}
             <span className="text-crimson">system.</span>
           </h2>
@@ -1685,7 +1573,7 @@ export default function Framework() {
       <RevenueInfrastructureFlywheelSection />
       <FragmentedVsConnectedSection />
       <RevenueLeakageSection />
-      <InfrastructureMaturitySection />
+      <RevenueMaturity />
       <TraditionalVsRISection />
       <HowGWAppliesTheFrameworkSection />
       <BusinessOutcomesSection />

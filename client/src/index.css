@@ -6,6 +6,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --color-crimson: #841617;
+  --color-crimson-dark: #721315;
+  --color-crimson-light: #a01c1f;
+}
+
 :root {
   --gws-crimson: #841617;
   --gws-crimson-hover: #721315;

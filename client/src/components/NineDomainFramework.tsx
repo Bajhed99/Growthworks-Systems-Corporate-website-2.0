@@ -141,7 +141,7 @@ function NineDomainFramework() {
 
         <div className="header-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "0 80px", alignItems: "center", marginBottom: 64 }}>
           <div>
-            <h2 style={{ fontFamily: "var(--font-serif, 'DM Serif Display', Georgia, serif)", fontWeight: 400, fontSize: "clamp(30px, 3.8vw, 50px)", lineHeight: 1.1, color: "#111827", margin: "0 0 24px" }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: "clamp(30px, 3.8vw, 50px)", lineHeight: 1.1, color: "#111827", margin: "0 0 24px" }}>
               Nine domains.{" "}<em style={{ fontStyle: "italic", color: "#841617" }}>One connected system.</em>
             </h2>
             <p style={{ fontFamily: "var(--font-sans)", fontSize: 17, lineHeight: 1.75, color: "#6B7280", margin: "0 0 8px", maxWidth: 480 }}>
