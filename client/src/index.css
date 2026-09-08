@@ -1041,9 +1041,9 @@ h3 {
 }
 
 .gws-glowy-secondary {
-  border-color: var(--maroon);
+  border-color: #716D67;
   background: rgba(248, 245, 236, .72);
-  color: var(--maroon);
+  color: #716D67;
 }
 
 .gws-glowy-secondary:hover {
