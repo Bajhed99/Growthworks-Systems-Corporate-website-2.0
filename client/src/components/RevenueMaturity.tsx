@@ -76,6 +76,7 @@ const STAGES = [
 export default function RevenueMaturity() {
   const [active, setActive] = useState(0);
   const [sectionVisible, setSectionVisible] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const stage = STAGES[active];
   const progress = (active / (STAGES.length - 1)) * 100;
@@ -91,8 +92,21 @@ export default function RevenueMaturity() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (isPaused || !sectionVisible) return;
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % STAGES.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [isPaused, sectionVisible]);
+
   return (
-    <section ref={sectionRef} className="py-28 bg-white">
+    <section
+      ref={sectionRef}
+      className="py-28 bg-white"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
 
       {/* Mobile floating stage nav — right side, visible only below md breakpoint and while section is in view */}
       <div

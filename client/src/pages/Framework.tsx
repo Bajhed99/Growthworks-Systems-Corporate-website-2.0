@@ -546,8 +546,6 @@ function HeroSection() {
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.04]"
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-      {/* Glow */}
-      <div className="absolute right-1/3 top-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-none bg-crimson/20 blur-[120px] pointer-events-none" />
 
       <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center`}>
         <div className="w-full max-w-[720px]">
@@ -1255,62 +1253,312 @@ function RevenueLeakageSection() {
 // ─── SECTION 09: TRADITIONAL vs REVENUE INFRASTRUCTURE ────────────────────────
 function TraditionalVsRISection() {
   const { ref, visible } = useReveal()
+  const [activeTab, setActiveTab] = useState<"traditional" | "ri">("traditional")
+
+  const iconMap: Record<string, React.ReactNode> = {
+    monitor: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>,
+    search: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>,
+    database: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
+    zap: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+    target: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+    eye: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
+    capture: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M6 15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M18 15h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><path d="M4 6v7a8 8 0 0 0 16 0V6"/></svg>,
+    briefcase: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>,
+    heart: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>,
+    chart: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>,
+  }
+
   const specialists = [
-    { name: 'Website\nAgency',     icon: 'monitor' },
-    { name: 'SEO\nAgency',         icon: 'search' },
-    { name: 'CRM\nVendor',         icon: 'database' },
-    { name: 'Automation\nProvider',icon: 'zap' },
-    { name: 'Marketing\nAgency',   icon: 'target' },
+    { key: "monitor", label: "Website Agency", sub: "Owns digital only" },
+    { key: "search", label: "SEO Agency", sub: "Owns rankings only" },
+    { key: "database", label: "CRM Vendor", sub: "Owns contacts only" },
+    { key: "zap", label: "Automation Provider", sub: "Owns workflows only" },
+    { key: "target", label: "Marketing Agency", sub: "Owns campaigns only" },
+  ]
+
+  const riRows = [
+    [
+      { key: "target", label: "Strategy" },
+      { key: "eye", label: "Market" },
+      { key: "monitor", label: "Digital" },
+    ],
+    [
+      { key: "capture", label: "Lead Capture" },
+      { key: "database", label: "CRM" },
+      { key: "zap", label: "Automation" },
+    ],
+    [
+      { key: "briefcase", label: "Sales" },
+      { key: "heart", label: "Customer" },
+      { key: "chart", label: "Data" },
+    ],
+  ]
+
+  const tradMetrics = [
+    { value: "5×", label: "Separate invoices" },
+    { value: "0", label: "Shared dashboards" },
+    { value: "∞", label: "Attribution gaps" },
+  ]
+
+  const riMetrics = [
+    { value: "1", label: "Operating system" },
+    { value: "100%", label: "Accountability" },
+    { value: "∞", label: "Shared insights" },
   ]
 
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel label="Traditional Approaches vs Revenue Infrastructure" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Specialists optimise a part. Revenue Infrastructure orchestrates the whole.
+        <div data-reveal className="mb-6" style={{ "--delay": "0ms" } as React.CSSProperties}>
+          <span style={{ color: "#841617", fontSize: 14, fontWeight: 600, letterSpacing: "0.22em" }} className="uppercase font-sans">
+            Framework Approach
+          </span>
+        </div>
+
+        <div data-reveal className={`reveal ${visible ? 'visible' : ''}`} style={{ "--delay": "80ms" } as React.CSSProperties}>
+          <h2 className="font-bold leading-[1.08] mb-5 text-black" style={{ fontFamily: "'DM Serif Display', serif", fontSize: 44, maxWidth: 700 }}>
+            Specialists optimise a part.
+            <br />
+            <em style={{ fontStyle: "italic" }}>
+              <span style={{ color: "#841617" }}>Infrastructure</span> orchestrates the whole.
+            </em>
+          </h2>
+
+          <p className="text-[16px] md:text-[18px] leading-[1.8] max-w-[520px] mb-12" style={{ color: "#5C5347" }}>
+            Most businesses stack point solutions — each solving one problem in isolation.
+            Revenue Infrastructure connects every function into one accountable operating system.
           </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Traditional */}
-            <div className="border border-gray-200 rounded-none p-8 md:p-10">
-              <p className="text-[14px] font-sans font-bold tracking-[0.16em] text-gray-400 uppercase mb-8">Traditional (Specialist) Approach</p>
-              <div className="flex flex-wrap gap-6 mb-10 justify-center">
-                {specialists.map((s) => (
-                  <div key={s.name} className="flex flex-col items-center gap-2.5">
-                    <div className="w-16 h-16 rounded-none bg-gray-50 border border-gray-200 flex items-center justify-center">
-                      <Icon name={s.icon} s={26} c="#9CA3AF" />
-                    </div>
-                    <span className="text-[14px] font-sans text-gray-400 text-center leading-tight max-w-[70px]">
-                      {s.name.split('\n').map((l, j) => <span key={j} className="block">{l}</span>)}
-                    </span>
+        {/* ── Mobile tabs ── */}
+        <div className="md:hidden flex mb-5 border border-black/15 overflow-hidden">
+          {(["traditional", "ri"] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className="flex-1 py-3 text-[11px] font-bold tracking-[0.18em] uppercase transition-all duration-200"
+              style={{
+                backgroundColor: activeTab === tab ? (tab === "ri" ? "#841617" : "#111111") : "#F4F0E8",
+                color: activeTab === tab ? "#FFFFFF" : "#7A7060",
+              }}
+            >
+              {tab === "traditional" ? "Traditional" : "Revenue Infra"}
+            </button>
+          ))}
+        </div>
+
+        {/* ── Comparison ── */}
+        <div className="grid md:grid-cols-[1fr_48px_1fr] gap-0 items-stretch">
+
+          {/* Traditional */}
+          <div className={activeTab !== "traditional" ? "hidden md:block" : ""}>
+            <div data-reveal className="border border-black/15 overflow-hidden flex flex-col h-full" style={{ backgroundColor: "#FFFFFF", "--delay": "180ms" } as React.CSSProperties}>
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-black/10 flex items-center justify-between" style={{ backgroundColor: "#F0EBE1" }}>
+                <div className="flex items-center gap-2">
+                  <div className="flex gap-1">
+                    {[0, 1, 2].map(i => <span key={i} className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: "#C5BDB0" }} />)}
                   </div>
-                ))}
+                  <p className="text-[11px] font-bold tracking-[0.2em] uppercase ml-1" style={{ color: "#7A7060" }}>
+                    Traditional Approach
+                  </p>
+                </div>
+                <span className="text-[9px] font-black tracking-widest px-2 py-1 border border-black/12" style={{ color: "#9C8F7A", backgroundColor: "#EAE4D9" }}>
+                  FRAGMENTED
+                </span>
               </div>
-              <p className="text-[16px] font-sans text-gray-400 italic text-center">Each improves a piece. No one owns the system.</p>
+
+              {/* Silos */}
+              <div className="flex-1 px-6 pt-6 pb-4">
+                <p className="text-[11px] font-semibold uppercase tracking-widest mb-5 text-center" style={{ color: "#B0A898" }}>
+                  5 specialists · 0 shared data
+                </p>
+
+                <div className="space-y-2.5">
+                  {specialists.map((s, i) => (
+                    <div key={s.key} data-reveal className="flex items-center gap-3 px-4 py-3 border border-black/8 relative" style={{ backgroundColor: "#F9F6F1", "--delay": `${260 + i * 60}ms` } as React.CSSProperties}>
+                      <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ backgroundColor: "#D6CEC2" }} />
+
+                      <div className="w-9 h-9 flex items-center justify-center border border-black/10 shrink-0" style={{ backgroundColor: "#EDE8DF", color: "#9C8F7A" }}>
+                        {iconMap[s.key]}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-[13px] font-semibold text-black leading-tight">{s.label}</p>
+                        <p className="text-[11px] mt-0.5" style={{ color: "#A09488" }}>{s.sub}</p>
+                      </div>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <line x1="2" y1="2" x2="8" y2="8" stroke="#C5BDB0" strokeWidth="1.5"/>
+                          <line x1="8" y1="2" x2="2" y2="8" stroke="#C5BDB0" strokeWidth="1.5"/>
+                        </svg>
+                        <span className="text-[9px] font-bold tracking-widest" style={{ color: "#C5BDB0" }}>SILO</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Pain metrics */}
+                <div data-reveal className="grid grid-cols-3 gap-0 mt-6 border border-black/10 overflow-hidden" style={{ "--delay": "600ms" } as React.CSSProperties}>
+                  {tradMetrics.map((m, i) => (
+                    <div key={m.label} className="flex flex-col items-center justify-center py-4 px-2 text-center" style={{ borderRight: i < 2 ? "1px solid rgba(0,0,0,0.08)" : "none", backgroundColor: "#F5F1E9" }}>
+                      <span className="text-[22px] font-bold text-black leading-none mb-1">{m.value}</span>
+                      <span className="text-[10px] leading-tight" style={{ color: "#9C8F7A" }}>{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Outcome */}
+              <div className="mx-6 mb-6 p-4 border border-black/10 flex items-start gap-3" style={{ backgroundColor: "#F5F1E9" }}>
+                <span style={{ color: "#9C8F7A", marginTop: 1 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div>
+                  <p className="text-[13px] font-semibold text-black leading-snug">Each improves a piece. No one owns the system.</p>
+                  <p className="text-[11px] mt-1 italic" style={{ color: "#7A7060" }}>No compound growth. No accountability.</p>
+                </div>
+              </div>
             </div>
+          </div>
 
-            {/* Revenue Infrastructure */}
-            <div className="border border-crimson/20 rounded-none p-8 md:p-10 bg-crimson-muted">
-              <p className="text-[14px] font-sans font-bold tracking-[0.16em] text-crimson uppercase mb-8">Revenue Infrastructure Approach</p>
-              <div className="flex flex-wrap gap-3 mb-10 justify-center">
-                {DOMAINS.map((d, i) => (
-                  <div key={d.id} className="flex items-center gap-2 bg-white border border-crimson/15 rounded-none px-4 py-2">
-                    <div className="w-5 h-5 rounded-none bg-crimson/12 flex items-center justify-center">
-                      <Icon name={DOMAIN_ICONS[i]} s={12} c="#841617" />
+          {/* VS spine */}
+          <div className="hidden md:flex flex-col items-center justify-center gap-3">
+            <div className="w-px flex-1" style={{ backgroundColor: "#D6CFC3" }} />
+            <span className="w-9 h-9 flex items-center justify-center text-[9px] font-black tracking-[0.15em] shrink-0" style={{ backgroundColor: "#111111", color: "#FFFFFF" }}>
+              VS
+            </span>
+            <div className="w-px flex-1" style={{ backgroundColor: "#D6CFC3" }} />
+          </div>
+
+          {/* Revenue Infrastructure */}
+          <div className={activeTab !== "ri" ? "hidden md:block" : ""}>
+            <div data-reveal className="overflow-hidden flex flex-col h-full" style={{ backgroundColor: "#FBF8F4", border: "1.5px solid #841617", "--delay": "240ms" } as React.CSSProperties}>
+              {/* Header */}
+              <div className="px-6 py-4 border-b border-black/10 flex items-center justify-between" style={{ backgroundColor: "#F0EBE1" }}>
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: "#841617", animationDuration: "2.2s" }} />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5" style={{ backgroundColor: "#841617" }} />
+                  </span>
+                  <p className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: "#841617" }}>
+                    Revenue Infrastructure
+                  </p>
+                </div>
+                <span className="text-[9px] font-black tracking-widest px-2 py-1 border" style={{ color: "#841617", borderColor: "#841617", backgroundColor: "#FFFFFF" }}>
+                  UNIFIED
+                </span>
+              </div>
+
+              {/* Connected system diagram */}
+              <div className="flex-1 px-6 pt-6 pb-4">
+                <p className="text-[11px] font-semibold uppercase tracking-widest mb-5 text-center" style={{ color: "#841617" }}>
+                  1 system · 9 functions · 1 shared outcome
+                </p>
+
+                {/* Hub node */}
+                <div data-reveal className="flex items-center justify-center gap-2 py-3.5 px-4" style={{ backgroundColor: "#841617", "--delay": "320ms" } as React.CSSProperties}>
+                  <span style={{ color: "white" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                  </span>
+                  <span className="text-[12px] font-bold tracking-[0.18em] text-white uppercase">Revenue Infrastructure</span>
+                </div>
+
+                {/* Trunk line */}
+                <div className="flex justify-center">
+                  <div className="w-px h-3" style={{ backgroundColor: "#841617" }} />
+                </div>
+
+                {/* Capability rows */}
+                {riRows.map((row, ri) => (
+                  <div key={ri}>
+                    {/* Branch bar */}
+                    <div className="relative h-3 flex items-end justify-center">
+                      <div className="absolute" style={{ left: "16.66%", right: "16.66%", top: 0, height: "1px", backgroundColor: "#841617" }} />
+                      {[0, 1, 2].map(ci => (
+                        <div key={ci} className="absolute bottom-0 w-px h-full" style={{ left: `${16.66 + ci * 33.33}%`, backgroundColor: "#841617" }} />
+                      ))}
                     </div>
-                    <span className="text-[14px] font-sans font-medium text-gray-700">{d.short[0].replace(' &', '')}</span>
+
+                    {/* Chips */}
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {row.map((cap, ci) => (
+                        <div key={cap.label} data-reveal className="flex flex-col items-center gap-1.5 border py-3 px-1" style={{ backgroundColor: "#FFFFFF", borderColor: "#D6CFC3", borderTop: "2px solid #841617", "--delay": `${400 + ri * 80 + ci * 35}ms` } as React.CSSProperties}>
+                          <div className="w-7 h-7 flex items-center justify-center" style={{ color: "#841617" }}>
+                            {iconMap[cap.key]}
+                          </div>
+                          <span className="text-[10px] font-bold text-center text-black leading-tight tracking-wide uppercase">
+                            {cap.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {ri < riRows.length - 1 && (
+                      <div className="flex justify-center">
+                        <div className="w-px h-1.5" style={{ backgroundColor: "#841617" }} />
+                      </div>
+                    )}
                   </div>
                 ))}
+
+                {/* Outcome metrics */}
+                <div data-reveal className="grid grid-cols-3 gap-0 mt-6 border overflow-hidden" style={{ borderColor: "#841617", "--delay": "700ms" } as React.CSSProperties}>
+                  {riMetrics.map((m, i) => (
+                    <div key={m.label} className="flex flex-col items-center justify-center py-4 px-2 text-center" style={{ borderRight: i < 2 ? "1px solid rgba(132,22,23,0.2)" : "none", backgroundColor: "#F4F0E8" }}>
+                      <span className="text-[22px] font-bold leading-none mb-1" style={{ color: "#841617" }}>{m.value}</span>
+                      <span className="text-[10px] leading-tight text-black">{m.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="text-center space-y-1">
-                <p className="text-[16px] font-sans text-gray-500">One connected system. Shared data. Shared outcome.</p>
-                <p className="text-[18px] font-sans font-bold text-crimson">Connected. Coordinated. Accountable.</p>
+
+              {/* Outcome */}
+              <div className="mx-6 mb-6 p-4 border border-black/8 border-l-[3px] flex items-start gap-3" style={{ backgroundColor: "#F0EBE1", borderLeftColor: "#841617" }}>
+                <span style={{ color: "#841617", marginTop: 1 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <div>
+                  <p className="text-[13px] font-semibold text-black leading-snug">Shared data. Shared accountability.</p>
+                  <p className="text-[14px] font-bold mt-0.5" style={{ color: "#841617" }}>Connected. Coordinated. Accountable.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* ── Bottom insight strip ── */}
+        <div data-reveal className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 border border-black/12 overflow-hidden" style={{ "--delay": "500ms" } as React.CSSProperties}>
+          {[
+            { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>, title: "One source of truth", body: "Every team draws from the same data — no reconciliation, no guessing." },
+            { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>, title: "Compound growth", body: "Functions reinforce each other instead of operating in separate silos." },
+            { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="20 6 9 17 4 12"/></svg>, title: "Full accountability", body: "One system. One outcome. Everyone aligned around the same number." },
+          ].map((item, i) => (
+            <div key={item.title} className="flex items-start gap-4 px-6 py-6" style={{
+              backgroundColor: i === 1 ? "#F0EBE1" : "#F7F3EC",
+              borderRight: i < 2 ? "1px solid rgba(0,0,0,0.08)" : "none",
+              borderTop: "3px solid",
+              borderTopColor: i === 1 ? "#841617" : "#111111",
+            }}>
+              <div className="w-8 h-8 flex items-center justify-center shrink-0 mt-0.5" style={{ backgroundColor: i === 1 ? "#841617" : "#111111", color: "#FFFFFF" }}>
+                {item.icon}
+              </div>
+              <div>
+                <p className="text-[13px] font-bold text-black mb-1">{item.title}</p>
+                <p className="text-[12px] leading-[1.6]" style={{ color: "#7A7060" }}>{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* ── Footer rule ── */}
+        <div data-reveal className="mt-10 flex items-center gap-5" style={{ "--delay": "650ms" } as React.CSSProperties}>
+          <div className="h-px flex-1" style={{ backgroundColor: "#D6CFC3" }} />
+          <p className="text-[11px] tracking-[0.16em] uppercase font-medium shrink-0" style={{ color: "#9C8F7A" }}>
+            The difference is in the architecture
+          </p>
+          <div className="h-px flex-1" style={{ backgroundColor: "#D6CFC3" }} />
+        </div>
+
       </div>
     </section>
   )
@@ -1501,8 +1749,6 @@ function DiagnosticCTASection() {
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.06]"
            style={{ backgroundImage: 'radial-gradient(circle, #841617 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-      {/* Crimson glow */}
-      <div className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[300px] bg-crimson/10 blur-[100px] pointer-events-none" />
       {/* System motif */}
       <div className="absolute right-16 top-1/2 -translate-y-1/2 opacity-[0.07] hidden lg:block" aria-hidden="true">
         <svg viewBox="0 0 140 140" width={280} height={280}>
