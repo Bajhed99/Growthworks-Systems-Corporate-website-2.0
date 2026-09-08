@@ -1,24 +1,31 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
 import { shouldCompactStickyHeader } from "@/lib/stickyHeader";
 
 const OFFICIAL_LOGO = "/assets/images/branding/growthworks-official-logo.png";
 
-function navigateTo(href: string) {
-  window.scrollTo(0, 0);
-  window.location.href = href;
-}
-
-function AnchorLink({ href, children, className, onClick, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
-  return <a className={className} href={href} onClick={onClick} {...props}>{children}</a>;
-}
-
 export default function SiteHeader() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null);
   const [isHeaderCompact, setHeaderCompact] = useState(false);
+  const [, navigate] = useLocation();
   const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+
+  const navigateTo = (href: string) => {
+    window.scrollTo(0, 0);
+    navigate(href);
+  };
+
+  function AnchorLink({ href, children, className, onClick, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
+    const handleClick = (e: React.MouseEvent) => {
+      e.preventDefault();
+      onClick?.();
+      navigateTo(href);
+    };
+    return <a className={className} href={href} onClick={handleClick} {...props}>{children}</a>;
+  }
 
   useEffect(() => {
     const updateHeaderState = () => {
