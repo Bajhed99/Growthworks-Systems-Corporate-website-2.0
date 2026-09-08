@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // ── Palette ───────────────────────────────────────────────────────────────────
 const RED   = "#841617";   // Crimson — sole red used throughout

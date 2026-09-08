@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, Fragment } from 'react'
+import React, { useState, useEffect, useRef, Fragment } from 'react'
 
 // ─── Brand tokens ────────────────────────────────────────────────────────────
 const C = {

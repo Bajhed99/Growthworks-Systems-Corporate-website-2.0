@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ArrowRight, BarChart3, CheckCircle2, Filter, Globe, MessageSquare, XCircle } from "lucide-react";
 
 export const BUSINESS_OUTCOMES = [

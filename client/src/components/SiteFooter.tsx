@@ -1,3 +1,4 @@
+import React from "react";
 import { Linkedin, Mail, Phone } from "lucide-react";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
 import { Link } from "wouter";

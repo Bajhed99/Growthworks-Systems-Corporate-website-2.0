@@ -1,5 +1,5 @@
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
 import { shouldCompactStickyHeader } from "@/lib/stickyHeader";

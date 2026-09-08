@@ -6,7 +6,7 @@ import { motion, type Variants } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { HERO_PARALLAX_LAYERS } from "@/lib/heroParallax";

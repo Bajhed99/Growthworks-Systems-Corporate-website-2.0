@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -161,14 +161,14 @@ function RevealOnScroll({
   className = "",
   delay = 0,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   delay?: number;
 }) {
   const [visible, setVisible] = useState(false);
-  const hasTriggered = React.useRef(false);
+  const hasTriggered = useRef(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (hasTriggered.current) return;
     if (!className) return;
     const el = document.querySelector(`.${className}`);

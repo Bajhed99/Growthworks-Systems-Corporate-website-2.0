@@ -90,7 +90,7 @@ export function SolutionsSystemInteractive() {
       <section style={{ backgroundColor: "#ffffff" }}>
 
         {/* Top kicker band */}
-        <div style={{ background: "#f5f0e8", borderBottom: "1px solid #e0d9cf", paddingBlock: 14, textAlign: "center" }}>
+        <div style={{ background: "#ffffff", paddingBlock: 14, textAlign: "center" }}>
           <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase" }}>
             The Solution System
           </span>
@@ -245,8 +245,6 @@ export function SolutionsSystemInteractive() {
                   cursor: "pointer",
                   transition: "background 0.25s ease",
                   border: "none",
-                  borderRight: i < 3 ? "1px solid #d4cfc8" : "none",
-                  borderTop: active === i ? "2px solid #9B1C1C" : "2px solid transparent",
                   position: "relative",
                   overflow: "hidden",
                 }}

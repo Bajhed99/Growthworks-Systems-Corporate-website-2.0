@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -234,8 +234,7 @@ function BusinessProblemSection() {
   return (
     <section
       aria-labelledby="ai-ready-problem-h2"
-      className={SECTION_DEFAULT}
-      className="bg-white"
+      className={`${SECTION_DEFAULT} bg-white`}
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
@@ -286,8 +285,7 @@ function ApproachSection() {
   return (
     <section
       aria-labelledby="ai-ready-approach-h2"
-      className={SECTION_DEFAULT}
-      className="bg-surface"
+      className={`${SECTION_DEFAULT} bg-surface`}
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
@@ -311,14 +309,12 @@ function ApproachSection() {
                 that an AI-Ready Website must perform well.
               </p>
               <ol
-                className="divide-y"
-                className="border-gray-200"
+                className="divide-y border-gray-200"
               >
                 {APPROACH.map((row, i) => (
                   <RevealOnScroll key={row.n} delayMs={i * 40}>
                     <li
-                      className="grid grid-cols-1 md:grid-cols-[64px_220px_1fr] gap-4 md:gap-6 py-6 first:pt-0"
-                      className={i===0 ? '' : 'border-t border-gray-200'}
+                      className={"grid grid-cols-1 md:grid-cols-[64px_220px_1fr] gap-4 md:gap-6 py-6 first:pt-0 " + (i===0 ? '' : 'border-t border-gray-200')}
                     >
                       <span
                         className="text-[16px] font-semibold tracking-[0.12em]"
@@ -353,8 +349,7 @@ function OutcomesSection() {
   return (
     <section
       aria-labelledby="ai-ready-outcomes-h2"
-      className={SECTION_DEFAULT}
-      className="bg-white"
+      className={`${SECTION_DEFAULT} bg-white`}
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
@@ -421,8 +416,7 @@ function AuditCTASection() {
   return (
     <section
       aria-labelledby="ai-ready-audit-h2"
-      className={SECTION_DEFAULT}
-      className="bg-surface"
+      className={`${SECTION_DEFAULT} bg-surface`}
     >
       <div className={CONTAINER}>
         <RevealOnScroll>
@@ -531,8 +525,7 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="ai-ready-closing-h2"
-      className="py-[80px] md:py-[112px]"
-      className="bg-gws-dark"
+      className="py-[80px] md:py-[112px] bg-gws-dark"
     >
       <div className={CONTAINER}>
         <RevealOnScroll>

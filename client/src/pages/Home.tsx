@@ -5,7 +5,7 @@
  */
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ArrowRight, ChartNoAxesCombined, Check, Clock3, Route, Search } from "lucide-react";
 import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPlayHost";
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";

@@ -1,3 +1,4 @@
+import React from "react";
 import { ArrowRight } from "lucide-react";
 
 function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
