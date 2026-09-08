@@ -38,16 +38,6 @@ const DOMAINS = [
 
 const DOMAIN_ICONS = ['target', 'eye', 'monitor', 'magnet', 'database', 'zap', 'briefcase', 'heart', 'chart']
 
-const LEAKAGE_STAGES = [
-  { name: 'Visibility', desc: 'The right audience arrives, but the message or experience doesn\'t connect.' },
-  { name: 'Website',    desc: 'Interest isn\'t captured or context is lost before a lead is created.' },
-  { name: 'CRM',        desc: 'Leads aren\'t prioritized or followed up with quickly enough.' },
-  { name: 'Follow-Up',  desc: 'Handoff lacks context or buyer intent is lost in the transition.' },
-  { name: 'Sales',      desc: 'Onboarding or delivery doesn\'t meet expectations set during the sale.' },
-  { name: 'Customer',   desc: 'No feedback loop exists to learn from experience and improve.' },
-  { name: 'Intelligence', desc: null },
-]
-
 // ─── Icons ─────────────────────────────────────────────────────────────────────
 
 const I = {
@@ -1361,79 +1351,213 @@ function FragmentedVsConnectedSection() {
 // ─── SECTION 07: REVENUE LEAKAGE ──────────────────────────────────────────────
 function RevenueLeakageSection() {
   const { ref, visible } = useReveal()
-  const [activeLeakage, setActiveLeakage] = useState<number | null>(null)
+  const [activeLeakage, setActiveLeakage] = useState<string | null>(null)
+  const [paused, setPaused] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const CRIMSON = "#841617"
+  const CREAM = "#F5F0E8"
+  const BLACK = "#111111"
+  const DM_SERIF = "'DM Serif Display', serif"
+  const DM_SANS = "'DM Sans', sans-serif"
+
+  const systems = [
+    { id: "visibility", label: "Visibility", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> },
+    { id: "website", label: "Website", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
+    { id: "crm", label: "CRM", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> },
+    { id: "followup", label: "Follow-Up", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><path d="M6 15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M18 15h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2"/><path d="M4 6v7a8 8 0 0 0 16 0V6"/></svg> },
+    { id: "sales", label: "Sales", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3V5"/></svg> },
+    { id: "customer", label: "Customer", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
+    { id: "intelligence", label: "Intelligence", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> },
+  ]
+
+  const leakagePoints = [
+    { id: "vis-web", index: 1, shortLabel: "Invisible Drop-Off", from: "Visibility", to: "Website", title: "Invisible Drop-Off", description: "Prospects engage with brand content but never reach the website. No tracking links, no UTM parameters — no way to know which touchpoints drive traffic.", impact: "Up to 40% of warm prospects lost" },
+    { id: "web-crm", index: 2, shortLabel: "Form Abandonment", from: "Website", to: "CRM", title: "Form Abandonment Gap", description: "Leads submit inquiries but data never reaches the CRM. Manual entry delays, disconnected tools, and missing automations let contacts slip through unrecorded.", impact: "23% of form fills never entered" },
+    { id: "crm-followup", index: 3, shortLabel: "Response Latency", from: "CRM", to: "Follow-Up", title: "Response Latency", description: "Leads sit in the CRM unworked for hours or days. Every hour of delay reduces conversion probability by a compounding margin.", impact: "5× conversion drop after 1 hour" },
+    { id: "followup-sales", index: 4, shortLabel: "Handoff Breakdown", from: "Follow-Up", to: "Sales", title: "Handoff Breakdown", description: "Follow-up sequences end without a qualified handoff. Marketing marks them done; sales never picks them up. The gap is ownership, not effort.", impact: "31% of qualified leads stall here" },
+    { id: "sales-customer", index: 5, shortLabel: "Close Friction", from: "Sales", to: "Customer", title: "Close Friction", description: "Proposals sit unaccepted. Objections go unanswered. Slow contracting gives competitors time to move in and capture the decision.", impact: "$180K avg deal value at risk" },
+    { id: "customer-intel", index: 6, shortLabel: "Lost Signal", from: "Customer", to: "Intelligence", title: "Lost Signal", description: "Customer feedback, churn signals, and expansion indicators never feed back into the revenue model. The system cannot learn from what it cannot see.", impact: "Retention gaps go undetected" },
+  ]
+
+  const active = leakagePoints.find((l) => l.id === activeLeakage) ?? null
+
+  useEffect(() => {
+    if (paused) return
+    timerRef.current = setInterval(() => {
+      setActiveLeakage((current) => {
+        const idx = leakagePoints.findIndex((l) => l.id === current)
+        const next = (idx + 1) % leakagePoints.length
+        return leakagePoints[next].id
+      })
+    }, 2500)
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [paused])
+
+  const handleMarkerClick = (id: string) => {
+    setPaused(true)
+    setActiveLeakage((current) => (current === id ? null : id))
+  }
 
   return (
     <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface">
       <div className={CONTAINER}>
-        <SectionLabel label="Revenue Leakage Points" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
-            Value is lost at the gaps between systems.
-          </h2>
-          <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Individual systems may exist — but revenue can disappear between them.
-          </p>
+        <div data-reveal className={`reveal ${visible ? 'visible' : ''}`}>
+          {/* Header block */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div style={{ maxWidth: 640 }}>
+              <div className="flex items-center gap-3 mb-5">
+                <span style={{ width: 32, height: 1.5, backgroundColor: CRIMSON, display: "block" }} />
+                <p style={{ color: CRIMSON, fontSize: 12, fontWeight: 700, letterSpacing: "0.2em", fontFamily: DM_SANS }} className="uppercase m-0">
+                  Revenue Leakage Points
+                </p>
+              </div>
+              <h2 className="font-normal leading-[1.08] text-black m-0" style={{ fontFamily: DM_SERIF, fontSize: "clamp(32px, 4vw, 44px)", maxWidth: 640 }}>
+                Value is lost at the gaps<br />between systems.
+              </h2>
+            </div>
+            <p className="m-0 leading-[1.65]" style={{ fontSize: 18, fontWeight: 400, color: "#666666", maxWidth: 360, fontFamily: DM_SANS }}>
+              Individual systems may exist — but revenue disappears in the handoffs between them.
+            </p>
+          </div>
 
-          {/* Handoff chain — horizontal on desktop, vertical on mobile */}
+          {/* Pipeline */}
           <div className="overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0">
-            <div className="min-w-[700px]">
-              {/* Stage nodes */}
-              <div className="flex items-center">
-                {LEAKAGE_STAGES.map((s, i) => (
-                  <div key={s.name} className="flex items-center flex-1">
-                    <div className="flex flex-col items-center flex-1">
-                      <div className="w-[60px] h-[60px] rounded-none bg-white border border-gray-200 shadow-sm flex items-center justify-center mb-3">
-                        <Icon name={DOMAIN_ICONS[i] ?? 'chart'} s={24} c="#374151" />
-                      </div>
-                      {/* Stage name — 16 px minimum */}
-                      <span className="text-[16px] font-sans font-semibold text-gray-700 text-center">{s.name}</span>
-                    </div>
+            <div style={{ minWidth: 760 }}>
+              {/* Top row: node boxes */}
+              <div className="flex">
+                {systems.map((sys, i) => {
+                  const isLast = i === systems.length - 1
+                  const leakage = leakagePoints[i]
+                  const isActive = leakage?.id === activeLeakage
 
-                    {/* Leakage marker between stages */}
-                    {i < LEAKAGE_STAGES.length - 1 && (
-                      <button
-                        className="flex flex-col items-center shrink-0 px-1 group"
-                        onClick={() => setActiveLeakage(activeLeakage === i ? null : i)}
-                        aria-label={`Leakage point: ${LEAKAGE_STAGES[i].name} to ${LEAKAGE_STAGES[i + 1].name}`}
-                      >
-                        <div className={`w-9 h-9 rounded-none flex items-center justify-center transition-all ${activeLeakage === i ? 'bg-warning/20 scale-110' : 'hover:bg-warning/10'}`}>
-                          <Icon name="warning" s={20} />
+                  return (
+                    <div key={sys.id} className="flex items-stretch flex-1">
+                      {/* Node */}
+                      <div className="flex-1 flex flex-col items-center">
+                        <div style={{
+                          width: "100%", border: `1.5px solid ${BLACK}`, backgroundColor: "white",
+                          display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                          padding: "16px 8px", gap: 10, color: BLACK,
+                        }}>
+                          {sys.icon}
+                          <span style={{ fontFamily: DM_SANS, fontSize: 12, fontWeight: 600, color: BLACK, letterSpacing: "0.04em", textAlign: "center" }}>
+                            {sys.label}
+                          </span>
                         </div>
-                      </button>
-                    )}
-                  </div>
-                ))}
+                      </div>
+
+                      {/* Connector gap */}
+                      {!isLast && leakage && (
+                        <div className="flex flex-col items-center" style={{ width: 40, flexShrink: 0 }}>
+                          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", width: "100%" }}>
+                            <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1.5, backgroundColor: isActive ? CRIMSON : "rgba(132,22,23,0.25)", transform: "translateY(-50%)", transition: "background-color 0.25s" }} />
+                            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" style={{ position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", zIndex: 1 }}>
+                              <path d="M1 1l6 5-6 5" stroke={isActive ? CRIMSON : "rgba(132,22,23,0.25)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ transition: "stroke 0.25s" }} />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* Bottom row: leakage markers below the gaps */}
+              <div className="flex mt-0">
+                {systems.map((sys, i) => {
+                  const isLast = i === systems.length - 1
+                  const leakage = leakagePoints[i]
+                  const isActive = leakage?.id === activeLeakage
+
+                  return (
+                    <div key={sys.id} className="flex items-start flex-1">
+                      <div className="flex-1" />
+                      {!isLast && leakage && (
+                        <div className="flex flex-col items-center" style={{ width: 40, flexShrink: 0 }}>
+                          <button
+                            onClick={() => handleMarkerClick(leakage.id)}
+                            style={{
+                              width: 28, height: 28, backgroundColor: isActive ? CRIMSON : "rgba(132,22,23,0.06)",
+                              border: `1.5px solid ${isActive ? CRIMSON : "rgba(132,22,23,0.3)"}`,
+                              display: "flex", alignItems: "center", justifyContent: "center",
+                              cursor: "pointer", transform: "rotate(45deg)", marginTop: -14, transition: "all 0.2s",
+                            }}
+                            aria-label={`Leakage: ${leakage.from} to ${leakage.to}`}
+                          >
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ transform: "rotate(-45deg)", flexShrink: 0 }}>
+                              <path d="M5 2v4M5 7.5v.5" stroke={isActive ? "white" : CRIMSON} strokeWidth="1.5" strokeLinecap="round" />
+                            </svg>
+                          </button>
+                          <span style={{
+                            fontFamily: DM_SANS, fontSize: 10, fontWeight: 600,
+                            color: isActive ? CRIMSON : "rgba(132,22,23,0.45)", textAlign: "center",
+                            marginTop: 10, letterSpacing: "0.04em", textTransform: "uppercase",
+                            lineHeight: 1.3, width: 64, marginLeft: -12, transition: "color 0.2s",
+                          }}>
+                            {leakage.shortLabel}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
 
-          {/* Leakage detail — stable panel, 18 px body text */}
-          <div className="mt-10 min-h-[80px]">
-            {activeLeakage !== null && LEAKAGE_STAGES[activeLeakage].desc ? (
-              <div className="bg-warning-light border border-warning/20 rounded-none p-8">
-                <div className="flex items-start gap-4">
-                  <Icon name="warning" s={22} />
-                  <div>
-                    <p className="text-[16px] font-sans font-semibold text-gray-800 mb-2">
-                      {LEAKAGE_STAGES[activeLeakage].name} → {LEAKAGE_STAGES[activeLeakage + 1].name}
-                    </p>
-                    <p className="text-[18px] font-sans text-gray-600 leading-[1.65]">
-                      {LEAKAGE_STAGES[activeLeakage].desc}
-                    </p>
+          {/* Detail panel */}
+          <div style={{ marginTop: 48, minHeight: 140 }}>
+            {active ? (
+              <div style={{
+                backgroundColor: "white", border: `1.5px solid ${BLACK}`, borderLeft: `4px solid ${CRIMSON}`,
+                padding: "28px 32px", display: "grid", gridTemplateColumns: "1fr auto", gap: "16px 40px", alignItems: "start",
+              }}>
+                <div>
+                  <div className="flex items-center gap-3 mb-3 flex-wrap">
+                    <span style={{ fontFamily: DM_SANS, fontSize: 11, fontWeight: 700, color: CRIMSON, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                      Gap {active.index} of {leakagePoints.length}
+                    </span>
+                    <span style={{ color: "rgba(132,22,23,0.3)", fontSize: 12 }}>|</span>
+                    <span style={{ fontFamily: DM_SANS, fontSize: 12, fontWeight: 500, color: "rgba(132,22,23,0.5)", letterSpacing: "0.06em" }}>
+                      {active.from} → {active.to}
+                    </span>
                   </div>
+                  <h3 style={{ fontFamily: DM_SERIF, fontSize: 26, fontWeight: 400, color: BLACK, margin: "0 0 12px", lineHeight: 1.15 }}>
+                    {active.title}
+                  </h3>
+                  <p style={{ fontFamily: DM_SANS, fontSize: 18, fontWeight: 400, lineHeight: 1.65, color: "#444444", margin: 0, maxWidth: 580 }}>
+                    {active.description}
+                  </p>
+                </div>
+                <div style={{
+                  backgroundColor: "#FFF0F0", border: "1px solid #F0CCCC",
+                  padding: "14px 20px", textAlign: "center", minWidth: 160,
+                }}>
+                  <p style={{ fontFamily: DM_SANS, fontSize: 10, fontWeight: 700, color: CRIMSON, letterSpacing: "0.16em", textTransform: "uppercase", margin: "0 0 6px" }}>
+                    Revenue Impact
+                  </p>
+                  <p style={{ fontFamily: DM_SERIF, fontSize: 18, fontWeight: 400, color: CRIMSON, margin: 0, lineHeight: 1.3 }}>
+                    {active.impact}
+                  </p>
                 </div>
               </div>
             ) : (
-              <p className="text-[16px] font-sans text-gray-500 italic">
-                Select a warning marker to see where revenue is lost.
+              <p style={{ fontFamily: DM_SANS, fontSize: 15, fontWeight: 400, color: "rgba(132,22,23,0.35)", fontStyle: "italic", paddingTop: 8 }}>
+                Select a gap marker ◇ to see where revenue is lost.
               </p>
             )}
           </div>
 
-          <p className="mt-16 font-sans font-semibold text-crimson text-center text-[18px]">
-            Fix the handoffs. Keep the revenue.
-          </p>
+          {/* Closing rule */}
+          <div className="mt-16 pt-8" style={{ borderTop: `1.5px solid ${BLACK}`, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+            <p style={{ fontFamily: DM_SERIF, fontSize: 22, fontWeight: 400, color: CRIMSON, fontStyle: "italic", margin: 0 }}>
+              Fix the handoffs. Keep the revenue.
+            </p>
+            <span style={{ fontFamily: DM_SANS, fontSize: 12, fontWeight: 600, color: "rgba(132,22,23,0.4)", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              {leakagePoints.length} identified leakage points
+            </span>
+          </div>
         </div>
       </div>
     </section>
@@ -1885,41 +2009,221 @@ function HowGWAppliesTheFrameworkSection() {
 // ─── SECTION 11: BUSINESS OUTCOMES ────────────────────────────────────────────
 function BusinessOutcomesSection() {
   const { ref, visible } = useReveal()
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const CRIMSON = "#841617"
+  const CREAM = "#F5F0E8"
+  const BLACK = "#111111"
+  const DM_SERIF = "'DM Serif Display', serif"
+  const DM_SANS = "'DM Sans', sans-serif"
+
   const outcomes = [
-    { icon: 'eye',       name: 'Be Found',             desc: 'Attract the right audience with clarity and consistency.', color: '#841617' },
-    { icon: 'magnet',    name: 'Capture & Respond',    desc: 'Engage at the right time and respond fast.',                color: '#059669' },
-    { icon: 'cart',      name: 'Convert Consistently', desc: 'Turn interest into qualified pipeline and closed revenue.', color: '#2563EB' },
-    { icon: 'chart',     name: 'Improve & Scale',      desc: 'Use data and insight to optimise and scale growth.',        color: '#7C3AED' },
+    {
+      number: "01",
+      title: "Be Found",
+      body: "Attract the right audience with clarity and consistency across every channel.",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" />
+        </svg>
+      ),
+    },
+    {
+      number: "02",
+      title: "Capture & Respond",
+      body: "Engage at the right moment. Respond fast, follow through, close the gap.",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <path d="M6 15H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="M18 15h2a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" /><path d="M4 6v7a8 8 0 0 0 16 0V6" />
+        </svg>
+      ),
+    },
+    {
+      number: "03",
+      title: "Convert Consistently",
+      body: "Turn interest into qualified pipeline and closed revenue — without friction.",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+        </svg>
+      ),
+    },
+    {
+      number: "04",
+      title: "Improve & Scale",
+      body: "Use data and insight to optimise every stage and scale growth with confidence.",
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+          <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" /><line x1="2" y1="20" x2="22" y2="20" />
+        </svg>
+      ),
+    },
   ]
 
-  return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
-      <div className={CONTAINER}>
-        <SectionLabel label="Business Outcomes" />
-        <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 mb-5 max-w-[720px]" style={{ fontFamily: "'DM Serif Display', serif" }}>
-            A stronger system. Better results.
-          </h2>
-          <p className="text-[18px] leading-[1.65] text-gray-500 mb-16 max-w-[620px]">
-            Revenue Infrastructure creates consistent, measurable outcomes across every stage.
-          </p>
+  const stats = [
+    { stat: "3×", label: "Pipeline velocity" },
+    { stat: "68%", label: "Faster response time" },
+    { stat: "2.4×", label: "Conversion rate lift" },
+    { stat: "91%", label: "Client retention" },
+  ]
 
-          {/* 4-up grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {outcomes.map((o) => (
-              <div key={o.name} className="bg-white border border-gray-100 rounded-none p-8 hover:shadow-md transition-shadow">
-                <div className="w-14 h-14 rounded-none flex items-center justify-center mb-6"
-                     style={{ background: `${o.color}10` }}>
-                  <Icon name={o.icon} s={26} c={o.color} />
+  useEffect(() => {
+    if (paused) return
+    timerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % outcomes.length)
+    }, 2500)
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [paused, outcomes.length])
+
+  const handleMouseEnter = (i: number) => {
+    setPaused(true)
+    setActiveIndex(i)
+  }
+
+  const handleMouseLeave = () => {
+    setPaused(false)
+  }
+
+  return (
+    <section ref={ref as React.Ref<HTMLElement>}>
+      {/* Top crimson rule */}
+      <div style={{ height: "4px", backgroundColor: CRIMSON }} />
+
+      <div style={{ backgroundColor: CREAM }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "96px 48px" }}>
+          {/* Header block */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: "64px",
+            alignItems: "end", marginBottom: "80px",
+          }}>
+            <div>
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-5">
+                <span style={{ width: 32, height: 1.5, backgroundColor: CRIMSON, display: "block" }} />
+                <span style={{ fontFamily: DM_SANS, fontSize: 12, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: CRIMSON }}>
+                  Business Outcomes
+                </span>
+              </div>
+              {/* Main heading */}
+              <h2 className="font-normal leading-[1.08] text-black m-0" style={{ fontFamily: DM_SERIF, fontSize: "clamp(32px, 4vw, 44px)", maxWidth: 640 }}>
+                A stronger system.
+                <br />
+                <em style={{ color: CRIMSON, fontStyle: "italic" }}>Better results.</em>
+              </h2>
+            </div>
+            {/* Right: descriptor + vertical rule */}
+            <div style={{ paddingBottom: "4px" }}>
+              <div style={{ width: "1px", height: "48px", backgroundColor: CRIMSON, marginBottom: "24px" }} />
+              <p style={{ fontFamily: DM_SANS, fontSize: 18, fontWeight: 400, lineHeight: 1.65, color: "#2A2A2A", margin: 0, maxWidth: "440px" }}>
+                Revenue Infrastructure creates consistent, measurable outcomes across every stage of your growth engine.
+              </p>
+            </div>
+          </div>
+
+          {/* Outcome cards */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+            border: `1px solid ${BLACK}`,
+          }}>
+            {outcomes.map((item, i) => {
+              const isActive = activeIndex === i
+              return (
+                <div
+                  key={item.number}
+                  onMouseEnter={() => handleMouseEnter(i)}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    padding: "40px 32px",
+                    borderRight: i < outcomes.length - 1 ? `1px solid ${BLACK}` : "none",
+                    backgroundColor: isActive ? CRIMSON : CREAM,
+                    transition: "background-color 0.4s ease",
+                    cursor: "default",
+                    position: "relative",
+                  }}
+                >
+                  {/* Active indicator bar */}
+                  <div style={{
+                    position: "absolute", top: 0, left: 0, right: 0, height: "3px",
+                    backgroundColor: isActive ? "white" : "transparent",
+                    transition: "background-color 0.3s ease",
+                  }} />
+
+                  {/* Step number */}
+                  <div style={{
+                    fontFamily: DM_SERIF, fontSize: "52px", fontWeight: 400, lineHeight: 1,
+                    color: isActive ? "rgba(255,255,255,0.25)" : "rgba(10,10,10,0.18)",
+                    marginBottom: "24px", transition: "color 0.4s ease", userSelect: "none",
+                  }}>
+                    {item.number}
+                  </div>
+
+                  {/* Icon */}
+                  <div style={{
+                    color: isActive ? "white" : CRIMSON,
+                    marginBottom: "20px", transition: "color 0.4s ease",
+                  }}>
+                    {item.icon}
+                  </div>
+
+                  {/* Divider line */}
+                  <div style={{
+                    width: "24px", height: "2px",
+                    backgroundColor: isActive ? "rgba(255,255,255,0.5)" : CRIMSON,
+                    marginBottom: "20px", transition: "background-color 0.4s ease",
+                  }} />
+
+                  {/* Title */}
+                  <h4 style={{
+                    fontFamily: DM_SERIF, fontSize: "21px", fontWeight: 400, lineHeight: "1.25",
+                    color: isActive ? "white" : BLACK,
+                    margin: "0 0 12px 0", transition: "color 0.4s ease",
+                  }}>
+                    {item.title}
+                  </h4>
+
+                  {/* Body */}
+                  <p style={{
+                    fontFamily: DM_SANS, fontSize: "18px", fontWeight: 400, lineHeight: "1.6",
+                    color: isActive ? "rgba(255,255,255,0.82)" : "#444444",
+                    margin: 0, transition: "color 0.4s ease",
+                  }}>
+                    {item.body}
+                  </p>
                 </div>
-                {/* H3 inside card */}
-                <h4 className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.3] text-gray-900 mb-3">{o.name}</h4>
-                <p className="text-[16px] font-sans text-gray-500 leading-[1.6]">{o.desc}</p>
+              )
+            })}
+          </div>
+
+          {/* Bottom stat bar */}
+          <div style={{
+            borderLeft: `1px solid ${BLACK}`, borderRight: `1px solid ${BLACK}`,
+            borderBottom: `1px solid ${BLACK}`,
+            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          }}>
+            {stats.map((item, i) => (
+              <div key={item.label} style={{
+                padding: "28px 32px",
+                borderRight: i < stats.length - 1 ? `1px solid ${BLACK}` : "none",
+                backgroundColor: BLACK,
+                display: "flex", alignItems: "baseline", gap: "16px",
+              }}>
+                <span style={{ fontFamily: DM_SERIF, fontSize: "28px", fontWeight: 400, color: CRIMSON, flexShrink: 0 }}>
+                  {item.stat}
+                </span>
+                <span style={{ fontFamily: DM_SANS, fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.65)", lineHeight: "1.4" }}>
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Bottom crimson rule */}
+      <div style={{ height: "4px", backgroundColor: CRIMSON }} />
     </section>
   )
 }

@@ -87,7 +87,7 @@ function IndustriesHero() {
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
           {/* Copy column */}
           <div className="max-w-[680px]">
-            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
+            <h3 className="industries-hero-eyebrow text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
               Who GWS Serves
             </h3>
             <h1
@@ -95,7 +95,7 @@ function IndustriesHero() {
               className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
               style={{ textWrap: "balance" }}
             >
-              Revenue Infrastructure for founder-led service businesses.
+              Revenue Infrastructure for <span className="text-[#841617] italic">founder-led</span> service businesses.
             </h1>
             <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
               GrowthWorks Systems works with service businesses where revenue depends on being found, responding quickly, converting opportunities consistently, and understanding what is working across the full customer journey.
@@ -106,15 +106,9 @@ function IndustriesHero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                className="industries-hero-cta inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
               >
                 Book a Revenue Diagnostic
-              </a>
-              <a
-                href="#industry-routes"
-                className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
-              >
-                Explore industries
               </a>
             </div>
           </div>
@@ -282,7 +276,7 @@ function SharedContextSection() {
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel label="Shared Revenue-System Context" />
+          <h3 className="industries-section-label text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">Shared Revenue-System Context</h3>
           <h2
             id="shared-context-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
@@ -439,7 +433,7 @@ function IndustryRoutingSection() {
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel label="Explore the Three Priority Industries" />
+          <h3 className="industries-section-label text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">Explore the Three Priority Industries</h3>
           <h2
             id="industry-routing-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
@@ -567,7 +561,7 @@ function ComparisonSection() {
     >
       <div className={HUB_CONTAINER}>
         <RevealOnScroll>
-          <SectionLabel label="How the Challenge Changes by Industry" />
+          <h3 className="industries-section-label text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">How the Challenge Changes by Industry</h3>
           <h2
             id="comparison-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"

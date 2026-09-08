@@ -13,10 +13,10 @@ export function SolutionsHero() {
       <div className="gws-glowy-content">
         <div className="gws-glowy-content-inner">
           <div className="gws-glowy-badge">
-            <span>Solutions</span>
+            Solutions
           </div>
           <h1 id="solutions-hero-title" className="gws-glowy-title">
-            Integrated capabilities engineered to eliminate revenue leakage.
+            Integrated capabilities engineered to <span style={{ color: 'var(--maroon)' }}>eliminate revenue leakage.</span>
           </h1>
           <p className="gws-glowy-copy" style={{ maxWidth: '720px' }}>
             GrowthWorks Systems strengthens the connected parts of the revenue path that determine whether opportunity is found, captured, converted, and improved — through Digital Presence, Lead Response, Sales Operations, and Revenue Intelligence.

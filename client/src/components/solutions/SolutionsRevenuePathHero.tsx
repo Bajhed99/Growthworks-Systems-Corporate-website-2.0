@@ -40,7 +40,7 @@ export function SolutionsRevenuePathHero() {
     <section aria-label="One Revenue Path, Four Areas of Improvement" className="diagnostic-section section--white">
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>The Solution System</p>
-        <h2 id="four-areas-title" style={{ textAlign: 'center' }}>Each capability strengthens a different part of the same revenue journey.</h2>
+        <h2 id="four-areas-title" style={{ textAlign: 'center' }}>Each capability strengthens a different part of the same <span style={{ color: 'var(--maroon)' }}>revenue journey.</span></h2>
         <p className="section-intro" style={{ maxWidth: '680px', marginInline: 'auto', textAlign: 'center' }}>
           The four solution areas are organized around the business responsibility they strengthen, not around individual tools or technologies. They are connected by design.
         </p>

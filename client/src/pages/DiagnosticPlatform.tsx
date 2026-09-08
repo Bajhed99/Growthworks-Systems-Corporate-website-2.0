@@ -267,30 +267,32 @@ function HeroSection() {
       className="bg-[#F8F5EC] pt-[96px] md:pt-[128px] pb-[72px] md:pb-[96px] border-b border-[#DDD6CC]"
     >
       <div className={CONTAINER}>
-        <div className={`flex flex-col items-center text-center reveal ${visible ? "visible" : ""}`}>
+        <div className={`flex flex-col max-w-[640px] reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DIAGNOSTIC PLATFORM" />
           <h1 className="font-serif font-normal text-[#2B2B2B] leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6">
             Revenue Infrastructure <span style={{ color: "var(--gws-crimson)" }}>Diagnostic</span>
           </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-10 max-w-[640px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] text-[#2B2B2B] mb-10">
             A disciplined, repeatable methodology for evaluating and improving the systems that determine a business&apos;s ability to attract, convert, retain, and grow profitable customers.
           </p>
           <a
             href="/revenue-diagnostic"
-            className="diagnostic-hero-cta"
+            className="diagnostic-hero-cta w-fit"
             style={{ marginBottom: '32px' }}
           >
             BOOK A REVENUE DIAGNOSTIC
           </a>
-
-          <a
-            href="#methodology"
-            className="diagnostic-hero-explore-trigger"
-          >
-            <span>Explore Methodology</span>
-            <ChevronDown size={16} aria-hidden="true" />
-          </a>
         </div>
+      </div>
+
+      <div className="flex flex-col items-center">
+        <a
+          href="#methodology"
+          className="diagnostic-hero-explore-trigger"
+        >
+          <span>Explore Methodology</span>
+          <ChevronDown size={16} aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
@@ -307,7 +309,7 @@ function DiagnosticQuestionsSection() {
           <div className="max-w-[720px] mb-12">
             <SectionLabel label="THE DIAGNOSTIC ANSWERS THREE QUESTIONS" />
             <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B]">
-              Where revenue is lost. What it costs. What to fix first.
+              Where revenue is lost. What it costs. <span style={{ color: "#841617" }}>What to fix first.</span>
             </h2>
           </div>
 
@@ -372,7 +374,7 @@ function MethodologySection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="CONSULTING METHODOLOGY" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Eight stages from first contact to compounding advantage.
+            Eight stages from first contact to <span style={{ color: "#841617" }}>compounding advantage.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Revenue Infrastructure Diagnostic follows a structured eight-stage process, grouped into three phases.
@@ -469,7 +471,7 @@ function ExecutiveScorecardSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE SCORECARD" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            A single view of your Revenue Infrastructure performance.
+            A single view of your <span style={{ color: "#841617" }}>Revenue Infrastructure</span> performance.
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Executive Scorecard consolidates findings across all Nine Domains into one dashboard view.
@@ -540,7 +542,7 @@ function DomainHeatMapSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DOMAIN HEAT MAP" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Business risk and opportunity visualized across all Nine Domains.
+            Business risk and opportunity visualized across all <span style={{ color: "#841617" }}>Nine Domains.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Heat Map translates domain scores into a visual risk classification system.
@@ -623,7 +625,7 @@ function PrioritizationMatrixSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="PRIORITIZATION MATRIX" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Business impact versus implementation effort. Sequence matters.
+            Business impact versus implementation effort. <span style={{ color: "#841617" }}>Sequence matters.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Matrix maps every recommendation by impact and effort to determine implementation priority.
@@ -717,7 +719,7 @@ function AssessmentFamilySection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="ASSESSMENT FAMILY" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Six specialized assessments. One unified methodology.
+            Six specialized assessments. <span style={{ color: "#841617" }}>One unified methodology.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             Individual assessments use the Educate → Score → Recommend methodology and roll into the broader Revenue Infrastructure Assessment.
@@ -765,7 +767,7 @@ function ImprovementRoadmapSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="IMPROVEMENT ROADMAP" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Four phases from stabilization to compounding advantage.
+            Four phases from stabilization to <span style={{ color: "#841617" }}>compounding advantage.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Roadmap sequences improvements by business impact, dependency, and practical implementation capacity.
@@ -843,7 +845,7 @@ function ExecutiveReportSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE REPORT" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            A board-ready document. Not a marketing deck.
+            A board-ready document. <span style={{ color: "#841617" }}>Not a marketing deck.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The Executive Report is a comprehensive, structured document designed for executive decision-making.
@@ -897,7 +899,7 @@ function DiagnosticOutputsSection() {
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DIAGNOSTIC OUTPUTS" />
           <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
-            Eight artifacts. One complete picture.
+            Eight artifacts. <span style={{ color: "#841617" }}>One complete picture.</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
             The diagnostic produces a comprehensive suite of deliverables that together form a complete view of your Revenue Infrastructure.
@@ -935,7 +937,7 @@ function BeginDiagnosticSection() {
           <div className="max-w-[720px] mx-auto text-center">
             <SectionLabel label="BEGIN THE DIAGNOSTIC" />
             <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] text-[#2B2B2B] mb-6">
-              The Discovery Call is the first stage of the diagnostic.
+              The <span style={{ color: "#841617" }}>Discovery Call</span> is the first stage of the diagnostic.
             </h2>
             <p className="text-[18px] leading-[1.65] text-[#625E59] mb-4 max-w-[640px] mx-auto">
               The first conversation helps gather business context, identify likely areas of concern, understand current systems, and establish whether deeper assessment is appropriate.
@@ -947,54 +949,19 @@ function BeginDiagnosticSection() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors font-['DM_Sans'] font-semibold text-[16px]"
+                style={{ color: '#ffffff' }}
               >
                 BOOK A REVENUE DIAGNOSTIC
               </a>
               <a
-                href="/resources#frameworks"
-                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none border-2 border-[#2B2B2B] hover:bg-[#2B2B2B] hover:text-white transition-colors text-[#2B2B2B] font-sans font-semibold text-[16px]"
+                href="/framework"
+                className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none border-2 border-transparent hover:border-crimson hover:text-crimson transition-colors text-[16px] font-sans font-medium"
               >
                 VIEW ALL FRAMEWORKS
               </a>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ─── SECTION 13: DARK CLOSING CTA ──────────────────────────────────────────────
-function ClosingCTASection() {
-  const { ref, visible } = useReveal();
-
-  return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-[#2B2B2B] text-white relative overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-      <div aria-hidden="true" className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[300px] bg-[#841617]/15 blur-[100px] pointer-events-none" />
-
-      <div className={`${CONTAINER} relative z-10`}>
-        <div className={`max-w-[720px] mx-auto text-center reveal ${visible ? "visible" : ""}`}>
-          <h2 className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6">
-            Your business has a Revenue Infrastructure problem.
-          </h2>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-10 max-w-[600px] mx-auto">
-            The diagnostic identifies where your infrastructure is helping — or limiting — growth. Find gaps, quantify leakage, and determine what to fix first.
-          </p>
-          <a
-            href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-10 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px]"
-          >
-            BOOK A REVENUE DIAGNOSTIC
-          </a>
         </div>
       </div>
     </section>
@@ -1019,7 +986,6 @@ export default function DiagnosticPlatform() {
         <ExecutiveReportSection />
         <DiagnosticOutputsSection />
         <BeginDiagnosticSection />
-        <ClosingCTASection />
       </main>
       <SiteFooter />
     </div>

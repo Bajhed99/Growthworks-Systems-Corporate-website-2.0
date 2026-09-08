@@ -1,5 +1,6 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
 import { GWS_NAV_GROUPS, GWS_NAV_LINKS } from "@/lib/gwsNavigation";
+import { Link } from "wouter";
 
 const OFFICIAL_LOGO_WHITE = "/assets/images/branding/growthworks-official-logo-white.png";
 
@@ -11,8 +12,14 @@ const footerGroups = [
 ] as const;
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const path = children === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" : (children === "Contact" ? "#" : "/");
-  return <a href={path === "/revenue-diagnostic" ? "/revenue-diagnostic" : (path === "/" ? "/" : "#top")}>{children}</a>;
+  const text = typeof children === "string" ? children : ""
+  const path =
+    text === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" :
+    text === "Contact" ? "#" :
+    text === "The Nine Domains" ? "/framework#nine-domain-framework" :
+    text === "What Is Revenue Infrastructure?" ? "/framework#canonical-definition" :
+    "/"
+  return <Link href={path}>{children}</Link>;
 }
 
 export default function SiteFooter() {
@@ -29,7 +36,7 @@ export default function SiteFooter() {
             <a href="/about"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
           </address>
         </div>
-        {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <a href={link === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" : "/"} key={link}>{link}</a>)}</nav>)}
+        {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <FooterLink key={link}>{link}</FooterLink>)}</nav>)}
       </div>
       <div className="footer-bottom"><div className="site-shell"><small>© 2026 GrowthWorks Systems LLC. All rights reserved.</small><em>One System. Every Touchpoint. Predictable Revenue.</em></div></div>
     </footer>
