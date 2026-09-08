@@ -9,11 +9,19 @@ import RevenueMaturity from "@/components/RevenueMaturity";
 function useReveal(threshold = 0.12) {
   const ref = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
+  const hasTriggered = useRef(false)
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    const rect = el.getBoundingClientRect()
+    const winH = window.innerHeight || document.documentElement.clientHeight
+    if (rect.top < winH && rect.bottom > 0) {
+      setVisible(true)
+      hasTriggered.current = true
+      return
+    }
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect() } },
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); hasTriggered.current = true; obs.disconnect() } },
       { threshold }
     )
     obs.observe(el)

@@ -7,13 +7,22 @@ import SiteFooter from "@/components/SiteFooter";
 function useReveal(threshold = 0.12) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
+  const hasTriggered = useRef(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const winH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < winH && rect.bottom > 0) {
+      setVisible(true);
+      hasTriggered.current = true;
+      return;
+    }
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          hasTriggered.current = true;
           obs.disconnect();
         }
       },
@@ -263,7 +272,7 @@ function HeroSection() {
 
   return (
     <section
-      ref={ref as React.Ref<HTMLElement>}
+      ref={ref}
       className="bg-[#F8F5EC] pt-[96px] md:pt-[128px] pb-[72px] md:pb-[96px] border-b border-[#DDD6CC]"
     >
       <div className={CONTAINER}>
@@ -303,7 +312,7 @@ function DiagnosticQuestionsSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="questions" ref={ref as React.Ref<HTMLElement>} className="py-[72px] md:py-[112px] bg-white scroll-mt-24">
+    <section id="questions" ref={ref} className="py-[72px] md:py-[112px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <div className="max-w-[720px] mb-12">
@@ -336,7 +345,7 @@ function AssessmentPrinciplesSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="assessment-principles" ref={ref as React.Ref<HTMLElement>} className="py-[72px] md:py-[112px] bg-[#F8F5EC] scroll-mt-24">
+    <section id="assessment-principles" ref={ref} className="py-[72px] md:py-[112px] bg-[#F8F5EC] scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="ASSESSMENT PRINCIPLES" />
@@ -369,7 +378,7 @@ function MethodologySection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="methodology" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
+    <section id="methodology" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="CONSULTING METHODOLOGY" />
@@ -466,7 +475,7 @@ function ExecutiveScorecardSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="executive-scorecard" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
+    <section id="executive-scorecard" ref={ref} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE SCORECARD" />
@@ -537,7 +546,7 @@ function DomainHeatMapSection() {
   };
 
   return (
-    <section id="heat-map" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
+    <section id="heat-map" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DOMAIN HEAT MAP" />
@@ -620,7 +629,7 @@ function PrioritizationMatrixSection() {
   ];
 
   return (
-    <section id="prioritization-matrix" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
+    <section id="prioritization-matrix" ref={ref} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="PRIORITIZATION MATRIX" />
@@ -714,7 +723,7 @@ function AssessmentFamilySection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="assessment-family" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
+    <section id="assessment-family" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="ASSESSMENT FAMILY" />
@@ -762,7 +771,7 @@ function ImprovementRoadmapSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="improvement-roadmap" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
+    <section id="improvement-roadmap" ref={ref} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="IMPROVEMENT ROADMAP" />
@@ -840,7 +849,7 @@ function ExecutiveReportSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="executive-report" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
+    <section id="executive-report" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="EXECUTIVE REPORT" />
@@ -894,7 +903,7 @@ function DiagnosticOutputsSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="diagnostic-outputs" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
+    <section id="diagnostic-outputs" ref={ref} className="py-[88px] md:py-[144px] bg-[#F8F5EC] scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="DIAGNOSTIC OUTPUTS" />
@@ -931,7 +940,7 @@ function BeginDiagnosticSection() {
   const { ref, visible } = useReveal();
 
   return (
-    <section id="begin-diagnostic" ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
+    <section id="begin-diagnostic" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <div className="max-w-[720px] mx-auto text-center">

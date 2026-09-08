@@ -24,6 +24,21 @@ function RevealOnScroll({
   delay?: number;
 }) {
   const [visible, setVisible] = useState(false);
+  const hasTriggered = React.useRef(false);
+
+  React.useEffect(() => {
+    if (hasTriggered.current) return;
+    if (!className) return;
+    const el = document.querySelector(`.${className}`);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const winH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < winH && rect.bottom > 0) {
+      setVisible(true);
+      hasTriggered.current = true;
+    }
+  }, [className]);
+
   return (
     <div
       className={className}
@@ -33,12 +48,13 @@ function RevealOnScroll({
         transition: `opacity 600ms ease-out ${delay}ms, transform 600ms ease-out ${delay}ms`,
       }}
       ref={(el) => {
-        if (!el || visible) return;
+        if (!el || visible || hasTriggered.current) return;
         const obs = new IntersectionObserver(
           (entries) => {
             entries.forEach((e) => {
               if (e.isIntersecting) {
                 setVisible(true);
+                hasTriggered.current = true;
                 obs.disconnect();
               }
             });

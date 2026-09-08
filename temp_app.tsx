@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const cards = [
   {
@@ -46,7 +46,7 @@ const cards = [
 
 const INTERVAL = 2500;
 
-export function SolutionsSystemInteractive() {
+export default function App() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [progress, setProgress] = useState(0);

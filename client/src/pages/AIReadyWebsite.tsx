@@ -10,6 +10,8 @@ const SECTION_HERO = "py-[88px] md:py-[128px]";
 const H1_CLASS = "font-normal text-[40px] md:text-[60px] leading-[1.10] text-gray-900 font-serif";
 const H2_CLASS = "font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 font-serif";
 const H4_CLASS = "font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900 font-serif";
+const CREAM = "#F5F0E8";
+const BORDER = "#e0d9cf";
 
 /* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
 function RevealOnScroll({
@@ -27,6 +29,12 @@ function RevealOnScroll({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const winH = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < winH && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
       setVisible(true);
       return;

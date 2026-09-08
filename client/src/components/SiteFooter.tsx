@@ -31,7 +31,10 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     text === "About GWS" ? "/about" :
     text === "Resources" ? "/resources" :
     "/"
-  const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleClick = () => {
+    if (path === "#") return
+    window.scrollTo(0, 0)
+  }
   return <Link href={path} onClick={handleClick}>{children}</Link>;
 }
 
