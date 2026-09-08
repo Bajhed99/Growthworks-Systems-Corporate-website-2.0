@@ -6,7 +6,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
-import { ArrowRight, ChartNoAxesCombined, Check, Clock3, Route, Search } from "lucide-react";
+import { ArrowRight, ChartNoAxesCombined, Check, ChevronDown, Clock3, Route, Search } from "lucide-react";
 import { BuyerJourneyPlugAndPlayHost } from "@/components/BuyerJourneyPlugAndPlayHost";
 import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesInteractive";
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
@@ -129,6 +129,9 @@ export default function Home() {
                       </p>
                       <div className="gws-glowy-actions">
                         <a href="#revenue-diagnostic" className="gws-glowy-primary supporting-button">Book a Revenue Diagnostic <ArrowRight size={16} aria-hidden="true" /></a>
+                      </div>
+                      <div className="gws-glowy-explore">
+                        <a href="#problem-recognition" className="gws-glowy-secondary supporting-button" style={{flexDirection:'column',gap:'4px'}}>Explore <ChevronDown size={14} aria-hidden="true" /></a>
                       </div>
                     </div>
                   </div>
