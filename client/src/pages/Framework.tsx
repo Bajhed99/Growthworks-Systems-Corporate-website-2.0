@@ -540,12 +540,12 @@ function HeroSection() {
   }
 
   return (
-    <section className="bg-gws-dark text-white min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14">
+    <section className="framework-section hero-section bg-gws-dark text-white min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.04]"
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
-      <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center`}>
+      <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center section-internal-gap`}>
         <div className="w-full max-w-[720px]">
 
           {/* Copy */}
@@ -706,16 +706,16 @@ function WhyItMattersSection() {
   }
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[112px] bg-surface">
       <div id="why-revenue-matters" className={CONTAINER}>
         <div data-reveal className={`reveal ${visible ? 'visible' : ''}`}>
           {/* Header block */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8 mb-16">
             <div className="max-w-[600px]">
               <p className="text-[12px] font-semibold tracking-[0.22em] uppercase mb-5" style={{ color: CRIMSON, fontFamily: DM_SANS }}>
                 Why Revenue Infrastructure Matters
               </p>
-              <h2 className="font-normal leading-[1.08] text-black" style={{ fontFamily: DM_SERIF, fontSize: "44px" }}>
+              <h2 className="font-normal leading-[1.08] text-black text-[28px] md:text-[44px]" style={{ fontFamily: DM_SERIF }}>
                 Revenue is a journey.<br />
                 <span style={{ color: CRIMSON }}>Not a moment.</span>
               </h2>
@@ -931,9 +931,9 @@ function RevenueInfrastructureFlywheelSection() {
   const zeroRadius = { borderRadius: 0 }
 
   return (
-    <section className="pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout' }}>
+    <section className="framework-section pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout' }}>
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-16 items-center">
           {/* Left column — text */}
           <div>
             <p className="text-[14px] font-sans font-[600] tracking-[0.18em] uppercase mb-4" style={{ color: '#ffffff' }}>
@@ -1219,14 +1219,14 @@ function FragmentedVsConnectedSection() {
   };
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[88px] md:py-[112px] bg-[#FAFAF8]">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[88px] md:py-[112px] bg-[#FAFAF8]">
       <div className={CONTAINER}>
         <div className={"reveal " + (visible ? "visible" : "")}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "#841617", marginBottom: 16 }}>
               Fragmented vs Connected
             </p>
-            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 44, fontWeight: 400, color: "#0f0d0d", lineHeight: 1.1, margin: 0 }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, color: "#0f0d0d", lineHeight: 1.1, margin: 0 }} className="text-[28px] md:text-[44px]">
               Two ways to connect your systems.<br />
               <em style={{ color: "#841617" }}>One that actually works.</em>
             </h2>
@@ -1242,7 +1242,7 @@ function FragmentedVsConnectedSection() {
                 </div>
                 <span style={{ fontSize: 14, color: "#B5AA97" }}>5 silos</span>
               </div>
-              <div style={{ position: "relative", aspectRatio: "528/260", background: "#F0EDE3" }}>
+              <div className="card-inner" style={{ position: "relative", aspectRatio: "528/260", background: "#F0EDE3" }}>
                 <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} viewBox="0 0 528 260">
                   <defs>
                     <pattern id="dotG" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
@@ -1418,7 +1418,7 @@ function RevenueLeakageSection() {
   }
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-surface">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-surface">
       <div className={CONTAINER}>
         <div data-reveal className={`reveal ${visible ? 'visible' : ''}`}>
           {/* Header block */}
@@ -1525,7 +1525,7 @@ function RevenueLeakageSection() {
           </div>
 
           {/* Detail panel */}
-          <div style={{ marginTop: 48, minHeight: 140 }}>
+          <div className="card-inner" style={{ marginTop: 48, minHeight: 140 }}>
             {active ? (
               <div style={{
                 backgroundColor: "white", border: `1.5px solid ${BLACK}`, borderLeft: `4px solid ${CRIMSON}`,
@@ -1541,7 +1541,7 @@ function RevenueLeakageSection() {
                       {active.from} → {active.to}
                     </span>
                   </div>
-                  <h3 style={{ fontFamily: DM_SERIF, fontSize: 26, fontWeight: 400, color: BLACK, margin: "0 0 12px", lineHeight: 1.15 }}>
+                  <h3 style={{ fontFamily: DM_SERIF, fontWeight: 400, color: BLACK, margin: "0 0 12px", lineHeight: 1.15 }} className="text-[20px] md:text-[26px]">
                     {active.title}
                   </h3>
                   <p style={{ fontFamily: DM_SANS, fontSize: 18, fontWeight: 400, lineHeight: 1.65, color: "#444444", margin: 0, maxWidth: 580 }}>
@@ -1640,7 +1640,7 @@ function TraditionalVsRISection() {
   ]
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-surface">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[112px] bg-surface">
       <div className={CONTAINER}>
         <div data-reveal className="mb-6" style={{ "--delay": "0ms" } as React.CSSProperties}>
           <span style={{ color: "#841617", fontSize: 14, fontWeight: 600, letterSpacing: "0.22em" }} className="uppercase font-sans">
@@ -1649,7 +1649,7 @@ function TraditionalVsRISection() {
         </div>
 
         <div data-reveal className={`reveal ${visible ? 'visible' : ''}`} style={{ "--delay": "80ms" } as React.CSSProperties}>
-          <h2 className="font-bold leading-[1.08] mb-5 text-black" style={{ fontFamily: "'DM Serif Display', serif", fontSize: 44, maxWidth: 700 }}>
+          <h2 className="font-bold leading-[1.08] mb-5 text-black text-[28px] md:text-[44px]" style={{ fontFamily: "'DM Serif Display', serif", maxWidth: 700 }}>
             Specialists optimise a part.
             <br />
             <em style={{ fontStyle: "italic" }}>
@@ -1976,7 +1976,7 @@ function HowGWAppliesTheFrameworkSection() {
             <div style={{ filter: hovered ? "brightness(0) invert(1)" : "none", transition: "filter 0.3s ease" }}>{icon}</div>
           </div>
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: CRIMSON, fontWeight: 600, marginBottom: 8 }}>Step {num}</span>
-          <h4 style={{ fontFamily: "'DM Serif Display', serif", fontSize: 20, lineHeight: 1.25, color: "#000", fontWeight: 400, marginBottom: 8 }}>{title}</h4>
+          <h4 style={{ fontFamily: "'DM Serif Display', serif", lineHeight: 1.25, color: "#000", fontWeight: 400, marginBottom: 8 }} className="text-[17px] md:text-[20px]">{title}</h4>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13.5, lineHeight: 1.7, color: "#000", opacity: 0.5, marginTop: "auto", paddingTop: 8 }}>{description}</p>
         </div>
       </div>
@@ -2000,11 +2000,11 @@ function HowGWAppliesTheFrameworkSection() {
   }
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[112px] bg-white">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[112px] bg-white">
       <div className={CONTAINER}>
         <SectionLabel label="How GWS Applies the Framework" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
-          <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "44px", lineHeight: 1.1, color: "#000", fontWeight: 400 }} className="mb-6 max-w-[760px]">
+          <h2 style={{ fontFamily: "'DM Serif Display', serif", lineHeight: 1.1, color: "#000", fontWeight: 400 }} className="mb-6 max-w-[760px] text-[28px] md:text-[44px]">
             Infrastructure aligned to drive <em style={{ color: CRIMSON, fontStyle: "italic" }}>predictable growth.</em>
           </h2>
           <div style={{ width: 48, height: 2, background: CRIMSON, marginBottom: 40 }} />
@@ -2111,7 +2111,7 @@ function BusinessOutcomesSection() {
       <div style={{ height: "4px", backgroundColor: CRIMSON }} />
 
       <div style={{ backgroundColor: CREAM }}>
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "96px 48px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "64px 24px" }} className="md:!p-12">
           {/* Header block */}
           <div className="business-outcomes-header" style={{
             gridTemplateColumns: "1fr 1fr", gap: "64px",
@@ -2155,7 +2155,7 @@ function BusinessOutcomesSection() {
                   onMouseEnter={() => handleMouseEnter(i)}
                   onMouseLeave={handleMouseLeave}
                   style={{
-                    padding: "40px 32px",
+                    padding: "24px 20px",
                     borderRight: i < outcomes.length - 1 ? `1px solid ${BLACK}` : "none",
                     backgroundColor: isActive ? CRIMSON : CREAM,
                     transition: "background-color 0.4s ease",
@@ -2195,8 +2195,8 @@ function BusinessOutcomesSection() {
                   }} />
 
                   {/* Title */}
-                  <h4 style={{
-                    fontFamily: DM_SERIF, fontSize: "21px", fontWeight: 400, lineHeight: "1.25",
+                  <h4 className="text-[17px] md:text-[21px]" style={{
+                    fontFamily: DM_SERIF, fontWeight: 400, lineHeight: "1.25",
                     color: isActive ? "white" : BLACK,
                     margin: "0 0 12px 0", transition: "color 0.4s ease",
                   }}>
@@ -2224,7 +2224,7 @@ function BusinessOutcomesSection() {
           }}>
             {stats.map((item, i) => (
               <div key={item.label} style={{
-                padding: "28px 32px",
+                padding: "20px 16px",
                 borderRight: i < stats.length - 1 ? `1px solid ${BLACK}` : "none",
                 backgroundColor: BLACK,
                 display: "flex", alignItems: "baseline", gap: "16px",
@@ -2259,7 +2259,7 @@ function DiagnosticCTASection() {
   })
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="py-[144px] bg-white text-gray-900 relative overflow-hidden">
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-white text-gray-900 relative overflow-hidden">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.06]"
            style={{ backgroundImage: 'radial-gradient(circle, #841617 1px, transparent 1px)', backgroundSize: '32px 32px' }} />

@@ -56,7 +56,7 @@ export default function SiteHeader() {
             {GWS_NAV_GROUPS.map((group) => {
               const isOpen = activeDesktopMenu === group.label;
               const groupIsActive = currentPath === group.href || group.items.some((item) => item.href === currentPath);
-              const menuId = `desktop-menu-${group.label.toLowerCase().replaceAll(" ", "-")}`;
+              const menuId = `desktop-menu-${group.label.toLowerCase().replace(/ /g, "-")}`;
               return (
                 <div key={group.label} className="nav-group" onMouseEnter={() => setActiveDesktopMenu(group.label)}>
                   <button type="button" className={`nav-link nav-link--group ${isOpen || groupIsActive ? "is-active" : ""}`} aria-expanded={isOpen} aria-controls={menuId} aria-haspopup="menu" onClick={() => { navigateTo(group.href); setActiveDesktopMenu(null); }}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowRight, Globe, Search, Bot, Megaphone, Layout, Target, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Globe, Search, Bot, Megaphone, Layout, Target } from "lucide-react";
 
 function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
   return <a className={className} href={href} {...props}>{children}</a>;
@@ -88,6 +88,8 @@ export function SolutionsDigitalPresenceSection() {
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number | null>(null);
   const pausedAtRef = useRef<number>(0);
+  const elapsedAtPauseRef = useRef<number>(0);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   // [ANIM: section reveal on scroll]
@@ -109,10 +111,15 @@ export function SolutionsDigitalPresenceSection() {
     return () => observer.disconnect();
   }, []);
 
-  // [ANIM: auto-slide carousel — starts on mount, pauses on hover]
+  // [ANIM: auto-slide with pause-on-hover resume support]
   const tick = useCallback((now: number) => {
     if (startRef.current === null) startRef.current = now;
+    if (pausedAtRef.current > 0) {
+      startRef.current = now - pausedAtRef.current;
+      pausedAtRef.current = 0;
+    }
     const elapsed = now - startRef.current;
+    elapsedAtPauseRef.current = elapsed % SLIDE_INTERVAL;
     const pct = (elapsed % SLIDE_INTERVAL) / SLIDE_INTERVAL;
     setProgress(pct);
     if (elapsed >= SLIDE_INTERVAL) {
@@ -128,14 +135,14 @@ export function SolutionsDigitalPresenceSection() {
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [tick]);
 
-  // [ANIM: pause on hover]
+  // [ANIM: pause on hover — cancel rAF and record elapsed time]
   useEffect(() => {
     if (paused) {
-      pausedAtRef.current = performance.now() - (startRef.current || performance.now());
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (startRef.current !== null) {
+        pausedAtRef.current = elapsedAtPauseRef.current;
+      }
     } else {
-      startRef.current = null;
-      pausedAtRef.current = 0;
       rafRef.current = requestAnimationFrame(tick);
     }
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
@@ -143,20 +150,18 @@ export function SolutionsDigitalPresenceSection() {
 
   const goTo = useCallback((i: number) => {
     setActive(i);
+    setPaused(true);
     startRef.current = null;
     pausedAtRef.current = 0;
+    elapsedAtPauseRef.current = 0;
     setProgress(0);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => setPaused(false), 1800);
   }, []);
 
-  const goPrev = useCallback(() => {
-    goTo((active - 1 + CAPABILITIES.length) % CAPABILITIES.length);
-  }, [active, goTo]);
-
-  const goNext = useCallback(() => {
-    goTo((active + 1) % CAPABILITIES.length);
-  }, [active, goTo]);
-
-  const c = CAPABILITIES[active];
+  useEffect(() => () => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  }, []);
 
   return (
     <section
@@ -196,251 +201,175 @@ export function SolutionsDigitalPresenceSection() {
           why it is relevant, and what a buyer should do next.
         </p>
 
-        {/* [ENHANCED: auto-slide carousel with progress ring] */}
+        {/* [ENHANCED: 3-column card grid — all 6 visible at once, auto-highlighted] */}
         <div
           style={{
             marginTop: '44px',
-            maxWidth: '780px',
-            marginInline: 'auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '16px',
             opacity: sectionVisible ? 1 : 0,
             transform: sectionVisible ? 'translateY(0)' : 'translateY(20px)',
             transition: 'opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
         >
-          {/* Active slide */}
-          <div
-            key={active}
-            style={{
-              background: '#ffffff',
-              border: '2px solid #1a1a1a',
-              borderTop: '4px solid #841617',
-              padding: '48px 44px',
-              animation: 'fadeSlideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards',
-              position: 'relative',
-              overflow: 'hidden',
-            }}
-          >
-            {/* [DECORATIVE: large ghost number in crimson] */}
-            <span
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                top: '-18px',
-                right: '12px',
-                fontFamily: "'DM Serif Display', Georgia, serif",
-                fontSize: '160px',
-                fontWeight: 400,
-                lineHeight: 1,
-                color: '#841617',
-                opacity: 0.05,
-                pointerEvents: 'none',
-                userSelect: 'none',
-              }}
-            >
-              {c.num}
-            </span>
-
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
-              {/* [ICON: black circle with crimson ring + white icon] */}
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-                background: '#1a1a1a',
-                border: '2px solid #841617',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}>
-                <c.Icon size={22} strokeWidth={1.5} color="#ffffff" />
-              </div>
-
-              <div style={{ flex: 1 }}>
-                <div style={{
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '10px',
-                  fontWeight: 600,
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: '#1a1a1a',
-                  marginBottom: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}>
-                  <span style={{
-                    width: 18,
-                    height: 1.5,
-                    background: '#1a1a1a',
-                    display: 'inline-block',
-                  }} />
-                  {c.num} — {c.title}
-                </div>
-
-                {/* [CRIMSON: impactful words highlighted in h3] */}
-                <h3 style={{
-                  fontFamily: "'DM Serif Display', Georgia, serif",
-                  fontSize: 'clamp(24px, 3vw, 32px)',
-                  fontWeight: 400,
-                  color: '#1a1a1a',
-                  lineHeight: 1.2,
-                  marginBottom: '14px',
-                  letterSpacing: '-0.01em',
-                  borderLeft: '3px solid #841617',
-                  paddingLeft: '16px',
-                }}>
-                  {highlight(c.body, c.highlightBody)}
-                </h3>
-
-                {/* [CRIMSON: impactful words highlighted in detail] */}
-                <p style={{
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '15px',
-                  color: '#44403c',
-                  lineHeight: 1.7,
-                  marginBottom: '20px',
-                }}>
-                  {highlight(c.detail, c.highlightDetail)}
-                </p>
-
-                {/* [ENHANCED: progress bar — black fill with crimson endpoint] */}
-                <div style={{
-                  width: '100%',
-                  height: 2,
-                  background: '#e7e5e4',
-                  borderRadius: 0,
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}>
-                  <div style={{
-                    width: `${progress * 100}%`,
-                    height: '100%',
-                    background: '#1a1a1a',
-                    transition: 'width 0.1s linear',
-                    position: 'relative',
-                  }}>
-                    <div style={{
-                      position: 'absolute',
-                      right: 0,
-                      top: '-1.5',
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: '#841617',
-                    }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* [ENHANCED: prev/next arrows in black] */}
-            <button
-              onClick={goPrev}
-              aria-label="Previous capability"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '12px',
-                transform: 'translateY(-50%)',
-                width: 36,
-                height: 36,
-                borderRadius: '50%',
-                border: '1.5px solid #1a1a1a',
-                background: 'rgba(255,255,255,0.9)',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#1a1a1a',
-                transition: 'background 0.2s ease, transform 0.15s ease',
-                zIndex: 2,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#1a1a1a';
-                e.currentTarget.style.color = '#fff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.9)';
-                e.currentTarget.style.color = '#1a1a1a';
-              }}
-            >
-              <ChevronLeft size={18} strokeWidth={2} />
-            </button>
-            <button
-              onClick={goNext}
-              aria-label="Next capability"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                right: '12px',
-                transform: 'translateY(-50%)',
-                width: 36,
-                height: 36,
-                borderRadius: '50%',
-                border: '1.5px solid #1a1a1a',
-                background: 'rgba(255,255,255,0.9)',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#1a1a1a',
-                transition: 'background 0.2s ease, transform 0.15s ease',
-                zIndex: 2,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#1a1a1a';
-                e.currentTarget.style.color = '#fff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.9)';
-                e.currentTarget.style.color = '#1a1a1a';
-              }}
-            >
-              <ChevronRight size={18} strokeWidth={2} />
-            </button>
-          </div>
-
-          {/* [NAV: dot indicators + counter] */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            marginTop: '20px',
-          }}>
-            <span style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '12px',
-              fontWeight: 500,
-              color: '#1a1a1a',
-              letterSpacing: '0.06em',
-              minWidth: '40px',
-              textAlign: 'center',
-            }}>
-              {String(active + 1).padStart(2, '0')} / {String(CAPABILITIES.length).padStart(2, '0')}
-            </span>
-            <div style={{ width: 1, height: 14, background: '#d6d3d1' }} />
-            {CAPABILITIES.map((cap, i) => (
-              <button
+          {CAPABILITIES.map((cap, i) => {
+            const isActive = active === i;
+            return (
+              <div
                 key={cap.num}
                 onClick={() => goTo(i)}
-                aria-label={`View ${cap.title}`}
                 style={{
-                  width: active === i ? 24 : 8,
-                  height: 8,
-                  borderRadius: 4,
-                  border: 'none',
-                  background: active === i ? '#841617' : '#d6d3d1',
+                  background: isActive ? '#ffffff' : '#fafaf9',
+                  border: isActive ? '2px solid #1a1a1a' : '1px solid #e7e5e4',
+                  borderTop: isActive ? '4px solid #841617' : '1px solid #e7e5e4',
+                  padding: '28px 24px',
                   cursor: 'pointer',
-                  padding: 0,
-                  transition: 'width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+                  transform: isActive ? 'translateY(-2px)' : 'translateY(0)',
+                  boxShadow: isActive ? '0 8px 24px rgba(132,22,23,0.08)' : 'none',
                 }}
-              />
-            ))}
-          </div>
+              >
+                {/* [DECORATIVE: ghost number] */}
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    top: '-8px',
+                    right: '4px',
+                    fontFamily: "'DM Serif Display', Georgia, serif",
+                    fontSize: '80px',
+                    fontWeight: 400,
+                    lineHeight: 1,
+                    color: '#841617',
+                    opacity: isActive ? 0.06 : 0.03,
+                    transition: 'opacity 0.35s ease',
+                    pointerEvents: 'none',
+                    userSelect: 'none',
+                  }}
+                >
+                  {cap.num}
+                </span>
+
+                {/* [ICON: black circle with crimson ring] */}
+                <div style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: '50%',
+                  background: isActive ? '#1a1a1a' : '#f5f5f4',
+                  border: isActive ? '2px solid #841617' : '2px solid #d6d3d1',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  marginBottom: '14px',
+                  transition: 'all 0.35s ease',
+                }}>
+                  <cap.Icon
+                    size={16}
+                    strokeWidth={1.5}
+                    color={isActive ? '#ffffff' : '#a8a29e'}
+                  />
+                </div>
+
+                {/* [CRIMSON: active indicator bar] */}
+                <div style={{
+                  width: isActive ? 24 : 0,
+                  height: 2,
+                  background: '#841617',
+                  marginBottom: isActive ? '10px' : '0',
+                  transition: 'all 0.35s cubic-bezier(0.22, 1, 0.36, 1)',
+                }} />
+
+                {/* [CRIMSON: impactful words highlighted] */}
+                <h3 style={{
+                  fontFamily: "'DM Serif Display', Georgia, serif",
+                  fontSize: '15px',
+                  fontWeight: 400,
+                  color: isActive ? '#1a1a1a' : '#78716c',
+                  lineHeight: 1.3,
+                  marginBottom: '8px',
+                  transition: 'color 0.3s ease',
+                }}>
+                  {highlight(cap.body, cap.highlightBody)}
+                </h3>
+
+                {/* [Active: show detail text; Inactive: show title only] */}
+                {isActive && (
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '13px',
+                    color: '#57534e',
+                    lineHeight: 1.6,
+                    margin: 0,
+                    animation: 'fadeSlideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                  }}>
+                    {highlight(cap.detail, cap.highlightDetail)}
+                  </p>
+                )}
+
+                {/* [ANIM: progress bar at bottom of active card] */}
+                {isActive && (
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    height: 2,
+                    background: '#e7e5e4',
+                    width: '100%',
+                  }}>
+                    <div style={{
+                      width: `${progress * 100}%`,
+                      height: '100%',
+                      background: '#841617',
+                      transition: 'width 0.1s linear',
+                    }} />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* [NAV: dot indicators + counter] */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '10px',
+          marginTop: '24px',
+        }}>
+          <span style={{
+            fontFamily: "'DM Sans', system-ui, sans-serif",
+            fontSize: '12px',
+            fontWeight: 500,
+            color: '#1a1a1a',
+            letterSpacing: '0.06em',
+            minWidth: '40px',
+            textAlign: 'center',
+          }}>
+            {String(active + 1).padStart(2, '0')} / {String(CAPABILITIES.length).padStart(2, '0')}
+          </span>
+          <div style={{ width: 1, height: 14, background: '#d6d3d1' }} />
+          {CAPABILITIES.map((cap, i) => (
+            <button
+              key={cap.num}
+              onClick={() => goTo(i)}
+              aria-label={`View ${cap.title}`}
+              style={{
+                width: active === i ? 24 : 8,
+                height: 8,
+                borderRadius: 4,
+                border: 'none',
+                background: active === i ? '#841617' : '#d6d3d1',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'width 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease',
+              }}
+            />
+          ))}
         </div>
 
         {/* Outcome callout */}
@@ -613,7 +542,7 @@ export function SolutionsDigitalPresenceSection() {
 
       <style>{`
         @keyframes fadeSlideIn {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>

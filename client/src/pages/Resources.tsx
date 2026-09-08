@@ -161,7 +161,7 @@ function RevealOnScroll({
   className = "",
   delay = 0,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   delay?: number;
 }) {

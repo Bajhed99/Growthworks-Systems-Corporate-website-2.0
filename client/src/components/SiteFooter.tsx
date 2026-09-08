@@ -12,9 +12,9 @@ const footerGroups = [
   { title: "Company", links: ["About GWS", "Resources", "Contact", "Book a Revenue Diagnostic"] },
 ] as const;
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+function FooterLink({ href, children }: { href?: string; children: React.ReactNode }) {
   const text = typeof children === "string" ? children : ""
-  const path =
+  const resolvedHref = href || (
     text === "Book a Revenue Diagnostic" ? "/revenue-diagnostic" :
     text === "Contact" ? "#" :
     text === "The Nine Domains" ? "/framework#nine-domain-framework" :
@@ -32,11 +32,12 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     text === "About GWS" ? "/about" :
     text === "Resources" ? "/resources" :
     "/"
+  )
   const handleClick = () => {
-    if (path === "#") return
+    if (resolvedHref === "#") return
     window.scrollTo(0, 0)
   }
-  return <Link href={path} onClick={handleClick}>{children}</Link>;
+  return <Link href={resolvedHref} onClick={handleClick}>{children}</Link>;
 }
 
 export default function SiteFooter() {
