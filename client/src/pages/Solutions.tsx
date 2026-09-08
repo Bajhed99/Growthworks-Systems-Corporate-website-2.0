@@ -1,7 +1,7 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
-import { SolutionsRevenuePathHero } from "@/components/solutions/SolutionsRevenuePathHero";
+import { SolutionsSystemInteractive } from "@/components/solutions/SolutionsSystemInteractive";
 import { SolutionsDigitalPresenceSection } from "@/components/solutions/SolutionsDigitalPresenceSection";
 import { SolutionsLeadResponseSection } from "@/components/solutions/SolutionsLeadResponseSection";
 import { SolutionsSalesOperationsSection } from "@/components/solutions/SolutionsSalesOperationsSection";
@@ -18,8 +18,8 @@ export default function Solutions() {
       <main id="main-content">
         {/* Section 01 — Hero */}
         <SolutionsHero />
-        {/* Section 02 — One Revenue Path, Four Areas */}
-        <SolutionsRevenuePathHero />
+        {/* Section 02 — The Solution System (interactive) */}
+        <SolutionsSystemInteractive />
         {/* Section 03 — Digital Presence */}
         <SolutionsDigitalPresenceSection />
         {/* Section 04 — Lead Response */}

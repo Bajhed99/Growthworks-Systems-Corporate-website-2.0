@@ -21,9 +21,18 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     text === "Maturity Model" ? "/framework#revenue-maturity" :
     text === "Why GWS Is Different" ? "/framework#why-revenue-matters" :
     text === "AI Visibility" ? "/ai-visibility" :
+    text === "AI-Ready Website" ? "/ai-ready-website" :
+    text === "CRM & Automation" ? "/crm-automation" :
     text === "Conversion Systems" ? "/conversion-systems" :
+    text === "All Solutions" ? "/solutions" :
+    text === "Home Services" ? "/home-services" :
+    text === "Financial Advisors & RIAs" ? "/financial-advisors" :
+    text === "Insurance Agencies" ? "/insurance-agencies" :
+    text === "About GWS" ? "/about" :
+    text === "Resources" ? "/resources" :
     "/"
-  return <Link href={path}>{children}</Link>;
+  const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  return <Link href={path} onClick={handleClick}>{children}</Link>;
 }
 
 export default function SiteFooter() {
