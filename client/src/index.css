@@ -5924,6 +5924,57 @@ h4 {
   }
 }
 
+/* ─── Framework page mobile responsive rules ─── */
+@media (max-width: 850px) {
+  /* WhyItMattersSection — mobile flow connector and pain strip */
+  .mobile-flow-connector {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 16px 0 24px;
+  }
+  .mobile-flow-connector .flow-line {
+    width: 1.5px;
+    height: 20px;
+    background: rgba(132, 22, 23, 0.25);
+  }
+  .mobile-flow-connector .flow-arrow {
+    width: 0;
+    height: 0;
+    border-left: 5px solid #841617;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    opacity: 0.35;
+  }
+
+  /* FragmentedVsConnectedSection — stack on mobile */
+  .fvcs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    max-width: 100% !important;
+  }
+
+  /* BusinessOutcomesSection — stack outcome cards */
+  .business-outcomes-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .outcome-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .business-outcomes-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+  .outcome-stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;

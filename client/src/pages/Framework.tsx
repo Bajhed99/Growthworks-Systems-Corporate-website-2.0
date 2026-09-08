@@ -540,7 +540,7 @@ function HeroSection() {
   }
 
   return (
-    <section className="bg-gws-dark text-white min-h-[532px] flex flex-col relative overflow-hidden pt-[108px] pb-14">
+    <section className="bg-gws-dark text-white min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14">
       {/* Dot grid */}
       <div className="absolute inset-0 opacity-[0.04]"
            style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
@@ -726,7 +726,7 @@ function WhyItMattersSection() {
           </div>
 
           {/* Stage cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
             {stages.map((stage, i) => {
               const isActive = active === i
               const isLast = i === stages.length - 1
@@ -803,7 +803,17 @@ function WhyItMattersSection() {
             </div>
           </div>
 
-          {/* Flow connector */}
+          {/* Flow connector — mobile */}
+          <div className="mobile-flow-connector lg:hidden mt-3 mb-6">
+            {stages.slice(0, -1).map((_, i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div className="flow-line" />
+                <div className="flow-arrow" />
+              </div>
+            ))}
+          </div>
+
+          {/* Flow connector — desktop only */}
           <div className="hidden lg:flex items-center gap-0 mt-3 mb-12 px-[0.5px]">
             {stages.map((_, i) => (
               <div key={i} className="flex items-center flex-1">
@@ -841,7 +851,7 @@ function WhyItMattersSection() {
           </div>
 
           {/* Bottom callout */}
-          <div className="relative flex flex-col md:flex-row items-center justify-between gap-8 px-10 py-10" style={{
+          <div className="relative flex flex-col sm:flex-col md:flex-row items-center justify-between gap-8 px-10 py-10" style={{
             background: "#1a1a1a",
             borderLeft: `4px solid ${CRIMSON}`,
           }}>
@@ -1222,7 +1232,7 @@ function FragmentedVsConnectedSection() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, maxWidth: 960, margin: "0 auto" }}>
+          <div className="fvcs-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, maxWidth: 960, margin: "0 auto" }}>
             {/* FRAGMENTED */}
             <div className="panel-card panel-frag" style={{ background: "#F8F6EC", border: "1px solid #E4DFD0", overflow: "hidden" }}>
               <div style={{ padding: "20px 36px", borderBottom: "1px solid #E4DFD0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
