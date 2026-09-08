@@ -1,5 +1,4 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { ThemeProvider } from "@figma/astraui";
 
 // ── Expandable data ────────────────────────────────────────────────────────
 
@@ -208,12 +207,9 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      {/* using custom div instead of SidebarNavigation: standalone homepage section */}
-      <>
-
-        {/* Layer 0: dot-grid spotlight */}
-        <canvas ref={gridCanvasRef}
+    <> {/* standalone homepage section — ThemeProvider supplied by outer App */}
+      {/* Layer 0: dot-grid spotlight */}
+      <canvas ref={gridCanvasRef}
           style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0 }} />
 
         <div
@@ -370,6 +366,5 @@ export default function App() {
           </div>
         </div>
       </>
-    </ThemeProvider>
-  );
-}
+    );
+  }
