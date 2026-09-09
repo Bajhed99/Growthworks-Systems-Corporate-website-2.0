@@ -113,26 +113,10 @@ export function SolutionsLeadResponseSection() {
       <div className="site-shell">
         {/* Header */}
         <p
-          className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400 text-center"
+          className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-crimson text-center"
         >
           02 — Lead Response
         </p>
-
-        {/* Accent line */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-            marginTop: "2px",
-            marginBottom: "4px",
-          }}
-        >
-          <div style={{ width: 28, height: 1.5, background: CRIMSON, opacity: 0.4 }} />
-          <div style={{ width: 4, height: 4, borderRadius: "50%", background: CRIMSON, opacity: 0.5 }} />
-          <div style={{ width: 28, height: 1.5, background: CRIMSON, opacity: 0.4 }} />
-        </div>
 
         <h2
           id="lead-response-title"
@@ -147,7 +131,7 @@ export function SolutionsLeadResponseSection() {
             marginInline: "auto",
           }}
         >
-          Protect buyer intent after someone raises their hand.
+          Protect buyer intent after someone <span style={{ color: "var(--maroon)" }}>raises their hand.</span>
         </h2>
         <p
           className="font-sans text-center mx-auto"
@@ -195,7 +179,7 @@ export function SolutionsLeadResponseSection() {
                   boxShadow: isHovered
                     ? "0 8px 24px rgba(132,22,23,0.08)"
                     : "none",
-                  borderRadius: "12px",
+                  borderRadius: "0px",
                   opacity: sectionVisible ? 1 : 0,
                   animation: sectionVisible
                     ? `cardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${0.1 + i * 0.08}s both`
@@ -296,7 +280,7 @@ export function SolutionsLeadResponseSection() {
             background: "#ffffff",
             border: "1.5px solid #1a1a1a",
             borderTop: "4px solid #841617",
-            borderRadius: "12px",
+            borderRadius: "0px",
             opacity: sectionVisible ? 1 : 0,
             transform: sectionVisible ? "translateY(0)" : "translateY(14px)",
             transition:

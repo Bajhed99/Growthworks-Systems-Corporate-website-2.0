@@ -377,20 +377,28 @@ function AssessmentPrinciplesSection() {
 function MethodologySection() {
   const { ref, visible } = useReveal();
 
+  const stagger = (index: number, base = 80) => base * index;
+
+  const animStyle = (index: number) => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(16px)",
+    transition: `opacity 600ms ease-out ${stagger(index)}ms, transform 600ms ease-out ${stagger(index)}ms`,
+  });
+
   return (
     <section id="methodology" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
         <div className={`reveal ${visible ? "visible" : ""}`}>
           <SectionLabel label="CONSULTING METHODOLOGY" />
-          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-4">
+          <h2 className="font-serif font-normal text-[44px] leading-[1.15] text-[#2B2B2B] mb-16" style={animStyle(0)}>
             Eight stages from first contact to <span style={{ color: "#841617" }}>compounding advantage.</span>
           </h2>
-          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]">
+          <p className="text-[18px] leading-[1.65] text-[#625E59] mb-12 max-w-[680px]" style={animStyle(1)}>
             The Revenue Infrastructure Diagnostic follows a structured eight-stage process, grouped into three phases.
           </p>
 
           {/* Phase groupings */}
-          <div className="mb-12 flex flex-wrap gap-6">
+          <div className="mb-14 flex flex-wrap gap-6" style={animStyle(2)}>
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-[#841617] text-white"></div>
               <span className="text-[14px] font-sans font-bold tracking-[0.12em] uppercase text-[#625E59]">Diagnostic Phase</span>
@@ -409,7 +417,7 @@ function MethodologySection() {
           </div>
 
           {/* Desktop: Horizontal overview */}
-          <div className="hidden lg:block mb-12">
+          <div className="hidden lg:block mb-14" style={animStyle(3)}>
             <div className="relative">
               <div className="absolute top-[40px] left-[6%] right-[6%] h-px bg-[#DDD6CC]"></div>
               <div className="flex justify-between">
@@ -419,14 +427,21 @@ function MethodologySection() {
                     <div key={stage.num} className="flex flex-col items-center" style={{ flex: 1 }}>
                       <div
                         className="w-20 h-20 rounded-full flex items-center justify-center border-4 bg-white relative z-10 mb-4"
-                        style={{ borderColor: phaseColor }}
+                        style={{
+                          borderColor: phaseColor,
+                          animation: visible ? `stagePop 500ms ease-out ${stagger(i, 120)}ms both` : "none",
+                        }}
                       >
                         <span className="text-[16px] font-sans font-bold" style={{ color: phaseColor }}>
                           {stage.num}
                         </span>
                       </div>
-                      <h4 className="font-serif font-normal text-[18px] leading-[1.3] text-[#2B2B2B] mb-1 text-center">{stage.name}</h4>
-                      <p className="text-[13px] font-sans text-[#625E59] text-center">{stage.timing}</p>
+                      <h4 className="font-serif font-normal text-[18px] leading-[1.3] text-[#2B2B2B] mb-1 text-center" style={{
+                        animation: visible ? `stageFade 400ms ease-out ${stagger(i, 160)}ms both` : "none",
+                      }}>{stage.name}</h4>
+                      <p className="text-[13px] font-sans text-[#625E59] text-center" style={{
+                        animation: visible ? `stageFade 400ms ease-out ${stagger(i, 200)}ms both` : "none",
+                      }}>{stage.timing}</p>
                     </div>
                   );
                 })}
@@ -436,10 +451,14 @@ function MethodologySection() {
 
           {/* Stage details */}
           <div className="space-y-4">
-            {METHODOLOGY_STAGES.map((stage) => {
+            {METHODOLOGY_STAGES.map((stage, i) => {
               const phaseColor = stage.phase === "DIAGNOSTIC" ? "#841617" : stage.phase === "IMPLEMENTATION" ? "#059669" : "#2563EB";
               return (
-                <div key={stage.num} className="diagnostic-card border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30">
+                <div
+                  key={stage.num}
+                  className="diagnostic-card border border-[#DDD6CC] rounded-none p-6 md:p-8 bg-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#841617]/30"
+                  style={animStyle(i + 4)}
+                >
                   <div className="flex flex-col md:flex-row md:items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className="w-14 h-14 rounded-full flex items-center justify-center border-2" style={{ borderColor: phaseColor, backgroundColor: `${phaseColor}15` }}>
@@ -466,6 +485,18 @@ function MethodologySection() {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes stagePop {
+          0% { opacity: 0; transform: scale(0.7); }
+          70% { transform: scale(1.05); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes stageFade {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 }

@@ -87,19 +87,19 @@ export function SolutionsSystemInteractive() {
 
   return (
     <div className="bg-white font-sans" style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
-      <section style={{ backgroundColor: "#ffffff" }}>
+      <section style={{ backgroundColor: "#ffffff", padding: "112px 0px 0px 0px" }}>
 
         {/* ═══════════════ DESKTOP VERSION (md and up) ═══════════════ */}
         <div className="hidden md:block">
           {/* Top kicker band */}
           <div style={{ background: "#ffffff", paddingBlock: 14, textAlign: "center" }}>
-            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase" }}>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase", marginBottom: "16px" }}>
               The Solution System
             </span>
           </div>
 
           {/* Hero text */}
-          <div style={{ maxWidth: 860, marginInline: "auto", paddingBlock: "40px 40px", paddingInline: 24, textAlign: "center" }}>
+          <div style={{ maxWidth: 860, marginBlockEnd: 44, marginInline: "auto", paddingInline: 24, textAlign: "center" }}>
             <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(32px, 5vw, 44px)", fontWeight: 400, lineHeight: 1.13, color: "#111111", letterSpacing: "-0.01em", marginBottom: 12 }}>
               Each capability strengthens a different part<br />
               of the same{" "}
@@ -270,7 +270,7 @@ export function SolutionsSystemInteractive() {
           </div>
 
           {/* Feedback label */}
-          <div style={{ textAlign: "center", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+          <div style={{ textAlign: "center", padding: "20px 24px", margin: "40px 0px 112px 0px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9B1C1C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.45 }}>
               <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
               <path d="M3 3v5h5" />

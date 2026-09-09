@@ -2316,7 +2316,7 @@ function DiagnosticCTASection() {
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
           </a>
 
-          <p className="font-sans text-gray-500 text-[15px] mt-[40px] tracking-wide">
+          <p className="font-sans text-gray-500 text-[15px] tracking-wide" style={{ marginTop: 48 }}>
             One system. Real alignment. Predictable growth.
           </p>
         </div>

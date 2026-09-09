@@ -167,20 +167,6 @@ export function SolutionsDigitalPresenceSection() {
       <div className="site-shell">
         <p className="section-kicker" style={{ textAlign: 'center' }}>01 — Digital Presence</p>
 
-        {/* [CRIMSON: header accent line] */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '8px',
-          marginTop: '2px',
-          marginBottom: '4px',
-        }}>
-          <div style={{ width: 28, height: 1.5, background: '#841617', opacity: 0.4 }} />
-          <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#841617', opacity: 0.5 }} />
-          <div style={{ width: 28, height: 1.5, background: '#841617', opacity: 0.4 }} />
-        </div>
-
         <h2 id="digital-presence-title" style={{ textAlign: 'center', fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 400, lineHeight: 1.15, color: '#1a1a1a', marginBottom: 14 }}>
           Make it easier for the right buyers to find, understand, and{' '}
           <span style={{ color: 'var(--maroon)' }}>trust your business.</span>
