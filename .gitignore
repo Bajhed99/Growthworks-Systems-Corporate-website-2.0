@@ -8,6 +8,10 @@ node_modules/
 
 # Build outputs
 /dist/
+# Keep static image assets in dist (images, logos, backgrounds used by the server)
+!/dist/public/
+!/dist/public/assets/
+!/dist/public/assets/images/
 /.next/
 /out/
 
