@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const cards = [
   {
@@ -8,7 +8,7 @@ const cards = [
     body: "Ensuring your business is seen, understood, and trusted before a prospect ever reaches out. Visibility that converts attention into intent.",
     detail:
       "A weak digital presence means qualified buyers are finding competitors instead. We build the foundation that earns discovery — optimized positioning, authoritative content, and a website that converts the traffic it earns.",
-    stat: "3×",
+    stat: "3x",
     statLabel: "more inbound leads with strong presence",
   },
   {
@@ -38,13 +38,13 @@ const cards = [
     body: "Understanding what is working, what is leaking, and where to focus next. Decisions driven by data, not instinct or assumption.",
     detail:
       "Revenue Intelligence connects every stage into a single feedback loop. You see where leads stall, which messages convert, and which reps need support — then that knowledge feeds back upstream to sharpen everything before it.",
-    stat: "↑",
+    stat: "Up",
     statLabel: "Every stage improves from what comes after",
     accent: true,
   },
 ];
 
-const INTERVAL = 2500;
+const INTERVAL = 4000;
 
 export function SolutionsSystemInteractive() {
   const [active, setActive] = useState(0);
@@ -86,216 +86,389 @@ export function SolutionsSystemInteractive() {
   const c = cards[active];
 
   return (
-    <div className="bg-white" style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
+    <div className="bg-white font-sans" style={{ fontFamily: "'DM Sans', system-ui, sans-serif" }}>
       <section style={{ backgroundColor: "#ffffff" }}>
 
-        {/* Top kicker band */}
-        <div style={{ background: "#ffffff", paddingBlock: 14, textAlign: "center" }}>
-          <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase" }}>
-            The Solution System
-          </span>
-        </div>
+        {/* ═══════════════ DESKTOP VERSION (md and up) ═══════════════ */}
+        <div className="hidden md:block">
+          {/* Top kicker band */}
+          <div style={{ background: "#ffffff", paddingBlock: 14, textAlign: "center" }}>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase" }}>
+              The Solution System
+            </span>
+          </div>
 
-        {/* Hero text */}
-        <div style={{ maxWidth: 860, marginInline: "auto", paddingBlock: "40px 40px", paddingInline: 24, textAlign: "center" }}>
-          <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(32px, 5vw, 44px)", fontWeight: 400, lineHeight: 1.13, color: "#111111", letterSpacing: "-0.01em", marginBottom: 12 }}>
-            Each capability strengthens a different part<br />
-            of the same{" "}
-            <em style={{ color: "#9B1C1C", fontStyle: "italic" }}>revenue journey.</em>
-          </h2>
-          <div style={{ width: 48, height: 2, background: "#9B1C1C", marginInline: "auto", marginTop: 28, marginBottom: 28 }} />
-          <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#4a4744", maxWidth: 600, marginInline: "auto" }}>
-            Four solution areas organized around the business responsibility they strengthen — not individual tools or technologies. Connected by design.
-          </p>
-        </div>
+          {/* Hero text */}
+          <div style={{ maxWidth: 860, marginInline: "auto", paddingBlock: "40px 40px", paddingInline: 24, textAlign: "center" }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: "clamp(32px, 5vw, 44px)", fontWeight: 400, lineHeight: 1.13, color: "#111111", letterSpacing: "-0.01em", marginBottom: 12 }}>
+              Each capability strengthens a different part<br />
+              of the same{" "}
+              <em style={{ color: "#9B1C1C", fontStyle: "italic" }}>revenue journey.</em>
+            </h2>
+            <div style={{ width: 48, height: 2, background: "#9B1C1C", marginInline: "auto", marginTop: 28, marginBottom: 28 }} />
+            <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#4a4744", maxWidth: 600, marginInline: "auto" }}>
+              Four solution areas organized around the business responsibility they strengthen — not individual tools or technologies. Connected by design.
+            </p>
+          </div>
 
-        {/* Journey step indicators */}
-        <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginBottom: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
-            {cards.map((card, i) => (
-              <div key={card.num} style={{ display: "flex", alignItems: "center", flex: i < 3 ? 1 : "none" }}>
+          {/* Journey step indicators */}
+          <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginBottom: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
+              {cards.map((card, i) => (
+                <div key={card.num} style={{ display: "flex", alignItems: "center", flex: i < 3 ? 1 : "none" }}>
+                  <button
+                    onClick={() => handleCardClick(i)}
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 6,
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "0 0 16px",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <div style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      border: active === i ? "2px solid #9B1C1C" : "1px solid #d4cfc8",
+                      background: active === i ? "#9B1C1C" : "#ffffff",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "all 0.3s ease",
+                      position: "relative",
+                    }}>
+                      {active === i && (
+                        <svg width="36" height="36" viewBox="0 0 36 36" style={{ position: "absolute", top: -2, left: -2, transform: "rotate(-90deg)" }}>
+                          <circle
+                            cx="18" cy="18" r="16"
+                            fill="none"
+                            stroke="rgba(155,28,28,0.25)"
+                            strokeWidth="2"
+                            strokeDasharray={`${2 * Math.PI * 16}`}
+                            strokeDashoffset={`${2 * Math.PI * 16 * (1 - progress)}`}
+                            style={{ transition: "stroke-dashoffset 0.05s linear" }}
+                          />
+                        </svg>
+                      )}
+                      <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, color: active === i ? "#ffffff" : "#9B1C1C", letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
+                        {card.num}
+                      </span>
+                    </div>
+                    <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: active === i ? 600 : 400, color: active === i ? "#9B1C1C" : "#9b9590", letterSpacing: "0.04em", whiteSpace: "nowrap", transition: "all 0.3s ease" }}>
+                      {card.title}
+                    </span>
+                  </button>
+                  {i < 3 && (
+                    <div style={{ flex: 1, height: 1, marginBottom: 28, marginInline: 8, background: "#e0d9cf", position: "relative", overflow: "hidden" }}>
+                      <div style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "#9B1C1C",
+                        transformOrigin: "left",
+                        transform: active > i ? "scaleX(1)" : "scaleX(0)",
+                        transition: "transform 0.4s ease",
+                        opacity: 0.5,
+                      }} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Active card detail panel */}
+          <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginBottom: 0 }}>
+            <div
+              key={active}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                border: `1.5px solid ${c.accent ? "#9B1C1C" : "#d4cfc8"}`,
+                background: c.accent ? "#9B1C1C" : "#ffffff",
+                animation: "fadeSlideIn 0.35s ease forwards",
+              }}
+            >
+              {/* Left: main content */}
+              <div style={{ padding: "52px 48px", borderRight: `1px solid ${c.accent ? "rgba(255,255,255,0.15)" : "#d4cfc8"}`, position: "relative", overflow: "hidden" }}>
+                <span aria-hidden="true" style={{ position: "absolute", top: -20, right: -10, fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 180, fontWeight: 400, lineHeight: 1, color: c.accent ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)", pointerEvents: "none", userSelect: "none" }}>
+                  {c.num}
+                </span>
+                <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: c.accent ? "rgba(255,255,255,0.5)" : "#9B1C1C", marginBottom: 20 }}>
+                  {c.tag}
+                </p>
+                <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 36, fontWeight: 400, color: c.accent ? "#ffffff" : "#111111", lineHeight: 1.15, letterSpacing: "-0.01em", marginBottom: 20 }}>
+                  {c.title}
+                </h3>
+                <div style={{ width: 36, height: 2, background: c.accent ? "rgba(255,255,255,0.3)" : "#9B1C1C", marginBottom: 24 }} />
+                <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: c.accent ? "rgba(255,255,255,0.8)" : "#4a4744" }}>
+                  {c.body}
+                </p>
+              </div>
+
+              {/* Right: detail + stat */}
+              <div style={{ padding: "52px 48px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: c.accent ? "rgba(255,255,255,0.75)" : "#5a5754" }}>
+                  {c.detail}
+                </p>
+                <div style={{ marginTop: 40, paddingTop: 28, borderTop: `1px solid ${c.accent ? "rgba(255,255,255,0.15)" : "#e0d9cf"}`, display: "flex", alignItems: "baseline", gap: 14 }}>
+                  <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 48, fontWeight: 400, color: c.accent ? "#ffffff" : "#9B1C1C", lineHeight: 1 }}>
+                    {c.stat}
+                  </span>
+                  <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 400, color: c.accent ? "rgba(255,255,255,0.55)" : "#9b9590", lineHeight: 1.4, maxWidth: 200 }}>
+                    {c.statLabel}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card grid thumbnails */}
+          <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginTop: 0 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, borderLeft: "1px solid #d4cfc8", borderRight: "1px solid #d4cfc8", borderBottom: "1px solid #d4cfc8" }}>
+              {cards.map((card, i) => (
                 <button
+                  key={card.num}
                   onClick={() => handleCardClick(i)}
                   onMouseEnter={() => setPaused(true)}
                   onMouseLeave={() => setPaused(false)}
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 6,
-                    background: "none",
-                    border: "none",
+                    textAlign: "left",
+                    background: active === i ? (card.accent ? "#8a1717" : "#faf8f4") : (card.accent ? "#9B1C1C" : "#ffffff"),
+                    borderRight: i < 3 ? "1px solid #d4cfc8" : "none",
+                    borderTop: `2px solid ${active === i ? "#9B1C1C" : "transparent"}`,
+                    padding: "24px 28px 20px",
                     cursor: "pointer",
-                    padding: "0 0 16px",
-                    flexShrink: 0,
+                    transition: "background 0.25s ease",
+                    border: "none",
+                    position: "relative",
+                    overflow: "hidden",
                   }}
                 >
-                  <div style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: "50%",
-                    border: active === i ? "2px solid #9B1C1C" : "1px solid #d4cfc8",
-                    background: active === i ? "#9B1C1C" : "#ffffff",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    transition: "all 0.3s ease",
-                    position: "relative",
-                  }}>
-                    {active === i && (
-                      <svg width="36" height="36" viewBox="0 0 36 36" style={{ position: "absolute", top: -2, left: -2, transform: "rotate(-90deg)" }}>
-                        <circle
-                          cx="18" cy="18" r="16"
-                          fill="none"
-                          stroke="rgba(155,28,28,0.25)"
-                          strokeWidth="2"
-                          strokeDasharray={`${2 * Math.PI * 16}`}
-                          strokeDashoffset={`${2 * Math.PI * 16 * (1 - progress)}`}
-                          style={{ transition: "stroke-dashoffset 0.05s linear" }}
-                        />
-                      </svg>
-                    )}
-                    <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, color: active === i ? "#ffffff" : "#9B1C1C", letterSpacing: "0.06em", position: "relative", zIndex: 1 }}>
-                      {card.num}
-                    </span>
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: active === i ? (card.accent ? "rgba(255,255,255,0.6)" : "#9B1C1C") : (card.accent ? "rgba(255,255,255,0.5)" : "#c0b8b0"), marginBottom: 6 }}>
+                    {card.num}
                   </div>
-                  <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: active === i ? 600 : 400, color: active === i ? "#9B1C1C" : "#9b9590", letterSpacing: "0.04em", whiteSpace: "nowrap", transition: "all 0.3s ease" }}>
+                  <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 16, fontWeight: 400, color: card.accent ? "#ffffff" : "#111111", lineHeight: 1.2 }}>
                     {card.title}
-                  </span>
-                </button>
-                {i < 3 && (
-                  <div style={{ flex: 1, height: 1, marginBottom: 28, marginInline: 8, background: "#e0d9cf", position: "relative", overflow: "hidden" }}>
-                    <div style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "#9B1C1C",
-                      transformOrigin: "left",
-                      transform: active > i ? "scaleX(1)" : "scaleX(0)",
-                      transition: "transform 0.4s ease",
-                      opacity: 0.5,
-                    }} />
                   </div>
-                )}
-              </div>
-            ))}
+                  <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: active === i ? (card.accent ? "rgba(255,255,255,0.5)" : "#9B1C1C") : (card.accent ? "rgba(255,255,255,0.4)" : "#b0a8a0"), marginTop: 4 }}>
+                    {card.tag}
+                  </div>
+                  {/* Progress sweep */}
+                  {active === i && (
+                    <div style={{ position: "absolute", bottom: 0, left: 0, height: 2, background: card.accent ? "rgba(255,255,255,0.4)" : "#9B1C1C", width: `${progress * 100}%`, transition: "width 0.05s linear" }} />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Feedback label */}
+          <div style={{ textAlign: "center", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9B1C1C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.45 }}>
+              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+              <path d="M16 16h5v5" />
+            </svg>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, fontWeight: 400, color: "#9b9590", fontStyle: "italic" }}>
+              Revenue Intelligence feeds learning back to every prior stage
+            </span>
+          </div>
+
+          {/* Closing band */}
+          <div style={{ borderTop: "1px solid #333", background: "#000000", paddingBlock: 52, paddingInline: 24, textAlign: "center" }}>
+            <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#DDD6CC", maxWidth: 580, marginInline: "auto" }}>
+              These four capabilities form one connected system. Each one reinforces the others.{" "}
+              <span style={{ color: "#9B1C1C", fontWeight: 500 }}>Learn how they work together below.</span>
+            </p>
           </div>
         </div>
 
-        {/* Active card detail panel */}
-        <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginBottom: 0 }}>
-          <div
-            key={active}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              border: `1.5px solid ${c.accent ? "#9B1C1C" : "#d4cfc8"}`,
-              background: c.accent ? "#9B1C1C" : "#ffffff",
-              animation: "fadeSlideIn 0.35s ease forwards",
-            }}
-          >
-            {/* Left: main content */}
-            <div style={{ padding: "52px 48px", borderRight: `1px solid ${c.accent ? "rgba(255,255,255,0.15)" : "#d4cfc8"}`, position: "relative", overflow: "hidden" }}>
-              <span aria-hidden="true" style={{ position: "absolute", top: -20, right: -10, fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 180, fontWeight: 400, lineHeight: 1, color: c.accent ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)", pointerEvents: "none", userSelect: "none" }}>
-                {c.num}
-              </span>
-              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: c.accent ? "rgba(255,255,255,0.5)" : "#9B1C1C", marginBottom: 20 }}>
+        {/* ═══════════════ MOBILE VERSION (below md) ═══════════════ */}
+        <div className="md:hidden">
+          {/* Kicker */}
+          <div style={{ background: "#ffffff", padding: "20px 20px 0", textAlign: "center" }}>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", color: "#9B1C1C", textTransform: "uppercase" }}>
+              The Solution System
+            </span>
+          </div>
+
+          {/* Title */}
+          <div style={{ padding: "16px 20px 0", textAlign: "center" }}>
+            <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 24, fontWeight: 400, lineHeight: 1.2, color: "#111111", marginBottom: 10 }}>
+              Four capabilities. <em style={{ color: "#9B1C1C", fontStyle: "italic" }}>One revenue journey.</em>
+            </h2>
+            <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, lineHeight: 1.65, color: "#57534e" }}>
+              Connected by design — each strengthens the next.
+            </p>
+          </div>
+
+          {/* Active card */}
+          <div style={{ padding: "24px 20px 0" }}>
+            <div
+              key={active}
+              style={{
+                background: "#ffffff",
+                border: "1.5px solid #d4cfc8",
+                borderRadius: 12,
+                padding: "24px 20px",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              {/* Step number */}
+              <div style={{
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                border: "2px solid #9B1C1C",
+                background: "#9B1C1C",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 14,
+              }}>
+                <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 12, fontWeight: 600, color: "#ffffff", letterSpacing: "0.06em" }}>
+                  {c.num}
+                </span>
+              </div>
+
+              {/* Tag */}
+              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, fontWeight: 600, letterSpacing: "0.14em", textTransform: "uppercase", color: "#9B1C1C", marginBottom: 8 }}>
                 {c.tag}
               </p>
-              <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 36, fontWeight: 400, color: c.accent ? "#ffffff" : "#111111", lineHeight: 1.15, letterSpacing: "-0.01em", marginBottom: 20 }}>
+
+              {/* Title */}
+              <h3 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 22, fontWeight: 400, color: "#111111", lineHeight: 1.2, marginBottom: 10 }}>
                 {c.title}
               </h3>
-              <div style={{ width: 36, height: 2, background: c.accent ? "rgba(255,255,255,0.3)" : "#9B1C1C", marginBottom: 24 }} />
-              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: c.accent ? "rgba(255,255,255,0.8)" : "#4a4744" }}>
+
+              {/* Indicator line */}
+              <div style={{ width: 28, height: 2, background: "#9B1C1C", marginBottom: 14, opacity: 0.6 }} />
+
+              {/* Body */}
+              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 15, lineHeight: 1.7, color: "#4a4744", marginBottom: 16 }}>
                 {c.body}
               </p>
-            </div>
 
-            {/* Right: detail + stat */}
-            <div style={{ padding: "52px 48px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: c.accent ? "rgba(255,255,255,0.75)" : "#5a5754" }}>
+              {/* Detail */}
+              <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, lineHeight: 1.7, color: "#78716c", marginBottom: 20, paddingTop: 14, borderTop: "1px solid #e7e5e4" }}>
                 {c.detail}
               </p>
-              <div style={{ marginTop: 40, paddingTop: 28, borderTop: `1px solid ${c.accent ? "rgba(255,255,255,0.15)" : "#e0d9cf"}`, display: "flex", alignItems: "baseline", gap: 14 }}>
-                <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 48, fontWeight: 400, color: c.accent ? "#ffffff" : "#9B1C1C", lineHeight: 1 }}>
+
+              {/* Stat */}
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 32, color: "#9B1C1C", lineHeight: 1 }}>
                   {c.stat}
                 </span>
-                <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 400, color: c.accent ? "rgba(255,255,255,0.55)" : "#9b9590", lineHeight: 1.4, maxWidth: 200 }}>
+                <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, color: "#78716c", lineHeight: 1.4 }}>
                   {c.statLabel}
                 </span>
               </div>
+
+              {/* Progress bar */}
+              <div style={{ width: "100%", height: 3, background: "#e7e5e4", overflow: "hidden", borderRadius: "2px", marginTop: 16 }}>
+                <div style={{
+                  width: `${progress * 100}%`,
+                  height: "100%",
+                  background: "#9B1C1C",
+                  borderRadius: "2px",
+                  transition: "width 0.08s linear",
+                }} />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Card grid thumbnails */}
-        <div style={{ maxWidth: 1200, marginInline: "auto", paddingInline: 24, marginTop: 0 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 0, borderLeft: "1px solid #d4cfc8", borderRight: "1px solid #d4cfc8", borderBottom: "1px solid #d4cfc8" }}>
+          {/* Dot indicators */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "20px 20px 0" }}>
             {cards.map((card, i) => (
               <button
                 key={card.num}
                 onClick={() => handleCardClick(i)}
-                onMouseEnter={() => setPaused(true)}
-                onMouseLeave={() => setPaused(false)}
+                onTouchStart={() => setPaused(true)}
+                onTouchEnd={() => { setPaused(false); }}
+                style={{
+                  width: active === i ? 28 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  border: "none",
+                  background: active === i ? "#9B1C1C" : "#d4cfc8",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease",
+                }}
+                aria-label={`View ${card.title}`}
+              />
+            ))}
+          </div>
+
+          {/* Mini thumbnail cards */}
+          <div style={{ padding: "16px 20px 0", display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 10 }}>
+            {cards.map((card, i) => (
+              <button
+                key={card.num}
+                onClick={() => handleCardClick(i)}
+                onTouchStart={() => setPaused(true)}
+                onTouchEnd={() => { setPaused(false); }}
                 style={{
                   textAlign: "left",
-                  background: active === i ? (card.accent ? "#8a1717" : "#faf8f4") : (card.accent ? "#9B1C1C" : "#ffffff"),
-                  borderRight: i < 3 ? "1px solid #d4cfc8" : "none",
-                  borderTop: `2px solid ${active === i ? "#9B1C1C" : "transparent"}`,
-                  padding: "24px 28px 20px",
+                  background: active === i ? "#faf8f4" : "#ffffff",
+                  border: active === i ? "1.5px solid #9B1C1C" : "1px solid #e7e5e4",
+                  borderRadius: 10,
+                  padding: "14px 14px",
                   cursor: "pointer",
-                  transition: "background 0.25s ease",
-                  border: "none",
-                  position: "relative",
-                  overflow: "hidden",
+                  transition: "all 0.25s ease",
                 }}
               >
-                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: active === i ? (card.accent ? "rgba(255,255,255,0.6)" : "#9B1C1C") : (card.accent ? "rgba(255,255,255,0.5)" : "#c0b8b0"), marginBottom: 6 }}>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 9, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: active === i ? "#9B1C1C" : "#c0b8b0", marginBottom: 4 }}>
                   {card.num}
                 </div>
-                <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 16, fontWeight: 400, color: card.accent ? "#ffffff" : "#111111", lineHeight: 1.2 }}>
+                <div style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 14, fontWeight: 400, color: "#111111", lineHeight: 1.2 }}>
                   {card.title}
                 </div>
-                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: active === i ? (card.accent ? "rgba(255,255,255,0.5)" : "#9B1C1C") : (card.accent ? "rgba(255,255,255,0.4)" : "#b0a8a0"), marginTop: 4 }}>
+                <div style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 11, color: active === i ? "#9B1C1C" : "#b0a8a0", marginTop: 3 }}>
                   {card.tag}
                 </div>
-                {/* Progress sweep */}
-                {active === i && (
-                  <div style={{ position: "absolute", bottom: 0, left: 0, height: 2, background: card.accent ? "rgba(255,255,255,0.4)" : "#9B1C1C", width: `${progress * 100}%`, transition: "width 0.05s linear" }} />
-                )}
               </button>
             ))}
           </div>
+
+          {/* Feedback */}
+          <div style={{ textAlign: "center", padding: "20px 20px 0", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9B1C1C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.45, flexShrink: 0 }}>
+              <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+              <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+              <path d="M16 16h5v5" />
+            </svg>
+            <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 12, fontWeight: 400, color: "#9b9590", fontStyle: "italic" }}>
+              Revenue Intelligence feeds learning back to every prior stage
+            </span>
+          </div>
+
+          {/* Closing band */}
+          <div style={{ borderTop: "1px solid #333", background: "#000000", marginTop: 24, padding: "28px 20px", textAlign: "center" }}>
+            <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 14, fontWeight: 400, lineHeight: 1.65, color: "#DDD6CC" }}>
+              These four capabilities form one connected system.{" "}
+              <span style={{ color: "#9B1C1C", fontWeight: 500 }}>See how they work together below.</span>
+            </p>
+          </div>
         </div>
 
-        {/* Feedback label */}
-        <div style={{ textAlign: "center", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9B1C1C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ opacity: 0.45 }}>
-            <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-            <path d="M3 3v5h5" />
-            <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
-            <path d="M16 16h5v5" />
-          </svg>
-          <span style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 13, fontWeight: 400, color: "#9b9590", fontStyle: "italic" }}>
-            Revenue Intelligence feeds learning back to every prior stage
-          </span>
-        </div>
-
-        {/* Closing band */}
-        <div style={{ borderTop: "1px solid #333", background: "#000000", paddingBlock: 52, paddingInline: 24, textAlign: "center" }}>
-          <p style={{ fontFamily: "'DM Sans', system-ui, sans-serif", fontSize: 18, fontWeight: 400, lineHeight: 1.7, color: "#DDD6CC", maxWidth: 580, marginInline: "auto" }}>
-            These four capabilities form one connected system. Each one reinforces the others.{" "}
-            <span style={{ color: "#9B1C1C", fontWeight: 500 }}>Learn how they work together below.</span>
-          </p>
-        </div>
-
+        <style>{`
+          @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
       </section>
-
-      <style>{`
-        @keyframes fadeSlideIn {
-          from { opacity: 0; transform: translateY(8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
 }

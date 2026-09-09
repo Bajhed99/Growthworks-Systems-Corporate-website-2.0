@@ -3,16 +3,6 @@ import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-/* ─── Tokens (sitewide) ─────────────────────────────────────────────── */
-const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
-const SECTION_DEFAULT = "py-[72px] md:py-[112px]";
-const SECTION_HERO = "py-[88px] md:py-[128px]";
-const H1_CLASS = "font-normal text-[40px] md:text-[60px] leading-[1.10] text-gray-900 font-serif";
-const H2_CLASS = "font-normal text-[32px] md:text-[44px] leading-[1.15] text-gray-900 font-serif";
-const H4_CLASS = "font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900 font-serif";
-const CREAM = "#F5F0E8";
-const BORDER = "#e0d9cf";
-
 /* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
 function RevealOnScroll({
   children,
@@ -72,7 +62,7 @@ function RevealOnScroll({
 
 const SectionLabel = ({ label }: { label: string }) => (
   <h3
-    className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]"
+    className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400"
   >
     {label}
   </h3>
@@ -193,21 +183,21 @@ function Hero() {
   return (
     <section
       aria-labelledby="ai-ready-h1"
-      className={`${SECTION_HERO} bg-surface`}
+      className="section section--white"
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-5 text-gray-400">
+          <h3 className="hero-kicker">
             AI-Ready Website
           </h3>
           <h1
             id="ai-ready-h1"
-            className={`${H1_CLASS} mb-6 max-w-[820px] text-gray-900 font-serif`}
+            className="font-serif font-normal text-[2.5rem] md:text-[3.75rem] leading-[1.10] text-gray-900 mb-6 max-w-[820px]"
           >
             A website is not a brochure. It is a revenue asset.
           </h1>
           <p
-            className="text-[18px] md:text-[20px] leading-[1.60] mb-10 max-w-[720px] text-gray-700 font-sans"
+            className="text-[17px] md:text-[18px] leading-[1.60] mb-10 max-w-[720px] text-gray-700 font-sans"
           >
             An AI-Ready Website is the conversion engine at the center of your
             Revenue Infrastructure. It establishes authority, earns trust, and
@@ -234,9 +224,9 @@ function BusinessProblemSection() {
   return (
     <section
       aria-labelledby="ai-ready-problem-h2"
-      className={`${SECTION_DEFAULT} bg-white`}
+      className="section section--white"
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
@@ -246,13 +236,13 @@ function BusinessProblemSection() {
               <CrimsonRule />
               <h2
                 id="ai-ready-problem-h2"
-                className={`${H2_CLASS} mb-6`}
+                className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-6"
               >
                 Most websites describe services. Qualified buyers need to trust
                 the firm.
               </h2>
               <p
-                className="text-[18px] leading-[1.65] mb-6"
+                className="text-[17px] md:text-[18px] leading-[1.65] mb-6"
               >
                 Most service-business websites explain what the company does.
                 Qualified buyers need more than service descriptions. They need
@@ -285,9 +275,9 @@ function ApproachSection() {
   return (
     <section
       aria-labelledby="ai-ready-approach-h2"
-      className={`${SECTION_DEFAULT} bg-surface`}
+      className="section section--gray"
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
@@ -297,13 +287,13 @@ function ApproachSection() {
               <CrimsonRule />
               <h2
                 id="ai-ready-approach-h2"
-                className={`${H2_CLASS} mb-4`}
+                className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-4"
               >
                 Engineered for conversions, AI indexing, and executive
                 credibility.
               </h2>
               <p
-                className="text-[18px] leading-[1.65] mb-10"
+                className="text-[17px] md:text-[18px] leading-[1.65] mb-10"
               >
                 Six interconnected components — each one a distinct discipline
                 that an AI-Ready Website must perform well.
@@ -322,7 +312,7 @@ function ApproachSection() {
                         {row.n}
                       </span>
                       <h3
-                        className={H4_CLASS}
+                        className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900"
                       >
                         {row.t}
                       </h3>
@@ -349,9 +339,9 @@ function OutcomesSection() {
   return (
     <section
       aria-labelledby="ai-ready-outcomes-h2"
-      className={`${SECTION_DEFAULT} bg-white`}
+      className="section section--white"
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
             <div>
@@ -361,12 +351,12 @@ function OutcomesSection() {
               <CrimsonRule />
               <h2
                 id="ai-ready-outcomes-h2"
-                className={`${H2_CLASS} mb-6`}
+                className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-6"
               >
                 A website that works as hard as your best salesperson.
               </h2>
               <p
-                className="text-[18px] leading-[1.65] mb-10"
+                className="text-[17px] md:text-[18px] leading-[1.65] mb-10"
               >
                 What the system is designed to deliver — treated as outcomes to
                 engineer for, not guarantees to claim.
@@ -375,11 +365,7 @@ function OutcomesSection() {
                 {OUTCOMES.map((o, i) => (
                   <RevealOnScroll key={o.t} delayMs={i * 40}>
                     <li
-                      className="rounded-none p-6 md:p-7"
-                      style={{
-                        background: CREAM,
-                        border: `1px solid ${BORDER}`,
-                      }}
+                      className="rounded-2xl p-5 md:p-6 border border-gray-200"
                     >
                       <div className="flex items-baseline gap-4 mb-2">
                         <span
@@ -388,7 +374,7 @@ function OutcomesSection() {
                           0{i + 1}
                         </span>
                         <h3
-                          className={H4_CLASS}
+                          className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900"
                         >
                           {o.t}
                         </h3>
@@ -416,9 +402,9 @@ function AuditCTASection() {
   return (
     <section
       aria-labelledby="ai-ready-audit-h2"
-      className={`${SECTION_DEFAULT} bg-surface`}
+      className="section section--gray"
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
             {/* Left: copy + actions */}
@@ -430,12 +416,12 @@ function AuditCTASection() {
               </p>
               <h2
                 id="ai-ready-audit-h2"
-                className={`${H2_CLASS} mb-5 max-w-[480px]`}
+                className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-5 max-w-[480px]"
               >
                 Is your website working as a revenue asset?
               </h2>
               <p
-                className="text-[18px] leading-[1.65] mb-6 max-w-[520px]"
+                className="text-[17px] md:text-[18px] leading-[1.65] mb-6 max-w-[520px]"
               >
                 A focused evaluation of conversion architecture, technical
                 performance, AI readiness, and authority signals — followed by
@@ -460,7 +446,7 @@ function AuditCTASection() {
                   </li>
                 ))}
               </ul>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 md:gap-4">
                 <PrimaryLink href="/revenue-diagnostic">
                   Book a Revenue Diagnostic
                   <ArrowRight size={16} />
@@ -473,7 +459,8 @@ function AuditCTASection() {
 
             {/* Right: dark informational panel */}
             <div
-              className="rounded-none p-7 md:p-9 bg-gws-dark text-white border border-gray-900"
+              className="rounded-none p-5 md:p-7 lg:p-9 text-white border border-gray-900"
+              style={{ background: "var(--dark)" }}
             >
               <p
                 className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
@@ -485,7 +472,7 @@ function AuditCTASection() {
                 {CALL_STEPS.map((s, i) => (
                   <li
                     key={i}
-                    className="grid grid-cols-[28px_1fr] gap-3 items-start"
+                    className="grid grid-cols-[28px_1fr] gap-3 md:gap-4 items-start"
                   >
                     <span
                       className="text-[14px] font-semibold tracking-[0.10em] mt-[2px]"
@@ -525,9 +512,9 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="ai-ready-closing-h2"
-      className="py-[80px] md:py-[112px] bg-gws-dark"
+      className="section" style={{ background: "var(--dark)", color: "var(--gws-cream)" }}
     >
-      <div className={CONTAINER}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
           <div>
             <p
@@ -538,15 +525,14 @@ function ClosingBand() {
             </p>
             <h2
               id="ai-ready-closing-h2"
-              className={`${H2_CLASS} mb-6`}
-             
+              className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-white mb-6"
             >
               Your business doesn't have a marketing problem. It has a Revenue
               Infrastructure problem.
             </h2>
             <p
-              className="text-[18px] leading-[1.65] mb-9"
-             
+              className="text-[17px] md:text-[18px] leading-[1.65] mb-6 md:mb-8"
+
             >
               A website is one part of that infrastructure. The Revenue
               Diagnostic examines how all the parts work together — and which

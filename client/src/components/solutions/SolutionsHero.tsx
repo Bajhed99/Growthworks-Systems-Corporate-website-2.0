@@ -7,7 +7,7 @@ function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAtt
 
 export function SolutionsHero() {
   return (
-    <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title" style={{ height: 600, minHeight: 'unset' }}>
+    <section className="gws-glowy-hero" aria-labelledby="solutions-hero-title" style={{ height: 600, minHeight: 'unset', paddingTop: 20 }}>
       <div className="gws-glowy-canvas" />
       <div className="gws-glowy-content" style={{ minHeight: 'unset', paddingBlock: '48px 40px' }}>
         <div className="gws-glowy-content-inner">

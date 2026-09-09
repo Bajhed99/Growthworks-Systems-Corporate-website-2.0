@@ -1,15 +1,13 @@
 export function AIBusinessOutcomesSection() {
   return (
     <section aria-label="Business Outcomes" className="diagnostic-section section--gray">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
+      <div className="site-shell">
         <p className="section-kicker">Business Outcomes</p>
         <h2 className="font-serif">From Discoverability to <span className="heading-accent">Revenue Growth</span></h2>
         <p className="font-sans text-[15px] text-gray-700 leading-[1.55]">
           AI Visibility isn't just about being found. It's about being found at the right time, by the right buyer, with the right authority — and turning that discovery into business outcomes that compound over time.
         </p>
-        <div style={{
-          display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '32px'
-        }} aria-label="Five-step outcomes chain">
+        <div className="ai-cards" aria-label="Five-step outcomes chain">
           {[
             { step: '01', title: 'Discoverability', desc: 'Your business is found when buyers ask relevant questions.' },
             { step: '02', title: 'Recognition', desc: 'AI systems correctly understand what you do and who you serve.' },
@@ -17,13 +15,10 @@ export function AIBusinessOutcomesSection() {
             { step: '04', title: 'Engagement', desc: 'Buyers reach out with context — they already know you.' },
             { step: '05', title: 'Revenue Growth', desc: 'Qualified pipeline improves; acquisition cost decreases; growth compounds.' },
           ].map(s => (
-            <div key={s.step} style={{
-              flex: '1 1 200px', maxWidth: '260px', padding: '24px 20px',
-              background: '#fff'
-            }} className="rounded-2xl border-gray-200" aria-label={`${s.title}: ${s.desc}`}>
-              <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em', marginBottom: '12px' }} className="bg-crimson text-white">{s.step}</span>
-              <h3 className="font-serif text-[20px] font-normal text-gray-900 mb-2 leading-tight">{s.title}</h3>
-              <p className="font-sans text-[15px] text-gray-700 leading-[1.55]">{s.desc}</p>
+            <div key={s.step} className="ai-card" aria-label={`${s.title}: ${s.desc}`}>
+              <span className="ai-card-num">{s.step}</span>
+              <h3 className="ai-card-title">{s.title}</h3>
+              <p className="ai-card-body">{s.desc}</p>
             </div>
           ))}
         </div>

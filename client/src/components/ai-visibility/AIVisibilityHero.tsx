@@ -1,21 +1,14 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-
-function AnchorLink({ href, children, className, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: React.ReactNode }) {
-  return <a className={className} href={href} {...props}>{children}</a>;
-}
+import { AnchorLink } from "./AnchorLink";
 
 export function AIVisibilityHero() {
   return (
     <section className="gws-glowy-hero" aria-labelledby="ai-visibility-hero-title">
-      <div className="gws-glowy-canvas" style={{
-        background: "radial-gradient(60% 60% at 85% 10%, rgba(132,22,23,0.08), transparent 72%), radial-gradient(45% 45% at 8% 80%, rgba(132,22,23,0.04), transparent 72%)"
-      }} />
-      <div className="gws-glowy-content max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 w-full">
+      <div className="gws-glowy-canvas" />
+      <div className="gws-glowy-content">
         <div className="gws-glowy-content-inner">
-          <p className="hero-kicker">
-            AI Visibility
-          </p>
+          <p className="hero-kicker">AI Visibility</p>
           <h1 id="ai-visibility-hero-title" className="gws-glowy-title font-serif">
             Be <span className="heading-accent">understood</span> before the buyer ever reaches your website.
           </h1>

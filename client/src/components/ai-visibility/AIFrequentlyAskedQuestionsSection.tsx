@@ -28,14 +28,12 @@ export function AIFrequentlyAskedQuestionsSection() {
               a: 'No. The framework does not claim control over any AI platform. It improves the conditions under which those platforms may include, understand, and recommend your business.',
             },
           ].map((faq, i) => (
-            <div key={i} style={{ padding: '20px 24px', background: '#f8fafc', borderRadius: '0', border: '1px solid rgba(132, 22, 23, 0.06)' }} aria-label={`Question: ${faq.q}`}>
-              <dt style={{ fontFamily: 'DM Serif Display, Georgia, serif', fontSize: '18px', fontWeight: 400, color: '#0f172a', lineHeight: 1.35, marginBottom: '8px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+            <div key={i} className="ai-faq-item" aria-label={`Question: ${faq.q}`}>
+              <dt className="ai-faq-question">
                 <MessageCircle size={20} style={{ flexShrink: 0, marginTop: '3px', color: '#841617' }} aria-hidden="true" />
                 {faq.q}
               </dt>
-              <dd style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.65, marginLeft: '30px' }}>
-                {faq.a}
-              </dd>
+              <dd className="ai-faq-answer">{faq.a}</dd>
             </div>
           ))}
         </dl>

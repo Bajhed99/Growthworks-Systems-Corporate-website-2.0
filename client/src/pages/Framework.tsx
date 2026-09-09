@@ -779,8 +779,8 @@ function WhyItMattersSection() {
           </div>
 
           {/* Expanded detail panel */}
-          <div className="transition-all duration-300 overflow-hidden" style={{ maxHeight: 120, opacity: 1 }}>
-            <div className="flex items-start gap-6 px-6 py-5" style={{
+          <div className="transition-all duration-300 overflow-hidden" style={{ opacity: 1 }}>
+            <div className="flex items-start gap-4 md:gap-6 p-4 md:px-6 md:py-5" style={{
               background: "#1a1a1a",
               borderTop: `3px solid ${CRIMSON}`,
             }}>
@@ -2164,7 +2164,8 @@ function BusinessOutcomesSection() {
           <div className="business-outcomes-cards"
           style={{
             display: "grid",
-            border: `1px solid ${BLACK}`,
+            gridTemplateColumns: "repeat(2, 1fr)",
+            border: `1px solid rgba(0,0,0,0.12)`,
           }}>
             {outcomes.map((item, i) => {
               const isActive = activeIndex === i
@@ -2175,11 +2176,12 @@ function BusinessOutcomesSection() {
                   onMouseLeave={handleMouseLeave}
                   style={{
                     padding: "24px 20px",
-                    borderRight: i < outcomes.length - 1 ? `1px solid ${BLACK}` : "none",
+                    border: "1px solid rgba(0,0,0,0.08)",
                     backgroundColor: isActive ? CRIMSON : CREAM,
-                    transition: "background-color 0.4s ease",
+                    transition: "all 0.3s ease",
                     cursor: "default",
                     position: "relative",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                   }}
                 >
                   {/* Active indicator bar */}
@@ -2278,25 +2280,8 @@ function DiagnosticCTASection() {
   })
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-white text-gray-900 relative overflow-hidden">
-      {/* Dot grid */}
-      <div className="absolute inset-0 opacity-[0.06]"
-           style={{ backgroundImage: 'radial-gradient(circle, #841617 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-      {/* System motif */}
-      <div className="absolute right-16 top-1/2 -translate-y-1/2 opacity-[0.07] hidden lg:block" aria-hidden="true">
-        <svg viewBox="0 0 140 140" width={280} height={280}>
-          <circle cx={70} cy={70} r={50} fill="none" stroke="#841617" strokeWidth={0.8} strokeDasharray="4 3"/>
-          <circle cx={70} cy={70} r={18} fill="#841617" fillOpacity={0.3}/>
-          {bgDomains.map((p, i) => (
-            <g key={i}>
-              <circle cx={p.x} cy={p.y} r={7} fill="none" stroke="#841617" strokeWidth={0.8}/>
-              <line x1={70} y1={70} x2={p.x} y2={p.y} stroke="#841617" strokeWidth={0.5} strokeOpacity={0.5}/>
-            </g>
-          ))}
-        </svg>
-      </div>
-
-      <div className={`${CONTAINER} relative z-10 text-center`}>
+    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-white text-gray-900">
+      <div className={`${CONTAINER} text-center`}>
         <SectionLabel label="Revenue Diagnostic CTA" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
           {/* H2 */}
@@ -2331,7 +2316,7 @@ function DiagnosticCTASection() {
             Book a Revenue Diagnostic <Icon name="arrow" s={16} c="white" />
           </a>
 
-          <p className="font-sans text-gray-500 text-[15px] mt-[35px] tracking-wide">
+          <p className="font-sans text-gray-500 text-[15px] mt-[40px] tracking-wide">
             One system. Real alignment. Predictable growth.
           </p>
         </div>

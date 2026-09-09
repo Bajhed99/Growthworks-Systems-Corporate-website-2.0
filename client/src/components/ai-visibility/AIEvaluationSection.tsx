@@ -15,23 +15,13 @@ export function AIEvaluationSection() {
             'Citation eligibility: whether your content is structured to be cited by AI answer systems',
             'Recommendation shortlist presence: whether you appear in the final recommendations AI systems give to buyers',
           ].map((item, idx) => (
-            <li key={idx} style={{
-              display: 'flex', alignItems: 'flex-start', gap: '14px',
-              padding: '16px 20px', background: '#fff', borderRadius: '0',
-              border: '1px solid rgba(132, 22, 23, 0.08)'
-            }}>
-              <span aria-hidden="true" style={{
-                flex: '0 0 28px', height: '28px', borderRadius: '6px',
-                background: '#841617', color: '#fff', display: 'flex',
-                alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'DM Sans, system-ui, sans-serif',
-                fontSize: '13px', fontWeight: 600
-              }}>{idx + 1}</span>
-              <span style={{ fontFamily: 'DM Sans, system-ui, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.6, paddingTop: '3px' }}>{item}</span>
+            <li key={idx} className="ai-list-item">
+              <span className="ai-list-badge" aria-hidden="true">{idx + 1}</span>
+              <span style={{ fontFamily: '"DM Sans", Arial, sans-serif', fontSize: '15px', color: '#334155', lineHeight: 1.6, paddingTop: '3px' }}>{item}</span>
             </li>
           ))}
         </ul>
-        <p style={{ fontSize: '13px', color: '#64748b', marginTop: '20px', lineHeight: 1.6 }}>
+        <p className="ai-source-note">
           Source-dependency note: Evaluation criteria and weightings above are presented at the conceptual level. Specific scoring rubrics, evaluation question sets, and platform-specific assessment methods should be confirmed with source-approved evaluation documentation.
         </p>
       </div>
