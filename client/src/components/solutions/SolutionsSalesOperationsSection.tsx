@@ -402,7 +402,7 @@ export function SolutionsSalesOperationsSection() {
           </div>
 
           {/* Capabilities as stacked cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             {CAPABILITIES.map((cap, i) => (
               <div
                 key={cap.num}
@@ -410,26 +410,26 @@ export function SolutionsSalesOperationsSection() {
                   background: '#ffffff',
                   border: '1px solid #d6d3d1',
                   borderTop: `3px solid ${CRIMSON}`,
-                  borderRadius: '8px',
-                  padding: '20px',
-                  boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
+                  borderRadius: '10px',
+                  padding: '24px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
                   opacity: sectionVisible ? 1 : 0,
                   transform: sectionVisible ? 'translateY(0)' : 'translateY(12px)',
                   transition: `opacity 0.5s ease ${0.2 + i * 0.07}s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) ${0.2 + i * 0.07}s`,
                 }}
               >
                 {/* Number badge + title */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
                   <div style={{
-                    width: '36px',
-                    height: '36px',
+                    width: '38px',
+                    height: '38px',
                     borderRadius: '50%',
                     background: CRIMSON,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontFamily: "'DM Serif Display', Georgia, serif",
-                    fontSize: '15px',
+                    fontSize: '16px',
                     fontWeight: 400,
                     color: '#ffffff',
                     flexShrink: 0,
@@ -438,10 +438,10 @@ export function SolutionsSalesOperationsSection() {
                   </div>
                   <h3 style={{
                     fontFamily: "'DM Serif Display', Georgia, serif",
-                    fontSize: '17px',
+                    fontSize: '18px',
                     fontWeight: 400,
                     color: '#1a1a1a',
-                    lineHeight: 1.25,
+                    lineHeight: 1.3,
                     margin: 0,
                   }}>
                     {cap.title}
@@ -451,12 +451,12 @@ export function SolutionsSalesOperationsSection() {
                 {/* Body statement */}
                 <p style={{
                   fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '14px',
+                  fontSize: '15px',
                   fontWeight: 600,
                   color: '#2B2B2B',
-                  lineHeight: 1.4,
-                  marginBottom: '6px',
-                  margin: '0 0 6px 0',
+                  lineHeight: 1.55,
+                  marginBottom: '10px',
+                  margin: '0 0 10px 0',
                 }}>
                   {cap.body}
                 </p>
@@ -464,9 +464,9 @@ export function SolutionsSalesOperationsSection() {
                 {/* Detail */}
                 <p style={{
                   fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '13px',
-                  color: '#78716c',
-                  lineHeight: 1.6,
+                  fontSize: '14px',
+                  color: '#57534e',
+                  lineHeight: 1.7,
                   margin: 0,
                 }}>
                   {cap.detail}
@@ -478,13 +478,13 @@ export function SolutionsSalesOperationsSection() {
           {/* Outcome callout */}
           <div
             style={{
-              marginTop: '32px',
-              padding: '24px',
+              marginTop: '36px',
+              padding: '28px',
               background: '#ffffff',
               border: '1px solid #d6d3d1',
               borderTop: '4px solid #841617',
-              borderRadius: '8px',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+              borderRadius: '10px',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
               opacity: sectionVisible ? 1 : 0,
               transform: sectionVisible ? 'translateY(0)' : 'translateY(12px)',
               transition: 'opacity 0.5s ease 0.65s, transform 0.5s ease 0.65s',
@@ -492,18 +492,18 @@ export function SolutionsSalesOperationsSection() {
           >
             <p style={{
               fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: 600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
               color: '#1a1a1a',
-              marginBottom: '8px',
+              marginBottom: '10px',
             }}>Outcome</p>
             <p style={{
               fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '14px',
+              fontSize: '15px',
               color: '#334155',
-              lineHeight: 1.65,
+              lineHeight: 1.7,
               margin: 0,
             }}>
               Move viable opportunities toward decisions through a repeatable path rather than inconsistent manual execution. The objective is <strong>consistency</strong> — the same reliable experience for every qualified opportunity — not a tool installation that creates new complexity.
