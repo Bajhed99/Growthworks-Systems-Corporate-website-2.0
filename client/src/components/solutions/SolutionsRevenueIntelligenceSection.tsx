@@ -150,6 +150,8 @@ export function SolutionsRevenueIntelligenceSection() {
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: '16px',
               marginTop: '40px',
+              maxWidth: '860px',
+              marginInline: 'auto',
             }}
           >
             {CAPABILITIES.map((cap, i) => {
