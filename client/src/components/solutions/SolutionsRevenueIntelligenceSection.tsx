@@ -152,6 +152,7 @@ export function SolutionsRevenueIntelligenceSection() {
               marginTop: '40px',
               maxWidth: '860px',
               marginInline: 'auto',
+              justifyItems: 'center',
             }}
           >
             {CAPABILITIES.map((cap, i) => {
