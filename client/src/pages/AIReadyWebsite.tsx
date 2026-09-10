@@ -459,7 +459,7 @@ function AuditCTASection() {
 
             {/* Right: dark informational panel */}
             <div
-              className="rounded-none p-5 md:p-7 lg:p-9 text-white border border-gray-900"
+              className="rounded-none p-5 md:p-7 lg:p-9 text-white border border-gray-900 flex flex-col justify-center"
               style={{ background: "var(--dark)" }}
             >
               <p
