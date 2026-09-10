@@ -357,12 +357,18 @@ export function SolutionsSalesOperationsSection() {
 
       {/* Mobile version */}
       <div className="hidden-desktop">
-        <div className="site-shell px-4">
+        <div className="site-shell">
           {/* Header */}
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
             <p
-              className="text-[12px] font-sans font-semibold tracking-[0.18em] uppercase mb-3 text-crimson text-center"
               style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '11px',
+                fontWeight: 600,
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: '#841617',
+                marginBottom: '10px',
                 opacity: sectionVisible ? 1 : 0,
                 transform: sectionVisible ? 'translateY(0)' : 'translateY(8px)',
                 transition: 'opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s',
@@ -374,11 +380,11 @@ export function SolutionsSalesOperationsSection() {
             <h2
               style={{
                 fontFamily: "'DM Serif Display', Georgia, serif",
-                fontSize: 'clamp(24px, 6vw, 32px)',
+                fontSize: '24px',
                 fontWeight: 400,
-                lineHeight: 1.2,
+                lineHeight: 1.25,
                 color: '#1a1a1a',
-                marginBottom: '12px',
+                marginBottom: '10px',
                 opacity: sectionVisible ? 1 : 0,
                 transform: sectionVisible ? 'translateY(0)' : 'translateY(10px)',
                 transition: 'opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s',
@@ -389,8 +395,8 @@ export function SolutionsSalesOperationsSection() {
             <p
               style={{
                 fontFamily: "'DM Sans', system-ui, sans-serif",
-                fontSize: '15px',
-                lineHeight: 1.65,
+                fontSize: '14px',
+                lineHeight: 1.6,
                 color: '#57534e',
                 opacity: sectionVisible ? 1 : 0,
                 transform: sectionVisible ? 'translateY(0)' : 'translateY(8px)',
@@ -402,7 +408,7 @@ export function SolutionsSalesOperationsSection() {
           </div>
 
           {/* Capabilities as stacked cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             {CAPABILITIES.map((cap, i) => (
               <div
                 key={cap.num}
@@ -410,35 +416,34 @@ export function SolutionsSalesOperationsSection() {
                   background: '#ffffff',
                   border: '1px solid #d6d3d1',
                   borderTop: `3px solid ${CRIMSON}`,
-                  borderRadius: '10px',
-                  padding: '24px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                  borderRadius: '8px',
+                  padding: '20px',
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
                   opacity: sectionVisible ? 1 : 0,
-                  transform: sectionVisible ? 'translateY(0)' : 'translateY(12px)',
-                  transition: `opacity 0.5s ease ${0.2 + i * 0.07}s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) ${0.2 + i * 0.07}s`,
+                  transform: sectionVisible ? 'translateY(0)' : 'translateY(10px)',
+                  transition: `opacity 0.45s ease ${0.15 + i * 0.06}s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) ${0.15 + i * 0.06}s`,
                 }}
               >
-                {/* Number badge + title */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '14px' }}>
-                  <div style={{
-                    width: '38px',
-                    height: '38px',
-                    borderRadius: '50%',
-                    background: CRIMSON,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                {/* Title with inline number badge */}
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '8px' }}>
+                  <span style={{
                     fontFamily: "'DM Serif Display', Georgia, serif",
-                    fontSize: '16px',
+                    fontSize: '13px',
                     fontWeight: 400,
                     color: '#ffffff',
+                    background: CRIMSON,
+                    borderRadius: '50%',
+                    width: '24px',
+                    height: '24px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     flexShrink: 0,
-                  }}>
-                    {cap.num}
-                  </div>
+                    lineHeight: 1,
+                  }}>{cap.num}</span>
                   <h3 style={{
                     fontFamily: "'DM Serif Display', Georgia, serif",
-                    fontSize: '18px',
+                    fontSize: '16px',
                     fontWeight: 400,
                     color: '#1a1a1a',
                     lineHeight: 1.3,
@@ -451,12 +456,12 @@ export function SolutionsSalesOperationsSection() {
                 {/* Body statement */}
                 <p style={{
                   fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '15px',
+                  fontSize: '14px',
                   fontWeight: 600,
                   color: '#2B2B2B',
-                  lineHeight: 1.55,
-                  marginBottom: '10px',
-                  margin: '0 0 10px 0',
+                  lineHeight: 1.5,
+                  marginBottom: '6px',
+                  margin: '0 0 6px 0',
                 }}>
                   {cap.body}
                 </p>
@@ -464,9 +469,9 @@ export function SolutionsSalesOperationsSection() {
                 {/* Detail */}
                 <p style={{
                   fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '14px',
+                  fontSize: '13px',
                   color: '#57534e',
-                  lineHeight: 1.7,
+                  lineHeight: 1.6,
                   margin: 0,
                 }}>
                   {cap.detail}
@@ -478,32 +483,32 @@ export function SolutionsSalesOperationsSection() {
           {/* Outcome callout */}
           <div
             style={{
-              marginTop: '36px',
-              padding: '28px',
+              marginTop: '28px',
+              padding: '22px',
               background: '#ffffff',
               border: '1px solid #d6d3d1',
               borderTop: '4px solid #841617',
-              borderRadius: '10px',
-              boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+              borderRadius: '8px',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
               opacity: sectionVisible ? 1 : 0,
-              transform: sectionVisible ? 'translateY(0)' : 'translateY(12px)',
-              transition: 'opacity 0.5s ease 0.65s, transform 0.5s ease 0.65s',
+              transform: sectionVisible ? 'translateY(0)' : 'translateY(10px)',
+              transition: 'opacity 0.45s ease 0.55s, transform 0.45s ease 0.55s',
             }}
           >
             <p style={{
               fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '12px',
+              fontSize: '11px',
               fontWeight: 600,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
               color: '#1a1a1a',
-              marginBottom: '10px',
+              marginBottom: '8px',
             }}>Outcome</p>
             <p style={{
               fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '15px',
+              fontSize: '14px',
               color: '#334155',
-              lineHeight: 1.7,
+              lineHeight: 1.6,
               margin: 0,
             }}>
               Move viable opportunities toward decisions through a repeatable path rather than inconsistent manual execution. The objective is <strong>consistency</strong> — the same reliable experience for every qualified opportunity — not a tool installation that creates new complexity.
@@ -513,14 +518,14 @@ export function SolutionsSalesOperationsSection() {
           {/* Feedback loop */}
           <div
             style={{
-              marginTop: '20px',
+              marginTop: '16px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '6px',
               opacity: sectionVisible ? 1 : 0,
               transform: sectionVisible ? 'translateY(0)' : 'translateY(8px)',
-              transition: 'opacity 0.4s ease 0.85s, transform 0.4s ease 0.85s',
+              transition: 'opacity 0.35s ease 0.75s, transform 0.35s ease 0.75s',
             }}
           >
             <svg
@@ -555,12 +560,12 @@ export function SolutionsSalesOperationsSection() {
           <p style={{
             fontSize: '12px',
             color: '#78716c',
-            marginTop: '16px',
-            lineHeight: 1.6,
+            marginTop: '14px',
+            lineHeight: 1.5,
             textAlign: 'center',
             opacity: sectionVisible ? 0.8 : 0,
             transform: sectionVisible ? 'translateY(0)' : 'translateY(6px)',
-            transition: 'opacity 0.4s ease 0.95s, transform 0.4s ease 0.95s',
+            transition: 'opacity 0.35s ease 0.85s, transform 0.35s ease 0.85s',
           }}>
             Naming note: At the Solutions Overview level the canonical label is Sales Operations. Existing retained pages or deeper capability descriptions that reference CRM structure, pipeline design, or workflow automation preserve their terminology at the appropriate depth.
           </p>
@@ -573,7 +578,8 @@ export function SolutionsSalesOperationsSection() {
         }
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
-          .diagnostic-section.section--gray { padding-top: 64px !important; padding-bottom: 64px !important; }
+          .diagnostic-section.section--gray { padding-top: 56px !important; padding-bottom: 56px !important; }
+          .site-shell { width: 100% !important; max-width: 100% !important; padding: 0 16px !important; }
         }
       `}</style>
     </section>
