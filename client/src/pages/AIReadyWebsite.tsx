@@ -184,34 +184,64 @@ function Hero() {
     <section
       aria-labelledby="ai-ready-h1"
       className="section section--white"
+      style={{ paddingBlock: 'var(--gws-section-space)' }}
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <h3 className="hero-kicker">
-            AI-Ready Website
-          </h3>
-          <h1
-            id="ai-ready-h1"
-            className="font-serif font-normal text-[2.5rem] md:text-[3.75rem] leading-[1.10] text-gray-900 mb-6 max-w-[820px]"
-          >
-            A website is not a brochure. It is a revenue asset.
-          </h1>
-          <p
-            className="text-[17px] md:text-[18px] leading-[1.60] mb-10 max-w-[720px] text-gray-700 font-sans"
-          >
-            An AI-Ready Website is the conversion engine at the center of your
-            Revenue Infrastructure. It establishes authority, earns trust, and
-            moves qualified prospects toward a decision — for both human
-            visitors and AI-assisted buying and discovery environments.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <PrimaryLink href="/revenue-diagnostic">
-              Book a Revenue Diagnostic
-              <ArrowRight size={16} />
-            </PrimaryLink>
-            <SecondaryLink href="/revenue-diagnostic">
-              Request a Website Audit
-            </SecondaryLink>
+          <div style={{ maxWidth: '960px', marginInline: 'auto' }}>
+            <h3
+              className="hero-kicker"
+              style={{ textAlign: 'center', marginBottom: 23 }}
+            >
+              AI-Ready Website
+            </h3>
+            <h1
+              id="ai-ready-h1"
+              className="font-serif font-normal text-[2.5rem] md:text-[3.75rem] leading-[1.10] text-gray-900"
+              style={{
+                maxWidth: '880px',
+                margin: '0 auto 20px',
+                textWrap: 'balance',
+              }}
+            >
+              A website is not a brochure. It is a revenue asset.
+            </h1>
+            <p
+              className="text-[17px] md:text-[18px] leading-[1.60] text-gray-700 font-sans"
+              style={{
+                maxWidth: '710px',
+                margin: '0 auto 30px',
+              }}
+            >
+              An AI-Ready Website is the conversion engine at the center of your
+              Revenue Infrastructure. It establishes authority, earns trust, and
+              moves qualified prospects toward a decision — for both human
+              visitors and AI-assisted buying and discovery environments.
+            </p>
+            <div
+              className="flex flex-wrap gap-3"
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '12px',
+                marginBottom: 0,
+              }}
+            >
+              <PrimaryLink
+                href="/revenue-diagnostic"
+                style={{
+                  fontFamily: '"DM Sans", Arial, sans-serif',
+                  fontSize: 14,
+                  fontWeight: 800,
+                }}
+              >
+                Book a Revenue Diagnostic
+                <ArrowRight size={16} />
+              </PrimaryLink>
+              <SecondaryLink href="/revenue-diagnostic">
+                Request a Website Audit
+              </SecondaryLink>
+            </div>
           </div>
         </RevealOnScroll>
       </div>

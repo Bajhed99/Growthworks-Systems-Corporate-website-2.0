@@ -4,21 +4,22 @@ import { AnchorLink } from "./AnchorLink";
 
 export function AIVisibilityHero() {
   return (
-    <section className="gws-glowy-hero" aria-labelledby="ai-visibility-hero-title">
-      <div className="gws-glowy-canvas" />
-      <div className="gws-glowy-content">
-        <div className="gws-glowy-content-inner">
-          <p className="hero-kicker">AI Visibility</p>
-          <h1 id="ai-visibility-hero-title" className="gws-glowy-title font-serif">
-            Be <span className="heading-accent">understood</span> before the buyer ever reaches your website.
+    <section className="gws-glowy-hero" style={{ minHeight: 'unset', height: 655.078 }} aria-labelledby="ai-visibility-hero-title">
+      <div className="gws-glowy-canvas" style={{ height: 655.078 }} />
+      <div className="gws-glowy-content" style={{ paddingBottom: 108 }}>
+        <div className="gws-glowy-content-inner" style={{ marginTop: 0, marginBottom: 0 }}>
+          <div className="gws-glowy-badge">
+            AI Visibility
+          </div>
+          <h1 id="ai-visibility-hero-title" className="gws-glowy-title">
+            Be <span style={{ color: 'var(--maroon)' }}>understood</span> before the buyer ever reaches your website.
           </h1>
-          <p className="gws-glowy-copy font-sans">
+          <p className="gws-glowy-copy">
             AI-powered search engines now shape how buyers discover, evaluate, and choose solutions — before they ever visit your website. AI Visibility ensures your business is understood, trusted, and recommended at the moment that matters most.
           </p>
           <div className="gws-glowy-actions">
-            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary rounded">
+            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary supporting-button" style={{ fontFamily: '"DM Sans", Arial, sans-serif', fontSize: 14 }}>
               Book a Revenue Diagnostic
-              <ArrowRight size={16} />
             </AnchorLink>
           </div>
         </div>
