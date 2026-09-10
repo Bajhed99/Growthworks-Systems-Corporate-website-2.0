@@ -8,7 +8,7 @@ export function AIVisibilityHero() {
       <div className="gws-glowy-canvas" style={{ height: 655.078 }} />
       <div className="gws-glowy-content" style={{ paddingBottom: 108 }}>
         <div className="gws-glowy-content-inner" style={{ marginTop: 0, marginBottom: 0 }}>
-          <div className="gws-glowy-badge">
+          <div className="gws-glowy-badge" style={{ marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
             AI Visibility
           </div>
           <h1 id="ai-visibility-hero-title" className="gws-glowy-title">

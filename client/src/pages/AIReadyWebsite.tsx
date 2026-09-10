@@ -188,10 +188,10 @@ function Hero() {
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <div style={{ maxWidth: '960px', marginInline: 'auto' }}>
+          <div style={{ maxWidth: '960px', marginInline: 'auto', textAlign: 'center' }}>
             <h3
               className="hero-kicker"
-              style={{ textAlign: 'center', marginBottom: 23 }}
+              style={{ marginBottom: 23 }}
             >
               AI-Ready Website
             </h3>
