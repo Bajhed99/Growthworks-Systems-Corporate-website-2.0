@@ -146,13 +146,13 @@ export function SolutionsRevenueIntelligenceSection() {
           {/* Capability cards grid */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
               gap: '16px',
               marginTop: '40px',
               maxWidth: '860px',
               marginInline: 'auto',
-              justifyItems: 'center',
             }}
           >
             {CAPABILITIES.map((cap, i) => {
@@ -168,6 +168,9 @@ export function SolutionsRevenueIntelligenceSection() {
                     border: isHovered ? '2px solid #1a1a1a' : '1px solid #e7e5e4',
                     borderTop: isHovered ? '4px solid #841617' : '3px solid #841617',
                     padding: '28px 24px',
+                    width: '260px',
+                    maxWidth: '260px',
+                    flex: '0 0 auto',
                     position: 'relative',
                     overflow: 'hidden',
                     cursor: 'default',
