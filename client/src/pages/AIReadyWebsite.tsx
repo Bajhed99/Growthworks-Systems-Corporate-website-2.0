@@ -516,7 +516,7 @@ function AuditCTASection() {
                   className="text-[14px] leading-[1.55]"
 
                 >
-                  60 minutes · Focused on your constraint · No obligation
+                  30-45 minutes · Focused on your constraint · No obligation
                 </p>
               </div>
             </div>
@@ -560,7 +560,7 @@ function ClosingBand() {
                 className="mt-2 text-[14px] text-gray-400"
 
               >
-                60 minutes · No obligation · Focused on your constraint
+                30-45 minutes · No obligation · Focused on your constraint
               </p>
             </div>
 

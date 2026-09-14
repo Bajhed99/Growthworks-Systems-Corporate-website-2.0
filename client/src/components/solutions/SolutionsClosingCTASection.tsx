@@ -40,7 +40,7 @@ export function SolutionsClosingCTASection() {
           fontFamily: 'DM Sans, system-ui, sans-serif',
           fontSize: '14px', color: '#6B6560', marginTop: '16px',
         }}>
-          60 minutes · No obligation · Focused on your constraint
+          30-45 minutes · No obligation · Focused on your constraint
         </p>
       </div>
     </section>

@@ -16,7 +16,7 @@ export function AICClosingCTABand() {
           Check My AI Visibility <ArrowRight size={16} />
         </AnchorLink>
         <p className="ai-closing-subtext">
-          60 minutes · No obligation · Focused on your visibility and revenue constraints
+          30-45 minutes · No obligation · Focused on your visibility and revenue constraints
         </p>
       </div>
     </section>
