@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { HelmetProvider } from "react-helmet-async";
 import NotFound from "@/pages/NotFound";
 import Framework from "@/pages/Framework";
 import DiagnosticPlatform from "@/pages/DiagnosticPlatform";
@@ -18,13 +20,14 @@ import FinancialAdvisors from "@/pages/FinancialAdvisors";
 import InsuranceAgencies from "@/pages/InsuranceAgencies";
 import Resources from "@/pages/Resources";
 import About from "@/pages/About";
-import { Route, Switch } from "wouter";
+import Home from "@/pages/Home";
+import SiteHeader from "@/components/SiteHeader";
+import TableOfContents from "@/components/TableOfContents";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
 
-
-function Router() {
+function Routes() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -47,9 +50,22 @@ function Router() {
       <Route path={"/resources"} component={Resources} />
       <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
+  );
+}
+
+function PageAnimate({ children }: { children: React.ReactNode }) {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location]);
+
+  return (
+    <div className="page-animate" key={location}>
+      {children}
+    </div>
   );
 }
 
@@ -59,14 +75,40 @@ function Router() {
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 export default function App() {
+  const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const anchor = target.closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href || !href.startsWith("/")) return;
+      if (href.startsWith("#")) return;
+      if (/^(https?:|mailto:|tel:)/.test(href)) return;
+      e.preventDefault();
+      setLocation(href);
+    };
+
+    document.addEventListener("click", handler, { capture: true });
+    return () => document.removeEventListener("click", handler, { capture: true });
+  }, [setLocation]);
+
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <HelmetProvider>
+        <ThemeProvider defaultTheme="light">
+          <TooltipProvider>
+            <Toaster />
+            <SiteHeader />
+            <TableOfContents />
+            <PageAnimate>
+              <Routes />
+            </PageAnimate>
+          </TooltipProvider>
+        </ThemeProvider>
+      </HelmetProvider>
     </ErrorBoundary>
   );
 }

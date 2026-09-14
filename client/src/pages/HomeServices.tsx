@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 /**
  * HOME SERVICES INDUSTRY PAGE
@@ -668,6 +670,7 @@ function ClosingCTASection() {
 export default function HomeServices() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/home-services" />
       <SiteHeader />
       <main className="gws-page">
         <TableOfContents />

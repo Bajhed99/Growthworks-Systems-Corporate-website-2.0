@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "wouter";
 
 function RevealOnScroll({ children, delayMs = 0 }: { children: React.ReactNode; delayMs?: number }) {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ export function AIFrameworksResourcesSection() {
                   <p className="ai-card-body">
                     The connected system of strategy, technology, data, process, and execution that turns market opportunity into measurable revenue. AI Visibility operates as the front-end discovery component within this system.
                   </p>
-                  <a href="/framework" className="ai-card-link">View Framework &rarr;</a>
+                  <Link href="/framework" className="ai-card-link">View Framework &rarr;</Link>
                 </article>
                 <article className="ai-card ai-card--dark">
                   <h3 className="ai-card-title">AI Visibility Framework</h3>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 // ─── Shared layout and utilities ──────────────────────────────────────────────
 
@@ -41,7 +43,7 @@ function RevealOnScroll({
   }, [className]);
 
   return (
-    <div
+          <div
       className={className}
       style={{
         opacity: visible ? 1 : 0,
@@ -728,6 +730,7 @@ function ClosingCTASection() {
 export default function InsuranceAgencies() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/insurance-agencies" />
       <SiteHeader />
       <main>
         <TableOfContents />

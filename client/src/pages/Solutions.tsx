@@ -1,6 +1,8 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import { SolutionsSystemInteractive } from "@/components/solutions/SolutionsSystemInteractive";
 import { SolutionsDigitalPresenceSection } from "@/components/solutions/SolutionsDigitalPresenceSection";
@@ -15,6 +17,7 @@ import { SolutionsClosingCTASection } from "@/components/solutions/SolutionsClos
 export default function Solutions() {
   return (
     <>
+      <Seo canonical="/solutions" />
       <SiteHeader />
       <main id="main-content">
         <TableOfContents />

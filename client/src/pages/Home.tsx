@@ -13,6 +13,7 @@ import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfras
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
 import { getPageParallaxTravel, PAGE_PARALLAX_SCROLL_TRIGGER, PAGE_TEXT_REVEAL_TRIGGER } from "@/lib/pageParallax";
 
 const problemCards = [
@@ -107,7 +108,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div ref={pageRef} className="gws-page">
+    <>
+      <Seo />
+      <div ref={pageRef} className="gws-page">
       <SiteHeader />
 
       <main id="top">
@@ -190,5 +193,6 @@ export default function Home() {
       <SiteFooter />
       <TableOfContents />
     </div>
+    </>
   );
 }

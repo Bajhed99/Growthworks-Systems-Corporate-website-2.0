@@ -3,6 +3,8 @@ import { ChevronDown } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 // ─── Scroll-reveal hook ────────────────────────────────────────────────────────
 function useReveal(threshold = 0.12) {
@@ -425,7 +427,7 @@ function MethodologySection() {
                 {METHODOLOGY_STAGES.map((stage, i) => {
                   const phaseColor = stage.phase === "DIAGNOSTIC" ? "#841617" : stage.phase === "IMPLEMENTATION" ? "#059669" : "#2563EB";
                   return (
-                    <div key={stage.num} className="flex flex-col items-center" style={{ flex: 1 }}>
+      <div key={stage.num} className="flex flex-col items-center" style={{ flex: 1 }}>
                       <div
                         className="w-20 h-20 rounded-full flex items-center justify-center border-4 bg-white relative z-10 mb-4"
                         style={{
@@ -995,6 +997,7 @@ function BeginDiagnosticSection() {
 export default function DiagnosticPlatform() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/diagnostic-platform" />
       <SiteHeader />
       <main>
         <TableOfContents />

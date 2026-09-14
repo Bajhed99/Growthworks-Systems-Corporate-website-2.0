@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -183,7 +185,7 @@ function RevealOnScroll({
   }, [className]);
 
   return (
-    <div
+      <div
       className={className}
       style={{
         opacity: visible ? 1 : 0,
@@ -577,6 +579,7 @@ function ClosingBand() {
 export default function Resources() {
   return (
     <div className="min-h-full antialiased">
+      <Seo />
       <SiteHeader />
       <main id="main-content">
         <TableOfContents />

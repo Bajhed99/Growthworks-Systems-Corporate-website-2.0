@@ -1,6 +1,8 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 import { AIVisibilityHero } from "@/components/ai-visibility/AIVisibilityHero";
 import { AIBuyerJourneySection } from "@/components/ai-visibility/AIBuyerJourneySection";
 import { AIEvolutionSection } from "@/components/ai-visibility/AIEvolutionSection";
@@ -22,6 +24,7 @@ import { AICClosingCTABand } from "@/components/ai-visibility/AICClosingCTABand"
 export default function AIVisibility() {
   return (
     <>
+      <Seo canonical="/ai-visibility" />
       <SiteHeader />
       <main id="main-content">
         <TableOfContents />

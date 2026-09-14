@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
@@ -80,7 +82,7 @@ function RevealOnScroll({
   }, []);
 
   return (
-    <div
+          <div
       ref={ref}
       className={className}
       style={{
@@ -430,6 +432,7 @@ function ClosingBand() {
 export default function CRMAutomation() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/crm-automation" />
       <SiteHeader />
       <main>
         <TableOfContents />

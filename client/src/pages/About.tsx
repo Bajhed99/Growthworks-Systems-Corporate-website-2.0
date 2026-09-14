@@ -28,6 +28,8 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 import SiteFooter from "@/components/SiteFooter";
 
 // ─── Layout Constants ───────────────────────────────────────────────────────────
@@ -790,6 +792,7 @@ function ClosingCTASection() {
 export default function About() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/about" />
       <SiteHeader />
       <main>
         <TableOfContents />

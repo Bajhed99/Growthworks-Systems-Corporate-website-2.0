@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { Seo } from "@/components/Seo";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
@@ -11,7 +12,9 @@ export default function NotFound() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-surface">
+    <>
+      <Seo noIndex />
+      <div className="min-h-screen w-full flex items-center justify-center bg-surface">
       <Card className="w-full max-w-lg mx-4 rounded-2xl border border-gray-200 bg-surface">
         <CardContent className="pt-8 pb-8 text-center">
           <div className="flex justify-center mb-6">
@@ -44,6 +47,7 @@ export default function NotFound() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </>
   );
 }

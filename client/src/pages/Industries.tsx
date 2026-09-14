@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 /**
  * Industries Hub — discovery / recognition / routing page.
@@ -60,7 +62,7 @@ function RevealOnScroll({
   }, [className]);
 
   return (
-    <div
+          <div
       className={className}
       style={{
         opacity: visible ? 1 : 0,
@@ -548,6 +550,7 @@ function ClosingCTASection() {
 export default function Industries() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/industries" />
       <SiteHeader />
       <main>
         <TableOfContents />

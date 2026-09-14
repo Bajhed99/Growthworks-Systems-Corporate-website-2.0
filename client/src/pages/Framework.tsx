@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect, useRef } from 'react'
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
 import NineDomainFramework from "@/components/NineDomainFramework";
 import CanonicalDefinition from "@/components/CanonicalDefinition";
 import RevenueMaturity from "@/components/RevenueMaturity";
@@ -2397,7 +2398,9 @@ export default function Framework() {
   }, []);
 
   return (
-    <div className="min-h-full antialiased">
+    <>
+      <Seo canonical="/framework" />
+      <div className="min-h-full antialiased">
       <SiteHeader />
       <TableOfContents />
       <HeroSection />
@@ -2414,5 +2417,6 @@ export default function Framework() {
       <DiagnosticCTASection />
       <SiteFooter />
     </div>
-  )
+    </>
+  );
 }

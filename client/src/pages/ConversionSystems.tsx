@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 /**
  * CONVERSION SYSTEMS — Retained Solution Detail Page
@@ -63,7 +65,7 @@ function RevealOnScroll({
   }, [className]);
 
   return (
-    <div
+          <div
       className={className}
       style={{
         opacity: visible ? 1 : 0,
@@ -491,6 +493,7 @@ function DarkClosingBand() {
 export default function ConversionSystems() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/conversion-systems" />
       <SiteHeader />
       <main className="gws-page">
         <TableOfContents />

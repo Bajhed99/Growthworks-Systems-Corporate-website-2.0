@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 /**
  * AI VISIBILITY CALL — Booking Surface
@@ -37,7 +39,7 @@ function RevealOnScroll({
   }, [className]);
 
   return (
-    <div
+          <div
       className={className}
       style={{
         opacity: visible ? 1 : 0,
@@ -284,6 +286,7 @@ function PreparationSection() {
 export default function AIVisibilityCallPage() {
   return (
     <div className="min-h-full antialiased">
+      <Seo canonical="/ai-visibility-call" />
       <SiteHeader />
       <main>
         <TableOfContents />

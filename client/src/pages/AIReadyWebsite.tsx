@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import TableOfContents from "@/components/TableOfContents";
+import { Seo } from "@/components/Seo";
+
 
 /* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
 function RevealOnScroll({
@@ -598,6 +600,7 @@ function ClosingBand() {
 export default function AIReadyWebsite() {
   return (
     <>
+      <Seo canonical="/ai-ready-website" />
       <SiteHeader />
       <main id="main-content">
         <TableOfContents />
