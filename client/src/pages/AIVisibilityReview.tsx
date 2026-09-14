@@ -16,12 +16,12 @@ declare global {
 }
 
 /**
- * REVENUE DIAGNOSTIC — Booking Surface
+ * AI VISIBILITY REVIEW — Booking Surface
  *
- * Canonical booking route: /revenue-diagnostic
- * Booking target: https://cal.com/clayton-tidwell-gws/discovery-audit-call
+ * Canonical booking route: /ai-visibility-review
+ * Booking target: https://cal.com/clayton-tidwell-gws/gws-ai-visibility-call
  *
- * This is the focused scheduling surface for the Revenue Diagnostic conversion flow.
+ * This is the focused scheduling surface for the AI Visibility Review conversion flow.
  * NOT another landing page, contact page, methodology page, or Solutions page.
  *
  * Responsibilities:
@@ -33,12 +33,12 @@ declare global {
  * - Clear header/footer navigation
  *
  * Cal.com integration:
- * - Target URL: https://cal.com/clayton-tidwell-gws/discovery-audit-call
+ * - Target URL: https://cal.com/clayton-tidwell-gws/gws-ai-visibility-call
  * - Embed via <CalEmbed> component below
  * - Fallback: external link opens in new tab with rel="noopener noreferrer"
  */
 
-const CAL_URL = "https://cal.com/clayton-tidwell-gws/discovery-audit-call";
+const CAL_URL = "https://cal.com/clayton-tidwell-gws/gws-ai-visibility-call";
 
 // ─── RevealOnScroll ────────────────────────────────────────────────────────
 
@@ -108,18 +108,18 @@ function SectionLabel({ label }: { label: string }) {
 }
 
 // ─── Cal.com Embed ────────────────────────────────────────────────────────
-// Inline Cal.com embed for the Revenue Diagnostic booking surface.
+// Inline Cal.com embed for the AI Visibility Review booking surface.
 // Reference: https://docs.cal.com/embedding
-// Target calLink: clayton-tidwell-gws/discovery-audit-call
+// Target calLink: clayton-tidwell-gws/gws-ai-visibility-call
 //
 // Behavior:
 // - On mount, injects https://app.cal.com/embed/embed.js once.
-// - Renders the official inline embed into #my-cal-inline-discovery-audit-call.
+// - Renders the official inline embed into #my-cal-inline-gws-ai-visibility-call.
 // - If the script fails to load, falls back to a "Open Booking Calendar" link.
 
 const CAL_SCRIPT_SRC = "https://app.cal.com/embed/embed.js";
-const CAL_ELEMENT_ID = "my-cal-inline-discovery-audit-call";
-const CAL_NAMESPACE = "discovery-audit-call";
+const CAL_ELEMENT_ID = "my-cal-inline-gws-ai-visibility-call";
+const CAL_NAMESPACE = "gws-ai-visibility-call";
 
 function CalEmbed() {
   const [state, setState] = useState<"loading" | "loaded" | "error">("loading");
@@ -230,26 +230,26 @@ function CalEmbed() {
 function DiagnosticHero() {
   return (
     <section
-      aria-labelledby="revenue-diagnostic-h1"
+      aria-labelledby="ai-visibility-review-h1"
       className="bg-surface pt-[96px] md:pt-[128px] pb-[64px] md:pb-[80px] border-b border-stone-300"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="max-w-[640px]">
           <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 industries-section-label">
-            Revenue Diagnostic
+            AI Visibility
           </h3>
           <h1
-            id="revenue-diagnostic-h1"
+            id="ai-visibility-review-h1"
             className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
-            Book your <span style={{ color: '#841617' }}>Revenue Diagnostic</span>.
+            Book your <span style={{ color: '#841617' }}>AI Visibility Review</span>.
           </h1>
           <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-5 max-w-[600px]">
-            Choose a time that works for you to begin a structured conversation about where your revenue system may be underperforming, disconnected, or unclear.
+            Choose a time that works for you to begin a structured conversation about how your business appears to AI-powered search systems — and what it takes to get found, cited, and recommended.
           </p>
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 max-w-[560px]">
-            You do not need to have the problem fully diagnosed before the conversation.
+            You do not need to have your AI visibility fully diagnosed before the conversation.
           </p>
         </div>
       </div>
@@ -298,22 +298,22 @@ const WHAT_EXPECT = [
   {
     step: "1",
     title: "Understand",
-    desc: "Discuss what is happening in the current revenue path.",
+    desc: "Discuss how your business currently appears across AI-powered search systems like ChatGPT, Gemini, Perplexity, and Google AI Overviews.",
   },
   {
     step: "2",
     title: "Identify",
-    desc: "Look for meaningful constraints or breakdowns.",
+    desc: "Look for gaps in entity accuracy, citation authority, and content signals that affect how AI systems represent your business.",
   },
   {
     step: "3",
     title: "Prioritize",
-    desc: "Clarify what deserves investigation or improvement first.",
+    desc: "Clarify which AI visibility improvements will create the most meaningful impact for your specific market and buyer journey.",
   },
   {
     step: "4",
     title: "Decide",
-    desc: "Determine the most appropriate next step.",
+    desc: "Determine the most appropriate next step toward becoming the recommended choice in AI-assisted buying environments.",
   },
 ];
 
@@ -428,7 +428,7 @@ function PreparationSection() {
 
 // ─── Page Component ────────────────────────────────────────────────────────
 
-export default function RevenueDiagnostic() {
+export default function AIVisibilityReview() {
   return (
     <div className="min-h-full antialiased">
       <SiteHeader />

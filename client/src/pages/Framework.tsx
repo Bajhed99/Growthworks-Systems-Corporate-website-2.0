@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useRef } from 'react'
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 import NineDomainFramework from "@/components/NineDomainFramework";
 import CanonicalDefinition from "@/components/CanonicalDefinition";
 import RevenueMaturity from "@/components/RevenueMaturity";
@@ -581,8 +582,7 @@ function HeroSection() {
           <svg
             width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity animate-bounce"
-            style={{ animationDuration: '2s' }}
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
           >
             <polyline points="6 9 12 15 18 9" />
           </svg>
@@ -950,7 +950,7 @@ function RevenueInfrastructureFlywheelSection() {
   const zeroRadius = { borderRadius: 0 }
 
   return (
-    <section className="framework-section pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout' }}>
+    <section id="how-it-works" className="framework-section pt-[90px] pb-[90px] bg-[#000000] text-white relative" style={{ ...zeroRadius, contain: 'layout' }}>
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-16 items-center">
           {/* Left column — text */}
@@ -1238,7 +1238,7 @@ function FragmentedVsConnectedSection() {
   };
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[88px] md:py-[112px] bg-[#FAFAF8]">
+    <section id="nine-domains" ref={ref as React.Ref<HTMLElement>} className="framework-section py-[88px] md:py-[112px] bg-[#FAFAF8]">
       <div className={CONTAINER}>
         <div className={"reveal " + (visible ? "visible" : "")}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
@@ -1409,12 +1409,12 @@ function RevenueLeakageSection() {
   ]
 
   const leakagePoints = [
-    { id: "vis-web", index: 1, shortLabel: "Invisible Drop-Off", from: "Visibility", to: "Website", title: "Invisible Drop-Off", description: "Prospects engage with brand content but never reach the website. No tracking links, no UTM parameters — no way to know which touchpoints drive traffic.", impact: "Up to 40% of warm prospects lost" },
-    { id: "web-crm", index: 2, shortLabel: "Form Abandonment", from: "Website", to: "CRM", title: "Form Abandonment Gap", description: "Leads submit inquiries but data never reaches the CRM. Manual entry delays, disconnected tools, and missing automations let contacts slip through unrecorded.", impact: "23% of form fills never entered" },
-    { id: "crm-followup", index: 3, shortLabel: "Response Latency", from: "CRM", to: "Follow-Up", title: "Response Latency", description: "Leads sit in the CRM unworked for hours or days. Every hour of delay reduces conversion probability by a compounding margin.", impact: "5× conversion drop after 1 hour" },
-    { id: "followup-sales", index: 4, shortLabel: "Handoff Breakdown", from: "Follow-Up", to: "Sales", title: "Handoff Breakdown", description: "Follow-up sequences end without a qualified handoff. Marketing marks them done; sales never picks them up. The gap is ownership, not effort.", impact: "31% of qualified leads stall here" },
-    { id: "sales-customer", index: 5, shortLabel: "Close Friction", from: "Sales", to: "Customer", title: "Close Friction", description: "Proposals sit unaccepted. Objections go unanswered. Slow contracting gives competitors time to move in and capture the decision.", impact: "$180K avg deal value at risk" },
-    { id: "customer-intel", index: 6, shortLabel: "Lost Signal", from: "Customer", to: "Intelligence", title: "Lost Signal", description: "Customer feedback, churn signals, and expansion indicators never feed back into the revenue model. The system cannot learn from what it cannot see.", impact: "Retention gaps go undetected" },
+    { id: "vis-web", index: 1, shortLabel: "Invisible Drop-Off", from: "Visibility", to: "Website", title: "Invisible Drop-Off", description: "Prospects engage with brand content but never reach the website. No tracking links, no UTM parameters — no way to know which touchpoints drive traffic.", impact: "Warm Prospects Lost" },
+    { id: "web-crm", index: 2, shortLabel: "Form Abandonment", from: "Website", to: "CRM", title: "Form Abandonment Gap", description: "Leads submit inquiries but data never reaches the CRM. Manual entry delays, disconnected tools, and missing automations let contacts slip through unrecorded.", impact: "Form Fills Never Entered" },
+    { id: "crm-followup", index: 3, shortLabel: "Response Latency", from: "CRM", to: "Follow-Up", title: "Response Latency", description: "Leads sit in the CRM unworked for hours or days. Every hour of delay reduces conversion probability by a compounding margin.", impact: "Conversion Drop" },
+    { id: "followup-sales", index: 4, shortLabel: "Handoff Breakdown", from: "Follow-Up", to: "Sales", title: "Handoff Breakdown", description: "Follow-up sequences end without a qualified handoff. Marketing marks them done; sales never picks them up. The gap is ownership, not effort.", impact: "Qualified Leads Stalled" },
+    { id: "sales-customer", index: 5, shortLabel: "Close Friction", from: "Sales", to: "Customer", title: "Close Friction", description: "Proposals sit unaccepted. Objections go unanswered. Slow contracting gives competitors time to move in and capture the decision.", impact: "Deal Value at Risk" },
+    { id: "customer-intel", index: 6, shortLabel: "Lost Signal", from: "Customer", to: "Intelligence", title: "Lost Signal", description: "Customer feedback, churn signals, and expansion indicators never feed back into the revenue model. The system cannot learn from what it cannot see.", impact: "Retention Gaps" },
   ]
 
   const active = leakagePoints.find((l) => l.id === activeLeakage) ?? null
@@ -1459,7 +1459,7 @@ function RevenueLeakageSection() {
           </div>
 
           {/* Pipeline */}
-          <div className="overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0">
+          <div className="hidden md:block overflow-x-auto -mx-5 px-5 md:mx-0 md:px-0">
             <div style={{ minWidth: 760 }}>
               {/* Top row: node boxes */}
               <div className="flex">
@@ -1543,8 +1543,68 @@ function RevenueLeakageSection() {
             </div>
           </div>
 
-          {/* Detail panel */}
-          <div className="card-inner" style={{ marginTop: 48, minHeight: 140 }}>
+          {/* ── Mobile: compact stacked cards, no side-scroll ── */}
+          <div className="md:hidden flex flex-col gap-3">
+            {leakagePoints.map((leakage, i) => {
+              const isActive = leakage.id === activeLeakage
+              return (
+                <button
+                  key={leakage.id}
+                  onClick={() => handleMarkerClick(leakage.id)}
+                  style={{
+                    width: "100%",
+                    backgroundColor: isActive ? "#fff8f6" : "white",
+                    border: `1.5px solid ${isActive ? CRIMSON : BLACK}`,
+                    borderTop: `4px solid ${isActive ? CRIMSON : "rgba(132,22,23,0.25)"}`,
+                    borderRadius: "0px",
+                    padding: "16px 18px",
+                    textAlign: "left",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = CRIMSON;
+                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(132,22,23,0.08)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = BLACK;
+                      e.currentTarget.style.boxShadow = "none";
+                    }
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+                    <span style={{
+                      fontFamily: DM_SANS, fontSize: 10, fontWeight: 700,
+                      textTransform: "uppercase", letterSpacing: "0.06em",
+                      background: isActive ? CRIMSON : "rgba(132,22,23,0.08)",
+                      color: isActive ? "white" : "rgba(132,22,23,0.5)",
+                      width: "24px", height: "24px", borderRadius: "50%",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0,
+                    }}>{leakage.index}</span>
+                    <span style={{ fontFamily: DM_SANS, fontSize: 11, fontWeight: 600, color: "rgba(132,22,23,0.5)", letterSpacing: "0.04em" }}>
+                      {leakage.from} → {leakage.to}
+                    </span>
+                  </div>
+                  <h3 style={{ fontFamily: DM_SERIF, fontWeight: 400, color: BLACK, margin: "0 0 6px", lineHeight: 1.25, fontSize: "16px" }}>
+                    {leakage.title}
+                  </h3>
+                  <p style={{ fontFamily: DM_SANS, fontSize: 13, fontWeight: 400, lineHeight: 1.55, color: "#444444", margin: 0, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                    {leakage.description}
+                  </p>
+                  <p style={{ fontFamily: DM_SANS, fontSize: 11, fontWeight: 700, color: CRIMSON, letterSpacing: "0.06em", textTransform: "uppercase", margin: "8px 0 0" }}>
+                    {leakage.impact}
+                  </p>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Detail panel — desktop only (mobile cards are self-contained) */}
+          <div className="card-inner hidden md:block" style={{ marginTop: 48, minHeight: 140 }}>
             {active ? (
               <div style={{
                 backgroundColor: "white", border: `1.5px solid ${BLACK}`, borderLeft: `4px solid ${CRIMSON}`,
@@ -2101,10 +2161,10 @@ function BusinessOutcomesSection() {
   ]
 
   const stats = [
-    { stat: "3×", label: "Pipeline velocity" },
-    { stat: "68%", label: "Faster response time" },
-    { stat: "2.4×", label: "Conversion rate lift" },
-    { stat: "91%", label: "Client retention" },
+    { stat: "Pipeline velocity" },
+    { stat: "Faster response time" },
+    { stat: "Conversion rate lift" },
+    { stat: "Client retention" },
   ]
 
   useEffect(() => {
@@ -2125,7 +2185,7 @@ function BusinessOutcomesSection() {
   }
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>}>
+    <section id="maturity-model" ref={ref as React.Ref<HTMLElement>}>
       {/* Top crimson rule */}
       <div style={{ height: "4px", backgroundColor: CRIMSON }} />
 
@@ -2239,22 +2299,16 @@ function BusinessOutcomesSection() {
 
           {/* Bottom stat bar */}
           <div className="outcome-stats-grid" style={{
-            borderLeft: `1px solid ${BLACK}`, borderRight: `1px solid ${BLACK}`,
-            borderBottom: `1px solid ${BLACK}`,
             display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
           }}>
             {stats.map((item, i) => (
               <div key={item.label} style={{
                 padding: "20px 16px",
-                borderRight: i < stats.length - 1 ? `1px solid ${BLACK}` : "none",
                 backgroundColor: BLACK,
-                display: "flex", alignItems: "baseline", gap: "16px",
+                display: "flex", alignItems: "center", gap: "0",
               }}>
-                <span style={{ fontFamily: DM_SERIF, fontSize: "28px", fontWeight: 400, color: CRIMSON, flexShrink: 0 }}>
+                <span style={{ fontFamily: DM_SANS, fontSize: "14px", fontWeight: 500, color: "rgba(255,255,255,0.85)", letterSpacing: "0.04em" }}>
                   {item.stat}
-                </span>
-                <span style={{ fontFamily: DM_SANS, fontSize: "14px", fontWeight: 400, color: "rgba(255,255,255,0.65)", lineHeight: "1.4" }}>
-                  {item.label}
                 </span>
               </div>
             ))}
@@ -2280,7 +2334,7 @@ function DiagnosticCTASection() {
   })
 
   return (
-    <section ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-white text-gray-900">
+    <section id="framework-closing" ref={ref as React.Ref<HTMLElement>} className="framework-section py-[144px] bg-white text-gray-900">
       <div className={`${CONTAINER} text-center`}>
         <SectionLabel label="Revenue Diagnostic CTA" />
         <div className={`reveal ${visible ? 'visible' : ''}`}>
@@ -2345,6 +2399,7 @@ export default function Framework() {
   return (
     <div className="min-h-full antialiased">
       <SiteHeader />
+      <TableOfContents />
       <HeroSection />
       <CanonicalDefinitionSection />
       <WhyItMattersSection />

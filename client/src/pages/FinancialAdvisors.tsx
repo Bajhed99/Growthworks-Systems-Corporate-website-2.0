@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * FINANCIAL ADVISORS & RIAs INDUSTRY PAGE
@@ -90,7 +91,7 @@ function RevealOnScroll({
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </h3>
   );
@@ -147,33 +148,42 @@ function FinancialAdvisorsHero() {
   return (
     <section
       aria-labelledby="financial-advisors-h1"
-      className="bg-surface pt-[112px] md:pt-[144px] pb-[112px] md:pb-[88px] border-b border-gray-200"
+      className="bg-surface min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14 border-b border-gray-200"
     >
-      <div className={CONTAINER}>
-        <div className="max-w-[680px]">
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
-            Financial Advisors &amp; RIAs
-          </h3>
-          <h1
-            id="financial-advisors-h1"
-            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
-            style={{ textWrap: "balance" }}
-          >
-            Build a clearer path from trust and discovery to qualified conversations.
-          </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
-            Financial advisory businesses operate in a consideration-heavy environment. Prospects may spend significant time researching firms, advisors, specialties, credentials, philosophies, and expertise before making contact.
-          </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
-            Visibility alone does not create a client. Once inquiry occurs, response, qualification, scheduling, follow-up, advisor ownership, CRM continuity, and pipeline visibility must work together. GWS connects those parts so qualified interest has a clearer path forward.
-          </p>
-          <a
-            href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
-          >
-            Book a Revenue Diagnostic
-          </a>
+      <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center section-internal-gap`}>
+        <div className="w-full max-w-[720px]">
+
+          {/* Copy */}
+          <div>
+            <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+              FINANCIAL ADVISORS &amp; RIAs
+            </p>
+            <h1
+              id="financial-advisors-h1"
+              className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+              style={{ textWrap: "balance" }}
+            >
+              Build a clearer path from <span style={{ color: '#841617' }}>trust and discovery</span> to qualified conversations.
+            </h1>
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 max-w-[560px]">
+              Financial advisory businesses operate in a consideration-heavy environment. Prospects may spend significant time researching firms, advisors, specialties, credentials, philosophies, and expertise before making contact.
+            </p>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom-center: Learn More + scroll chevron */}
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
+        <button className="framework-learn-more">Learn More</button>
+        <button aria-label="Scroll to next section" className="flex flex-col items-center gap-1 group">
+          <svg
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </section>
   );
@@ -194,7 +204,8 @@ function AdvisoryFirmRealitySection() {
             id="advisory-reality-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Most advisory firms grew on referrals. That foundation is still essential.
+            Most advisory firms grew on referrals. That foundation is still{" "}
+            <span style={{ color: '#841617' }}>essential for an advisory firm</span>.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             The referral relationship is genuine, trust-based, and worth protecting. But the environment in which it operates has expanded in ways that create new gaps—and new opportunities that most firms have not built for.
@@ -270,7 +281,7 @@ function AdvisoryLeakageSection() {
             id="leakage-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Advisory firms face a Revenue Infrastructure problem — not a marketing problem.
+            <span style={{ color: '#841617' }}>Revenue Infrastructure</span> problem — not a marketing problem.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             These are structural gaps. They compound across the research and consideration cycle, and they affect the firm's ability to convert the qualified interest it has already attracted.
@@ -327,7 +338,8 @@ function AdvisoryRevenueJourneySection() {
             id="advisory-journey-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            A longer cycle. Trust accumulates at every stage.
+            A longer cycle. <span style={{ color: '#841617' }}>Trust</span> accumulates at
+            every stage.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Unlike transactional businesses, advisory relationships are built over time. Each stage of the consideration journey is an opportunity to build trust—or to lose it through gaps in context, response, or follow-up.
@@ -377,7 +389,8 @@ function AIDiscoverySection() {
             id="ai-discovery-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            AI tools are becoming part of how prospective clients evaluate and shorten their consideration lists.
+            <span style={{ color: '#841617' }}>AI tools</span> are becoming part of how
+            prospective clients evaluate and shorten their consideration lists.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-6 max-w-[680px]">
             When a prospect asks an AI assistant to recommend a fiduciary advisor in their area, the system returns an answer based on authority signals, structured content, entity clarity, and reputation indicators it can evaluate. This is not a replacement for referrals or traditional search—it is a growing channel that most firms have not built for.
@@ -436,7 +449,8 @@ function AdvisoryFrameworkSection() {
             id="advisory-framework-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            How Revenue Infrastructure shows up in an advisory firm.
+            How <span style={{ color: '#841617' }}>Revenue Infrastructure</span> shows up in
+            an advisory firm.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             The Revenue Infrastructure framework organizes into four connected modules. Each addresses a distinct dimension of how an advisory firm attracts, qualifies, converts, and retains clients.
@@ -492,7 +506,7 @@ function TrustBeforeTechSection() {
             id="trust-tech-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Trust before technology.
+            <span style={{ color: '#841617' }}>Trust</span> before technology.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             Financial advisory businesses operate on trust. Every system GWS builds must reinforce that trust rather than undermine it. Speed, automation, and AI-assisted tools are configured to make the firm easier to trust—not just easier to find.
@@ -561,7 +575,8 @@ function AdvisoryCapabilitiesSection() {
             id="capabilities-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Organized around outcomes — not activities.
+            <span style={{ color: '#841617' }}>Revenue Infrastructure</span> for an advisory
+            firm.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each capability maps to a specific gap in the advisory revenue journey. GWS does not sell activities. We engineer revenue results across the trust-to-conversion cycle.
@@ -633,7 +648,7 @@ function OperatingPrinciplesSection() {
             id="principles-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
-            How GWS works with advisory firms.
+            How GWS <span style={{ color: '#841617' }}>works</span> with advisory firms.
           </h2>
         </RevealOnScroll>
 
@@ -671,7 +686,7 @@ function AdvisoryFAQSection() {
             id="faq-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
           >
-            Questions advisory firms ask before engaging GWS.
+            Questions <span style={{ color: '#841617' }}>advisory firms</span> ask before engaging GWS.
           </h2>
         </RevealOnScroll>
 
@@ -736,7 +751,7 @@ function ResearchRoutesSection() {
             id="research-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
-            Explore the framework and supporting resources.
+            Explore the <span style={{ color: '#841617' }}>framework</span> and supporting resources.
           </h2>
         </RevealOnScroll>
 
@@ -768,14 +783,14 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="closing-cta-h2"
-      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="relative overflow-hidden"
+      style={{ background: '#000000', color: '#FFFFFF', paddingTop: 88, paddingBottom: 144 }}
     >
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-[0.04]"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, white 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -784,22 +799,23 @@ function ClosingCTASection() {
         className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-crimson/15 blur-[100px] pointer-events-none"
       />
 
-      <div className={`${CONTAINER} relative z-10`}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10 text-center">
         <RevealOnScroll>
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
-            Start with the system
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'rgba(255,255,255,0.40)' }}>
+            Start with <span style={{ color: '#841617' }}>the system</span>
           </h3>
           <h2
             id="closing-cta-h2"
-            className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[720px] mx-auto"
+            style={{ color: '#FFFFFF' }}
           >
-            See where your advisory firm's revenue system is helping — or limiting — growth.
+            See where your advisory firm&apos;s <span style={{ color: '#841617' }}>revenue system</span> is helping — or limiting — growth.
           </h2>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-8 max-w-[600px]">
-            A Revenue Diagnostic maps the system behind your revenue. No replacement funnels. No generic campaigns. A clear read on what to fix first.
+          <p className="text-[18px] md:text-[20px] leading-[1.6] mb-8 max-w-[600px] mx-auto" style={{ color: 'rgba(255,255,255,0.70)' }}>
+            A Revenue Diagnostic maps the system behind your revenue. No replacement funnels. No quick wins. Just a clear read on what to fix first.
           </p>
-          <div className="max-w-[600px] mb-10">
-            <h3 className="font-serif font-normal text-white/90 text-[20px] md:text-[22px] leading-[1.3] mb-4">
+          <div className="max-w-[600px] mx-auto mb-10 text-left">
+            <h3 className="font-serif font-normal text-[20px] md:text-[22px] leading-[1.3] mb-4" style={{ color: 'rgba(255,255,255,0.90)' }}>
               What happens on the call:
             </h3>
             <ol className="space-y-3">
@@ -809,9 +825,9 @@ function ClosingCTASection() {
                 "Identification of highest-impact improvement opportunities",
                 "A specific, actionable recommendation with no obligation",
               ].map((step, idx) => (
-                <li key={step} className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6] text-white/60">
+                <li key={step} className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.60)' }}>
                   <span className="flex-shrink-0 w-6 h-6 rounded-full border border-white/30 flex items-center justify-center mt-[2px]">
-                    <span className="text-[12px] font-sans font-bold text-white/70">{idx + 1}</span>
+                    <span className="text-[12px] font-sans font-bold" style={{ color: 'rgba(255,255,255,0.70)' }}>{idx + 1}</span>
                   </span>
                   <span>{step}</span>
                 </li>
@@ -820,12 +836,13 @@ function ClosingCTASection() {
           </div>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded font-sans font-semibold text-[16px] leading-[1.2] mx-auto"
+            style={{ background: '#841617', color: '#FFFFFF' }}
           >
             Book a Revenue Diagnostic
           </a>
-          <p className="text-white/30 text-[14px] mt-10 tracking-wide">
-            One system. Real alignment. Trust-led growth.
+          <p className="text-[14px] mt-10 tracking-wide" style={{ color: 'rgba(255,255,255,0.30)' }}>
+            One system. Real alignment. <span style={{ color: '#841617' }}>Predictable revenue</span>.
           </p>
         </RevealOnScroll>
       </div>
@@ -840,6 +857,7 @@ export default function FinancialAdvisors() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main className="gws-page">
+        <TableOfContents />
         <FinancialAdvisorsHero />
         <AdvisoryFirmRealitySection />
         <AdvisoryLeakageSection />

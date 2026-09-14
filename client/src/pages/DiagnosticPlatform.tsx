@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 // ─── Scroll-reveal hook ────────────────────────────────────────────────────────
 function useReveal(threshold = 0.12) {
@@ -569,13 +570,6 @@ function ExecutiveScorecardSection() {
 function DomainHeatMapSection() {
   const { ref, visible } = useReveal();
 
-  const getRiskColor = (risk: string) => {
-    if (risk.includes("CRITICAL")) return { bg: "#7F1D1D", border: "#991B1B", text: "#FEE2E2" };
-    if (risk.includes("HIGH")) return { bg: "#DC2626", border: "#EF4444", text: "#FEE2E2" };
-    if (risk.includes("MEDIUM")) return { bg: "#D97706", border: "#F59E0B", text: "#FEF3C7" };
-    return { bg: "#6B7280", border: "#9CA3AF", text: "#F3F4F6" };
-  };
-
   return (
     <section id="heat-map" ref={ref} className="py-[88px] md:py-[144px] bg-white scroll-mt-24">
       <div className={CONTAINER}>
@@ -596,31 +590,26 @@ function DomainHeatMapSection() {
 
           {/* 3×3 Grid on desktop, stacked on mobile */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {HEATMAP_DOMAINS.map((domain) => {
-              const colors = getRiskColor(domain.risk);
-              return (
-                <div
-                  key={domain.code}
-                  className="diagnostic-card rounded-none p-6 border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]"
-                  style={{ backgroundColor: colors.bg, borderColor: colors.border }}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-[16px] font-sans font-bold" style={{ color: colors.text }}>
-                      {domain.code}
-                    </span>
-                    <span
-                      className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase px-2 py-1 rounded"
-                      style={{ backgroundColor: colors.border, color: colors.text }}
-                    >
-                      {domain.risk}
-                    </span>
-                  </div>
-                  <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3]" style={{ color: colors.text }}>
-                    {domain.short}
-                  </h3>
+            {HEATMAP_DOMAINS.map((domain) => (
+              <div
+                key={domain.code}
+                className="diagnostic-card rounded-none p-6 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <span className="text-[16px] font-sans font-bold text-[#841617]">
+                    {domain.code}
+                  </span>
+                  <span
+                    className="text-[11px] font-sans font-bold tracking-[0.12em] uppercase px-2 py-1 rounded bg-[#841617] text-white"
+                  >
+                    {domain.risk}
+                  </span>
                 </div>
-              );
-            })}
+                <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617]">
+                  {domain.short}
+                </h3>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -637,25 +626,21 @@ function PrioritizationMatrixSection() {
       name: "Quick Wins",
       subtitle: "High Impact / Low Effort",
       items: ["AI Visibility Foundation", "Speed-to-Lead System", "Google Business Profile"],
-      color: "#059669",
     },
     {
       name: "Strategic Priorities",
       subtitle: "High Impact / Higher Effort",
       items: ["AI-Ready Website Rebuild", "CRM Implementation", "Content Authority Program"],
-      color: "#2563EB",
     },
     {
       name: "Fill-In Work",
       subtitle: "Medium Impact / Medium Effort",
       items: ["Workflow Automation", "Attribution Tracking", "Outbound Sequences"],
-      color: "#D97706",
     },
     {
       name: "Reconsider",
       subtitle: "Lower Impact / High Effort",
       items: ["Review Generation System"],
-      color: "#6B7280",
     },
   ];
 
@@ -682,8 +667,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="diagnostic-card rounded-none p-8 border-2 min-h-[240px] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01]"
-                style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
+                className="diagnostic-card rounded-none p-8 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300"
               >
                 <div className="mb-6">
                   <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-1">{q.name}</h3>
@@ -692,7 +676,7 @@ function PrioritizationMatrixSection() {
                 <ul className="space-y-2">
                   {q.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: q.color }}></span>
+                      <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#841617]"></span>
                       <span className="text-[15px] font-sans text-[#2B2B2B]">{item}</span>
                     </li>
                   ))}
@@ -706,8 +690,7 @@ function PrioritizationMatrixSection() {
             {quadrants.map((q) => (
               <div
                 key={q.name}
-                className="diagnostic-card rounded-none p-6 border-2 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-                style={{ borderColor: q.color, backgroundColor: `${q.color}10` }}
+                className="diagnostic-card rounded-none p-6 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="mb-4">
                   <h3 className="font-['DM_Sans'] font-semibold text-[18px] leading-[1.3] text-[#841617] mb-1">{q.name}</h3>
@@ -716,7 +699,7 @@ function PrioritizationMatrixSection() {
                 <ul className="space-y-2">
                   {q.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: q.color }}></span>
+                      <span className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#841617]"></span>
                       <span className="text-[15px] font-sans text-[#2B2B2B]">{item}</span>
                     </li>
                   ))}
@@ -1014,6 +997,7 @@ export default function DiagnosticPlatform() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main>
+        <TableOfContents />
         <HeroSection />
         <DiagnosticQuestionsSection />
         <AssessmentPrinciplesSection />

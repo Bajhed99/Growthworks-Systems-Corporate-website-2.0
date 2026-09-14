@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * HOME SERVICES INDUSTRY PAGE
@@ -87,7 +88,7 @@ function RevealOnScroll({
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </h3>
   );
@@ -99,33 +100,42 @@ function HomeServicesHero() {
   return (
     <section
       aria-labelledby="home-services-h1"
-      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14 border-b border-[#D8D5CE]"
     >
-      <div className={CONTAINER}>
-        <div className="max-w-[680px]">
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
-            Home Services
-          </h3>
-          <h1
-            id="home-services-h1"
-            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
-            style={{ textWrap: "balance" }}
-          >
-            Turn local demand into a more reliable revenue system.
-          </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
-            Home-service businesses often operate in a high-intent environment. When a homeowner needs help, the business that is easiest to find, fastest to respond, simplest to schedule, and most consistent in follow-up can have an advantage.
-          </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
-            The problem is that these activities often sit in separate systems. Marketing creates demand. Calls and forms capture it. Dispatch or scheduling takes over. Sales follows up. CRM records may or may not stay current. Reporting often focuses on channels rather than the complete customer path.
-          </p>
-          <a
-            href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-crimson-dark active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
-          >
-            Book a Revenue Diagnostic
-          </a>
+      <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center section-internal-gap`}>
+        <div className="w-full max-w-[720px]">
+
+          {/* Copy */}
+          <div>
+            <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
+              HOME SERVICES
+            </p>
+            <h1
+              id="home-services-h1"
+              className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+              style={{ textWrap: "balance" }}
+            >
+              Turn local demand into a more reliable revenue <span className="text-crimson">system.</span>
+            </h1>
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 max-w-[560px]">
+              Home-service businesses often operate in a high-intent environment. When a homeowner needs help, the business that is easiest to find, fastest to respond, simplest to schedule, and most consistent in follow-up can have an advantage.
+            </p>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom-center: Learn More + scroll chevron */}
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
+        <button className="framework-learn-more">Learn More</button>
+        <button aria-label="Scroll to next section" className="flex flex-col items-center gap-1 group">
+          <svg
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </section>
   );
@@ -146,7 +156,7 @@ function OperatingRealitySection() {
             id="operating-reality-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            The core challenge: opportunity leaks between handoffs.
+            The core challenge: <span className="text-crimson">opportunity leaks</span> between handoffs.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-5 max-w-[680px]">
             Home service revenue flows through multiple stages and systems. Each transition—from discovery to inquiry, inquiry to response, response to scheduling, scheduling to estimate, estimate to service, service to follow-up—creates a point where information can fragment, context can be lost, and the homeowner's intent can leak away to a faster, more organized competitor.
@@ -203,7 +213,7 @@ function ProblemModelSection() {
             id="problem-model-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Where home service revenue typically leaks.
+            Where home service <span className="text-crimson">revenue typically leaks</span>.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             These are structural gaps, not individual channel problems. They compound across discovery, inquiry, response, and conversion.
@@ -215,7 +225,7 @@ function ProblemModelSection() {
             <RevealOnScroll key={problem.num} delay={i * 60}>
               <article className="flex flex-col h-full border border-gray-200 rounded-none bg-white p-7 md:p-8">
                 <div className="mb-4">
-                  <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase">
+                  <span className="text-[14px] font-sans font-semibold tracking-[0.18em] text-[#841617] uppercase mb-3 industries-section-label">
                     {problem.num}
                   </span>
                 </div>
@@ -260,7 +270,7 @@ function RevenueJourneySection() {
             id="journey-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            How demand becomes booked, measurable revenue.
+            How demand becomes booked, <span className="text-crimson">measurable revenue</span>.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             Each stage has different systems, ownership, and visibility. Connected Revenue Infrastructure means each handoff preserves context and intent.
@@ -333,7 +343,7 @@ function GWSApplianceSection() {
             id="gws-applies-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Connect those pieces around one objective: reduce the opportunity lost between local discovery and booked, completed, measurable revenue.
+            Connect those pieces around one objective: reduce the opportunity lost between local discovery and booked, completed, <span className="text-crimson">measurable revenue</span>.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-12 max-w-[680px]">
             GWS Revenue Infrastructure organizes into four connected modules. In home services, each one directly addresses the gaps above.
@@ -344,7 +354,7 @@ function GWSApplianceSection() {
           {modules.map((module, i) => (
             <RevealOnScroll key={module.title} delay={i * 80}>
               <div className="flex flex-col h-full border border-gray-200 rounded-none bg-white p-8">
-                <span className="text-[12px] font-sans font-bold tracking-[0.16em] text-[#841617] uppercase mb-3">
+                <span className="text-[14px] font-sans font-semibold tracking-[0.18em] text-[#841617] uppercase mb-3 industries-section-label">
                   Module {i + 1}
                 </span>
                 <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[24px] md:text-[28px] mb-4">
@@ -377,7 +387,7 @@ function ConnectedStateSection() {
             id="connected-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            For a home service business, Revenue Infrastructure means one coherent operating system.
+            For a home service business, Revenue Infrastructure means one coherent <span className="text-crimson">operating system</span>.
           </h2>
         </RevealOnScroll>
 
@@ -485,7 +495,7 @@ function CompetitiveContextSection() {
             id="competitive-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            As buyer discovery and response expectations evolve, businesses with clearer systems can be easier to discover, faster to respond, and easier to measure.
+            As buyer discovery and response expectations evolve, businesses with <span className="text-crimson">clearer systems</span> can be easier to discover, faster to respond, and easier to measure.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-500 mb-8 max-w-[680px]">
             Home service buyers increasingly expect:
@@ -544,7 +554,7 @@ function OutcomesSection() {
             id="outcomes-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            What connected Revenue Infrastructure enables.
+            What connected <span className="text-crimson">Revenue Infrastructure</span> enables.
           </h2>
         </RevealOnScroll>
 
@@ -583,7 +593,7 @@ function AIVisibilityContextSection() {
             id="ai-context-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            AI-powered search is reshaping how homeowners discover service providers.
+            AI-powered search is reshaping how homeowners <span className="text-crimson">discover</span> service providers.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-6 max-w-[680px]">
             Conversational AI (ChatGPT, Google AI, Perplexia) now plays a role in discovery. Homeowners ask questions in natural language, and these systems return recommendations based on availability, reviews, and service clarity.
@@ -610,7 +620,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="closing-cta-h2"
-      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-black text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -627,26 +637,26 @@ function ClosingCTASection() {
       />
 
       <div className={`${CONTAINER} relative z-10 text-center`}>
-        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
-          Start with the system
+        <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 !text-white/70">
+          Start with <span className="!text-crimson">the system</span>
         </h3>
         <h2
           id="closing-cta-h2"
-          className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
+          className="font-serif font-normal !text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
         >
-          See where your revenue system is helping — or limiting — growth.
+          See where your <span className="!text-crimson">revenue system</span> is helping — or limiting — growth.
         </h2>
-        <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-10 max-w-[600px] mx-auto">
+        <p className="text-[18px] md:text-[20px] leading-[1.6] !text-white/70 mb-10 max-w-[600px] mx-auto">
           A Revenue Diagnostic maps the system behind your revenue. No replacement funnels. No quick wins. Just a clear read on what to fix first.
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-crimson hover:bg-crimson-dark active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-crimson hover:bg-crimson-dark active:bg-[#611012] transition-colors !text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>
-        <p className="text-white/40 text-[14px] mt-12 tracking-wide">
-          One system. Real alignment. Predictable revenue.
+        <p className="!text-white/40 text-[14px] mt-12 tracking-wide">
+          One system. Real alignment. <span className="!text-crimson">Predictable revenue</span>.
         </p>
       </div>
     </section>
@@ -660,6 +670,7 @@ export default function HomeServices() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main className="gws-page">
+        <TableOfContents />
         <HomeServicesHero />
         <OperatingRealitySection />
         <ProblemModelSection />

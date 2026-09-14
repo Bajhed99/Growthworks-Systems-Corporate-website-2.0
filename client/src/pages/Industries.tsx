@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * Industries Hub — discovery / recognition / routing page.
@@ -27,7 +28,7 @@ const HUB_CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </h3>
   );
@@ -97,12 +98,13 @@ function IndustriesHero() {
   return (
     <section
       aria-labelledby="industries-h1"
-      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-[#D8D5CE]"
+      className="bg-surface min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14 border-b border-[#D8D5CE]"
     >
-      <div className={HUB_CONTAINER}>
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-center">
-          {/* Copy column */}
-          <div className="max-w-[680px]">
+      <div className={`${HUB_CONTAINER} relative z-10 w-full flex-1 flex items-center section-internal-gap`}>
+        <div className="w-full max-w-[720px]">
+
+          {/* Copy */}
+          <div>
             <h3 className="industries-hero-eyebrow text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
               Who GWS Serves
             </h3>
@@ -113,170 +115,25 @@ function IndustriesHero() {
             >
               Revenue Infrastructure for <span className="text-[#841617] italic">founder-led</span> service businesses.
             </h1>
-            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
-              GrowthWorks Systems works with service businesses where revenue depends on being found, responding quickly, converting opportunities consistently, and understanding what is working across the full customer journey.
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[560px]">
+              Revenue Infrastructure is the connected system of strategy, technology, data, processes, and execution that turns market opportunity into measurable revenue. When those parts work together, growth becomes easier to see, manage, and improve.
             </p>
-            <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
-              Explore how those challenges show up in your industry.
-            </p>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href="/revenue-diagnostic"
-                className="industries-hero-cta inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-crimson hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
-              >
-                Book a Revenue Diagnostic
-              </a>
-            </div>
-          </div>
-
-          {/* Concept visual: one system → three service environments */}
-          <div
-            className="relative w-full max-w-[560px] mx-auto lg:ml-auto"
-            aria-hidden="true"
-          >
-            <svg
-              viewBox="0 0 560 460"
-              className="w-full h-auto"
-              role="img"
-              aria-label="One shared Revenue Infrastructure system branching into three service-business operating environments"
-            >
-              {/* Center hub */}
-              <g>
-                <circle cx={120} cy={230} r={76} fill="#FFFFFF" stroke="#DDD6CC" strokeWidth={1.2} />
-                <circle cx={120} cy={230} r={56} fill="#F8F5EC" stroke="#841617" strokeWidth={1.2} />
-                <text
-                  x={120}
-                  y={222}
-                  textAnchor="middle"
-                  fill="#2B2B2B"
-                  fontFamily="'DM Serif Display', Georgia, serif"
-                  fontSize="14"
-                  fontWeight={400}
-                  letterSpacing="0.04em"
-                >
-                  Revenue
-                </text>
-                <text
-                  x={120}
-                  y={242}
-                  textAnchor="middle"
-                  fill="#2B2B2B"
-                  fontFamily="'DM Serif Display', Georgia, serif"
-                  fontSize="14"
-                  fontWeight={400}
-                  letterSpacing="0.04em"
-                >
-                  Infrastructure
-                </text>
-                <text
-                  x={120}
-                  y={260}
-                  textAnchor="middle"
-                  fill="#841617"
-                  fontFamily="'DM Sans', sans-serif"
-                  fontSize="9"
-                  fontWeight={700}
-                  letterSpacing="0.18em"
-                >
-                  ONE SYSTEM
-                </text>
-              </g>
-
-              {/* Branches + three destinations */}
-              {[
-                { y: 80,  label: "01", name: "HOME SERVICES",         desc: "Local demand · Speed-to-lead" },
-                { y: 230, label: "02", name: "FINANCIAL ADVISORS & RIAs", desc: "Trust · Research · Inquiry" },
-                { y: 380, label: "03", name: "INSURANCE AGENCIES",    desc: "Lead flow · Lifecycle" },
-              ].map((node, i) => {
-                const x1 = 196;
-                const y1 = 230;
-                const x2 = 460;
-                const y2 = node.y;
-                const cx1 = 320;
-                const cy1 = y1;
-                const cx2 = 320;
-                const cy2 = y2;
-                return (
-                  <g key={i}>
-                    <path
-                      d={`M ${x1} ${y1} C ${cx1} ${cy1} ${cx2} ${cy2} ${x2 - 28} ${y2}`}
-                      fill="none"
-                      stroke="#841617"
-                      strokeOpacity="0.35"
-                      strokeWidth={1.2}
-                    />
-                    <rect
-                      x={432}
-                      y={y2 - 26}
-                      width={120}
-                      height={52}
-                      rx={6}
-                      fill="#FFFFFF"
-                      stroke="#DDD6CC"
-                    />
-                    <text
-                      x={444}
-                      y={y2 - 10}
-                      fill="#841617"
-                      fontFamily="'DM Sans', sans-serif"
-                      fontSize="9"
-                      fontWeight={700}
-                      letterSpacing="0.16em"
-                    >
-                      {node.label}
-                    </text>
-                    <text
-                      x={444}
-                      y={y2 + 4}
-                      fill="#2B2B2B"
-                      fontFamily="'DM Sans', sans-serif"
-                      fontSize="10"
-                      fontWeight={700}
-                      letterSpacing="0.04em"
-                    >
-                      {node.name}
-                    </text>
-                    <text
-                      x={444}
-                      y={y2 + 18}
-                      fill="#625E59"
-                      fontFamily="'DM Sans', sans-serif"
-                      fontSize="9"
-                    >
-                      {node.desc}
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Side label */}
-              <text
-                x={120}
-                y={30}
-                textAnchor="middle"
-                fill="#625E59"
-                fontFamily="'DM Sans', sans-serif"
-                fontSize="10"
-                fontWeight={600}
-                letterSpacing="0.2em"
-              >
-                ONE REVENUE INFRASTRUCTURE SYSTEM
-              </text>
-              <text
-                x={460}
-                y={30}
-                textAnchor="middle"
-                fill="#625E59"
-                fontFamily="'DM Sans', sans-serif"
-                fontSize="10"
-                fontWeight={600}
-                letterSpacing="0.2em"
-              >
-                THREE OPERATING ENVIRONMENTS
-              </text>
-            </svg>
           </div>
         </div>
+      </div>
+
+      {/* Bottom-center: Learn More + scroll chevron */}
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
+        <button className="framework-learn-more">Learn More</button>
+        <button aria-label="Scroll to next section" className="flex flex-col items-center gap-1 group">
+          <svg
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </section>
   );
@@ -693,6 +550,7 @@ export default function Industries() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main>
+        <TableOfContents />
         <IndustriesHero />
         <SharedContextSection />
         <IndustryRoutingSection />

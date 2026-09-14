@@ -16,12 +16,12 @@ declare global {
 }
 
 /**
- * REVENUE DIAGNOSTIC — Booking Surface
+ * GOOGLE BUSINESS PROFILE OPTIMIZATION REVIEW — Booking Surface
  *
- * Canonical booking route: /revenue-diagnostic
- * Booking target: https://cal.com/clayton-tidwell-gws/discovery-audit-call
+ * Canonical booking route: /google-business-profile-optimization-review
+ * Booking target: https://cal.com/clayton-tidwell-gws/gbp-optimization-review
  *
- * This is the focused scheduling surface for the Revenue Diagnostic conversion flow.
+ * This is the focused scheduling surface for the GBP Optimization Review conversion flow.
  * NOT another landing page, contact page, methodology page, or Solutions page.
  *
  * Responsibilities:
@@ -33,12 +33,12 @@ declare global {
  * - Clear header/footer navigation
  *
  * Cal.com integration:
- * - Target URL: https://cal.com/clayton-tidwell-gws/discovery-audit-call
+ * - Target URL: https://cal.com/clayton-tidwell-gws/gbp-optimization-review
  * - Embed via <CalEmbed> component below
  * - Fallback: external link opens in new tab with rel="noopener noreferrer"
  */
 
-const CAL_URL = "https://cal.com/clayton-tidwell-gws/discovery-audit-call";
+const CAL_URL = "https://cal.com/clayton-tidwell-gws/gbp-optimization-review";
 
 // ─── RevealOnScroll ────────────────────────────────────────────────────────
 
@@ -108,18 +108,18 @@ function SectionLabel({ label }: { label: string }) {
 }
 
 // ─── Cal.com Embed ────────────────────────────────────────────────────────
-// Inline Cal.com embed for the Revenue Diagnostic booking surface.
+// Inline Cal.com embed for the Google Business Profile Optimization Review booking surface.
 // Reference: https://docs.cal.com/embedding
-// Target calLink: clayton-tidwell-gws/discovery-audit-call
+// Target calLink: clayton-tidwell-gws/gbp-optimization-review
 //
 // Behavior:
 // - On mount, injects https://app.cal.com/embed/embed.js once.
-// - Renders the official inline embed into #my-cal-inline-discovery-audit-call.
+// - Renders the official inline embed into #my-cal-inline-gbp-optimization-review.
 // - If the script fails to load, falls back to a "Open Booking Calendar" link.
 
 const CAL_SCRIPT_SRC = "https://app.cal.com/embed/embed.js";
-const CAL_ELEMENT_ID = "my-cal-inline-discovery-audit-call";
-const CAL_NAMESPACE = "discovery-audit-call";
+const CAL_ELEMENT_ID = "my-cal-inline-gbp-optimization-review";
+const CAL_NAMESPACE = "gbp-optimization-review";
 
 function CalEmbed() {
   const [state, setState] = useState<"loading" | "loaded" | "error">("loading");
@@ -230,26 +230,26 @@ function CalEmbed() {
 function DiagnosticHero() {
   return (
     <section
-      aria-labelledby="revenue-diagnostic-h1"
+      aria-labelledby="gbp-review-h1"
       className="bg-surface pt-[96px] md:pt-[128px] pb-[64px] md:pb-[80px] border-b border-stone-300"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="max-w-[640px]">
           <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 industries-section-label">
-            Revenue Diagnostic
+            Google Business Profile
           </h3>
           <h1
-            id="revenue-diagnostic-h1"
+            id="gbp-review-h1"
             className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
             style={{ textWrap: "balance" }}
           >
-            Book your <span style={{ color: '#841617' }}>Revenue Diagnostic</span>.
+            Book your <span style={{ color: '#841617' }}>Google Business Profile Optimization Review</span>.
           </h1>
           <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-5 max-w-[600px]">
-            Choose a time that works for you to begin a structured conversation about where your revenue system may be underperforming, disconnected, or unclear.
+            Choose a time that works for you to discuss how your Google Business Profile can rank higher in local search, attract more qualified calls, and convert more prospects into customers.
           </p>
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 max-w-[560px]">
-            You do not need to have the problem fully diagnosed before the conversation.
+            You do not need to have your profile fully optimized before the conversation.
           </p>
         </div>
       </div>
@@ -298,22 +298,22 @@ const WHAT_EXPECT = [
   {
     step: "1",
     title: "Understand",
-    desc: "Discuss what is happening in the current revenue path.",
+    desc: "Review your current Google Business Profile setup, categories, and local search positioning.",
   },
   {
     step: "2",
     title: "Identify",
-    desc: "Look for meaningful constraints or breakdowns.",
+    desc: "Look for gaps in your profile — reviews, photos, posts, and signals — that may be limiting your local pack rankings.",
   },
   {
     step: "3",
     title: "Prioritize",
-    desc: "Clarify what deserves investigation or improvement first.",
+    desc: "Clarify which profile optimizations will drive the most calls, clicks, and customer actions.",
   },
   {
     step: "4",
     title: "Decide",
-    desc: "Determine the most appropriate next step.",
+    desc: "Determine the most appropriate next step for dominating local search in your market.",
   },
 ];
 
@@ -428,7 +428,7 @@ function PreparationSection() {
 
 // ─── Page Component ────────────────────────────────────────────────────────
 
-export default function RevenueDiagnostic() {
+export default function GoogleBusinessProfileOptimizationReview() {
   return (
     <div className="min-h-full antialiased">
       <SiteHeader />

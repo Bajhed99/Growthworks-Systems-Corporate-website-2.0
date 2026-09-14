@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 // ─── Shared layout and utilities ──────────────────────────────────────────────
 
@@ -8,7 +9,7 @@ const CONTAINER = "max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16";
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </h3>
   );
@@ -75,41 +76,42 @@ function InsuranceHero() {
   return (
     <section
       aria-labelledby="insurance-hero-h1"
-      className="bg-surface pt-[112px] md:pt-[144px] pb-[72px] md:pb-[88px] border-b border-gray-200"
+      className="bg-surface min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14 border-b border-gray-200"
     >
-      <div className={CONTAINER}>
-        <div className="max-w-[720px]">
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-            Insurance Agencies
-          </p>
-          <h1
-            id="insurance-hero-h1"
-            className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
-            style={{ textWrap: "balance" }}
-          >
-            Connect lead generation, producer follow-up, and revenue visibility.
-          </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 mb-6 max-w-[620px]">
-            Insurance agencies generate opportunity through multiple channels — referrals, local discovery, paid campaigns, website inquiries, inbound calls, partner relationships, and renewals. The challenge is keeping those opportunities connected after they enter the business.
-          </p>
-          <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 max-w-[600px]">
-            Information moves between marketing platforms, phone systems, forms, producers, CRM systems, quoting processes, and follow-up tasks. Every handoff can create lost context, unclear ownership, or delayed action. GrowthWorks Systems creates a more coordinated path from inquiry to measurable business outcome.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+      <div className={`${CONTAINER} relative z-10 w-full flex-1 flex items-center section-internal-gap`}>
+        <div className="w-full max-w-[720px]">
+
+          {/* Copy */}
+          <div>
+            <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+              INSURANCE AGENCIES
+            </p>
+            <h1
+              id="insurance-hero-h1"
+              className="font-serif font-normal text-gray-900 leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+              style={{ textWrap: "balance" }}
             >
-              Book a Revenue Diagnostic
-            </a>
-            <a
-              href="/framework"
-              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-none border border-[#841617] text-[#841617] bg-surface hover:bg-[#F2E7E3] active:bg-[#E9D8D3] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
-            >
-              Explore the Framework
-            </a>
+              Connect lead generation, producer follow-up, and <span className="text-crimson">revenue</span> visibility.
+            </h1>
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-900 max-w-[560px]">
+              Insurance agencies generate opportunity through multiple channels — referrals, local discovery, paid campaigns, website inquiries, inbound calls, partner relationships, and renewals. The challenge is keeping those opportunities connected after they enter the business.
+            </p>
           </div>
         </div>
+      </div>
+
+      {/* Bottom-center: Learn More + scroll chevron */}
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
+        <button className="framework-learn-more">Learn More</button>
+        <button aria-label="Scroll to next section" className="flex flex-col items-center gap-1 group">
+          <svg
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </section>
   );
@@ -161,7 +163,7 @@ function ProblemStatementSection() {
             id="problem-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-10 max-w-[720px]"
           >
-            Six systemic challenges agencies face today
+            Six systemic <span className="text-crimson">challenges</span> agencies face today
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -218,7 +220,7 @@ function TrustBeforeQuotingSection() {
             id="trust-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            Buyers evaluate before they decide.
+            Buyers <span className="text-crimson">evaluate</span> before they decide.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
             In insurance, the relationship decision happens before the quote. Prospects assess your responsiveness, expertise, reputation, and clarity as signals of whether you're the right partner. That evaluation window is narrow. Speed and consistency matter.
@@ -290,7 +292,7 @@ function AIDiscoverySection() {
             id="ai-discovery-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            How AI systems evaluate insurance agencies
+            How AI systems <span className="text-crimson">evaluate</span> insurance agencies
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-4 max-w-[680px]">
             Prospects increasingly use AI-assisted tools to research and evaluate agencies. Machine systems benefit from clear signals about who you are, what you do, and whether you're trustworthy. You control most of these signals.
@@ -387,7 +389,7 @@ function CapabilityGroupsSection() {
             id="capabilities-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            How the four Revenue Infrastructure modules work together in insurance.
+            How the four <span className="text-crimson">Revenue Infrastructure</span> modules work together in insurance.
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
             The Revenue Infrastructure framework applies across industries. These four capability groups describe how they connect for insurance agencies.
@@ -507,10 +509,10 @@ function LifecycleSection() {
             id="lifecycle-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
           >
-            From inquiry to measurement
+            From inquiry to <span className="text-crimson">measurement</span>
           </h2>
           <p className="text-[18px] leading-[1.65] text-gray-900 mb-12 max-w-[680px]">
-            In a connected agency, lead context, producer ownership, quote progression, follow-up consistency, and outcome visibility work as one system. This prevents opportunities from slipping through cracks.
+            In a connected agency, lead context, producer ownership, quote progression, follow-up consistency, and outcome visibility work as one <span className="text-crimson">system</span>. This prevents opportunities from slipping through cracks.
           </p>
 
           {/* Lifecycle stages */}
@@ -550,7 +552,7 @@ function LifecycleSection() {
           {/* Operating principles */}
           <div>
             <h3 className="font-serif font-normal text-gray-900 leading-[1.25] text-[22px] md:text-[24px] mb-8">
-              Operating principles for connected agencies
+              Operating principles for connected <span className="text-crimson">agencies</span>
             </h3>
             <div className="space-y-3">
               {principles.map((principle) => (
@@ -624,7 +626,7 @@ function FAQSection() {
             id="faq-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-12 max-w-[720px]"
           >
-            Questions agencies ask about Revenue Infrastructure
+            Questions <span style={{ color: '#841617' }}>agencies</span> ask about Revenue Infrastructure
           </h2>
 
           <div className="max-w-[780px] space-y-3">
@@ -678,7 +680,7 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="insurance-closing-cta"
-      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="bg-black text-white py-[88px] md:py-[144px] relative overflow-hidden"
     >
       <div
         aria-hidden="true"
@@ -695,26 +697,26 @@ function ClosingCTASection() {
       />
 
       <div className={`${CONTAINER} relative z-10 text-center`}>
-        <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-          Start with the system
+        <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 !text-white/70">
+          Start with <span className="!text-crimson">the system</span>
         </p>
         <h2
           id="insurance-closing-cta"
-          className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
+          className="font-serif font-normal !text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px] mx-auto"
         >
-          Measure where your system is helping — or limiting — growth.
+          Measure where your <span className="!text-crimson">system</span> is helping — or limiting — growth.
         </h2>
-        <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-10 max-w-[600px] mx-auto">
+        <p className="text-[18px] md:text-[20px] leading-[1.6] !text-white/70 mb-10 max-w-[600px] mx-auto">
           A Revenue Diagnostic maps the system behind your revenue. No replacement funnels. No quick wins. Just a clear read on what to fix first.
         </p>
         <a
           href="/revenue-diagnostic"
-          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+          className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors !text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
         >
           Book a Revenue Diagnostic
         </a>
-        <p className="text-white/40 text-[14px] mt-12 tracking-wide">
-          One system. Real alignment. Predictable revenue.
+        <p className="!text-white/40 text-[14px] mt-12 tracking-wide">
+          One system. Real alignment. <span className="!text-crimson">Predictable revenue</span>.
         </p>
       </div>
     </section>
@@ -728,6 +730,7 @@ export default function InsuranceAgencies() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main>
+        <TableOfContents />
         <InsuranceHero />
         <ProblemStatementSection />
         <TrustBeforeQuotingSection />

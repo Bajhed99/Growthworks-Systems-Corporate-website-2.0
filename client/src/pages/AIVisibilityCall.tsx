@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * AI VISIBILITY CALL — Booking Surface
@@ -67,7 +68,7 @@ function RevealOnScroll({
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <h3 className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </h3>
   );
@@ -285,6 +286,7 @@ export default function AIVisibilityCallPage() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main>
+        <TableOfContents />
         <AIVisibilityHero />
         <BookingSection />
         <WhatToExpectSection />

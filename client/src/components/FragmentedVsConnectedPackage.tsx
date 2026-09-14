@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import {
   Globe,
   MessageSquare,
@@ -179,12 +179,12 @@ export default function App() {
 
         .premium-scrollbar::-webkit-scrollbar-track {
           background: rgba(214, 206, 206, 0.2);
-          border-radius: 4px;
+          border-radius: 0px;
         }
 
         .premium-scrollbar::-webkit-scrollbar-thumb {
           background: rgba(184, 134, 59, 0.4);
-          border-radius: 4px;
+          border-radius: 0px;
         }
 
         .premium-scrollbar::-webkit-scrollbar-thumb:hover {

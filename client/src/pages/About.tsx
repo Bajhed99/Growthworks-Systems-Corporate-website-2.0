@@ -27,6 +27,7 @@
 
 import React, { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
+import TableOfContents from "@/components/TableOfContents";
 import SiteFooter from "@/components/SiteFooter";
 
 // ─── Layout Constants ───────────────────────────────────────────────────────────
@@ -98,7 +99,7 @@ function RevealOnScroll({
 
 function SectionLabel({ label }: { label: string }) {
   return (
-    <p className="text-[18px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
+    <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617] industries-section-label">
       {label}
     </p>
   );
@@ -134,7 +135,8 @@ function FounderHero() {
                   href="https://www.linkedin.com/in/clayton-tidwell-11a2525"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[14px] font-sans font-semibold text-gray-500 hover:text-[#841617] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center gap-2 text-[14px] font-sans font-semibold hover:text-[#841617] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  style={{ color: '#9ca3af' }}
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -173,7 +175,8 @@ function FounderHero() {
               <div className="flex flex-col sm:flex-row flex-wrap items-start gap-3">
                 <a
                   href="/revenue-diagnostic"
-                  className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  className="inline-flex items-center justify-center min-h-[48px] px-7 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#2B2B2B] focus-visible:outline-offset-[3px]"
+                  style={{ color: '#FFFFFF' }}
                 >
                   Book a Revenue Diagnostic
                 </a>
@@ -208,7 +211,7 @@ function WhyGWSSection() {
             id="why-gws-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
-            Businesses have been sold disconnected solutions. No one designed the complete system.
+            Businesses have been sold disconnected solutions. No one designed <span style={{ color: '#841617' }}>the complete system</span>.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
@@ -282,7 +285,7 @@ function ExperienceSection() {
             id="experience-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
           >
-            Derived from three decades of operational problem solving, not marketing theory.
+            Derived from <span style={{ color: '#841617' }}>three decades</span> of <span style={{ color: '#841617' }}>operational problem solving</span>, not marketing theory.
           </h2>
           <p className="text-[17px] leading-[1.7] text-gray-500 mb-14 max-w-[640px]">
             The Revenue Infrastructure framework wasn't invented in a marketing course. It was forged in environments where systems, processes, data, and people had to work together reliably — or the operation failed.
@@ -336,7 +339,7 @@ function WhyRevenueInfrastructureSection() {
             id="why-ri-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
-            An operating system, not another marketing methodology.
+            An <span style={{ color: '#841617' }}>operating system</span>, not another marketing methodology.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -441,7 +444,7 @@ function WhyAISection() {
             id="why-ai-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-8 max-w-[700px]"
           >
-            AI made Revenue Infrastructure more important — not less.
+            <span style={{ color: '#841617' }}>AI made Revenue Infrastructure</span> more important — not less.
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-16 items-start">
@@ -525,7 +528,7 @@ function PrinciplesSection() {
             id="principles-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[700px]"
           >
-            Five operating principles govern every engagement.
+            Five <span style={{ color: '#841617' }}>operating principles</span> govern every engagement.
           </h2>
           <p className="text-[17px] leading-[1.7] text-gray-500 mb-14 max-w-[640px]">
             Not aspirational values. Operational commitments that shape how every engagement runs.
@@ -572,7 +575,7 @@ function BeyondFrameworkSection() {
                 id="beyond-h2"
                 className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[520px]"
               >
-                The human context behind the methodology.
+                The <span style={{ color: '#841617' }}>human context</span> behind the methodology.
               </h2>
               <p className="text-[17px] leading-[1.75] text-gray-900 mb-5">
                 Revenue Infrastructure didn't come from studying AI or marketing theory. It came from operational problem solving — and the observation that the same systems failures kept appearing across very different industries.
@@ -670,7 +673,7 @@ function DiagnosticSection() {
             id="diagnostic-h2"
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-4 max-w-[640px]"
           >
-            No pitch. No obligation. A real read on where your revenue system is working — and where it isn't.
+            No pitch. No obligation. A real read on where your <span style={{ color: '#841617' }}>revenue system</span> is working — and where it isn't.
           </h2>
           <p className="text-[17px] leading-[1.7] text-gray-500 mb-12 max-w-[600px]">
             The Revenue Diagnostic examines the connected path from discovery through conversion, sales progression, and measurement to identify where opportunity is being lost.
@@ -709,7 +712,8 @@ function ClosingCTASection() {
   return (
     <section
       aria-labelledby="about-closing-cta"
-      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="relative overflow-hidden"
+      style={{ background: '#000000', color: '#FFFFFF', paddingTop: 88, paddingBottom: 144 }}
     >
       <div
         aria-hidden="true"
@@ -724,42 +728,53 @@ function ClosingCTASection() {
         className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
       />
 
-      <div className={`${CONTAINER} relative z-10 text-center`}>
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10 text-center">
         <RevealOnScroll>
-          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-[#841617]">
-            Start with understanding
+          <p className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'rgba(255,255,255,0.40)' }}>
+            Start with <span style={{ color: '#841617' }}>understanding</span>
           </p>
           <h2
             id="about-closing-cta"
-            className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[640px] mx-auto"
+            className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[640px] mx-auto"
+            style={{ color: '#FFFFFF' }}
           >
             Before deciding what to build, identify what is actually limiting growth.
           </h2>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-10 max-w-[560px] mx-auto">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] mb-10 max-w-[560px] mx-auto" style={{ color: 'rgba(255,255,255,0.70)' }}>
             The Revenue Diagnostic examines the connected path from discovery through conversion, sales progression, and measurement — to identify where opportunity is being lost and what deserves attention first.
           </p>
           <a
             href="/revenue-diagnostic"
-            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none bg-[#841617] hover:bg-[#721315] active:bg-[#611012] transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded-none font-sans font-semibold text-[16px] leading-[1.2] mx-auto"
+            style={{ background: '#841617', color: '#FFFFFF' }}
           >
             Book a Revenue Diagnostic
           </a>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[14px] font-sans text-white/40">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[14px] font-sans" style={{ color: 'rgba(255,255,255,0.40)' }}>
             <a
               href="/framework"
-              className="hover:text-white/70 transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white"
+              className="transition-colors"
+              style={{ color: 'rgba(255,255,255,0.40)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.70)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.40)'; }}
             >
               Explore the Framework
             </a>
             <a
               href="mailto:clayton@growthworks-systems.com"
-              className="hover:text-white/70 transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white"
+              className="transition-colors"
+              style={{ color: 'rgba(255,255,255,0.40)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.70)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.40)'; }}
             >
               clayton@growthworks-systems.com
             </a>
             <a
               href="tel:+12143027720"
-              className="hover:text-white/70 transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white"
+              className="transition-colors"
+              style={{ color: 'rgba(255,255,255,0.40)' }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.70)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.40)'; }}
             >
               214-302-7720
             </a>
@@ -777,6 +792,7 @@ export default function About() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main>
+        <TableOfContents />
         <FounderHero />
         <WhyGWSSection />
         <ExperienceSection />

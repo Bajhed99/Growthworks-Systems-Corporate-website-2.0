@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -217,7 +218,7 @@ function Hero() {
   return (
     <section
       aria-labelledby="resources-hero-h1"
-      className="bg-gws-dark pt-[120px] md:pt-[144px] pb-[72px] md:pb-[96px] border-b border-[#3A3A3A] relative overflow-hidden"
+      className="bg-gws-dark min-h-[532px] sm:min-h-[400px] flex flex-col relative overflow-hidden pt-[108px] pb-14 border-b border-[#3A3A3A]"
     >
       {/* Subtle dot texture overlay */}
       <div
@@ -228,22 +229,55 @@ function Hero() {
           backgroundSize: "28px 28px",
         }}
       />
-      <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <div className="max-w-[780px]">
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-5 text-gray-400">
-            GWS KNOWLEDGE PLATFORM
-          </h3>
-          <h1
-            id="resources-hero-h1"
-            className="font-serif font-normal text-white leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
-            style={{ textWrap: "balance" }}
-          >
-            Frameworks, research, and diagnostic tools.
-          </h1>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-5 max-w-[640px]">
-            GWS publishes its frameworks, research, and diagnostic tools as public resources. Businesses that understand Revenue Infrastructure can make better decisions regardless of whether they work directly with GWS.
-          </p>
+      <div className={`relative z-10 w-full flex-1 flex items-center max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 section-internal-gap`}>
+        <div className="w-full max-w-[720px]">
+
+          {/* Copy */}
+          <div>
+            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 industries-section-label">
+              GWS KNOWLEDGE PLATFORM
+            </h3>
+            <h1
+              id="resources-hero-h1"
+              className="font-serif font-normal text-white leading-[1.08] tracking-tight text-[40px] md:text-[60px] mb-6"
+              style={{ textWrap: "balance" }}
+            >
+              Frameworks, research, and <span style={{ color: '#841617' }}>diagnostic tools.</span>
+            </h1>
+            <p className="text-[18px] md:text-[20px] leading-[1.6] text-gray-500 max-w-[560px]">
+              GWS publishes its frameworks, research, and diagnostic tools as public resources. Businesses that understand Revenue Infrastructure can make better decisions regardless of whether they work directly with GWS.
+            </p>
+          </div>
         </div>
+      </div>
+
+      {/* Bottom-center: Learn More + scroll chevron */}
+      <div className="relative z-10 flex flex-col items-center gap-3 pt-6">
+        <button
+          onClick={() => {
+            const el = document.getElementById("platform-status");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="framework-learn-more"
+        >
+          Learn More
+        </button>
+        <button
+          aria-label="Scroll to next section"
+          onClick={() => {
+            const el = document.getElementById("platform-status");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="flex flex-col items-center gap-1 group"
+        >
+          <svg
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="#841617" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+            className="framework-learn-more-chevron opacity-60 group-hover:opacity-100 transition-opacity"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
       </div>
     </section>
   );
@@ -255,6 +289,7 @@ function BetaStatus() {
   return (
     <section
       aria-label="Platform status"
+      id="platform-status"
       className="bg-crimson text-white"
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 py-5 md:py-6">
@@ -363,14 +398,14 @@ function ResourceSection({ category }: { category: Category }) {
     <section id={category.id} aria-labelledby={`${category.id}-h2`} className="bg-white py-[72px] md:py-[96px] border-b border-gray-200 scroll-mt-[72px]">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 industries-section-label">
             {category.eyebrow}
           </h3>
           <h2
             id={`${category.id}-h2`}
             className="font-serif font-normal text-gray-900 leading-[1.15] text-[28px] md:text-[40px] md:leading-[1.10] mb-4 max-w-[720px]"
           >
-            {category.title}
+            <span style={{ color: '#841617' }}>Revenue Infrastructure</span> {category.title.replace('Revenue Infrastructure ', '')}
           </h2>
           <p className="text-[16px] md:text-[17px] leading-[1.65] text-gray-500 mb-10 md:mb-12 max-w-[680px]">
             {category.intro}
@@ -398,14 +433,14 @@ function StayInformed() {
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <div className="max-w-[680px]">
           <RevealOnScroll>
-            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
+            <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 industries-section-label">
               STAY INFORMED
             </h3>
             <h2
               id="stay-informed-h2"
               className="font-serif font-normal text-gray-900 leading-[1.15] text-[32px] md:text-[44px] mb-6"
             >
-              New frameworks, research, and diagnostic tools are published as they are completed.
+              <span style={{ color: '#841617' }}>New frameworks, research, and diagnostic tools</span> are published as they are completed.
             </h2>
           </RevealOnScroll>
           <RevealOnScroll delay={80}>
@@ -417,7 +452,8 @@ function StayInformed() {
             <div className="flex flex-wrap items-center gap-3 mt-8">
               <a
                 href="/revenue-diagnostic"
-                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
+                className="inline-flex items-center justify-center min-h-[48px] px-7 rounded bg-crimson hover:bg-crimson-dark transition-colors font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-gray-900 focus-visible:outline-offset-[3px]"
+                style={{ color: '#ffffff' }}
               >
                 Book a Revenue Diagnostic
               </a>
@@ -470,7 +506,8 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="closing-h2"
-      className="bg-gws-dark text-white py-[88px] md:py-[144px] relative overflow-hidden"
+      className="relative overflow-hidden"
+      style={{ background: '#000000', color: '#FFFFFF', paddingTop: 88, paddingBottom: 144 }}
     >
       <div
         aria-hidden="true"
@@ -484,35 +521,51 @@ function ClosingBand() {
         aria-hidden="true"
         className="absolute left-1/2 bottom-0 -translate-x-1/2 w-[700px] h-[260px] bg-[#841617]/15 blur-[100px] pointer-events-none"
       />
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16 relative z-10 text-center">
         <RevealOnScroll>
-          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400">
-            UNDERSTAND THE FRAMEWORK
+          <h3 className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4" style={{ color: 'rgba(255,255,255,0.40)' }}>
+            Understand the framework
           </h3>
           <h2
             id="closing-h2"
-            className="font-serif font-normal text-white leading-[1.15] text-[32px] md:text-[44px] mb-6 max-w-[720px]"
+            className="font-serif font-normal text-[32px] md:text-[44px] leading-[1.15] mb-6 max-w-[720px] mx-auto"
+            style={{ color: '#FFFFFF' }}
           >
-            Your business has a Revenue Infrastructure problem.
+            Your business has a <span style={{ color: '#841617' }}>Revenue Infrastructure</span> problem.
           </h2>
-          <p className="text-[18px] md:text-[20px] leading-[1.6] text-white/70 mb-4 max-w-[600px]">
+          <p className="text-[18px] md:text-[20px] leading-[1.6] mb-8 max-w-[600px] mx-auto" style={{ color: 'rgba(255,255,255,0.70)' }}>
             The frameworks and assessments published here describe the category. A Revenue Diagnostic applies them to your specific business.
           </p>
-          <div className="flex flex-wrap items-center gap-3 mt-8">
-            <a
-              href="/revenue-diagnostic"
-              className="inline-flex items-center justify-center min-h-[48px] px-8 rounded bg-crimson hover:bg-crimson-dark transition-colors text-white font-sans font-semibold text-[16px] leading-[1.2] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
-            >
-              Book a Revenue Diagnostic
-            </a>
-            <a
-              href="/framework"
-              className="inline-flex items-center gap-2 text-white font-sans font-semibold text-[15px] hover:text-white/80 border-b border-white/40 pb-0.5 focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-white focus-visible:outline-offset-[3px]"
-            >
-              Understand the Framework
-              <span aria-hidden="true">→</span>
-            </a>
+          <div className="max-w-[600px] mx-auto mb-10 text-left">
+            <h3 className="font-serif font-normal text-[20px] md:text-[22px] leading-[1.3] mb-4" style={{ color: 'rgba(255,255,255,0.90)' }}>
+              What happens on the call:
+            </h3>
+            <ol className="space-y-3">
+              {[
+                "Structured diagnostic conversation — not a sales presentation",
+                "Assessment of current Revenue Infrastructure across all Nine Domains",
+                "Identification of highest-impact improvement opportunities",
+                "A specific, actionable recommendation with no obligation",
+              ].map((step, idx) => (
+                <li key={step} className="flex items-start gap-3 text-[16px] md:text-[17px] leading-[1.6]" style={{ color: 'rgba(255,255,255,0.60)' }}>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full border border-white/30 flex items-center justify-center mt-[2px]">
+                    <span className="text-[12px] font-sans font-bold" style={{ color: 'rgba(255,255,255,0.70)' }}>{idx + 1}</span>
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
+          <a
+            href="/revenue-diagnostic"
+            className="inline-flex items-center justify-center min-h-[48px] px-8 rounded font-sans font-semibold text-[16px] leading-[1.2] mx-auto"
+            style={{ background: '#841617', color: '#FFFFFF' }}
+          >
+            Book a Revenue Diagnostic
+          </a>
+          <p className="text-[14px] mt-10 tracking-wide" style={{ color: 'rgba(255,255,255,0.30)' }}>
+            One system. Real alignment. <span style={{ color: '#841617' }}>Predictable revenue</span>.
+          </p>
         </RevealOnScroll>
       </div>
     </section>
@@ -526,6 +579,7 @@ export default function Resources() {
     <div className="min-h-full antialiased">
       <SiteHeader />
       <main id="main-content">
+        <TableOfContents />
         <Hero />
         <BetaStatus />
         <CategoryNav />

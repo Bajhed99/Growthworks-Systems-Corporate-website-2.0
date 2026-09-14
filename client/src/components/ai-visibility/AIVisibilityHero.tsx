@@ -18,8 +18,8 @@ export function AIVisibilityHero() {
             AI-powered search engines now shape how buyers discover, evaluate, and choose solutions — before they ever visit your website. AI Visibility ensures your business is understood, trusted, and recommended at the moment that matters most.
           </p>
           <div className="gws-glowy-actions">
-            <AnchorLink href="/revenue-diagnostic" className="gws-glowy-primary supporting-button" style={{ fontFamily: '"DM Sans", Arial, sans-serif', fontSize: 14 }}>
-              Book a Revenue Diagnostic
+            <AnchorLink href="/ai-visibility-review" className="gws-glowy-primary supporting-button" style={{ fontFamily: '"DM Sans", Arial, sans-serif', fontSize: 14 }}>
+              Check My AI Visibility
             </AnchorLink>
           </div>
         </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import '@figma/astraui/styles.css';
@@ -41,7 +41,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-right: 1.5px dashed var(--color-border-strong);
-  border-radius: 6px;
+  border-radius: 0px;
   /* Fixed height so every pill is identical regardless of label length */
   height: 40px;
   min-height: 40px;
@@ -90,7 +90,7 @@
 .gws-badge {
   background: var(--color-canvas);
   border: 1px solid var(--color-border-strong);
-  border-radius: 20px;
+  border-radius: 0px;
   padding: 7px 16px;
   font-family: var(--font-sans);
   font-size: 12px;
@@ -117,7 +117,7 @@
 
 /* ── Outcome row ──────────────────────────────────────────────────── */
 .gws-outcome {
-  border-radius: 8px;
+  border-radius: 0px;
   padding: 10px 12px;
   cursor: pointer;
   transition: background 0.16s ease, box-shadow 0.16s ease, transform 0.14s ease;

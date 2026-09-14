@@ -55,37 +55,6 @@ export function SolutionsConstraintFirstSection() {
           </div>
         </div>
 
-        {/* Mobile vertical process */}
-        <div className="md:hidden" style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }} aria-label="Four-phase improvement process">
-          {phases.map(phase => (
-            <div key={phase.num} style={{
-              background: '#fff',
-              border: '1px solid #DDD6CC',
-              borderRadius: 0,
-              padding: '20px',
-            }} aria-label={`${phase.name}: ${phase.desc}`}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                <div style={{
-                  width: '32px', height: '32px', borderRadius: '6px',
-                  background: '#841617', color: '#fff',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'DM Sans, system-ui, sans-serif',
-                  fontSize: '13px', fontWeight: 600, flexShrink: 0,
-                }}>{phase.num}</div>
-                <h3 style={{
-                  fontFamily: 'DM Serif Display, Georgia, serif',
-                  fontSize: '20px', fontWeight: 400, color: '#2B2B2B', lineHeight: 1.3,
-                }}>{phase.name}</h3>
-              </div>
-              <p style={{
-                fontFamily: 'DM Sans, system-ui, sans-serif',
-                fontSize: '15px', color: '#334155', lineHeight: 1.55,
-                paddingLeft: '44px',
-              }}>{phase.desc}</p>
-            </div>
-          ))}
-        </div>
-
         <div style={{
           marginTop: '40px',
           padding: '24px 28px',

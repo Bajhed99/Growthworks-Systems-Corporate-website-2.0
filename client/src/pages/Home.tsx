@@ -12,7 +12,7 @@ import { BusinessOutcomesInteractive } from "@/components/BusinessOutcomesIntera
 import { RevenueInfrastructurePlugAndPlayHost } from "@/components/RevenueInfrastructurePlugAndPlayHost";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import MobileSectionJump from "@/components/MobileSectionJump";
+import TableOfContents from "@/components/TableOfContents";
 import { getPageParallaxTravel, PAGE_PARALLAX_SCROLL_TRIGGER, PAGE_TEXT_REVEAL_TRIGGER } from "@/lib/pageParallax";
 
 const problemCards = [
@@ -44,9 +44,9 @@ const fitSignals = [
 ];
 
 const industryCards = [
-  { label: "Home Services", image: "/assets/images/industries/Home Services.jpg", alt: "Home service professional working outside a residence" },
-  { label: "Financial Advisors", image: "/assets/images/industries/Financial Advisors.jpeg", alt: "Financial advisor in a client meeting" },
-  { label: "Insurance Agencies", image: "/assets/images/industries/Insurance Agencies.jpeg", alt: "Insurance professionals consulting with a client" },
+  { label: "Home Services", image: "/assets/images/industries/Home Services.jpg", alt: "Home service professional working outside a residence", href: "/home-services" },
+  { label: "Financial Advisors", image: "/assets/images/industries/Financial Advisors.jpeg", alt: "Financial advisor in a client meeting", href: "/financial-advisors" },
+  { label: "Insurance Agencies", image: "/assets/images/industries/Insurance Agencies.jpeg", alt: "Insurance professionals consulting with a client", href: "/insurance-agencies" },
 ];
 
 const CLAYTON_PORTRAIT = "/assets/images/branding/clayton-tidwell.jpg";
@@ -180,15 +180,15 @@ export default function Home() {
           <div className="section-route"><AnchorLink href="/solutions" className="text-link">Explore Solutions <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div>
         </div></section>
 
-        <section id="industries" className="section section--gray" aria-labelledby="industries-title"><div className="site-shell fit-layout"><div className="fit-copy" data-scroll-reveal><p className="section-kicker">Who GWS serves</p><h2 id="industries-title">Built for founder-led service businesses.</h2><p>GrowthWorks works with established service businesses that have real demand and real revenue — but are losing more of it than they should.</p><div className="industry-card-grid">{industryCards.map((industry) => <AnchorLink key={industry.label} href="/industries" className="industry-image-card"><img src={industry.image} alt={industry.alt} /><span>{industry.label}</span></AnchorLink>)}</div></div><div className="fit-panel" data-page-parallax data-parallax-shift="-24">{fitSignals.map(([title, body]) => <div key={title}><Check size={17} aria-hidden="true" /><p><strong>{title}</strong><span>{body}</span></p></div>)}</div></div></section>
+        <section id="industries" className="section section--gray" aria-labelledby="industries-title"><div className="site-shell fit-layout"><div className="fit-copy" data-scroll-reveal><p className="section-kicker">Who GWS serves</p><h2 id="industries-title">Built for founder-led service businesses.</h2><p>GrowthWorks works with established service businesses that have real demand and real revenue — but are losing more of it than they should.</p><div className="industry-card-grid">{industryCards.map((industry) => <AnchorLink key={industry.label} href={industry.href} className="industry-image-card"><img src={industry.image} alt={industry.alt} /><span>{industry.label}</span></AnchorLink>)}</div></div><div className="fit-panel" data-page-parallax data-parallax-shift="-24">{fitSignals.map(([title, body]) => <div key={title}><Check size={17} aria-hidden="true" /><p><strong>{title}</strong><span>{body}</span></p></div>)}</div></div></section>
 
-        <section id="founder" className="section section--white" aria-labelledby="founder-title"><div className="site-shell founder-layout"><div className="portrait-frame" data-page-parallax data-parallax-shift="18"><img src={CLAYTON_PORTRAIT} alt="Clayton Tidwell" /></div><div className="founder-copy" data-scroll-reveal><p className="section-kicker">Founder credibility</p><h2 id="founder-title">Experience built in complex systems.</h2><p>Clayton Tidwell&apos;s background spans enterprise operations, technology transformation, and systems integration. That experience shapes GWS&apos;s practical, diagnostic approach to solving revenue and operating problems.</p><ul>{["30+ years of systems integration and operating experience", "Enterprise operations & technology transformation", "Systems integration at scale"].map((proof) => <li key={proof}><Check size={16} aria-hidden="true" />{proof}</li>)}</ul><AnchorLink href="/about" className="text-link">Meet the Founder <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div></div></section>
+        <section id="founder" className="section section--white" aria-labelledby="founder-title"><div className="site-shell founder-layout"><AnchorLink href="/about" className="block" style={{textDecoration:'none'}}><div className="portrait-frame" data-page-parallax data-parallax-shift="18"><img src={CLAYTON_PORTRAIT} alt="Clayton Tidwell" /></div></AnchorLink><div className="founder-copy" data-scroll-reveal><p className="section-kicker">Founder credibility</p><h2 id="founder-title">Experience built in complex systems.</h2><p>Clayton Tidwell&apos;s background spans enterprise operations, technology transformation, and systems integration. That experience shapes GWS&apos;s practical, diagnostic approach to solving revenue and operating problems.</p><ul>{["30+ years of systems integration and operating experience", "Enterprise operations & technology transformation", "Systems integration at scale"].map((proof) => <li key={proof}><Check size={16} aria-hidden="true" />{proof}</li>)}</ul><AnchorLink href="/about" className="text-link">Meet the Founder <ArrowRight size={17} aria-hidden="true" /></AnchorLink></div></div></section>
 
         <section id="revenue-diagnostic" className="section section--gray diagnostic-section" aria-labelledby="diagnostic-title"><div className="site-shell diagnostic-inner" data-scroll-reveal><div className="diagnostic-flow" data-page-parallax data-parallax-shift="-20" aria-hidden="true"><span>Digital Presence</span><i></i><span>Lead Response</span><i></i><span>Sales Operations</span><i></i><span>Revenue Intelligence</span><b>Revenue Infrastructure</b></div><p className="diagnostic-bridge">The connected system behind the outcomes above.</p><h2 id="diagnostic-title">Ready to find the constraint that matters most?</h2><p className="diagnostic-copy">A Revenue Diagnostic is a focused 60-minute session to identify your highest-value revenue constraint and the system fix that addresses it. No generic audit. No pressure.</p><AnchorLink href="/revenue-diagnostic" className="button button--dark">Book a Revenue Diagnostic</AnchorLink><p className="diagnostic-meta">60 minutes · No obligation · Focused on your constraint</p></div></section>
       </main>
 
       <SiteFooter />
-      <MobileSectionJump />
+      <TableOfContents />
     </div>
   );
 }

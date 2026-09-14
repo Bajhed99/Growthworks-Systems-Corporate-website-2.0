@@ -315,58 +315,17 @@ export function SolutionsLeadResponseSection() {
               Outcome
             </p>
 
-            <div
+            <h3
               style={{
-                display: "flex",
-                alignItems: "baseline",
-                gap: "14px",
-                marginBottom: "12px",
-                flexWrap: "wrap",
+                fontFamily: "'DM Serif Display', Georgia, serif",
+                fontSize: "26px",
+                color: "#1a1a1a",
+                lineHeight: 1.15,
+                margin: 0,
               }}
             >
-              <span
-                style={{
-                  fontFamily: "'DM Serif Display', Georgia, serif",
-                  fontSize: "36px",
-                  color: "#1a1a1a",
-                  lineHeight: 1,
-                }}
-              >
-                78%
-              </span>
-              <span
-                style={{
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: "15px",
-                  color: "#57534e",
-                }}
-              >
-                of deals go to the first responder
-              </span>
-            </div>
-
-            {/* Progress bar */}
-            <div
-              style={{
-                width: "100%",
-                height: 4,
-                background: "#e7e5e4",
-                overflow: "hidden",
-                borderRadius: "2px",
-                marginBottom: "16px",
-              }}
-            >
-              <div
-                style={{
-                  width: sectionVisible ? "78%" : "0%",
-                  height: "100%",
-                  background: "#1a1a1a",
-                  transition:
-                    "width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.8s",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
+              First Responder Advantage
+            </h3>
 
             <p
               style={{
@@ -374,7 +333,7 @@ export function SolutionsLeadResponseSection() {
                 fontSize: "15px",
                 color: "#44403c",
                 lineHeight: 1.7,
-                margin: 0,
+                margin: "12px 0 0",
               }}
             >
               A faster, more consistent response system turns more buyer intent into active conversations. Speed is not just competitive — it is a structural advantage.

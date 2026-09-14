@@ -5,6 +5,8 @@ import NotFound from "@/pages/NotFound";
 import Framework from "@/pages/Framework";
 import DiagnosticPlatform from "@/pages/DiagnosticPlatform";
 import RevenueDiagnostic from "@/pages/RevenueDiagnostic";
+import GoogleBusinessProfileOptimizationReview from "@/pages/GoogleBusinessProfileOptimizationReview";
+import AIVisibilityReview from "@/pages/AIVisibilityReview";
 import Solutions from "@/pages/Solutions";
 import AIVisibility from "@/pages/AIVisibility";
 import AIVisibilityCall from "@/pages/AIVisibilityCall";
@@ -32,6 +34,8 @@ function Router() {
       <Route path={"/diagnostic"} component={DiagnosticPlatform} />
       <Route path={"/diagnostic-platform"} component={DiagnosticPlatform} />
       <Route path={"/revenue-diagnostic"} component={RevenueDiagnostic} />
+      <Route path={"/google-business-profile-optimization-review"} component={GoogleBusinessProfileOptimizationReview} />
+      <Route path={"/ai-visibility-review"} component={AIVisibilityReview} />
       <Route path={"/solutions"} component={Solutions} />
       <Route path={"/ai-visibility"} component={AIVisibility} />
       <Route path={"/ai-visibility-call"} component={AIVisibilityCall} />

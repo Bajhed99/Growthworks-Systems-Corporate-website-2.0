@@ -1,5 +1,6 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
 import { SolutionsSystemInteractive } from "@/components/solutions/SolutionsSystemInteractive";
 import { SolutionsDigitalPresenceSection } from "@/components/solutions/SolutionsDigitalPresenceSection";
@@ -16,6 +17,7 @@ export default function Solutions() {
     <>
       <SiteHeader />
       <main id="main-content">
+        <TableOfContents />
         {/* Section 01 — Hero */}
         <SolutionsHero />
         {/* Section 02 — The Solution System (interactive) */}

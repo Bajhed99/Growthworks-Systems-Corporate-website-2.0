@@ -46,12 +46,16 @@ export default function SiteFooter() {
       <div className="site-shell footer-main">
         <div className="footer-brand-column">
           <img className="footer-logo" src={OFFICIAL_LOGO_WHITE} alt="GrowthWorks Systems" />
-          <p className="footer-tagline">Build. Automate. Grow.</p>
-          <p className="footer-description">Revenue Infrastructure for founder-led service businesses.</p>
+          <span className="brand-wordmark" style={{ marginTop: 12, display: 'inline-grid', gap: 1 }}>
+            <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.05, textTransform: 'uppercase', color: '#FFFFFF' }}>GrowthWorks</span>
+            <span className="brand-wordmark-systems" style={{ fontSize: 10, fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.05, textTransform: 'uppercase' }}>Systems</span>
+          </span>
+          <p className="footer-tagline" style={{ color: '#841617' }}>Build. Automate. Grow.</p>
+          <p className="footer-description" style={{ color: 'rgba(255,255,255,0.60)' }}>Revenue Infrastructure for founder-led service businesses.</p>
           <address className="footer-contact-list">
             <a href="mailto:clayton@growthworks-systems.com"><Mail size={14} aria-hidden="true" />clayton@growthworks-systems.com</a>
             <a href="tel:+12143027720"><Phone size={14} aria-hidden="true" />214–302–7720</a>
-            <a href="/about"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
+            <a href="https://www.linkedin.com/in/clayton-tidwell-11a2525/" target="_blank" rel="noopener noreferrer"><Linkedin size={14} aria-hidden="true" />LinkedIn</a>
           </address>
         </div>
         {footerGroups.map((group) => <nav className="footer-link-group" aria-label={group.title} key={group.title}><h2>{group.title}</h2>{group.links.map((link) => <FooterLink key={link}>{link}</FooterLink>)}</nav>)}

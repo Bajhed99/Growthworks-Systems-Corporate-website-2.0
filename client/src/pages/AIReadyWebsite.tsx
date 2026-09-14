@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 
 /* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
 function RevealOnScroll({
@@ -61,15 +61,26 @@ function RevealOnScroll({
 }
 
 const SectionLabel = ({ label }: { label: string }) => (
-  <h3
-    className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase mb-4 text-gray-400"
+  <p
+    className="text-[14px] font-sans font-semibold tracking-[0.18em] uppercase text-[#841617] industries-section-label"
   >
     {label}
-  </h3>
+  </p>
 );
 
+function SectionNumber({ num }: { num: string }) {
+  return (
+    <span
+      className="font-serif font-normal text-[#841617] text-[36px] md:text-[48px] leading-[1] tracking-tight"
+      aria-hidden="true"
+    >
+      {num}
+    </span>
+  );
+}
+
 const CrimsonRule = () => (
-  <span aria-hidden="true" className="block mb-6 w-12 h-[2px] bg-crimson" />
+  <span aria-hidden="true" className="block mb-6 w-12 h-[2px] bg-[#841617]" />
 );
 
 /* ─── Primary CTA (48px) ────────────────────────────────────────────── */
@@ -85,7 +96,8 @@ const PrimaryLink = ({
   <a
     href={href}
     onClick={onClick}
-    className="inline-flex items-center justify-center gap-2 rounded bg-crimson text-white font-sans font-semibold text-[16px] h-12 px-8 hover:bg-crimson-dark transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
+    className="inline-flex items-center justify-center gap-2 rounded bg-[#841617] text-white font-sans font-semibold text-[16px] h-12 px-8 hover:bg-[#721315] transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
+    style={{ fontFamily: '"DM Sans", Arial, sans-serif', color: '#ffffff' }}
   >
     {children}
   </a>
@@ -100,7 +112,7 @@ const SecondaryLink = ({
 }) => (
   <a
     href={href}
-    className="inline-flex items-center justify-center gap-2 rounded border border-gray-200 text-gray-900 font-sans font-semibold text-[16px] h-12 px-8 bg-transparent hover:bg-gray-50 hover:border-gray-900 transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
+    className="inline-flex items-center justify-center gap-2 rounded border border-gray-200 text-gray-900 font-sans font-semibold text-[16px] h-12 px-8 bg-transparent hover:border-[#841617] hover:text-[#841617] transition-colors focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-offset-[3px] focus-visible:outline-[#2B2B2B]"
   >
     {children}
   </a>
@@ -182,68 +194,34 @@ const CALL_STEPS = [
 function Hero() {
   return (
     <section
-      aria-labelledby="ai-ready-h1"
-      className="section section--white"
-      style={{ paddingBlock: 'var(--gws-section-space)' }}
+      aria-labelledby="ai-ready-title"
+      className="gws-glowy-hero"
+      style={{ minHeight: 'unset', height: 655.078 }}
     >
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
-        <RevealOnScroll>
-          <div style={{ maxWidth: '960px', marginInline: 'auto', textAlign: 'center' }}>
-            <h3
-              className="hero-kicker"
-              style={{ marginBottom: 23 }}
-            >
+      <div className="gws-glowy-canvas" style={{ height: 655.078 }} />
+      <div className="gws-glowy-content" style={{ paddingBottom: 108 }}>
+        <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
+          <div className="gws-glowy-content-inner" style={{ marginTop: 0, marginBottom: 0 }}>
+            <div className="gws-glowy-badge">
               AI-Ready Website
-            </h3>
-            <h1
-              id="ai-ready-h1"
-              className="font-serif font-normal text-[2.5rem] md:text-[3.75rem] leading-[1.10] text-gray-900"
-              style={{
-                maxWidth: '880px',
-                margin: '0 auto 20px',
-                textWrap: 'balance',
-              }}
-            >
-              A website is not a brochure. It is a revenue asset.
-            </h1>
-            <p
-              className="text-[17px] md:text-[18px] leading-[1.60] text-gray-700 font-sans"
-              style={{
-                maxWidth: '710px',
-                margin: '0 auto 30px',
-              }}
-            >
-              An AI-Ready Website is the conversion engine at the center of your
-              Revenue Infrastructure. It establishes authority, earns trust, and
-              moves qualified prospects toward a decision — for both human
-              visitors and AI-assisted buying and discovery environments.
+            </div>
+            <h2 id="ai-ready-title" className="gws-glowy-title">
+              A website is not a brochure. It is a <span style={{ color: 'var(--maroon)' }}>revenue asset.</span>
+            </h2>
+            <p className="gws-glowy-copy">
+              An AI-Ready Website is the conversion engine at the center of your Revenue Infrastructure. It establishes authority, earns trust, and moves qualified prospects toward a decision — for both human visitors and AI-assisted buying and discovery environments.
             </p>
-            <div
-              className="flex flex-wrap gap-3"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '12px',
-                marginBottom: 0,
-              }}
-            >
-              <PrimaryLink
-                href="/revenue-diagnostic"
-                style={{
-                  fontFamily: '"DM Sans", Arial, sans-serif',
-                  fontSize: 14,
-                  fontWeight: 800,
-                }}
+            <div className="gws-glowy-actions">
+              <a
+                href="/google-business-profile-optimization-review"
+                className="gws-glowy-primary supporting-button"
+                style={{ fontFamily: '"DM Sans", Arial, sans-serif', fontSize: 14 }}
               >
-                Book a Revenue Diagnostic
-                <ArrowRight size={16} />
-              </PrimaryLink>
-              <SecondaryLink href="/revenue-diagnostic">
-                Request a Website Audit
-              </SecondaryLink>
+                Improve My Google Visibility
+              </a>
             </div>
           </div>
-        </RevealOnScroll>
+        </div>
       </div>
     </section>
   );
@@ -258,9 +236,12 @@ function BusinessProblemSection() {
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
-            <div>
-              <SectionLabel label="The Business Problem" />
+          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 items-start">
+            <div className="flex lg:block items-baseline gap-3">
+              <SectionNumber num="01" />
+              <div className="lg:mt-3">
+                <SectionLabel label="The Business Problem" />
+              </div>
             </div>
             <div className="max-w-[720px]">
               <CrimsonRule />
@@ -268,8 +249,7 @@ function BusinessProblemSection() {
                 id="ai-ready-problem-h2"
                 className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-6"
               >
-                Most websites describe services. Qualified buyers need to trust
-                the firm.
+                Most websites describe services. Qualified buyers need to <span className="text-crimson">trust the firm.</span>
               </h2>
               <p
                 className="text-[17px] md:text-[18px] leading-[1.65] mb-6"
@@ -279,17 +259,25 @@ function BusinessProblemSection() {
                 enough evidence, authority, and clarity to trust that the
                 business is the right choice.
               </p>
-              <ul
-                className="space-y-4"
-              >
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {PROBLEMS.map((p, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span
-                      aria-hidden="true"
-                      className="mt-[10px] inline-block shrink-0 rounded-full"
-                    />
-                    <span>{p}</span>
-                  </li>
+                  <RevealOnScroll key={i} delayMs={i * 80}>
+                    <li
+                      className="group relative rounded-none border border-gray-200 bg-white p-5 md:p-6 transition-all duration-300 hover:border-gray-400 hover:shadow-lg hover:-translate-y-1 cursor-default"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="mt-[2px] inline-flex shrink-0 items-center justify-center w-7 h-7 rounded-full bg-[#841617]/10 text-[#841617] text-[12px] font-bold leading-none"
+                        >
+                          {i + 1}
+                        </span>
+                        <p className="text-[15px] md:text-[16px] leading-[1.6] text-gray-700 m-0">
+                          {p}
+                        </p>
+                      </div>
+                    </li>
+                  </RevealOnScroll>
                 ))}
               </ul>
             </div>
@@ -309,9 +297,12 @@ function ApproachSection() {
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
-            <div>
-              <SectionLabel label="The GWS Approach" />
+          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 items-start">
+            <div className="flex lg:block items-baseline gap-3">
+              <SectionNumber num="02" />
+              <div className="lg:mt-3">
+                <SectionLabel label="The GWS Approach" />
+              </div>
             </div>
             <div className="max-w-[820px]">
               <CrimsonRule />
@@ -319,8 +310,8 @@ function ApproachSection() {
                 id="ai-ready-approach-h2"
                 className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-4"
               >
-                Engineered for conversions, AI indexing, and executive
-                credibility.
+                Engineered for conversions, AI indexing, and{" "}
+                <span style={{ color: '#841617' }}>executive credibility.</span>
               </h2>
               <p
                 className="text-[17px] md:text-[18px] leading-[1.65] mb-10"
@@ -328,34 +319,33 @@ function ApproachSection() {
                 Six interconnected components — each one a distinct discipline
                 that an AI-Ready Website must perform well.
               </p>
-              <ol
-                className="divide-y border-gray-200"
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 {APPROACH.map((row, i) => (
-                  <RevealOnScroll key={row.n} delayMs={i * 40}>
-                    <li
-                      className={"grid grid-cols-1 md:grid-cols-[64px_220px_1fr] gap-4 md:gap-6 py-6 first:pt-0 " + (i===0 ? '' : 'border-t border-gray-200')}
+                  <RevealOnScroll key={row.n} delayMs={i * 60}>
+                    <div
+                      className="group relative rounded-none border border-gray-200 bg-white p-5 md:p-6 transition-all duration-300 hover:border-gray-400 hover:shadow-lg hover:-translate-y-1 cursor-default"
                     >
-                      <span
-                        className="text-[16px] font-semibold tracking-[0.12em]"
-                      >
-                        {row.n}
-                      </span>
-                      <h3
-                        className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900"
-                      >
-                        {row.t}
-                      </h3>
+                      <div className="flex items-center gap-3 mb-3">
+                        <span
+                          className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#841617] text-white text-[13px] font-bold leading-none shrink-0 transition-transform duration-300 group-hover:scale-110"
+                        >
+                          {row.n}
+                        </span>
+                        <h3
+                          className="font-serif font-normal text-[17px] md:text-[18px] leading-[1.30] text-gray-900 m-0"
+                        >
+                          {row.t}
+                        </h3>
+                      </div>
                       <p
-                        className="text-[16px] md:text-[17px] leading-[1.65]"
-                       
+                        className="text-[14px] md:text-[15px] leading-[1.6] text-gray-600 m-0 pl-[44px]"
                       >
                         {row.d}
                       </p>
-                    </li>
+                    </div>
                   </RevealOnScroll>
                 ))}
-              </ol>
+              </div>
             </div>
           </div>
         </RevealOnScroll>
@@ -373,9 +363,12 @@ function OutcomesSection() {
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-8 lg:gap-16">
-            <div>
-              <SectionLabel label="Expected Business Outcomes" />
+          <div className="grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 items-start">
+            <div className="flex lg:block items-baseline gap-3">
+              <SectionNumber num="03" />
+              <div className="lg:mt-3">
+                <SectionLabel label="Expected Business Outcomes" />
+              </div>
             </div>
             <div className="max-w-[820px]">
               <CrimsonRule />
@@ -383,7 +376,7 @@ function OutcomesSection() {
                 id="ai-ready-outcomes-h2"
                 className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-6"
               >
-                A website that works as hard as your best salesperson.
+                A website that works as hard as your best <span className="text-crimson">salesperson.</span>
               </h2>
               <p
                 className="text-[17px] md:text-[18px] leading-[1.65] mb-10"
@@ -391,27 +384,26 @@ function OutcomesSection() {
                 What the system is designed to deliver — treated as outcomes to
                 engineer for, not guarantees to claim.
               </p>
-              <ul className="space-y-6">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                 {OUTCOMES.map((o, i) => (
-                  <RevealOnScroll key={o.t} delayMs={i * 40}>
+                  <RevealOnScroll key={o.t} delayMs={i * 80}>
                     <li
-                      className="rounded-2xl p-5 md:p-6 border border-gray-200"
+                      className="group relative rounded-none border border-gray-200 bg-white p-5 md:p-6 transition-all duration-300 hover:border-[#841617] hover:shadow-lg hover:-translate-y-1 cursor-default"
                     >
-                      <div className="flex items-baseline gap-4 mb-2">
+                      <div className="flex items-center gap-3 mb-3">
                         <span
-                          className="text-[14px] font-semibold tracking-[0.12em]"
+                          className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#841617]/10 text-[#841617] text-[13px] font-bold leading-none shrink-0 transition-all duration-300 group-hover:bg-[#841617] group-hover:text-white group-hover:scale-110"
                         >
                           0{i + 1}
                         </span>
                         <h3
-                          className="font-serif font-normal text-[20px] md:text-[21px] leading-[1.30] text-gray-900"
+                          className="font-serif font-normal text-[17px] md:text-[18px] leading-[1.30] text-gray-900 m-0"
                         >
                           {o.t}
                         </h3>
                       </div>
                       <p
-                        className="text-[16px] md:text-[17px] leading-[1.65]"
-                       
+                        className="text-[14px] md:text-[15px] leading-[1.6] text-gray-600 m-0"
                       >
                         {o.d}
                       </p>
@@ -439,16 +431,15 @@ function AuditCTASection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
             {/* Left: copy + actions */}
             <div>
-              <p
-                className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-3"
-              >
-                Website Audit
-              </p>
+              <div className="flex items-baseline gap-3 mb-2">
+                <SectionNumber num="04" />
+                <SectionLabel label="Website Audit" />
+              </div>
               <h2
                 id="ai-ready-audit-h2"
                 className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-gray-900 mb-5 max-w-[480px]"
               >
-                Is your website working as a revenue asset?
+                Is your website working as a <span className="text-crimson">revenue asset?</span>
               </h2>
               <p
                 className="text-[17px] md:text-[18px] leading-[1.65] mb-6 max-w-[520px]"
@@ -457,9 +448,7 @@ function AuditCTASection() {
                 performance, AI readiness, and authority signals — followed by
                 prioritized remediation you can act on.
               </p>
-              <ul
-                className="space-y-3 mb-8"
-              >
+              <ul className="space-y-3 mb-8">
                 {[
                   "Conversion architecture review",
                   "Technical performance & Core Web Vitals",
@@ -467,51 +456,52 @@ function AuditCTASection() {
                   "Authority and trust signal audit",
                   "Prioritized remediation roadmap",
                 ].map((it, i) => (
-                  <li key={i} className="flex gap-3">
+                  <li key={i} className="flex items-start gap-3 group">
                     <span
                       aria-hidden="true"
-                      className="mt-[8px] inline-block shrink-0 rounded-full"
-                    />
-                    <span>{it}</span>
+                      className="mt-[6px] inline-flex shrink-0 items-center justify-center w-5 h-5 rounded-full bg-[#841617]/10 text-[#841617] text-[10px] font-bold group-hover:bg-[#841617] group-hover:text-white transition-colors duration-200"
+                    >
+                      ✓
+                    </span>
+                    <span className="text-[15px] leading-[1.6] text-gray-700 group-hover:text-gray-900 transition-colors duration-200">{it}</span>
                   </li>
                 ))}
               </ul>
               <div className="flex flex-wrap gap-3 md:gap-4">
-                <PrimaryLink href="/revenue-diagnostic">
-                  Book a Revenue Diagnostic
-                  <ArrowRight size={16} />
+                <PrimaryLink href="/google-business-profile-optimization-review">
+                  Improve My Google Visibility
                 </PrimaryLink>
-                <SecondaryLink href="/revenue-diagnostic">
-                  Request a Website Audit
-                </SecondaryLink>
               </div>
             </div>
 
             {/* Right: dark informational panel */}
             <div
-              className="rounded-none p-5 md:p-7 lg:p-9 text-white border border-gray-900 flex flex-col justify-center"
+              className="group relative rounded-none p-5 md:p-7 lg:p-9 text-white border border-gray-800 flex flex-col justify-center transition-all duration-300 hover:border-[#841617]/50 hover:shadow-2xl"
               style={{ background: "var(--dark)" }}
             >
+              {/* Timeline line */}
+              <div className="absolute left-[19px] top-[52px] bottom-[52px] w-[2px] bg-gray-700 group-hover:bg-[#841617]/30 transition-colors duration-300" />
+
               <p
-                className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
-               
+                className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-6"
+
               >
                 What Happens on the Call
               </p>
-              <ol className="space-y-5">
+              <ol className="space-y-6">
                 {CALL_STEPS.map((s, i) => (
                   <li
                     key={i}
-                    className="grid grid-cols-[28px_1fr] gap-3 md:gap-4 items-start"
+                    className="relative grid grid-cols-[28px_1fr] gap-3 md:gap-4 items-start"
                   >
                     <span
-                      className="text-[14px] font-semibold tracking-[0.10em] mt-[2px]"
+                      className="relative z-10 flex items-center justify-center w-[28px] h-[28px] rounded-full border-2 border-[#841617] text-[12px] font-bold text-[#841617] transition-all duration-300 group-hover:bg-[#841617] group-hover:text-white"
                     >
                       0{i + 1}
                     </span>
                     <p
-                      className="text-[16px] md:text-[17px] leading-[1.60]"
-                     
+                      className="text-[15px] md:text-[16px] leading-[1.65]"
+
                     >
                       {s}
                     </p>
@@ -519,12 +509,12 @@ function AuditCTASection() {
                 ))}
               </ol>
               <div
-                className="mt-7 pt-6"
-               
+                className="mt-8 pt-6 border-t border-gray-700"
+
               >
                 <p
                   className="text-[14px] leading-[1.55]"
-                 
+
                 >
                   60 minutes · Focused on your constraint · No obligation
                 </p>
@@ -542,42 +532,61 @@ function ClosingBand() {
   return (
     <section
       aria-labelledby="ai-ready-closing-h2"
-      className="section" style={{ background: "var(--dark)", color: "var(--gws-cream)" }}
+      className="section" style={{ background: "var(--dark)", color: "#ffffff" }}
     >
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-16">
         <RevealOnScroll>
-          <div>
-            <p
-              className="text-[14px] font-semibold tracking-[0.18em] uppercase mb-5"
-             
-            >
-              The Next Step
-            </p>
+          <div className="text-center">
             <h2
               id="ai-ready-closing-h2"
-              className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-white mb-6"
+              className="font-serif font-normal text-[2rem] md:text-[2.75rem] leading-[1.15] text-white mb-6 mx-auto max-w-[720px]"
+    style={{ color: '#ffffff' }}
             >
-              Your business doesn't have a marketing problem. It has a Revenue
-              Infrastructure problem.
+              Your business doesn't have a marketing problem. It has a <span className="heading-accent">Revenue Infrastructure</span> problem.
             </h2>
             <p
-              className="text-[17px] md:text-[18px] leading-[1.65] mb-6 md:mb-8"
+              className="text-[17px] md:text-[18px] leading-[1.65] mb-8 mx-auto max-w-[620px]"
 
             >
               A website is one part of that infrastructure. The Revenue
               Diagnostic examines how all the parts work together — and which
               improvement will create the most meaningful business impact first.
             </p>
-            <PrimaryLink href="/revenue-diagnostic">
-              Book a Revenue Diagnostic
-              <ArrowRight size={16} />
-            </PrimaryLink>
-            <p
-              className="mt-5 text-[14px]"
-             
+            <div className="flex flex-col items-center gap-2">
+              <PrimaryLink href="/google-business-profile-optimization-review">
+                Improve My Google Visibility
+              </PrimaryLink>
+              <p
+                className="mt-2 text-[14px] text-gray-400"
+
+              >
+                60 minutes · No obligation · Focused on your constraint
+              </p>
+            </div>
+
+            {/* Visual highlight card — left-aligned, not centered */}
+            <div
+              className="mt-10 rounded-none border border-gray-700 p-6 md:p-8 transition-all duration-300 hover:border-[#841617]/40 text-left"
+              style={{ background: "rgba(255,255,255,0.03)" }}
             >
-              60 minutes · No obligation · Focused on your constraint
-            </p>
+              <p className="text-[13px] font-semibold tracking-[0.18em] uppercase text-[#841617] mb-4">
+                What You Will Get
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "A clear picture of where your revenue infrastructure is leaking",
+                  "Prioritized actions — not a generic checklist",
+                  "A specific recommendation you can act on immediately",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-[3px] inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#841617]/20 text-[#841617] text-[10px] font-bold shrink-0">
+                      ✓
+                    </span>
+                    <span className="text-[15px] leading-[1.6] text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </RevealOnScroll>
       </div>
@@ -591,6 +600,7 @@ export default function AIReadyWebsite() {
     <>
       <SiteHeader />
       <main id="main-content">
+        <TableOfContents />
         <Hero />
         <BusinessProblemSection />
         <ApproachSection />

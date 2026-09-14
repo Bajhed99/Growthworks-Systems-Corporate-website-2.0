@@ -1,5 +1,6 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import TableOfContents from "@/components/TableOfContents";
 import { AIVisibilityHero } from "@/components/ai-visibility/AIVisibilityHero";
 import { AIBuyerJourneySection } from "@/components/ai-visibility/AIBuyerJourneySection";
 import { AIEvolutionSection } from "@/components/ai-visibility/AIEvolutionSection";
@@ -23,6 +24,7 @@ export default function AIVisibility() {
     <>
       <SiteHeader />
       <main id="main-content">
+        <TableOfContents />
         {/* Section 01 — Hero */}
         <AIVisibilityHero />
         {/* Section 02 — Buyer Journey */}

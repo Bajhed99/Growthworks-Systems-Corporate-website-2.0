@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronUp, X } from 'lucide-react'
 
 const sections = [
   { id: 'top', label: 'Home' },
@@ -26,17 +25,6 @@ export default function MobileSectionJump() {
 
   return (
     <>
-      {/* Floating Button */}
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="mobile-section-jump-button"
-        aria-label={isOpen ? 'Close section menu' : 'Open section menu'}
-        aria-expanded={isOpen}
-      >
-        {isOpen ? <X size={20} /> : <ChevronUp size={20} />}
-      </button>
-
       {/* Section Menu */}
       {isOpen && (
         <div className="mobile-section-jump-menu">

@@ -1,14 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './client/src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './client/src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './client/src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './client/src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  safelist: [
+    'text-white',
+    'text-white/70',
+    'text-white/90',
+    'text-white/40',
+    'bg-white',
+    'text-gray-500',
+    'text-gray-900',
+    'text-gray-700',
+    'text-gray-400',
+    'border-gray-200',
+    'border-gray-700',
+    'border-gray-800',
+    'bg-crimson',
+    'bg-crimson-dark',
+    'text-crimson',
+    'hover:bg-crimson-dark',
+    'hover:text-crimson',
+    'hover:border-crimson',
+    'hover:text-white',
+    'hover:bg-[#721315]',
+    'hover:border-[#841617]',
+    'hover:text-[#841617]',
+    'active:bg-[#611012]',
   ],
   theme: {
     extend: {
       colors: {
-        // GWS Brand Colors - To be populated from design specs
         primary: {
           50: '#f0f7ff',
           100: '#e0f0ff',
@@ -59,7 +84,6 @@ module.exports = {
         },
       },
       spacing: {
-        // Consistent spacing scale
         'xs': '0.5rem',
         'sm': '1rem',
         'md': '1.5rem',
@@ -71,7 +95,6 @@ module.exports = {
         '5xl': '6rem',
       },
       fontSize: {
-        // Typography scale based on design specs
         'xs': ['0.75rem', { lineHeight: '1rem' }],
         'sm': ['0.875rem', { lineHeight: '1.25rem' }],
         'base': ['1rem', { lineHeight: '1.5rem' }],
@@ -84,8 +107,7 @@ module.exports = {
         '6xl': ['3.75rem', { lineHeight: '1.2' }],
       },
       fontFamily: {
-        sans: ['system-ui', 'sans-serif'],
-        // Add specific fonts based on design specs
+        sans: ['"DM Sans"', 'Arial', 'sans-serif'],
       },
       borderRadius: {
         none: '0',
