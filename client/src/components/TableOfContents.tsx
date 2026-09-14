@@ -115,10 +115,15 @@ const PAGE_TOCS: PageToc[] = [
   {
     page: '/solutions',
     items: [
-      { id: 'solutions-hero', label: 'Overview' },
-      { id: 'solutions-problem', label: 'The Problem' },
-      { id: 'solutions-approach', label: 'Approach' },
-      { id: 'solutions-closing', label: 'Next Step' },
+      { id: 'solutions-hero-title', label: 'Overview' },
+      { id: 'digital-presence-title', label: 'Digital Presence' },
+      { id: 'lead-response-title', label: 'Lead Response' },
+      { id: 'sales-operations-title', label: 'Sales Operations' },
+      { id: 'revenue-intelligence-title', label: 'Revenue Intelligence' },
+      { id: 'connected-system-title', label: 'Connected System' },
+      { id: 'constraint-title', label: 'Diagnose First' },
+      { id: 'outcomes-title', label: 'Outcomes' },
+      { id: 'solutions-closing-cta', label: 'Next Step' },
     ],
   },
   {
